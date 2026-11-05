@@ -47,8 +47,9 @@ The manifest records the environment, source hashes, artifact hashes, and
 stage outcomes and timings. A Git revision alone does not identify a dirty
 working tree; use the recorded file hashes to identify the actual inputs.
 Do not redirect output to `results/run_all.log`: the runner manages that file.
-The paper uses IEEE's single-column review draft with continuous line numbers,
-including displayed equations, for reviewer feedback.
+The paper uses a single-column, single-spaced preprint layout with continuous
+line numbers, including displayed equations, for feedback. It retains the
+standard IEEEtran class and omits its double-spaced referee-mode option.
 
 After a passing run, create the complete local reviewer archive:
 
@@ -65,17 +66,21 @@ same passing snapshot produces the same ZIP bytes.
 
 ## Published snapshot and final manuscript
 
-[Release v1.0.0](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.0.0)
+[Release v1.0.1](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.0.1)
 provides the exact verified reproduction ZIP and its checksum, together with
-the final line-numbered PDF, TeX source, generated numbers, and editorial-build
-provenance. GitHub release immutability protects the published tag and assets.
+the updated line-numbered PDF, TeX source, generated numbers, a tested arXiv
+source bundle, and editorial-build provenance. GitHub release immutability
+protects the published tag and assets. The earlier
+[v1.0.0 release](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.0.0)
+remains unchanged.
 The verified ZIP has SHA256
 `c67b4247793c591125dfd71c1d86776a21b95ba1a59d116126c51d29cd934070`.
 
 The ZIP preserves the complete passing scientific run, including the manuscript
-at that run. The separately attached final manuscript corrects three phrases
-and adds the release citation. The tag's paper sources contain these final
-edits. `results/editorial_rebuild.json` records the parent snapshot, unchanged
+at that run. The separately attached manuscript includes the final wording,
+the Fitzsimmons--Liu related-work comparison, and the current release citation.
+The tag's paper sources contain these edits. `results/editorial_rebuild.json`
+records the parent snapshot, unchanged
 scientific inputs and outputs, the editorial changes, and the new PDF build.
 The original `results/run_manifest.json` and scientific results remain
 unchanged; the editorial rebuild does not claim another full experimental run.
@@ -93,6 +98,24 @@ Use the full `run_all.py` command above for a fresh scientific reproduction.
 The strict packager intentionally requires that fresh passing run before
 packaging a source tree containing later editorial changes. Release asset
 `SHA256SUMS` lists the published checksums.
+
+## arXiv source bundle
+
+The release asset `neurosymbolic-arxiv-v1.0.1.tar.gz` contains exactly the
+top-level manuscript TeX, `numbers.tex`, and the six included figure PDFs.
+It has no compiled manuscript, logs, experiment data, or nested archive.
+The bibliography is embedded in the TeX, so no separate BibTeX input is needed.
+The bundle preserves the single-spaced manuscript and continuous line numbers.
+
+To regenerate it and test compilation after extraction into a clean directory:
+
+```sh
+python release/build_arxiv.py --check
+```
+
+`results/arxiv_bundle.json` records the archive and member hashes and the
+two-pass clean compilation. Install the documented TeX packages before this
+check. The local build test does not submit anything to arXiv.
 
 ## Scientific outputs and provenance
 
@@ -140,9 +163,10 @@ incremental-convergence claim is made for it.
 The scale-chase result is a theoretical degeneracy under a scale-closed family,
 global strict negativity of the fixed shape, a positive scale-equivariant
 Lipschitz bound, and initial noncertification. Negativity on current data alone
-does not support an infinite scale chase after data augmentation. The normalized coarse-grid
-experiment exhibits growth of the metric's shape-dependent Lipschitz constant
-under an infeasible coupled margin. The corrected loop has no general
+does not support an infinite scale chase after data augmentation. The normalized
+coarse-grid experiment exhibits growth of the shape-dependent certified
+Lipschitz bound for the normalized test as the coupled target outgrows the
+achieved slack. The corrected loop has no general
 termination or relative-completeness guarantee. Control contraction metrics
 remain outside this paper's implemented scope.
 
@@ -189,13 +213,12 @@ round caps, and training settings. Neural certificates also export outward
 metric bounds and conservative overshoot and improved differential-rate bounds.
 `package_reproduction.py` packages and checks the completed run for reviewers.
 
-`figures.py` and `cert_ladder.py` are historical prototype/diagnostic scripts,
-not the current figure pipeline. `results/cert.json` and
-`results/neural_run.log` are retained historical outputs, not current pipeline
-acceptance evidence. `PLAN.md`, `REVISION_PLAN.md`, and `P4_FINDINGS.md` preserve
-the earlier planning and observations; their original pending tasks and
-proposed narratives have been superseded. `paper/REVIEW.md` and
-`RESPONSE_TO_REFEREE.md` record the review and revision response.
+`figures.py` and `cert_ladder.py` are retained historical prototype/diagnostic
+scripts. The current figure producers are listed above.
+`RESPONSE_TO_REFEREE.md` records the manuscript's revision response.
+`release/build_editorial.py` validates reuse of the verified scientific
+snapshot and rebuilds the current paper; `release/build_arxiv.py` packages
+the manuscript inputs and checks their standalone compilation.
 
 Run focused regression checks without rerunning the experiments:
 

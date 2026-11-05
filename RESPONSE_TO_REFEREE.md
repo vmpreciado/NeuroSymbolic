@@ -2,6 +2,19 @@
 
 Manuscript: *Neurosymbolic Synthesis of Contraction Certificates*
 
+## v1.0.1: related work and arXiv preparation
+
+The introduction now cites Fitzsimmons and Liu (2024), distinguishing their
+post-training SMT verification of continuous-time autonomous neural contraction
+metrics from the present analysis of counterexample-driven retraining.
+The README now describes the files actually retained in the released tree.
+Release v1.0.1 includes a cleanly extracted and compiled arXiv source bundle.
+The manuscript uses a single-spaced one-column layout with continuous line
+numbers. Only the referee-mode presentation option changes; the mathematical
+statements, scientific results, and original full-run evidence are preserved.
+The current release citation is
+https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.0.1.
+
 ## Final wording and archival release
 
 The final manuscript qualifies abstract scale invariance by a scale-equivariant

@@ -5,6 +5,6 @@ type: software
 authors:
   - family-names: Preciado
     given-names: Victor M.
-version: 1.0.0
-url: "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.0.0"
+version: 1.0.1
+url: "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.0.1"
 repository-code: "https://github.com/vmpreciado/NeuroSymbolic"

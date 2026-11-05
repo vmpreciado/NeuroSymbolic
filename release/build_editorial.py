@@ -18,7 +18,7 @@ sys.path.insert(0, str(ROOT))
 import run_all
 
 PARENT_SHA256 = "c67b4247793c591125dfd71c1d86776a21b95ba1a59d116126c51d29cd934070"
-RELEASE_URL = "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.0.0"
+RELEASE_URL = "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.0.1"
 EDITORIAL_INPUTS = {"paper/nsp_contraction_paper_ieee.tex", "README.md",
                     "RESPONSE_TO_REFEREE.md"}
 REBUILT_OUTPUTS = {"paper/nsp_contraction_paper_ieee.pdf", "paper/numbers.tex"}
@@ -81,18 +81,21 @@ def main():
     for name in sorted(EDITORIAL_INPUTS):
         changed[name] = {"parent_sha256": snapshot["files"][name],
                          "final_sha256": sha((ROOT / name).read_bytes())}
-    extra = {name: sha((ROOT / name).read_bytes()) for name in
-             ("CITATION.cff", "release/build_editorial.py")}
+    publication_sources = {"CITATION.cff", "release/RELEASE_NOTES.md"}
+    publication_sources.update(str(path.relative_to(ROOT))
+                               for path in (ROOT / "release").glob("*.py"))
+    extra = {name: sha((ROOT / name).read_bytes()) for name in sorted(publication_sources)}
     report = {
         "schema_version": 1, "kind": "editorial-only rebuild", "status": "pass",
         "started_at": started, "finished_at": datetime.now(timezone.utc).isoformat(),
-        "release_tag": "v1.0.0", "release_url": RELEASE_URL,
+        "release_tag": "v1.0.1", "release_url": RELEASE_URL,
+        "previous_public_release": "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.0.0",
         "parent_snapshot": {"path": "dist/neurosymbolic-reproduction.zip",
                             "sha256": PARENT_SHA256,
                             "run_manifest_sha256": snapshot["run_manifest_sha256"],
                             "full_run_status": original_run["status"]},
         "scientific_experiments_rerun": False,
-        "description": "Scientific inputs, outputs and full-run evidence reused unchanged; final wording and release citation rebuilt separately.",
+        "description": "Scientific inputs, outputs and full-run evidence reused unchanged; related-work citation, documentation, release citation and single-spaced line-numbered presentation rebuilt separately.",
         "editorial_input_changes": changed, "additional_publication_sources": extra,
         "unchanged_parent_files": unchanged,
         "output_sha256": {name: sha((ROOT / name).read_bytes())

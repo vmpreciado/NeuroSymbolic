@@ -2,10 +2,11 @@
   "schema_version": 1,
   "kind": "editorial-only rebuild",
   "status": "pass",
-  "started_at": "2026-11-05T03:14:26.276592+00:00",
-  "finished_at": "2026-11-05T03:14:29.064661+00:00",
-  "release_tag": "v1.0.0",
-  "release_url": "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.0.0",
+  "started_at": "2026-11-05T03:51:30.338246+00:00",
+  "finished_at": "2026-11-05T03:51:32.948997+00:00",
+  "release_tag": "v1.0.1",
+  "release_url": "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.0.1",
+  "previous_public_release": "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.0.0",
   "parent_snapshot": {
     "path": "dist/neurosymbolic-reproduction.zip",
     "sha256": "c67b4247793c591125dfd71c1d86776a21b95ba1a59d116126c51d29cd934070",
@@ -13,24 +14,27 @@
     "full_run_status": "pass"
   },
   "scientific_experiments_rerun": false,
-  "description": "Scientific inputs, outputs and full-run evidence reused unchanged; final wording and release citation rebuilt separately.",
+  "description": "Scientific inputs, outputs and full-run evidence reused unchanged; related-work citation, documentation, release citation and single-spaced line-numbered presentation rebuilt separately.",
   "editorial_input_changes": {
     "README.md": {
       "parent_sha256": "b5f97ba567ef3e0314307b336636795a1fa6834ceefad7d65c99ac0d90c3c649",
-      "final_sha256": "ed16090ae637423cab390e3ab75b54ac85b8faccc590145306d7e75770f7ee8f"
+      "final_sha256": "397c58ae60f7d09af4dce9578555ad8cc304d374805e5cfd068e6781e2e5a957"
     },
     "RESPONSE_TO_REFEREE.md": {
       "parent_sha256": "e9ec3bb1dc07eda0d835fd47bee2c8a15a4a06766789f55d8d6da3bf1edc11bf",
-      "final_sha256": "c10b9e968ce6c5a0c67d6ae6819858bbc0f5bc8b4f4bced064883b404373e3cc"
+      "final_sha256": "23d95407b9a4d503952b6ccddcd40601f6549d79130c1035ffd7f42301a6f2d3"
     },
     "paper/nsp_contraction_paper_ieee.tex": {
       "parent_sha256": "2e0179362d8db9e8cb9a878da5a482a246b4ee0d673d070272020951f94ea205",
-      "final_sha256": "af0b0deade9137ee35f65431d15984b8d25a5d685969863e323c966062ff4904"
+      "final_sha256": "6b2ab29422d7681cfbc64c548a6d32aac3a5850c179cd469577cc99983c151c9"
     }
   },
   "additional_publication_sources": {
-    "CITATION.cff": "82fc9985234a2d546a6f40d52e1f3d8af36900a4aa92b95ef1324474628ec147",
-    "release/build_editorial.py": "fccc581eab065f527d0b75bab046d239bb2cc697a5df0469cb72e2f381fe9962"
+    "CITATION.cff": "ef52222f83c5da687c1fed10cb46c5b194f357dd78caaa4a67aca94a83fcaf17",
+    "release/RELEASE_NOTES.md": "ad06057effcfbea008b103de548eb5e1ca3891d600cb89624ea50db1cde3adcf",
+    "release/build_arxiv.py": "ee685c2041a61930a78f8862429527e377ac34751ec9d5e65737511d07830ab1",
+    "release/build_editorial.py": "76ea22e1f2ea8f26bee233f2fb605b61c55b97d6eb9105e182a4bf8a25ac1a6d",
+    "release/test_arxiv_bundle.py": "d60d87ff54527b17bca913ed3885d9865376e5d01d039bc5c6b6202bce492f78"
   },
   "unchanged_parent_files": {
     "CLAUDE.md": "5268e3fe2edb715ebc48798a07243fc6514cf8cf2a9db93148a788aefdaa1884",
@@ -93,15 +97,15 @@
     "tests/test_run_all.py": "3bbb48779eea62c541221339d9f259b84a6a51847e636ed47115d4e06bbadf94"
   },
   "output_sha256": {
-    "paper/nsp_contraction_paper_ieee.pdf": "fe495730495ace8ef00ad9acb000c09501e06c9936362d147788484763615f53",
+    "paper/nsp_contraction_paper_ieee.pdf": "7d6bbdd81ef01ae02f36b61663f25b8d1a6d95c36e055dc7d66c29aeaa398354",
     "paper/numbers.tex": "f9e5df6db4fa494cc8decc7413acbe42c4041a5f9a99b82ddc7dd7a50cecb3d0",
-    "results/editorial_build.log": "e770bac9a37f729285f825e8d0dbcf6dec6b50cfafedf4a3e6581b1df7957205"
+    "results/editorial_build.log": "75082a1b72bb268b7cadcfbcc3bb69e0cc6a61cd4cbcc6816206fda7966038dd"
   },
   "checks": {
     "parent_zip_and_members": "pass",
     "scientific_hashes": "pass",
     "saved_result_validation": "pass",
     "fill_tex": "pass",
-    "two_latex_passes": "25 pages, zero errors/undefined references/citations; 0 warning(s)"
+    "two_latex_passes": "17 pages, zero errors/undefined references/citations; 0 warning(s)"
   }
 }

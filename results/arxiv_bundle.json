@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "release_tag": "v1.0.1",
+  "kind": "minimal arXiv TeX source bundle",
+  "created_at": "2026-11-05T03:52:12.636981+00:00",
+  "archive": "dist/neurosymbolic-arxiv-v1.0.1.tar.gz",
+  "sha256": "f5233b3327478059c068c505df1be52c5a2a80fe257042f74693aaa1171cec05",
+  "main_tex": "nsp_contraction_paper_ieee.tex",
+  "member_count": 8,
+  "member_sha256": {
+    "fig_gridcost.pdf": "7176da0f519f1a55396cb8f835d3110e970b91cd529b26011b067f6d83a997d1",
+    "fig_heatmaps.pdf": "4e9217b57fea4ce910421c4af7b860360b4c9a2ca7ab7f5da41248656b9bb26f",
+    "fig_neural.pdf": "dd17ac02aedd32e85551c0ddc539037ee0c07a0a0213d1ea2ef52faad3e066a1",
+    "fig_pendulum.pdf": "43e661c5247ac669a4b300df56e98dc10b41afe72b49ea06bf8bb0b88c064531",
+    "fig_residual.pdf": "55ee2b4a071125d2dec6d40a155afc72480687ad37540cfa8fe21a96499364ef",
+    "fig_traces.pdf": "e46808c784fb80074baf26aea109bba3f5e4e278a985d819a9691ea3d082c7f7",
+    "nsp_contraction_paper_ieee.tex": "6b2ab29422d7681cfbc64c548a6d32aac3a5850c179cd469577cc99983c151c9",
+    "numbers.tex": "f9e5df6db4fa494cc8decc7413acbe42c4041a5f9a99b82ddc7dd7a50cecb3d0"
+  },
+  "deterministic_archive_metadata": true,
+  "system_tex_class": [
+    "IEEEtran"
+  ],
+  "system_tex_packages": [
+    "algorithm",
+    "algpseudocode",
+    "amsmath",
+    "amssymb",
+    "amsthm",
+    "etoolbox",
+    "graphicx",
+    "hyperref",
+    "lineno",
+    "placeins",
+    "xcolor"
+  ],
+  "clean_build": {
+    "status": "pass",
+    "passes": 2,
+    "pages": 17,
+    "warnings": [],
+    "directory": "tmp/arxiv-bundle-check-v1.0.1-9hkt1mey",
+    "pdf": "tmp/arxiv-bundle-check-v1.0.1-9hkt1mey/nsp_contraction_paper_ieee.pdf",
+    "pdf_sha256": "2999733603dc3b9183bef8b2d00c5f51ff42f1188283255e633e3b0a3db639ce",
+    "log": "tmp/arxiv-bundle-check-v1.0.1-9hkt1mey/nsp_contraction_paper_ieee.log",
+    "log_sha256": "382feefa4d3e72624a9fc28135e10dd5602ffb278de447387d6c373e9540180e",
+    "command": [
+      "pdflatex",
+      "-no-shell-escape",
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "nsp_contraction_paper_ieee"
+    ]
+  }
+}
