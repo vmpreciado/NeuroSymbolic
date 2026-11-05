@@ -1,0 +1,191 @@
+
+[7/12] controlled revision experiments
+$ revision_experiments.py (independent producer started earlier; full output follows)
+raw_fixed seed=0: certified=True rounds=2 elapsed=4.2s
+raw_fixed seed=1: certified=True rounds=2 elapsed=4.1s
+raw_fixed seed=2: certified=True rounds=2 elapsed=4.3s
+raw_fixed seed=3: certified=True rounds=3 elapsed=4.6s
+raw_fixed seed=4: certified=True rounds=2 elapsed=3.9s
+raw_fixed seed=5: certified=True rounds=2 elapsed=4.2s
+raw_fixed seed=6: certified=True rounds=2 elapsed=4.3s
+raw_fixed seed=7: certified=True rounds=2 elapsed=4.1s
+raw_fixed seed=8: certified=True rounds=2 elapsed=3.8s
+raw_fixed seed=9: certified=True rounds=2 elapsed=3.9s
+raw_fixed seed=10: certified=True rounds=2 elapsed=3.8s
+raw_fixed seed=11: certified=True rounds=2 elapsed=3.9s
+raw_fixed seed=12: certified=True rounds=2 elapsed=3.8s
+raw_fixed seed=13: certified=True rounds=2 elapsed=3.8s
+raw_fixed seed=14: certified=True rounds=2 elapsed=3.8s
+raw_fixed seed=15: certified=True rounds=2 elapsed=3.8s
+raw_fixed seed=16: certified=True rounds=2 elapsed=4.1s
+raw_fixed seed=17: certified=True rounds=1 elapsed=3.6s
+raw_fixed seed=18: certified=True rounds=2 elapsed=3.9s
+raw_fixed seed=19: certified=True rounds=2 elapsed=3.8s
+raw_coupled seed=0: certified=True rounds=2 elapsed=3.9s
+raw_coupled seed=1: certified=True rounds=2 elapsed=3.9s
+raw_coupled seed=2: certified=True rounds=2 elapsed=4.0s
+raw_coupled seed=3: certified=True rounds=3 elapsed=4.4s
+raw_coupled seed=4: certified=True rounds=2 elapsed=3.8s
+raw_coupled seed=5: certified=True rounds=2 elapsed=3.8s
+raw_coupled seed=6: certified=True rounds=2 elapsed=3.9s
+raw_coupled seed=7: certified=True rounds=2 elapsed=3.8s
+raw_coupled seed=8: certified=True rounds=2 elapsed=3.9s
+raw_coupled seed=9: certified=True rounds=2 elapsed=3.8s
+raw_coupled seed=10: certified=True rounds=2 elapsed=3.9s
+raw_coupled seed=11: certified=True rounds=2 elapsed=3.9s
+raw_coupled seed=12: certified=True rounds=2 elapsed=3.9s
+raw_coupled seed=13: certified=True rounds=2 elapsed=3.8s
+raw_coupled seed=14: certified=True rounds=2 elapsed=3.9s
+raw_coupled seed=15: certified=True rounds=2 elapsed=4.0s
+raw_coupled seed=16: certified=True rounds=2 elapsed=3.9s
+raw_coupled seed=17: certified=True rounds=1 elapsed=3.4s
+raw_coupled seed=18: certified=True rounds=2 elapsed=3.8s
+raw_coupled seed=19: certified=True rounds=2 elapsed=3.8s
+normalized_fixed seed=0: certified=True rounds=3 elapsed=5.8s
+normalized_fixed seed=1: certified=True rounds=2 elapsed=4.7s
+normalized_fixed seed=2: certified=True rounds=2 elapsed=4.6s
+normalized_fixed seed=3: certified=True rounds=2 elapsed=4.6s
+normalized_fixed seed=4: certified=True rounds=3 elapsed=5.9s
+normalized_fixed seed=5: certified=True rounds=5 elapsed=8.5s
+normalized_fixed seed=6: certified=True rounds=2 elapsed=4.7s
+normalized_fixed seed=7: certified=True rounds=2 elapsed=4.5s
+normalized_fixed seed=8: certified=True rounds=3 elapsed=6.2s
+normalized_fixed seed=9: certified=True rounds=2 elapsed=4.6s
+normalized_fixed seed=10: certified=True rounds=4 elapsed=7.2s
+normalized_fixed seed=11: certified=True rounds=2 elapsed=4.5s
+normalized_fixed seed=12: certified=True rounds=1 elapsed=3.8s
+normalized_fixed seed=13: certified=True rounds=2 elapsed=4.6s
+normalized_fixed seed=14: certified=True rounds=2 elapsed=5.0s
+normalized_fixed seed=15: certified=True rounds=5 elapsed=8.4s
+normalized_fixed seed=16: certified=True rounds=3 elapsed=6.3s
+normalized_fixed seed=17: certified=True rounds=4 elapsed=7.5s
+normalized_fixed seed=18: certified=True rounds=2 elapsed=5.1s
+normalized_fixed seed=19: certified=True rounds=2 elapsed=4.7s
+normalized_coupled seed=0: certified=True rounds=3 elapsed=6.3s
+normalized_coupled seed=1: certified=True rounds=2 elapsed=4.9s
+normalized_coupled seed=2: certified=True rounds=2 elapsed=4.8s
+normalized_coupled seed=3: certified=True rounds=2 elapsed=4.8s
+normalized_coupled seed=4: certified=True rounds=3 elapsed=6.0s
+normalized_coupled seed=5: certified=True rounds=3 elapsed=5.9s
+normalized_coupled seed=6: certified=True rounds=2 elapsed=4.8s
+normalized_coupled seed=7: certified=True rounds=2 elapsed=4.7s
+normalized_coupled seed=8: certified=True rounds=3 elapsed=6.2s
+normalized_coupled seed=9: certified=True rounds=2 elapsed=4.8s
+normalized_coupled seed=10: certified=True rounds=3 elapsed=6.0s
+normalized_coupled seed=11: certified=True rounds=2 elapsed=4.6s
+normalized_coupled seed=12: certified=True rounds=1 elapsed=3.9s
+normalized_coupled seed=13: certified=True rounds=3 elapsed=5.2s
+normalized_coupled seed=14: certified=True rounds=2 elapsed=5.0s
+normalized_coupled seed=15: certified=False rounds=12 elapsed=16.9s
+normalized_coupled seed=16: certified=True rounds=3 elapsed=6.6s
+normalized_coupled seed=17: certified=True rounds=4 elapsed=7.9s
+normalized_coupled seed=18: certified=True rounds=2 elapsed=5.6s
+normalized_coupled seed=19: certified=True rounds=2 elapsed=4.8s
+raw_coupled_bounded seed=0: certified=True rounds=2 elapsed=4.2s
+raw_coupled_bounded seed=1: certified=True rounds=2 elapsed=4.2s
+raw_coupled_bounded seed=2: certified=True rounds=2 elapsed=4.5s
+raw_coupled_bounded seed=3: certified=True rounds=3 elapsed=4.7s
+raw_coupled_bounded seed=4: certified=True rounds=2 elapsed=4.1s
+raw_coupled_bounded seed=5: certified=True rounds=2 elapsed=4.0s
+raw_coupled_bounded seed=6: certified=True rounds=2 elapsed=4.2s
+raw_coupled_bounded seed=7: certified=True rounds=2 elapsed=4.0s
+raw_coupled_bounded seed=8: certified=True rounds=2 elapsed=4.0s
+raw_coupled_bounded seed=9: certified=True rounds=2 elapsed=4.1s
+raw_coupled_bounded seed=10: certified=True rounds=2 elapsed=4.0s
+raw_coupled_bounded seed=11: certified=True rounds=2 elapsed=4.1s
+raw_coupled_bounded seed=12: certified=True rounds=2 elapsed=4.1s
+raw_coupled_bounded seed=13: certified=True rounds=2 elapsed=4.0s
+raw_coupled_bounded seed=14: certified=True rounds=2 elapsed=4.0s
+raw_coupled_bounded seed=15: certified=True rounds=2 elapsed=4.0s
+raw_coupled_bounded seed=16: certified=True rounds=2 elapsed=4.1s
+raw_coupled_bounded seed=17: certified=True rounds=1 elapsed=3.5s
+raw_coupled_bounded seed=18: certified=True rounds=2 elapsed=4.0s
+raw_coupled_bounded seed=19: certified=True rounds=2 elapsed=4.3s
+normalized_coupled_bounded seed=0: certified=True rounds=3 elapsed=6.5s
+normalized_coupled_bounded seed=1: certified=True rounds=2 elapsed=5.0s
+normalized_coupled_bounded seed=2: certified=True rounds=2 elapsed=4.9s
+normalized_coupled_bounded seed=3: certified=True rounds=2 elapsed=4.9s
+normalized_coupled_bounded seed=4: certified=True rounds=3 elapsed=6.2s
+normalized_coupled_bounded seed=5: certified=True rounds=3 elapsed=5.9s
+normalized_coupled_bounded seed=6: certified=True rounds=2 elapsed=5.0s
+normalized_coupled_bounded seed=7: certified=True rounds=2 elapsed=4.7s
+normalized_coupled_bounded seed=8: certified=True rounds=3 elapsed=6.4s
+normalized_coupled_bounded seed=9: certified=True rounds=2 elapsed=5.0s
+normalized_coupled_bounded seed=10: certified=True rounds=3 elapsed=6.0s
+normalized_coupled_bounded seed=11: certified=True rounds=2 elapsed=4.5s
+normalized_coupled_bounded seed=12: certified=True rounds=1 elapsed=3.8s
+normalized_coupled_bounded seed=13: certified=True rounds=3 elapsed=5.2s
+normalized_coupled_bounded seed=14: certified=True rounds=2 elapsed=5.2s
+normalized_coupled_bounded seed=15: certified=False rounds=12 elapsed=17.0s
+normalized_coupled_bounded seed=16: certified=True rounds=3 elapsed=6.3s
+normalized_coupled_bounded seed=17: certified=True rounds=4 elapsed=7.5s
+normalized_coupled_bounded seed=18: certified=True rounds=2 elapsed=5.3s
+normalized_coupled_bounded seed=19: certified=True rounds=2 elapsed=4.6s
+normalized_coupled_bounded_coarse seed=0: certified=False rounds=12 elapsed=10.6s
+normalized_coupled_bounded_coarse seed=1: certified=False rounds=12 elapsed=10.6s
+normalized_coupled_bounded_coarse seed=2: certified=False rounds=12 elapsed=10.0s
+normalized_coupled_bounded_coarse seed=3: certified=False rounds=12 elapsed=10.5s
+normalized_coupled_bounded_coarse seed=4: certified=False rounds=12 elapsed=10.4s
+normalized_coupled_bounded_coarse seed=5: certified=False rounds=12 elapsed=10.4s
+normalized_coupled_bounded_coarse seed=6: certified=False rounds=12 elapsed=10.7s
+normalized_coupled_bounded_coarse seed=7: certified=False rounds=12 elapsed=10.6s
+normalized_coupled_bounded_coarse seed=8: certified=False rounds=12 elapsed=10.5s
+normalized_coupled_bounded_coarse seed=9: certified=False rounds=12 elapsed=10.6s
+normalized_coupled_bounded_coarse seed=10: certified=False rounds=12 elapsed=10.7s
+normalized_coupled_bounded_coarse seed=11: certified=False rounds=12 elapsed=10.9s
+normalized_coupled_bounded_coarse seed=12: certified=False rounds=12 elapsed=10.5s
+normalized_coupled_bounded_coarse seed=13: certified=False rounds=12 elapsed=10.6s
+normalized_coupled_bounded_coarse seed=14: certified=False rounds=12 elapsed=10.9s
+normalized_coupled_bounded_coarse seed=15: certified=False rounds=12 elapsed=10.8s
+normalized_coupled_bounded_coarse seed=16: certified=False rounds=12 elapsed=10.7s
+normalized_coupled_bounded_coarse seed=17: certified=False rounds=12 elapsed=10.6s
+normalized_coupled_bounded_coarse seed=18: certified=False rounds=12 elapsed=10.6s
+normalized_coupled_bounded_coarse seed=19: certified=False rounds=12 elapsed=10.7s
+Constructing rigorously checked scale-chase illustration
+sensitivity_gamma_1.1_k_60 seed=0: certified=False elapsed=2.4s
+sensitivity_gamma_1.1_k_60 seed=1: certified=False elapsed=2.4s
+sensitivity_gamma_1.1_k_60 seed=2: certified=False elapsed=2.5s
+sensitivity_gamma_1.1_k_60 seed=3: certified=False elapsed=2.4s
+sensitivity_gamma_1.1_k_60 seed=4: certified=False elapsed=2.4s
+sensitivity_gamma_1.3_k_60 seed=0: certified=False elapsed=2.4s
+sensitivity_gamma_1.3_k_60 seed=1: certified=False elapsed=2.4s
+sensitivity_gamma_1.3_k_60 seed=2: certified=False elapsed=2.4s
+sensitivity_gamma_1.3_k_60 seed=3: certified=False elapsed=2.4s
+sensitivity_gamma_1.3_k_60 seed=4: certified=False elapsed=2.4s
+sensitivity_gamma_2.0_k_60 seed=0: certified=False elapsed=2.7s
+sensitivity_gamma_2.0_k_60 seed=1: certified=False elapsed=2.7s
+sensitivity_gamma_2.0_k_60 seed=2: certified=False elapsed=2.7s
+sensitivity_gamma_2.0_k_60 seed=3: certified=False elapsed=2.6s
+sensitivity_gamma_2.0_k_60 seed=4: certified=False elapsed=2.6s
+sensitivity_gamma_1.3_k_10 seed=0: certified=False elapsed=2.2s
+sensitivity_gamma_1.3_k_10 seed=1: certified=False elapsed=2.1s
+sensitivity_gamma_1.3_k_10 seed=2: certified=False elapsed=2.1s
+sensitivity_gamma_1.3_k_10 seed=3: certified=False elapsed=2.1s
+sensitivity_gamma_1.3_k_10 seed=4: certified=False elapsed=2.1s
+sensitivity_gamma_1.3_k_all seed=0: certified=False elapsed=8.2s
+sensitivity_gamma_1.3_k_all seed=1: certified=False elapsed=8.1s
+sensitivity_gamma_1.3_k_all seed=2: certified=False elapsed=8.1s
+sensitivity_gamma_1.3_k_all seed=3: certified=False elapsed=8.1s
+sensitivity_gamma_1.3_k_all seed=4: certified=False elapsed=7.7s
+pendulum_fixed seed=0: certified=True elapsed=1.0s
+pendulum_fixed seed=1: certified=True elapsed=0.7s
+pendulum_fixed seed=2: certified=True elapsed=0.7s
+pendulum_fixed seed=3: certified=True elapsed=0.7s
+pendulum_fixed seed=4: certified=True elapsed=1.2s
+pendulum_fixed seed=5: certified=True elapsed=0.7s
+pendulum_fixed seed=6: certified=True elapsed=0.7s
+pendulum_fixed seed=7: certified=True elapsed=0.7s
+pendulum_fixed seed=8: certified=True elapsed=0.7s
+pendulum_fixed seed=9: certified=True elapsed=0.7s
+pendulum_fixed seed=10: certified=True elapsed=0.7s
+pendulum_fixed seed=11: certified=True elapsed=0.7s
+pendulum_fixed seed=12: certified=True elapsed=1.2s
+pendulum_fixed seed=13: certified=True elapsed=0.7s
+pendulum_fixed seed=14: certified=True elapsed=0.7s
+pendulum_fixed seed=15: certified=True elapsed=0.7s
+pendulum_fixed seed=16: certified=True elapsed=0.7s
+pendulum_fixed seed=17: certified=True elapsed=0.7s
+pendulum_fixed seed=18: certified=True elapsed=0.7s
+pendulum_fixed seed=19: certified=True elapsed=0.7s
+Wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/claude-revision/results/revision_experiments.json; elapsed=912.9s
+  -> PASS: controlled ablation, constrained variants, scale illustration and controls validated (0.6s)

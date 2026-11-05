@@ -1,6 +1,6 @@
 
-[4/8] non-polynomial benchmark
-$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/bench_pendulum.py --experiment
+[4/12] non-polynomial benchmark
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/claude-revision/bench_pendulum.py --experiment
 [pendulum assembly] 200 pairs, max rel err = 7.77e-16
 [pendulum enclosure] fails=0, cert/emp L ratio min=179.81 median=373.51 max=874.83
 
@@ -26,8 +26,8 @@ ACCEPTANCE: assembly PASS, enclosure PASS
   seed 17: cert=True iters=1 L=1.94 worst=-0.0553
   seed 18: cert=True iters=1 L=1.49 worst=-0.0291
   seed 19: cert=True iters=1 L=0.94 worst=-0.0999
-  runtime 21.2s
+  runtime 23.3s
   certified 19/20, diverged 1, median iters 1.0
   example seed 0: L=1.56 sampled slack=0.0487 b=2.243
   wrote results/pendulum.json and paper/fig_pendulum.pdf
-  -> PASS: certified 19/20; diverged 1; example uniform slack 0.0432158 (24.2s)
+  -> PASS: certified 19/20; diverged 1; example uniform slack 0.0432158 (26.2s)

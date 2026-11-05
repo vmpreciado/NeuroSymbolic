@@ -1,0 +1,92 @@
+% Generated tables. All numerical entries originate in result JSON.
+% SHA256 results/revision_report.json: 112b5e6ba6c7def8873f25be4ebb67106394a09dd5f18c33a0a6a3479633bd3f
+\begin{table}[t]\centering\caption{Complete representative certificates. The smallest certified seed is used per study. Upper bounds are rounded upward and lower guarantees downward.}\label{tab:certconstants}
+\small\begin{tabular}{lrrr}\hline Quantity & Polynomial & Pendulum & Neural\\\hline
+Seed & $0$ & $0$ & $0$\\
+$N_{\rm ax}$ & $2001$ & $401$ & $8001$\\
+$\tau$ & $0.001415$ & $0.003536$ & $3.536 \times 10^{-4}$\\
+$L_h$ & $19.71$ & $1.556$ & $54.02$\\
+$L_h\tau$ & $0.02787$ & $0.005501$ & $0.0191$\\
+$\underline s$ & $0.02155$ & $0.04321$ & $0.009081$\\
+$\underline v$ & $0.8687$ & $2.284$ & $0.1999$\\
+$\eta$ & $0.01872$ & $0.09872$ & $0.001816$\\
+$a$ & $0.1$ & $0.1$ & $0.1$\\
+$b$ & $5.934$ & $2.244$ & $5.237$\\
+$\lambda'$ & $0.40157832$ & $0.22200502$ & $0.40017341$\\
+$\sqrt{b/a}$ & $7.703$ & $4.737$ & $7.237$\\
+\hline\end{tabular}\end{table}
+\begin{table}[t]\centering\caption{Certified-seed distributions: median [minimum, maximum]. Each component is summarized separately; these medians do not form a joint certificate. Full per-seed constants are in the reproduction.}\label{tab:certsummaries}
+\scriptsize\begin{tabular}{llrrr}\hline Quantity & & Polynomial & Pendulum & Neural\\\hline
+$L_h$ & & $8.59\ [3.84, 26.8]$ & $1.65\ [0.944, 5.69]$ & $413\ [44.3, 825]$\\
+$L_h\tau$ & & $0.0121\ [0.00543, 0.038]$ & $0.00583\ [0.00334, 0.0201]$ & $0.146\ [0.0157, 0.292]$\\
+$\underline s$ & & $0.0355\ [0.00541, 0.0557]$ & $0.0425\ [0.00311, 0.0965]$ & $0.0342\ [0.00287, 0.101]$\\
+$\eta$ & & $0.0461\ [0.00458, 0.0843]$ & $0.0931\ [0.00721, 0.252]$ & $0.00684\ [5.74 \times 10^{-4}, 0.0203]$\\
+$b$ & & $4.25\ [2.46, 8.59]$ & $2.31\ [2.09, 2.54]$ & $5.18\ [3.09, 6.75]$\\
+$\lambda'$ & & $0.405\ [0.4, 0.414]$ & $0.22\ [0.202, 0.256]$ & $0.401\ [0.4, 0.402]$\\
+$\sqrt{b/a}$ & & $6.52\ [4.96, 9.27]$ & $4.8\ [4.57, 5.04]$ & $7.2\ [5.56, 8.22]$\\
+\hline\end{tabular}\end{table}
+\begin{table}[t]\centering\caption{Median cost per retraining round (excluding initial verification), with ranges in the reproduction. Oracle time includes bound computation; evaluation counts include screens and enclosure operations.}\label{tab:timings}
+\small\begin{tabular}{lrrr}\hline Study & Learner (s) & Oracle (s) & Evaluations\\\hline
+Polynomial / fixed coarse & $0.00195$ & $0.0874$ & $1.46 \times 10^{4}$\\
+Polynomial / coupled coarse & $0.707$ & $0.0851$ & $1.46 \times 10^{4}$\\
+Polynomial / operating & $0.5$ & $0.409$ & $4 \times 10^{6}$\\
+Pendulum & $0.46$ & $0.208$ & $3.22 \times 10^{5}$\\
+Neural & $1.32$ & $10.6$ & $6.4 \times 10^{7}$\\
+\hline\multicolumn{4}{l}{\footnotesize Apple M3 Max; Python 3.12.7; one BLAS thread.}\\
+\multicolumn{4}{l}{\footnotesize Independent producers may overlap; timings include contention.}\\
+\hline\end{tabular}\end{table}
+\begin{table}[t]\centering\caption{Budgeted grid refinement of frozen candidates. The last two columns compare valid margin bounds on the final grid; the coordinatewise bound does not change the learner.}\label{tab:refinement}
+\small\begin{tabular}{rrrrr}\hline Seed & Final $N_{\rm ax}$ & Checks & Euclidean margin & Coordinate margin\\\hline
+$0$ & $1921$ & $5$ & $0.0291$ & $0.0273$\\
+$1$ & $961$ & $4$ & $0.0393$ & $0.0386$\\
+$2$ & $481$ & $3$ & $0.025$ & $0.0222$\\
+\hline\end{tabular}\end{table}
+\begin{table}[t]\centering\caption{Matched operating-grid ablation and constrained controls. All operating-grid regimes share seeds and budgets. Bounded comparisons cover coupled margins only. The final row uses the coarse grid.}\label{tab:ablation}
+\small\begin{tabular}{lrrrrr}\hline Test / rule & $N_{\rm ax}$ & Cert. & Div. & Stall & Fail\\\hline
+Raw / fixed & 2001 & 20 & 0 & 0 & 0\\
+Raw / coupled & 2001 & 20 & 0 & 0 & 0\\
+Normalized / fixed & 2001 & 20 & 0 & 0 & 0\\
+Normalized / coupled & 2001 & 19 & 1 & 0 & 0\\
+Raw / bounded coupled & 2001 & 20 & 0 & 0 & 0\\
+Normalized / bounded coupled & 2001 & 19 & 1 & 0 & 0\\
+Normalized / bounded coarse & 121 & 0 & 20 & 0 & 0\\
+\hline\end{tabular}\end{table}
+\begin{table}[t]\centering\caption{Short-horizon sensitivity on a common coarse diagnostic grid. These counts are not operating-grid success rates. The pendulum row is a separate matched fixed-margin control at its original operating resolution.}\label{tab:sensitivity}
+\small\begin{tabular}{lrrrr}\hline Setting & Seeds & Cert. & Div. & Stall\\\hline
+$\gamma=1.1$, $q_c=60$ & 5 & 0 & 3 & 2\\
+$\gamma=1.3$, $q_c=60$ & 5 & 0 & 5 & 0\\
+$\gamma=2.0$, $q_c=60$ & 5 & 0 & 5 & 0\\
+$\gamma=1.3$, $q_c=10$ & 5 & 0 & 5 & 0\\
+$\gamma=1.3$, $q_c=all$ & 5 & 0 & 5 & 0\\
+Pendulum / fixed & 20 & 20 & 0 & 0\\
+\hline\end{tabular}\end{table}
+\begin{table}[t]\centering\caption{Adaptive verification and fitted-surrogate transfer. Box and grid-operation counts have different units. The surrogate residual bounds use known polynomial truth over the entire box.}\label{tab:extensions}
+\small\begin{tabular}{lr}\hline Quantity & Result\\\hline
+3D certified / seeds & 11 / 20\\
+3D inconclusive & 9\\
+3D median retraining rounds & $2$\\
+3D median boxes (certified runs) & $1.023 \times 10^{4}$\\
+3D representative seed & $0$\\
+3D $a$ & $0.1$\\
+3D $b$ & $6.591$\\
+3D raw $\eta$ & $1 \times 10^{-4}$\\
+3D rate $\lambda'$ & $0.40000758$\\
+3D overshoot & $8.119$\\
+Frozen seed 0 adaptive boxes & $121$\\
+Frozen seed 0 grid / adaptive time (s) & $3.1 / 0.115$\\
+Frozen seed 1 adaptive boxes & $47$\\
+Frozen seed 1 grid / adaptive time (s) & $3.09 / 0.0402$\\
+Frozen seed 2 adaptive boxes & $83$\\
+Frozen seed 2 grid / adaptive time (s) & $3.14 / 0.0773$\\
+Surrogate trajectory samples & $300$\\
+Surrogate derivative-fit RMSE & $3.36 \times 10^{-15}$\\
+Surrogate $\eta$ & $0.005$\\
+Metric $b$ & $4.428$\\
+Metric $\mu_1$ & $1.206$\\
+Residual $\delta_0$ & $5.012 \times 10^{-4}$\\
+Residual $\delta_1$ & $4.673 \times 10^{-4}$\\
+Remaining raw margin & $2.584 \times 10^{-4}$\\
+True-system rate $\lambda''$ & $0.40002919$\\
+Overshoot $\sqrt{b/a}$ & $6.654$\\
+Transfer certified & Yes\\
+\hline\end{tabular}\end{table}

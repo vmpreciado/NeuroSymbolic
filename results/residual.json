@@ -159,5 +159,15 @@
       "measured": -0.050937897570988155,
       "bound": 0.1158513377125034
     }
-  ]
+  ],
+  "zero_residual_measured": -0.04541517519798699,
+  "provenance": {
+    "candidate_seed": 0,
+    "depth": 3,
+    "margin_method": "separate outward raw-test grid check; not normalized slack conversion",
+    "n_grid_eta": 4001,
+    "tau": 0.0007071067811867841,
+    "worst_raw_grid_upper": -0.04541515545476626,
+    "metric_sha256": "17cdc460732a18e37ab6ed158505152cf043b9d53701491fa3f43d1b0d6dea52"
+  }
 }
