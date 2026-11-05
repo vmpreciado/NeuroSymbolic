@@ -1,0 +1,276 @@
+"""fill_tex.py: generate paper/numbers.tex from results/*.json.
+
+Every number in Section V is a LaTeX macro defined here, read from a script
+output (CLAUDE.md rule 1). Sources: traces.json (three-regime multi-seed
+summary), gridcost.json (slack/L ratios and cost sweep), residual.json
+(Theorem 2 constants), smoke_p1.json (P1 wiring diagnostic). Each macro is
+emitted with \\providecommand; the header records the sources and the git
+commit so any number in the PDF is traceable.
+"""
+import hashlib
+import json
+import math
+import os
+import subprocess
+import tempfile
+import numpy as np
+from decimal import Decimal, ROUND_CEILING, ROUND_FLOOR, localcontext
+from rounding import grid_radius
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+RESULTS = os.path.join(HERE, "results")
+PAPER = os.path.join(HERE, "paper")
+OUT = os.path.join(PAPER, "numbers.tex")
+BOX = 2.0
+SOURCE_HASHES = {}
+
+
+def _load(name):
+    try:
+        with open(os.path.join(RESULTS, name), "rb") as f:
+            data = f.read()
+        result = json.loads(data)
+        if not isinstance(result, dict):
+            raise ValueError("expected a JSON object")
+        if result.get("verification_backend", {}).get("outward_rounded") is not True:
+            raise ValueError("result was not produced by the outward-rounded verifier")
+        SOURCE_HASHES[name] = hashlib.sha256(data).hexdigest()
+        return result
+    except (OSError, ValueError) as exc:
+        raise ValueError(f"required results source {name}: {exc}") from exc
+
+
+def _git_hash():
+    try:
+        return subprocess.check_output(
+            ["git", "-C", HERE, "rev-parse", "--short", "HEAD"],
+            stderr=subprocess.DEVNULL).decode().strip()
+    except Exception:
+        return "unknown"
+
+
+def fmt(x, sig=4):
+    if not isinstance(x, (int, float)) or not math.isfinite(x):
+        raise ValueError(f"a manuscript number must be finite, got {x!r}")
+    if isinstance(x, bool):
+        return str(int(x))
+    if isinstance(x, int):
+        return str(x)
+    ax = abs(x)
+    if ax != 0 and (ax >= 1e5 or ax < 1e-3):
+        m, e = float(x), 0
+        while abs(m) >= 10.0:
+            m /= 10.0; e += 1
+        while abs(m) < 1.0:
+            m *= 10.0; e -= 1
+        return r"%.*g \times 10^{%d}" % (sig, m, e)
+    return "%.*g" % (sig, x)
+
+
+def fmt_directed(x, sig=3, upward=True):
+    """Print exact-decimal outward bounds without a float conversion roundtrip."""
+    if not isinstance(x, (int, float)) or isinstance(x, bool) or not math.isfinite(x):
+        raise ValueError(f"a directed manuscript number must be finite, got {x!r}")
+    if x == 0:
+        return "0"
+    with localcontext() as ctx:
+        ctx.prec = 800
+        value = Decimal.from_float(float(x))
+        quantum = Decimal(1).scaleb(value.adjusted() - sig + 1)
+        value = value.quantize(quantum, rounding=ROUND_CEILING if upward else ROUND_FLOOR)
+        exponent = value.adjusted()
+        if exponent >= 5 or exponent < -3:
+            mantissa = format(value.scaleb(-exponent), "f").rstrip("0").rstrip(".")
+            return mantissa + r" \times 10^{" + str(exponent) + "}"
+        result = format(value, "f")
+        return result.rstrip("0").rstrip(".") if "." in result else result
+
+
+def fmt_up(x, sig=3):
+    return fmt_directed(x, sig=sig, upward=True)
+
+
+def fmt_down(x, sig=3):
+    return fmt_directed(x, sig=sig, upward=False)
+
+
+def protocol_macros(config, prefix):
+    """Require explicit budgets before an experimental summary enters the paper."""
+    if not isinstance(config, dict):
+        raise ValueError(f"{prefix} protocol config is missing")
+    for key in ("max_rounds", "training_steps", "initial_samples"):
+        value = config.get(key)
+        minimum = 0 if key == "max_rounds" else 1
+        if isinstance(value, bool) or not isinstance(value, int) or value < minimum:
+            raise ValueError(f"{prefix} protocol {key} must be an integer >= {minimum}")
+    for key in ("growth_factor", "learning_rate", "base_margin", "gamma"):
+        value = config.get(key)
+        minimum = 1 if key in ("growth_factor", "gamma") else 0
+        if (isinstance(value, bool) or not isinstance(value, (int, float))
+                or not math.isfinite(value) or value <= minimum):
+            raise ValueError(f"{prefix} protocol {key} must be finite and > {minimum}")
+    if config.get("optimizer") != "Adam":
+        raise ValueError(f"{prefix} protocol must identify the recorded Adam optimizer")
+    if "max_iter" in config and config["max_iter"] != config["max_rounds"]:
+        raise ValueError(f"{prefix} protocol round caps disagree")
+    return [
+        (prefix + "RoundCap", fmt(config["max_rounds"])),
+        (prefix + "TrainSteps", fmt(config["training_steps"])),
+        (prefix + "LearningRate", fmt(config["learning_rate"], sig=3)),
+        (prefix + "InitialSamples", fmt(config["initial_samples"])),
+    ]
+
+
+def validate_metric_bounds(example, source):
+    """A quantitative certificate needs both metric comparison constants."""
+    a, b = example.get("a"), example.get("b")
+    if (any(isinstance(value, bool) or not isinstance(value, (int, float))
+            or not math.isfinite(value) for value in (a, b))
+            or not 0 < a <= b):
+        raise ValueError(f"{source} must export finite certified metric bounds 0 < a <= b")
+
+
+def main():
+    SOURCE_HASHES.clear()
+    macros, sources = [], []
+
+    tr = _load("traces.json")
+    if tr is not None:
+        sources.append("traces.json")
+        cfg, summ = tr["config"], tr["summary"]
+        macros += protocol_macros(cfg, "Poly")
+        growth_factor = cfg["growth_factor"]
+        macros.append(("OutcomeGrowthFactor", fmt(growth_factor)))
+        n_ax = cfg["grid_operating"]
+        tau_op = grid_radius(np.linspace(-BOX, BOX, n_ax), dimension=2)
+        macros += [
+            ("numSeeds", fmt(cfg["n_seeds"])),
+            ("numGridCoarse", fmt(cfg["grid_coarse"])),
+            ("numGridOp", fmt(cfg["grid_operating"])),
+            ("numTauOp", fmt_up(tau_op, sig=3)),
+            ("numEpsZero", fmt(cfg["eps0"], sig=2)),
+            ("numGamma", fmt(cfg["gamma"], sig=2)),
+            ("numStallCount", fmt(summ["stall"]["stalled"])),
+            ("numStallCertified", fmt(summ["stall"]["certified"])),
+            ("numDivCount", fmt(summ["diverge"]["diverged"])),
+            ("numDivGrowth", fmt(summ["diverge"]["max_L_growth_factor"], sig=2)),
+            ("numCertCount", fmt(summ["certify"]["certified"])),
+            ("numCertMedIters", fmt(summ["certify"]["median_iters_to_cert"], sig=2)),
+        ]
+
+    gc = _load("gridcost.json")
+    if gc is not None:
+        sources.append("gridcost.json")
+        gp = gc.get("grid_points") or []
+
+        def at(dim):
+            dims = gc.get("dims") or []
+            return gp[dims.index(dim)] if dim in dims and gp else None
+        macros += [
+            ("numGridMedianRatio", fmt(gc.get("median_ratio"), sig=3)),
+            ("numGridMinRatio", fmt(gc.get("min_ratio"), sig=3)),
+            ("numGridMaxRatio", fmt(gc.get("max_ratio"), sig=3)),
+            ("numGridB", fmt_up(gc.get("median_b"), sig=3)),
+            ("numGridPtsTwo", fmt(at(2), sig=2)),
+            ("numGridPtsFour", fmt(at(4), sig=2)),
+            ("numGridPtsSix", fmt(at(6), sig=2)),
+        ]
+
+    rs = _load("residual.json")
+    if rs is not None:
+        sources.append("residual.json")
+        macros += [
+            ("numEta", fmt_down(rs.get("eta"), sig=3)),
+            ("numBupper", fmt_up(rs.get("b_upper"), sig=3)),
+            ("numMuOne", fmt_up(rs.get("mu1"), sig=3)),
+            ("numCdZero", fmt_up(rs.get("c_d0"), sig=3)),
+            ("numCdOne", fmt_up(rs.get("c_d1"), sig=3)),
+            ("numDeltaStar", fmt_down(rs.get("delta_star"), sig=3)),
+            ("numDeltaEmpRatio", fmt(rs.get("delta_emp_ratio"), sig=3)),
+        ]
+
+    pend = _load("pendulum.json")
+    if pend is not None:
+        sources.append("pendulum.json")
+        ex = pend.get("example", {})
+        macros += protocol_macros(pend.get("config"), "Pend")
+        if pend["config"]["growth_factor"] != growth_factor:
+            raise ValueError("benchmark outcome-growth thresholds disagree")
+        validate_metric_bounds(ex, "pendulum")
+        macros += [
+            ("numPendSeeds", fmt(pend.get("n_seeds"))),
+            ("numPendCert", fmt(pend.get("certified"))),
+            ("numPendDiv", fmt(pend.get("diverged"))),
+            ("numPendMedIters", fmt(pend.get("median_iters_to_cert"), sig=2)),
+            ("numPendRate", fmt(pend.get("rate"), sig=2)),
+            ("numPendBox", fmt(pend.get("box"), sig=2)),
+            ("numPendGrid", fmt(pend.get("n_grid"))),
+            ("numPendL", fmt_up(ex.get("L_cert"), sig=3)),
+            ("numPendSlack", fmt_down(ex.get("slack"), sig=3)),
+            ("numPendB", fmt_up(ex.get("b"), sig=3)),
+        ]
+
+    nn = _load("neural.json")
+    if nn is not None:
+        sources.append("neural.json")
+        ex = nn.get("example", {})
+        macros += protocol_macros(nn.get("config"), "Neural")
+        if nn["config"]["growth_factor"] != growth_factor:
+            raise ValueError("benchmark outcome-growth thresholds disagree")
+        validate_metric_bounds(ex, "neural")
+        macros += [
+            ("numNeuralUnits", fmt(nn.get("units"))),
+            ("numNeuralSeeds", fmt(nn.get("n_seeds"))),
+            ("numNeuralCert", fmt(nn.get("certified_op"))),
+            ("numNeuralCoarse", fmt(nn.get("certified_coarse"))),
+            ("numNeuralDiv", fmt(nn.get("diverged_op"))),
+            ("numNeuralMedIters", fmt(nn.get("median_iters_to_cert"), sig=2)),
+            ("numNeuralOpGrid", fmt(nn.get("op_grid"))),
+            ("numNeuralCoarseGrid", fmt(nn.get("coarse_grid"))),
+            ("numNeuralL", fmt_up(ex.get("L_cert"), sig=3)),
+            ("numNeuralSlack", fmt_down(ex.get("slack"), sig=3)),
+            ("numNeuralUniformSlack", fmt_down(ex.get("uniform_slack"), sig=3)),
+            ("numNeuralA", fmt_down(ex.get("a"), sig=3)),
+            ("numNeuralB", fmt_up(ex.get("b"), sig=3)),
+        ]
+
+    sm = _load("smoke_p1.json")
+    if sm is not None:
+        if sm.get("candidate", {}).get("certified") is not True or not sm.get("s", -1) >= 0:
+            raise ValueError("smoke diagnostic must certify with nonnegative uniform slack")
+        sources.append("smoke_p1.json")
+        macros += [
+            ("numCertConservatism", fmt(sm.get("conservatism_factor"), sig=3)),
+            ("numCertA", fmt_down(sm.get("a"), sig=2)),
+        ]
+
+    githash = _git_hash()
+    lines = [
+        "% !TEX generated file: DO NOT EDIT BY HAND.",
+        "% Generated by fill_tex.py from results/*.json.",
+        "% Sources: " + (", ".join(sources) if sources else "(none found)"),
+        "% Baseline Git HEAD (source hashes below identify local edits): " + githash,
+        "% Every macro below is a script-produced number (CLAUDE.md rule 1).",
+        "",
+    ]
+    for name, digest in sorted(SOURCE_HASHES.items()):
+        lines.append("% SHA256 results/" + name + ": " + digest)
+    for name in sorted(n for n in os.listdir(HERE) if n.endswith(".py")):
+        with open(os.path.join(HERE, name), "rb") as f:
+            lines.append("% SHA256 " + name + ": " + hashlib.sha256(f.read()).hexdigest())
+    lines.append("")
+    for name, val in macros:
+        lines.append(r"\providecommand{\%s}{%s}" % (name, val))
+    lines.append("")
+
+    with tempfile.NamedTemporaryFile(mode="w", dir=PAPER, delete=False) as f:
+        f.write("\n".join(lines))
+        temp_path = f.name
+    os.replace(temp_path, OUT)
+    print(f"wrote {OUT}: {len(macros)} macros from {len(sources)} source(s); git {githash}")
+    for name, val in macros:
+        print(f"  \\{name} = {val}")
+
+
+if __name__ == "__main__":
+    main()

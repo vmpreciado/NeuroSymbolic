@@ -1,0 +1,1312 @@
+{
+  "system": "pendulum f=(x2,-sin x1 - x2)",
+  "box": 1.0,
+  "rate": 0.2,
+  "n_seeds": 20,
+  "n_grid": 401,
+  "depth": 3,
+  "config": {
+    "max_rounds": 10,
+    "growth_factor": 100.0,
+    "training_steps": 500,
+    "learning_rate": 0.02,
+    "initial_samples": 500,
+    "base_margin": 0.05,
+    "gamma": 1.3,
+    "worst_counterexamples": 60,
+    "perturbations_per_counterexample": 5,
+    "perturbation_std": 0.05,
+    "optimizer": "Adam",
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "adam_epsilon": 1e-08,
+    "optimizer_state": "reset each retraining round",
+    "outcome_criterion": {
+      "certified": "outward-rounded grid oracle returns certified",
+      "diverged": "uncertified and max_k L_k > growth_factor * L_0",
+      "stalled": "uncertified and not diverged within max_rounds"
+    }
+  },
+  "certified": 19,
+  "diverged": 1,
+  "median_iters_to_cert": 1.0,
+  "scope": "This experiment tests rate 0.2 only; no infeasibility claim at other rates.",
+  "validation": {
+    "assembly": true,
+    "enclosure": true
+  },
+  "verification_backend": {
+    "outward_rounded": true,
+    "backend": "binary64-nextafter with MPFR directed transcendental enclosures",
+    "gmpy2_version": "2.3.0",
+    "mpfr_version": "MPFR 4.2.2",
+    "parameter_semantics": "stored binary64 parameters and grid nodes denote exact real values",
+    "elementary_arithmetic": "IEEE 754 binary64 round-to-nearest ties-to-even, correctly rounded sqrt, gradual underflow",
+    "overflow_policy": "fail closed",
+    "transcendental_precision_bits": 160,
+    "large_batch_transcendental_method": "directed-MPFR node interpolation plus analytic second-derivative remainder",
+    "interpolation_step": 0.0009765625,
+    "interpolation_domain": [
+      -16.0,
+      16.0
+    ]
+  },
+  "runs": {
+    "0": {
+      "certified": true,
+      "diverged": false,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.4437900534925004,
+          "L": 2.388534738626466,
+          "gap": 0.45223479904641267,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.4522347990464127
+        },
+        {
+          "iter": 1,
+          "worst": -0.048716050596850406,
+          "L": 1.555716161304147,
+          "gap": -0.04321576336055194,
+          "oracle_evaluations": 321602,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 160801,
+          "gridpoints_covered": 160801,
+          "grid_enclosed": true,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": 0.04321576336055193
+        }
+      ],
+      "theta": [
+        [
+          0.7961086531871933,
+          0.04263395472797833,
+          0.06069289603503591
+        ],
+        [
+          0.5860725143709202,
+          -0.06760832090886909,
+          -0.09306670031291527
+        ],
+        [
+          1.1309036979168388,
+          0.06545947558804481,
+          -0.012824490759673117
+        ]
+      ]
+    },
+    "1": {
+      "certified": true,
+      "diverged": false,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.2623189839055374,
+          "L": 1.3579418459033141,
+          "gap": 0.2671200333440135,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.2671200333440136
+        },
+        {
+          "iter": 1,
+          "worst": -0.04142021785510084,
+          "L": 3.583680769035057,
+          "gap": -0.028749992988137983,
+          "oracle_evaluations": 321602,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 160801,
+          "gridpoints_covered": 160801,
+          "grid_enclosed": true,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": 0.02874999298813798
+        }
+      ],
+      "theta": [
+        [
+          0.7719929774082668,
+          0.04256282324540928,
+          0.06061286431820154
+        ],
+        [
+          0.5742544225186489,
+          -0.05084121694681479,
+          -0.03334822188011819
+        ],
+        [
+          1.1254680818935543,
+          0.07958871949556037,
+          0.09336923123497794
+        ]
+      ]
+    },
+    "2": {
+      "certified": true,
+      "diverged": false,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.6313063971276011,
+          "L": 2.1255001023280826,
+          "gap": 0.6388211748064456,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.6388211748064457
+        },
+        {
+          "iter": 1,
+          "worst": -0.06444249047757103,
+          "L": 4.120489025134351,
+          "gap": -0.049874361820184454,
+          "oracle_evaluations": 321602,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 160801,
+          "gridpoints_covered": 160801,
+          "grid_enclosed": true,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": 0.04987436182018445
+        }
+      ],
+      "theta": [
+        [
+          0.8591037076146494,
+          0.1313370597558442,
+          0.054701033563975
+        ],
+        [
+          0.5894625599746264,
+          0.00011102614837423508,
+          0.0739200041444788
+        ],
+        [
+          1.124262496285763,
+          -0.013477315072317596,
+          0.06712714495090567
+        ]
+      ]
+    },
+    "3": {
+      "certified": true,
+      "diverged": false,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.5869618997255115,
+          "L": 4.889596355310896,
+          "gap": 0.6042492334260388,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.6042492334260389
+        },
+        {
+          "iter": 1,
+          "worst": -0.053514386933884245,
+          "L": 1.5629929345912172,
+          "gap": -0.04798837241890355,
+          "oracle_evaluations": 321602,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 160801,
+          "gridpoints_covered": 160801,
+          "grid_enclosed": true,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": 0.047988372418903545
+        }
+      ],
+      "theta": [
+        [
+          0.8243989093039668,
+          -0.05301499473175284,
+          -0.04254672665109115
+        ],
+        [
+          0.5556861131407921,
+          0.025738103312380547,
+          -0.040739257247795875
+        ],
+        [
+          1.1988920367689067,
+          0.021821918481299767,
+          -0.03933737996431487
+        ]
+      ]
+    },
+    "4": {
+      "certified": true,
+      "diverged": false,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.4824272907487983,
+          "L": 11.981652895679785,
+          "gap": 0.5247888308105924,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.5247888308105925
+        },
+        {
+          "iter": 1,
+          "worst": -0.0004769832900592285,
+          "L": 4.709519870969717,
+          "gap": 0.01617368389441858,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.016173683894418582
+        },
+        {
+          "iter": 2,
+          "worst": -0.053848256761916735,
+          "L": 1.8364679359537777,
+          "gap": -0.04735536210719369,
+          "oracle_evaluations": 321602,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 160801,
+          "gridpoints_covered": 160801,
+          "grid_enclosed": true,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": 0.04735536210719368
+        }
+      ],
+      "theta": [
+        [
+          0.8203339912728012,
+          0.08146939666441774,
+          0.03513389684398368
+        ],
+        [
+          0.5832205419845367,
+          -0.054612132686169615,
+          0.0078986494226442
+        ],
+        [
+          1.167407839750528,
+          -0.06250221977270062,
+          0.04500748242791533
+        ]
+      ]
+    },
+    "5": {
+      "certified": false,
+      "diverged": true,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.4275642359399342,
+          "L": 178.8414057245728,
+          "gap": 1.0598640896638498,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -1.05986408966385
+        },
+        {
+          "iter": 1,
+          "worst": 0.5277543864092255,
+          "L": 1540.5637864293235,
+          "gap": 5.974469887582349,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -5.97446988758235
+        },
+        {
+          "iter": 2,
+          "worst": 1.0664155103873088,
+          "L": 35936.00464257575,
+          "gap": 128.11937836797316,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -128.11937836797318
+        },
+        {
+          "iter": 3,
+          "worst": 0.2714560838008624,
+          "L": 83048.43484317313,
+          "gap": 293.89201330649223,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -293.8920133064923
+        },
+        {
+          "iter": 4,
+          "worst": 0.23985930080589307,
+          "L": 247797.58446509158,
+          "gap": 876.3366209853895,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -876.3366209853896
+        },
+        {
+          "iter": 5,
+          "worst": 0.22859903308024096,
+          "L": 495437.4226872365,
+          "gap": 1751.8644052117759,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -1751.864405211776
+        },
+        {
+          "iter": 6,
+          "worst": 23.161477384250475,
+          "L": 4945991.502032299,
+          "gap": 17509.88213127505,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -17509.882131275055
+        },
+        {
+          "iter": 7,
+          "worst": 25.995295597845086,
+          "L": 8102123.530098995,
+          "gap": 28671.327746318966,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -28671.32774631897
+        },
+        {
+          "iter": 8,
+          "worst": 26.768369223588856,
+          "L": 11184567.445039932,
+          "gap": 39570.1857943547,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -39570.18579435471
+        },
+        {
+          "iter": 9,
+          "worst": 26.986548949401215,
+          "L": 13910896.53330974,
+          "gap": 49209.43290438934,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -49209.432904389345
+        },
+        {
+          "iter": 10,
+          "worst": 27.6666131846333,
+          "L": 18631443.152443092,
+          "gap": 65899.76559510709,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -65899.7655951071
+        }
+      ],
+      "theta": [
+        [
+          -1.4377259330565932,
+          4.848398374751202,
+          -8.994350870507716
+        ],
+        [
+          0.0329246420694277,
+          -0.10394264155662447,
+          0.18357153330408632
+        ],
+        [
+          1.3808273512536928,
+          -4.65831857808631,
+          8.644545949246217
+        ]
+      ]
+    },
+    "6": {
+      "certified": true,
+      "diverged": false,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.5840749339200342,
+          "L": 1.7090734737795081,
+          "gap": 0.590117421134312,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.5901174211343121
+        },
+        {
+          "iter": 1,
+          "worst": -0.0382747369561082,
+          "L": 1.1152677594878906,
+          "gap": -0.034331669978245036,
+          "oracle_evaluations": 321602,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 160801,
+          "gridpoints_covered": 160801,
+          "grid_enclosed": true,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": 0.03433166997824503
+        }
+      ],
+      "theta": [
+        [
+          0.8469346616197176,
+          -0.03689311262578737,
+          0.044379153469061176
+        ],
+        [
+          0.5605537071628248,
+          0.0008358568390060407,
+          -0.024766100787499315
+        ],
+        [
+          1.139588922931545,
+          0.02132965243316348,
+          0.013407301717550823
+        ]
+      ]
+    },
+    "7": {
+      "certified": true,
+      "diverged": false,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.29331161045252596,
+          "L": 7.509355585612745,
+          "gap": 0.3198611917371658,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.3198611917371659
+        },
+        {
+          "iter": 1,
+          "worst": -0.04416835293265337,
+          "L": 4.347271132065494,
+          "gap": -0.028798428446952858,
+          "oracle_evaluations": 321602,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 160801,
+          "gridpoints_covered": 160801,
+          "grid_enclosed": true,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": 0.028798428446952854
+        }
+      ],
+      "theta": [
+        [
+          0.8269675084604673,
+          -0.07960610403803518,
+          -0.028902977128726675
+        ],
+        [
+          0.5566585505966116,
+          -0.07244969303554456,
+          -0.09535350405392234
+        ],
+        [
+          1.103739714153463,
+          0.0036192452064596433,
+          -0.06578683523220064
+        ]
+      ]
+    },
+    "8": {
+      "certified": true,
+      "diverged": false,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.4729270396362353,
+          "L": 1.6752409763338811,
+          "gap": 0.47884991090867174,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.4788499109086718
+        },
+        {
+          "iter": 1,
+          "worst": -0.00893809486330081,
+          "L": 1.6496170498748757,
+          "gap": -0.0031058178516633122,
+          "oracle_evaluations": 321602,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 160801,
+          "gridpoints_covered": 160801,
+          "grid_enclosed": true,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": 0.003105817851663312
+        }
+      ],
+      "theta": [
+        [
+          0.833546882010401,
+          -0.010665259545148343,
+          0.002954755760648175
+        ],
+        [
+          0.5899954972806128,
+          -0.07126405754445643,
+          -0.007350288333332563
+        ],
+        [
+          1.118967817115078,
+          0.07954641156283022,
+          -0.050448429646985996
+        ]
+      ]
+    },
+    "9": {
+      "certified": true,
+      "diverged": false,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.4490446470143695,
+          "L": 3.078425621232385,
+          "gap": 0.45992852517512894,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.459928525175129
+        },
+        {
+          "iter": 1,
+          "worst": -0.04201572104858492,
+          "L": 5.685690568900094,
+          "gap": -0.021913769263596162,
+          "oracle_evaluations": 321602,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 160801,
+          "gridpoints_covered": 160801,
+          "grid_enclosed": true,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": 0.02191376926359616
+        }
+      ],
+      "theta": [
+        [
+          0.8147286190484954,
+          0.08178958452213816,
+          0.048596742490648104
+        ],
+        [
+          0.613873522213046,
+          0.04920910270781722,
+          -0.022651794851146857
+        ],
+        [
+          1.1393275295437175,
+          0.054948420651385055,
+          0.09567260760776947
+        ]
+      ]
+    },
+    "10": {
+      "certified": true,
+      "diverged": false,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.6673132601584435,
+          "L": 4.807218654628554,
+          "gap": 0.6843093447051155,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.6843093447051156
+        },
+        {
+          "iter": 1,
+          "worst": -0.0333931900625842,
+          "L": 2.047183903870137,
+          "gap": -0.02615530195877141,
+          "oracle_evaluations": 321602,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 160801,
+          "gridpoints_covered": 160801,
+          "grid_enclosed": true,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": 0.026155301958771405
+        }
+      ],
+      "theta": [
+        [
+          0.8104741741126723,
+          0.026975069098348573,
+          0.03554781424671898
+        ],
+        [
+          0.5919091962779409,
+          -0.11228245137099024,
+          -0.07243103667676207
+        ],
+        [
+          1.1484748523769333,
+          0.02558427927646888,
+          -0.08620955374560992
+        ]
+      ]
+    },
+    "11": {
+      "certified": true,
+      "diverged": false,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.43942094493062356,
+          "L": 4.626967308736267,
+          "gap": 0.45577974473230337,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.4557797447323034
+        },
+        {
+          "iter": 1,
+          "worst": -0.046396678177206725,
+          "L": 1.7417741498238326,
+          "gap": -0.04023857661402725,
+          "oracle_evaluations": 321602,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 160801,
+          "gridpoints_covered": 160801,
+          "grid_enclosed": true,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": 0.040238576614027244
+        }
+      ],
+      "theta": [
+        [
+          0.877800303040361,
+          -0.010439942225853233,
+          -0.08756244018443475
+        ],
+        [
+          0.5809129281293686,
+          0.03545689553790327,
+          0.04009044506304875
+        ],
+        [
+          1.1299532335611107,
+          0.01729159415566825,
+          -0.055370916220603625
+        ]
+      ]
+    },
+    "12": {
+      "certified": true,
+      "diverged": false,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.4547344578608211,
+          "L": 6.189266329346997,
+          "gap": 0.4766168188210758,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.47661681882107587
+        },
+        {
+          "iter": 1,
+          "worst": -0.04075547981346612,
+          "L": 19.832825467667675,
+          "gap": 0.02936414707792092,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.029364147077920923
+        },
+        {
+          "iter": 2,
+          "worst": -0.09945324593127897,
+          "L": 1.0201957934467707,
+          "gap": -0.09584630911285787,
+          "oracle_evaluations": 321602,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 160801,
+          "gridpoints_covered": 160801,
+          "grid_enclosed": true,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": 0.09584630911285785
+        }
+      ],
+      "theta": [
+        [
+          0.8688487550891213,
+          0.02181378445406196,
+          0.006140805341719031
+        ],
+        [
+          0.6686294908073647,
+          0.008620615567440506,
+          0.023704856344296796
+        ],
+        [
+          1.1439012356883442,
+          -0.006916020529273269,
+          0.005139874509102832
+        ]
+      ]
+    },
+    "13": {
+      "certified": true,
+      "diverged": false,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.3500464161347484,
+          "L": 1.7129979019824322,
+          "gap": 0.3561027782979991,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.35610277829799913
+        },
+        {
+          "iter": 1,
+          "worst": -0.04985965059211098,
+          "L": 2.0692401673839194,
+          "gap": -0.04254378182080702,
+          "oracle_evaluations": 321602,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 160801,
+          "gridpoints_covered": 160801,
+          "grid_enclosed": true,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": 0.042543781820807015
+        }
+      ],
+      "theta": [
+        [
+          0.834966848866923,
+          0.0837996879651085,
+          0.01904229186053443
+        ],
+        [
+          0.566880793588501,
+          -0.027832765056635445,
+          0.007143451475230293
+        ],
+        [
+          1.1223014615589832,
+          0.07899965721804542,
+          -0.009281570329179714
+        ]
+      ]
+    },
+    "14": {
+      "certified": true,
+      "diverged": false,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.2826561742484361,
+          "L": 4.208883417994435,
+          "gap": 0.29753682427887385,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.2975368242788739
+        },
+        {
+          "iter": 1,
+          "worst": -0.04239809182661125,
+          "L": 1.228594864507766,
+          "gap": -0.0380543530264891,
+          "oracle_evaluations": 321602,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 160801,
+          "gridpoints_covered": 160801,
+          "grid_enclosed": true,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": 0.038054353026489095
+        }
+      ],
+      "theta": [
+        [
+          0.8487161636909393,
+          0.0033407596350413264,
+          -0.018188919370246057
+        ],
+        [
+          0.597109797734909,
+          0.07224651180563064,
+          0.07941737911980272
+        ],
+        [
+          1.0906358775464664,
+          -0.03091083355878931,
+          0.006522173314682776
+        ]
+      ]
+    },
+    "15": {
+      "certified": true,
+      "diverged": false,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.47090921219652465,
+          "L": 32.71938658934059,
+          "gap": 0.5865897128644619,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.586589712864462
+        },
+        {
+          "iter": 1,
+          "worst": 0.05574081750022719,
+          "L": 1.4122709389116277,
+          "gap": 0.06073394928911283,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.06073394928911284
+        },
+        {
+          "iter": 2,
+          "worst": -0.059241143592760406,
+          "L": 1.036024318053429,
+          "gap": -0.05557824448891158,
+          "oracle_evaluations": 321602,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 160801,
+          "gridpoints_covered": 160801,
+          "grid_enclosed": true,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": 0.05557824448891157
+        }
+      ],
+      "theta": [
+        [
+          0.8386245041040086,
+          -0.00658777908103007,
+          0.025710459049818717
+        ],
+        [
+          0.7314405096194285,
+          -0.022523992496908656,
+          -0.04569046136602658
+        ],
+        [
+          1.1518557858541503,
+          0.03718058436071059,
+          0.01408765912292032
+        ]
+      ]
+    },
+    "16": {
+      "certified": true,
+      "diverged": false,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.517285450322807,
+          "L": 2.7015899303416817,
+          "gap": 0.5268370131214567,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.5268370131214568
+        },
+        {
+          "iter": 1,
+          "worst": -0.04877723753641757,
+          "L": 1.2688252938744355,
+          "gap": -0.044291262689219325,
+          "oracle_evaluations": 321602,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 160801,
+          "gridpoints_covered": 160801,
+          "grid_enclosed": true,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": 0.04429126268921932
+        }
+      ],
+      "theta": [
+        [
+          0.8032194442507675,
+          -0.03525718060210117,
+          0.015005806792782185
+        ],
+        [
+          0.5813782490779615,
+          0.02804714384308001,
+          -0.019909167395747832
+        ],
+        [
+          1.1237586602698117,
+          -0.02025105442689993,
+          0.03391228556939242
+        ]
+      ]
+    },
+    "17": {
+      "certified": true,
+      "diverged": false,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.2671914815422779,
+          "L": 1.7727699903984235,
+          "gap": 0.2734591699507517,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.27345916995075176
+        },
+        {
+          "iter": 1,
+          "worst": -0.055262735534411384,
+          "L": 1.9410896117753436,
+          "gap": -0.04839994739752568,
+          "oracle_evaluations": 321602,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 160801,
+          "gridpoints_covered": 160801,
+          "grid_enclosed": true,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": 0.04839994739752567
+        }
+      ],
+      "theta": [
+        [
+          0.795734983915241,
+          0.05877709035071665,
+          0.0301721361652766
+        ],
+        [
+          0.5960897817676136,
+          0.07785397158689743,
+          0.07890406208252514
+        ],
+        [
+          1.1186693751643884,
+          -0.06253662264197629,
+          0.025497707836932827
+        ]
+      ]
+    },
+    "18": {
+      "certified": true,
+      "diverged": false,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.5392749279001449,
+          "L": 27.68488241449759,
+          "gap": 0.6371557683583644,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.6371557683583645
+        },
+        {
+          "iter": 1,
+          "worst": -0.029112115328306234,
+          "L": 1.4931552689442502,
+          "gap": -0.023833014248131595,
+          "oracle_evaluations": 321602,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 160801,
+          "gridpoints_covered": 160801,
+          "grid_enclosed": true,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": 0.02383301424813159
+        }
+      ],
+      "theta": [
+        [
+          0.8791589203211925,
+          -0.025326237094511518,
+          -0.013433146137530123
+        ],
+        [
+          0.6359355328724877,
+          -0.03569546000416409,
+          2.674556578917726e-05
+        ],
+        [
+          1.1064650903520687,
+          -0.0385939504470629,
+          -0.016656798850784204
+        ]
+      ]
+    },
+    "19": {
+      "certified": true,
+      "diverged": false,
+      "trace": [
+        {
+          "iter": 0,
+          "worst": 0.5657084134753455,
+          "L": 22.4976877126084,
+          "gap": 0.6452497511883607,
+          "oracle_evaluations": 160801,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 0,
+          "gridpoints_covered": 0,
+          "grid_enclosed": false,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": -0.6452497511883608
+        },
+        {
+          "iter": 1,
+          "worst": -0.09985268561948724,
+          "L": 0.9439487645743778,
+          "gap": -0.09651532275687112,
+          "oracle_evaluations": 321602,
+          "nominal_grid_evaluations": 160801,
+          "outward_grid_evaluations": 160801,
+          "gridpoints_covered": 160801,
+          "grid_enclosed": true,
+          "rounding_mode": "outward",
+          "outward_rounded": true,
+          "tau": 0.0035355339059328214,
+          "uniform_slack": 0.09651532275687111
+        }
+      ],
+      "theta": [
+        [
+          0.8269768460320587,
+          -0.0037803054788945203,
+          -0.013429477267873845
+        ],
+        [
+          0.6266120932847672,
+          0.03308711167553791,
+          0.022706786261722393
+        ],
+        [
+          1.0916154675066774,
+          -0.022715354334395275,
+          0.0013507773639020672
+        ]
+      ]
+    }
+  },
+  "example": {
+    "seed": 0,
+    "L_cert": 1.555716161304147,
+    "slack": 0.048716050596850406,
+    "slack_kind": "lower bound on min negative test over stored grid",
+    "b": 2.2432115172468445,
+    "a": 0.1,
+    "tau": 0.0035355339059328214,
+    "certified": true,
+    "margin": -0.005500287236298467,
+    "uniform_slack": 0.04321576336055193,
+    "grid_enclosed": true,
+    "rounding_mode": "outward",
+    "outward_rounded": true,
+    "gridpoints_covered": 160801
+  }
+}

@@ -1,4 +1,4 @@
-"""CEGIS-C prototype: counterexample-guided synthesis of a contraction metric.
+"""CEGIS-C: counterexample-guided synthesis of a contraction metric.
 
 System: f(x) = (-x1, -(x2 - x1^2)) on X = [-2,2]^2.
 Ground truth: contracting with rate 1 in M*(x) = J_phi^T J_phi, phi=(x1, x2+x1^2).
@@ -7,9 +7,12 @@ Identity metric fails on |x1| > 1.
 Metric class: M_theta(x) = alpha*I + L(x)^T L(x), L lower-triangular,
 entries linear in features [1, x1, x2]. Theta in R^{3x3} (3 entries x 3 features).
 
-Verifier: uniform grid with Lipschitz margin (Prop. 1 of the position paper).
-L estimated empirically on a fine grid with a safety factor (prototype only;
-paper version replaces this with a certified interval bound, see notes).
+Verifier: uniform grid with Lipschitz margin (Prop. 1 of the paper). The
+oracle's Lipschitz constant is an outward-rounded upper bound from bounds.py
+(exact rational coefficient assembly and subdivision). Positive answers also
+require outward-rounded grid eigenvalue and quotient checks. The empirical sampled estimator remains available
+under verify(..., certified=False) for comparison plots only; it is not
+sound and is not used to claim any certificate.
 """
 import autograd.numpy as np
 from autograd import grad
@@ -22,7 +25,8 @@ ALPHA = 0.1          # metric floor: M >= ALPHA*I by construction
 RATE = 0.4           # target contraction rate lambda_c
 BOX = 2.0            # domain [-BOX, BOX]^2
 EPS = 0.05           # learner margin epsilon
-LIP_SAFETY = 1.5     # safety factor on empirical Lipschitz estimate
+LIP_SAFETY = 1.5     # safety factor on the empirical estimator (diagnostic only;
+                     # never enters a certificate, see lipschitz_estimate)
 
 # ---------------- dynamics ----------------
 def f(X):            # X: (N,2)
@@ -133,9 +137,11 @@ def grid(n):
     return np.stack([XX.ravel(), YY.ravel()], axis=1), s
 
 def lipschitz_estimate(theta, n=400, normalized=False):
-    """Empirical sup-norm of grad_x of the test function, x SAFETY factor.
-    PROTOTYPE ONLY: paper version uses a certified interval bound (the
-    test function is a ratio of algebraic expressions in polynomials)."""
+    """Empirical sup-norm of grad_x of the test function, scaled by a
+    safety factor. NOT SOUND and diagnostic only: it never enters a
+    certificate. Certification uses bounds.lipschitz_certified, which is
+    the default path in verify(); this estimator is retained solely as a
+    comparison baseline for the conservatism of the certified bound."""
     fn = lam_max_C_norm if normalized else lam_max_C
     X, _ = grid(n)
     h = 1e-5
@@ -144,18 +150,108 @@ def lipschitz_estimate(theta, n=400, normalized=False):
     gy = (fn(theta, X + np.array([0.0, h])) - g0) / h
     return LIP_SAFETY * float(np.max(np.sqrt(gx ** 2 + gy ** 2)))
 
-def verify(theta, n_grid, normalized=False):
+def grid_enclosure(theta, n_grid, normalized=False, P=None, X=None,
+                   values=None, block_points=131072):
+    """Outward upper grid values for the exact-real stored candidate.
+
+    This function always checks the full grid. The learner's ordinary
+    floating-point calculations are independent diagnostic calculations.
+    """
+    import numpy as onp
+    import bounds
+    from rounding import grid_radius
+    if n_grid < 2 or block_points < 1:
+        raise ValueError("invalid grid or block size")
+    nodes = onp.linspace(-BOX, BOX, n_grid)
+    if nodes[0] != -BOX or nodes[-1] != BOX:
+        raise ValueError("grid does not cover the stated box")
+    tau = grid_radius(nodes, dimension=2)
+    P = bounds.assemble_exact(theta) if P is None else P
+    total = n_grid ** 2
+    if values is not None and len(values) != total:
+        raise ValueError("wrong grid-value storage size")
+    if X is not None and X.shape != (total, 2):
+        raise ValueError("wrong grid point shape")
+    worst = -onp.inf
+    for start in range(0, total, block_points):
+        stop = min(total, start + block_points)
+        if X is None:
+            indices = onp.arange(start, stop)
+            points = onp.stack([nodes[indices % n_grid], nodes[indices // n_grid]], axis=1)
+        else:
+            points = onp.asarray(X[start:stop])
+            indices = onp.arange(start, stop)
+            if (not onp.array_equal(points[:, 0], nodes[indices % n_grid])
+                    or not onp.array_equal(points[:, 1], nodes[indices // n_grid])):
+                raise ValueError("supplied points do not match the stated Cartesian grid")
+        upper = bounds.contraction_grid_interval(theta, points, normalized=normalized, P=P).hi
+        if not onp.isfinite(upper).all():
+            raise ValueError("nonfinite outward polynomial grid enclosure")
+        worst = max(worst, float(onp.max(upper)))
+        if values is not None:
+            values[start:stop] = upper
+    return {"worst_upper": float(worst), "tau": tau, "grid_enclosed": True,
+            "outward_rounded": True, "rounding_mode": "outward"}
+
+
+def verify(theta, n_grid, normalized=False, certified=True, cert_depth=3):
+    """Grid oracle with outward-rounded positive answers.
+
+    A nominal evaluation may reject a candidate and propose training points.
+    It can never certify: every prospective positive answer additionally
+    encloses all grid values using exact coefficients and interval Horner
+    evaluation, with an outward covering radius and Lipschitz product.
+    The explicit certified=False option remains an empirical diagnostic.
+    """
+    from rounding import grid_radius, mul_up, sub_down
+    if n_grid < 2:
+        raise ValueError("n_grid must be >= 2")
     X, s = grid(n_grid)
-    tau_cov = (s[1] - s[0]) * np.sqrt(2) / 2.0   # covering radius of the grid
-    Lhat = lipschitz_estimate(theta, normalized=normalized)
-    margin = -Lhat * tau_cov
+    if s[0] != -BOX or s[-1] != BOX:
+        raise ValueError("grid does not cover the stated box")
+    tau_cov = grid_radius(s, dimension=2)
+    if certified:
+        from bounds import lipschitz_certified
+        Lhat = lipschitz_certified(theta, depth=cert_depth, normalized=normalized)
+    else:
+        Lhat = lipschitz_estimate(theta, normalized=normalized)
+    if not np.isfinite(Lhat) or Lhat < 0:
+        raise ValueError("invalid Lipschitz bound")
+    required = mul_up(float(Lhat), tau_cov) if certified else float(Lhat) * tau_cov
+    margin = -required
     g = (lam_max_C_norm if normalized else lam_max_C)(theta, X)
+    if not np.all(np.isfinite(g)):
+        raise ValueError("nonfinite polynomial test value")
+    nominal_worst = float(np.max(g))
     viol = g > margin
+    grid_enclosed = False
+    if certified and not viol.any():
+        # A screening pass is only a request for a rigorous full-grid check.
+        grid_enclosure(theta, n_grid, normalized=normalized, X=X, values=g)
+        grid_enclosed = True
+        viol = g > margin
+    worst = float(np.max(g))
+    slack = sub_down(-worst, required) if certified else -worst - required
+    accepted = bool(not viol.any())
+    if certified:
+        accepted = bool(grid_enclosed and accepted and slack >= 0.0)
+        if not accepted and not viol.any():
+            # An exact zero may round to a negative lower slack. Enlarge one
+            # valid upper endpoint and report the boundary as inconclusive.
+            index = int(np.argmax(g))
+            g[index] = np.nextafter(margin, np.inf)
+            viol = g > margin
+            worst = float(np.max(g))
+            slack = sub_down(-worst, required)
     return {
-        "certified": bool(not viol.any()),
+        "certified": accepted,
         "X": X, "g": g, "viol": viol,
         "margin": margin, "L": Lhat, "tau": float(tau_cov),
-        "worst": float(np.max(g)),
+        "worst": worst, "nominal_worst": nominal_worst,
+        "uniform_slack": float(slack), "slack_is_certified": grid_enclosed,
+        "grid_enclosed": grid_enclosed, "outward_rounded": bool(certified),
+        "rounding_mode": "outward" if certified else "empirical",
+        "grid_values_kind": "outward_upper" if grid_enclosed else "nominal_rejection_screen",
     }
 
 # ---------------- CEGIS loop ----------------
@@ -195,5 +291,9 @@ if __name__ == "__main__":
     print(f"\nelapsed {time.time()-t0:.1f}s, certified={ok}")
     print("final theta (rows: L11, L21, L22 coeffs on [1, x1, x2]):")
     print(np.round(theta, 3))
-    np.save("/home/claude/nsp-contraction/theta.npy", theta)
-    json.dump(hist, open("/home/claude/nsp-contraction/history.json", "w"))
+    import os as _os
+    _here = _os.path.dirname(_os.path.abspath(__file__))
+    _results = _os.path.join(_here, "results")
+    _os.makedirs(_results, exist_ok=True)
+    np.save(_os.path.join(_results, "theta.npy"), theta)
+    json.dump(hist, open(_os.path.join(_results, "history.json"), "w"))

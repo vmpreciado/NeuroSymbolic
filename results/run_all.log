@@ -1,0 +1,654 @@
+Reproduction started 2026-11-05T02:26:54.524192+00:00
+
+[1/8] bounds self-tests
+$ /opt/anaconda3/bin/python3 -m unittest discover -s tests -v
+test_large_batch_neural_grid_encloses_high_precision_reference (test_benchmark_rounding.BenchmarkRoundoffTests.test_large_batch_neural_grid_encloses_high_precision_reference) ... ok
+test_neural_C_and_spatial_derivatives_enclose_high_precision (test_benchmark_rounding.BenchmarkRoundoffTests.test_neural_C_and_spatial_derivatives_enclose_high_precision) ... ok
+test_neural_subbox_bounds_enclose_point_C_and_derivatives (test_benchmark_rounding.BenchmarkRoundoffTests.test_neural_subbox_bounds_enclose_point_C_and_derivatives) ... ok
+test_nominal_success_is_rejected_by_neural_outward_check (test_benchmark_rounding.BenchmarkRoundoffTests.test_nominal_success_is_rejected_by_neural_outward_check) ... ok
+test_nominal_success_is_rejected_by_pendulum_outward_check (test_benchmark_rounding.BenchmarkRoundoffTests.test_nominal_success_is_rejected_by_pendulum_outward_check) ... ok
+test_pendulum_exact_coefficients_and_grid_enclose_high_precision (test_benchmark_rounding.BenchmarkRoundoffTests.test_pendulum_exact_coefficients_and_grid_enclose_high_precision) ... ok
+test_rejection_screen_never_claims_grid_enclosure (test_benchmark_rounding.BenchmarkRoundoffTests.test_rejection_screen_never_claims_grid_enclosure) ... ok
+test_cap_requests_full_outward_fallback_never_partial_positive (test_benchmark_rounding.GroupedGridProofTests.test_cap_requests_full_outward_fallback_never_partial_positive) ... ok
+test_disjoint_uneven_splits_and_unattainable_guide_use_original_node_margin (test_benchmark_rounding.GroupedGridProofTests.test_disjoint_uneven_splits_and_unattainable_guide_use_original_node_margin) ... ok
+test_isolated_corner_violation_cannot_certify (test_benchmark_rounding.GroupedGridProofTests.test_isolated_corner_violation_cannot_certify) ... ok
+test_whole_rectangle_proves_exact_logical_grid_coverage (test_benchmark_rounding.GroupedGridProofTests.test_whole_rectangle_proves_exact_logical_grid_coverage) ... ok
+test_producers_persist_rigorous_flags_and_cached_example_without_reverification (test_benchmark_rounding.ProducerContractTests.test_producers_persist_rigorous_flags_and_cached_example_without_reverification) ... ok
+test_exact_ties_preserve_grid_order_across_chunks (test_experiment_repro.NeuralStreamingTests.test_exact_ties_preserve_grid_order_across_chunks) ... ok
+test_nonfinite_values_cannot_certify (test_experiment_repro.NeuralStreamingTests.test_nonfinite_values_cannot_certify) ... ok
+test_streaming_matches_full_grid_verdict_worst_and_counterexamples (test_experiment_repro.NeuralStreamingTests.test_streaming_matches_full_grid_verdict_worst_and_counterexamples) ... ok
+test_missing_and_nonfinite_manuscript_numbers_fail (test_experiment_repro.ReproducibilityInputTests.test_missing_and_nonfinite_manuscript_numbers_fail) ... ok
+test_missing_results_source_fails (test_experiment_repro.ReproducibilityInputTests.test_missing_results_source_fails) ... ok
+test_smoke_uses_recorded_grid_depth_and_iteration_limit (test_experiment_repro.ReproducibilityInputTests.test_smoke_uses_recorded_grid_depth_and_iteration_limit) ... ok
+test_display_bounds_enclose_full_precision_values (test_fill_rounding.DirectedDisplayTests.test_display_bounds_enclose_full_precision_values) ... ok
+test_old_unrounded_results_cannot_fill_the_rebuilt_paper (test_fill_rounding.DirectedDisplayTests.test_old_unrounded_results_cannot_fill_the_rebuilt_paper) ... ok
+test_constant_network_frobenius_bound_is_outward (test_neural_metric_bounds.NeuralMetricBoundTests.test_constant_network_frobenius_bound_is_outward) ... ok
+test_global_bound_contains_independent_high_precision_eigenvalues (test_neural_metric_bounds.NeuralMetricBoundTests.test_global_bound_contains_independent_high_precision_eigenvalues) ... ok
+test_invalid_metric_and_slack_fail_closed (test_neural_metric_bounds.NeuralMetricBoundTests.test_invalid_metric_and_slack_fail_closed) ... ok
+test_positive_verifier_cannot_omit_failed_metric_bounds (test_neural_metric_bounds.NeuralMetricBoundTests.test_positive_verifier_cannot_omit_failed_metric_bounds) ... ok
+test_quantitative_outputs_have_safe_rounding_directions (test_neural_metric_bounds.NeuralMetricBoundTests.test_quantitative_outputs_have_safe_rounding_directions) ... ok
+test_pendulum_rejects_nonfinite_bound_and_test_values (test_oracle_failures.OracleFailureTests.test_pendulum_rejects_nonfinite_bound_and_test_values) ... ok
+test_polynomial_rejects_nonfinite_bound_and_test_values (test_oracle_failures.OracleFailureTests.test_polynomial_rejects_nonfinite_bound_and_test_values) ... ok
+test_assembly_tracks_rounding_before_coefficients_are_formed (test_polynomial_rounding.ExactPolynomialTests.test_assembly_tracks_rounding_before_coefficients_are_formed) ... ok
+test_contraction_and_normalized_quotient_enclose_high_precision (test_polynomial_rounding.ExactPolynomialTests.test_contraction_and_normalized_quotient_enclose_high_precision) ... ok
+test_exact_shift_identity_and_outward_subdivision_bounds (test_polynomial_rounding.ExactPolynomialTests.test_exact_shift_identity_and_outward_subdivision_bounds) ... ok
+test_interval_horner_encloses_exact_rational_values (test_polynomial_rounding.ExactPolynomialTests.test_interval_horner_encloses_exact_rational_values) ... ok
+test_boundary_with_negative_rounded_slack_is_inconclusive (test_polynomial_rounding.GridCertificateTests.test_boundary_with_negative_rounded_slack_is_inconclusive) ... ok
+test_nominal_screen_cannot_create_false_certificate (test_polynomial_rounding.GridCertificateTests.test_nominal_screen_cannot_create_false_certificate) ... ok
+test_positive_answer_has_outward_grid_and_lower_uniform_slack (test_polynomial_rounding.GridCertificateTests.test_positive_answer_has_outward_grid_and_lower_uniform_slack) ... ok
+test_residual_budget_rounds_in_the_sufficient_direction (test_polynomial_rounding.GridCertificateTests.test_residual_budget_rounds_in_the_sufficient_direction) ... ok
+test_supplied_grid_cannot_silently_omit_domain_points (test_polynomial_rounding.GridCertificateTests.test_supplied_grid_cannot_silently_omit_domain_points) ... ok
+test_disagreeing_round_cap_is_rejected (test_protocol_metadata.ProtocolPublicationTests.test_disagreeing_round_cap_is_rejected) ... ok
+test_growth_threshold_is_strict_and_certification_takes_precedence (test_protocol_metadata.ProtocolPublicationTests.test_growth_threshold_is_strict_and_certification_takes_precedence) ... ok
+test_incomplete_or_invalid_metric_bounds_cannot_enter_paper (test_protocol_metadata.ProtocolPublicationTests.test_incomplete_or_invalid_metric_bounds_cannot_enter_paper) ... ok
+test_old_result_without_budget_metadata_cannot_fill_protocol_table (test_protocol_metadata.ProtocolPublicationTests.test_old_result_without_budget_metadata_cannot_fill_protocol_table) ... ok
+test_changed_source_artifact_or_log_is_rejected (test_reproduction_package.ReproductionPackageTests.test_changed_source_artifact_or_log_is_rejected) ... ok
+test_complete_archive_contains_verifiable_snapshot_and_is_repeatable (test_reproduction_package.ReproductionPackageTests.test_complete_archive_contains_verifiable_snapshot_and_is_repeatable) ... ok
+test_incomplete_failed_or_mutating_run_is_rejected (test_reproduction_package.ReproductionPackageTests.test_incomplete_failed_or_mutating_run_is_rejected) ... ok
+test_snapshot_paths_cannot_escape_project (test_reproduction_package.ReproductionPackageTests.test_snapshot_paths_cannot_escape_project) ... ok
+test_backend_metadata_and_ieee_checks (test_rounding.CertificateHelpersTests.test_backend_metadata_and_ieee_checks) ... ok
+test_cover_radius_uses_largest_actual_gap (test_rounding.CertificateHelpersTests.test_cover_radius_uses_largest_actual_gap) ... ok
+test_eigenvalue_encloses_high_precision_symmetric_result (test_rounding.CertificateHelpersTests.test_eigenvalue_encloses_high_precision_symmetric_result) ... ok
+test_elementary_point_operations_enclose_exact_rationals (test_rounding.ElementaryRoundingTests.test_elementary_point_operations_enclose_exact_rationals) ... ok
+test_nonfinite_overflow_and_invalid_domains_fail_closed (test_rounding.ElementaryRoundingTests.test_nonfinite_overflow_and_invalid_domains_fail_closed) ... ok
+test_outward_conversions_do_not_round_coefficients_inward (test_rounding.ElementaryRoundingTests.test_outward_conversions_do_not_round_coefficients_inward) ... ok
+test_signed_interval_products_and_divisions (test_rounding.ElementaryRoundingTests.test_signed_interval_products_and_divisions) ... ok
+test_sqrt_contains_directed_high_precision_reference (test_rounding.ElementaryRoundingTests.test_sqrt_contains_directed_high_precision_reference) ... ok
+test_squares_powers_and_subnormals (test_rounding.ElementaryRoundingTests.test_squares_powers_and_subnormals) ... ok
+test_general_trig_intervals_contain_interior_extrema (test_rounding.TranscendentalRoundingTests.test_general_trig_intervals_contain_interior_extrema) ... ok
+test_large_batch_tanh_center_radius_contains_full_intervals (test_rounding.TranscendentalRoundingTests.test_large_batch_tanh_center_radius_contains_full_intervals) ... ok
+test_mpfr_endpoint_paths_enclose_critical_points_and_tails (test_rounding.TranscendentalRoundingTests.test_mpfr_endpoint_paths_enclose_critical_points_and_tails) ... ok
+test_rigorous_interpolation_encloses_nodes_interiors_and_tails (test_rounding.TranscendentalRoundingTests.test_rigorous_interpolation_encloses_nodes_interiors_and_tails) ... ok
+test_benchmark_rejects_failed_checks_no_certificates_and_bad_margin (test_run_all.RunnerValidationTests.test_benchmark_rejects_failed_checks_no_certificates_and_bad_margin) ... ok
+test_latex_honors_return_code_even_when_old_good_log_exists (test_run_all.RunnerValidationTests.test_latex_honors_return_code_even_when_old_good_log_exists) ... ok
+test_latex_rejects_undefined_citations_references_and_incomplete_log (test_run_all.RunnerValidationTests.test_latex_rejects_undefined_citations_references_and_incomplete_log) ... ok
+test_layout_warnings_are_reported_without_becoming_false_errors (test_run_all.RunnerValidationTests.test_layout_warnings_are_reported_without_becoming_false_errors) ... ok
+test_main_stops_after_failure_and_writes_manifest_and_full_logs (test_run_all.RunnerValidationTests.test_main_stops_after_failure_and_writes_manifest_and_full_logs) ... ok
+test_neural_coarse_summary_must_match_seed_outcomes (test_run_all.RunnerValidationTests.test_neural_coarse_summary_must_match_seed_outcomes) ... ok
+test_neural_quantitative_outputs_reject_unsafe_rounding_and_missing_bounds (test_run_all.RunnerValidationTests.test_neural_quantitative_outputs_reject_unsafe_rounding_and_missing_bounds) ... ok
+test_nonzero_process_exit_cannot_pass_by_printing_certified (test_run_all.RunnerValidationTests.test_nonzero_process_exit_cannot_pass_by_printing_certified) ... ok
+test_positive_results_require_outward_grid_and_downward_slack (test_run_all.RunnerValidationTests.test_positive_results_require_outward_grid_and_downward_slack) ... ok
+test_protocol_rejects_missing_metadata_and_misclassified_outcomes (test_run_all.RunnerValidationTests.test_protocol_rejects_missing_metadata_and_misclassified_outcomes) ... ok
+test_residual_rejects_soundness_violation_and_nonfinite_output (test_run_all.RunnerValidationTests.test_residual_rejects_soundness_violation_and_nonfinite_output) ... ok
+test_smoke_must_actually_certify_and_have_consistent_slack (test_run_all.RunnerValidationTests.test_smoke_must_actually_certify_and_have_consistent_slack) ... ok
+test_successful_process_cannot_reuse_stale_result (test_run_all.RunnerValidationTests.test_successful_process_cannot_reuse_stale_result) ... ok
+
+----------------------------------------------------------------------
+Ran 70 tests in 1.659s
+
+OK
+[1b] 200 pairs, fails=0, max relative error=4.88e-15
+[1c lower] 200 samples, fails=0, cert/emp ratio: min=44.368 median=396.991 max=750.446
+[1c monotone] theta 0: L(depth=2)=4008.5391  L(depth=4)=189.8903  delta=-3818.6488
+[1c monotone] theta 1: L(depth=2)=6361.3963  L(depth=4)=592.4075  delta=-5768.9888
+[1c monotone] theta 2: L(depth=2)=15167.7955  L(depth=4)=1148.8954  delta=-14018.9001
+[1c monotone] theta 3: L(depth=2)=12611.4911  L(depth=4)=396.0967  delta=-12215.3944
+[1c monotone] theta 4: L(depth=2)=2946.0287  L(depth=4)=201.0666  delta=-2744.9621
+  -> PASS: directed arithmetic, regression tests, and polynomial acceptance checks passed (8.3s)
+
+[2/8] multi-seed regimes
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/experiments.py
+=== multi-seed regimes (20 seeds, depth=3) ===
+  stall    seed  0: cert=False iters=12 L0=1.41 Lmax=2.36e+01 gap=+0.2630  (1.7s)
+  stall    seed  1: cert=False iters=12 L0=1.41 Lmax=4.92e+01 gap=+0.6417  (2.3s)
+  stall    seed  2: cert=False iters=12 L0=1.41 Lmax=3.89e+01 gap=+0.3356  (1.9s)
+  stall    seed  3: cert=False iters=12 L0=1.41 Lmax=2.06e+01 gap=+0.1867  (1.7s)
+  stall    seed  4: cert=False iters=12 L0=1.41 Lmax=3.00e+01 gap=+0.0658  (2.4s)
+  stall    seed  5: cert=False iters=12 L0=1.41 Lmax=2.72e+01 gap=+0.0564  (1.9s)
+  stall    seed  6: cert=False iters=12 L0=1.41 Lmax=2.22e+01 gap=+0.0423  (1.7s)
+  stall    seed  7: cert=False iters=12 L0=1.41 Lmax=2.14e+01 gap=+0.1919  (1.6s)
+  stall    seed  8: cert=True iters= 2 L0=1.41 Lmax=2.09e+01 gap=-0.0116  (0.7s)
+  stall    seed  9: cert=False iters=12 L0=1.41 Lmax=2.29e+01 gap=+0.0593  (2.0s)
+  stall    seed 10: cert=False iters=12 L0=1.41 Lmax=5.62e+01 gap=+0.9997  (2.7s)
+  stall    seed 11: cert=False iters=12 L0=1.41 Lmax=2.91e+01 gap=+0.0112  (2.1s)
+  stall    seed 12: cert=False iters=12 L0=1.41 Lmax=1.73e+01 gap=+0.0235  (1.6s)
+  stall    seed 13: cert=False iters=12 L0=1.41 Lmax=2.71e+01 gap=+0.2079  (1.7s)
+  stall    seed 14: cert=False iters=12 L0=1.41 Lmax=2.11e+01 gap=+0.0854  (1.7s)
+  stall    seed 15: cert=False iters=12 L0=1.41 Lmax=1.94e+01 gap=+0.2946  (1.8s)
+  stall    seed 16: cert=False iters=12 L0=1.41 Lmax=1.86e+01 gap=+0.1573  (1.7s)
+  stall    seed 17: cert=False iters=12 L0=1.41 Lmax=2.10e+01 gap=+0.1245  (1.7s)
+  stall    seed 18: cert=False iters=12 L0=1.41 Lmax=2.16e+01 gap=+0.0898  (1.9s)
+  stall    seed 19: cert=False iters=12 L0=1.41 Lmax=2.69e+01 gap=+0.2313  (2.9s)
+  diverge  seed  0: cert=False iters=12 L0=1.41 Lmax=3.60e+06 gap=+44361.5471  (9.9s)
+  diverge  seed  1: cert=False iters=12 L0=1.41 Lmax=7.10e+06 gap=+167290.4674  (10.2s)
+  diverge  seed  2: cert=False iters=12 L0=1.41 Lmax=7.09e+06 gap=+150052.7619  (10.2s)
+  diverge  seed  3: cert=False iters=12 L0=1.41 Lmax=7.93e+06 gap=+165438.0557  (10.1s)
+  diverge  seed  4: cert=False iters=12 L0=1.41 Lmax=3.87e+06 gap=+63124.2951  (10.1s)
+  diverge  seed  5: cert=False iters=12 L0=1.41 Lmax=4.69e+06 gap=+31082.5810  (9.9s)
+  diverge  seed  6: cert=False iters=12 L0=1.41 Lmax=5.73e+06 gap=+118248.7011  (9.6s)
+  diverge  seed  7: cert=False iters=12 L0=1.41 Lmax=5.31e+06 gap=+93426.5566  (9.9s)
+  diverge  seed  8: cert=False iters=12 L0=1.41 Lmax=3.68e+06 gap=+52925.4025  (9.9s)
+  diverge  seed  9: cert=False iters=12 L0=1.41 Lmax=3.28e+06 gap=+40577.7325  (10.0s)
+  diverge  seed 10: cert=False iters=12 L0=1.41 Lmax=4.56e+06 gap=+78651.3147  (9.4s)
+  diverge  seed 11: cert=False iters=12 L0=1.41 Lmax=7.26e+06 gap=+163226.9093  (9.2s)
+  diverge  seed 12: cert=False iters=12 L0=1.41 Lmax=2.27e+06 gap=+53433.6480  (9.3s)
+  diverge  seed 13: cert=False iters=12 L0=1.41 Lmax=6.86e+06 gap=+60039.2493  (9.8s)
+  diverge  seed 14: cert=False iters=12 L0=1.41 Lmax=2.81e+06 gap=+35399.2419  (10.5s)
+  diverge  seed 15: cert=False iters=12 L0=1.41 Lmax=4.84e+06 gap=+53205.5532  (9.7s)
+  diverge  seed 16: cert=False iters=12 L0=1.41 Lmax=1.40e+07 gap=+319783.1935  (9.4s)
+  diverge  seed 17: cert=False iters=12 L0=1.41 Lmax=5.41e+06 gap=+127549.9007  (9.3s)
+  diverge  seed 18: cert=False iters=12 L0=1.41 Lmax=4.52e+06 gap=+74400.8761  (9.3s)
+  diverge  seed 19: cert=False iters=12 L0=1.41 Lmax=5.09e+06 gap=+58670.8424  (9.3s)
+  certify  seed  0: cert=True iters= 3 L0=1.41 Lmax=3.07e+01 gap=-0.0216  (6.9s)
+  certify  seed  1: cert=True iters= 2 L0=1.41 Lmax=2.70e+01 gap=-0.0285  (5.1s)
+  certify  seed  2: cert=True iters= 2 L0=1.41 Lmax=2.72e+01 gap=-0.0381  (4.4s)
+  certify  seed  3: cert=True iters= 2 L0=1.41 Lmax=2.11e+01 gap=-0.0355  (4.4s)
+  certify  seed  4: cert=True iters= 3 L0=1.41 Lmax=2.85e+01 gap=-0.0305  (5.9s)
+  certify  seed  5: cert=True iters= 3 L0=1.41 Lmax=2.86e+01 gap=-0.0377  (5.6s)
+  certify  seed  6: cert=True iters= 2 L0=1.41 Lmax=2.35e+01 gap=-0.0063  (4.6s)
+  certify  seed  7: cert=True iters= 2 L0=1.41 Lmax=2.24e+01 gap=-0.0310  (4.4s)
+  certify  seed  8: cert=True iters= 3 L0=1.41 Lmax=3.46e+01 gap=-0.0509  (6.1s)
+  certify  seed  9: cert=True iters= 2 L0=1.41 Lmax=3.12e+01 gap=-0.0291  (4.9s)
+  certify  seed 10: cert=True iters= 3 L0=1.41 Lmax=3.47e+01 gap=-0.0557  (5.9s)
+  certify  seed 11: cert=True iters= 2 L0=1.41 Lmax=3.05e+01 gap=-0.0490  (4.5s)
+  certify  seed 12: cert=True iters= 1 L0=1.41 Lmax=1.95e+01 gap=-0.0054  (3.7s)
+  certify  seed 13: cert=True iters= 3 L0=1.41 Lmax=3.13e+01 gap=-0.0457  (5.1s)
+  certify  seed 14: cert=True iters= 2 L0=1.41 Lmax=2.12e+01 gap=-0.0086  (4.8s)
+  certify  seed 15: cert=False iters=12 L0=1.41 Lmax=8.37e+06 gap=+11853.1922  (16.1s)
+  certify  seed 16: cert=True iters= 3 L0=1.41 Lmax=3.33e+01 gap=-0.0538  (5.9s)
+  certify  seed 17: cert=True iters= 4 L0=1.41 Lmax=3.24e+01 gap=-0.0450  (7.1s)
+  certify  seed 18: cert=True iters= 2 L0=1.41 Lmax=2.68e+01 gap=-0.0061  (4.8s)
+  certify  seed 19: cert=True iters= 2 L0=1.41 Lmax=2.33e+01 gap=-0.0423  (4.4s)
+total runtime: 347.5s
+
+  stall   : certified 1/20, diverged 0, stalled 19, median iters 2.0, max L growth 3.98e+01
+  diverge : certified 0/20, diverged 20, stalled 0, median iters None, max L growth 9.88e+06
+  certify : certified 19/20, diverged 1, stalled 0, median iters 2.0, max L growth 5.92e+06
+  wrote /Users/preciado/Desktop/NeuroSymbolic/results/traces.json
+
+=== gridcost: slack/L ratio across certified seeds ===
+  seed  0: slack=0.0494  L_cert=19.70  b=5.933  slack/L=0.00251
+  seed  1: slack=0.0473  L_cert=13.34  b=8.592  slack/L=0.00355
+  seed  2: slack=0.0441  L_cert=4.23  b=3.300  slack/L=0.01042
+  seed  3: slack=0.0472  L_cert=8.29  b=4.799  slack/L=0.00570
+  seed  4: slack=0.0504  L_cert=14.04  b=3.859  slack/L=0.00359
+  seed  5: slack=0.0463  L_cert=6.09  b=3.367  slack/L=0.00760
+  seed  6: slack=0.0396  L_cert=23.52  b=5.748  slack/L=0.00168
+  seed  7: slack=0.0441  L_cert=9.26  b=4.365  slack/L=0.00477
+  seed  8: slack=0.0580  L_cert=5.01  b=2.458  slack/L=0.01157
+  seed  9: slack=0.0515  L_cert=15.84  b=5.371  slack/L=0.00325
+  seed 10: slack=0.0621  L_cert=4.52  b=3.013  slack/L=0.01372
+  seed 11: slack=0.0544  L_cert=3.84  b=3.438  slack/L=0.01416
+  seed 12: slack=0.0330  L_cert=19.48  b=4.380  slack/L=0.00169
+  seed 13: slack=0.0555  L_cert=6.92  b=6.673  slack/L=0.00802
+  seed 14: slack=0.0339  L_cert=17.89  b=4.252  slack/L=0.00189
+  seed 16: slack=0.0596  L_cert=4.12  b=3.005  slack/L=0.01446
+  seed 17: slack=0.0572  L_cert=8.59  b=3.158  slack/L=0.00666
+  seed 18: slack=0.0441  L_cert=26.85  b=5.066  slack/L=0.00164
+  seed 19: slack=0.0486  L_cert=4.47  b=3.632  slack/L=0.01087
+  ratio: median=0.0056954534289796275 min=0.0016432236571661276 max=0.014455753225468387
+  wrote /Users/preciado/Desktop/NeuroSymbolic/results/gridcost.json
+
+=== regenerate fig_heatmaps, fig_traces, fig_gridcost ===
+  figures written
+  -> PASS: main outcomes validated (351.6s)
+
+[3/8] residual experiment
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/residual.py
+=== Task 3: residual robustness experiment ===
+selecting a certified candidate ...
+  eta      = 0.03862
+  b_upper  = 5.9334
+  mu1      = 1.8663
+  c_d0     = 1.4142
+  c_d1     = 1.2247
+  delta*   = 0.00225
+    delta=0.0001  meas=-0.04548  bound=-0.03669
+    delta=0.0001  meas=-0.04550  bound=-0.03630
+    delta=0.0002  meas=-0.04552  bound=-0.03584
+    delta=0.0002  meas=-0.04554  bound=-0.03528
+    delta=0.0002  meas=-0.04556  bound=-0.03461
+    delta=0.0003  meas=-0.04559  bound=-0.03381
+    delta=0.0003  meas=-0.04562  bound=-0.03284
+    delta=0.0004  meas=-0.04566  bound=-0.03169
+    delta=0.0005  meas=-0.04571  bound=-0.03030
+    delta=0.0006  meas=-0.04577  bound=-0.02863
+    delta=0.0007  meas=-0.04585  bound=-0.02663
+    delta=0.0008  meas=-0.04593  bound=-0.02423
+    delta=0.0010  meas=-0.04604  bound=-0.02135
+    delta=0.0012  meas=-0.04616  bound=-0.01789
+    delta=0.0014  meas=-0.04631  bound=-0.01374
+    delta=0.0017  meas=-0.04649  bound=-0.00875
+    delta=0.0021  meas=-0.04670  bound=-0.00277
+    delta=0.0025  meas=-0.04696  bound=+0.00441
+    delta=0.0030  meas=-0.04727  bound=+0.01303
+    delta=0.0036  meas=-0.04764  bound=+0.02338
+    delta=0.0043  meas=-0.04809  bound=+0.03580
+    delta=0.0052  meas=-0.04862  bound=+0.05070
+    delta=0.0062  meas=-0.04926  bound=+0.06860
+    delta=0.0075  meas=-0.05002  bound=+0.09007
+    delta=0.0090  meas=-0.05094  bound=+0.11585
+  all measured values below the bound: sampled consistency check PASS
+  largest tested delta with measured grid maximum <= 0: 0.008994716095157463
+  wrote /Users/preciado/Desktop/NeuroSymbolic/paper/fig_residual.pdf
+  wrote /Users/preciado/Desktop/NeuroSymbolic/results/residual.json
+  -> PASS: residual bounds validated (25.3s)
+
+[4/8] non-polynomial benchmark
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/bench_pendulum.py --experiment
+[pendulum assembly] 200 pairs, max rel err = 7.77e-16
+[pendulum enclosure] fails=0, cert/emp L ratio min=179.81 median=373.51 max=874.83
+
+ACCEPTANCE: assembly PASS, enclosure PASS
+=== pendulum (rate 0.2, box 1.0), 20 seeds, grid 401 ===
+  seed  0: cert=True iters=1 L=1.56 worst=-0.0487
+  seed  1: cert=True iters=1 L=3.58 worst=-0.0414
+  seed  2: cert=True iters=1 L=4.12 worst=-0.0644
+  seed  3: cert=True iters=1 L=1.56 worst=-0.0535
+  seed  4: cert=True iters=2 L=1.84 worst=-0.0538
+  seed  5: cert=False iters=10 L=18631443.15 worst=+27.6666
+  seed  6: cert=True iters=1 L=1.12 worst=-0.0383
+  seed  7: cert=True iters=1 L=4.35 worst=-0.0442
+  seed  8: cert=True iters=1 L=1.65 worst=-0.0089
+  seed  9: cert=True iters=1 L=5.69 worst=-0.0420
+  seed 10: cert=True iters=1 L=2.05 worst=-0.0334
+  seed 11: cert=True iters=1 L=1.74 worst=-0.0464
+  seed 12: cert=True iters=2 L=1.02 worst=-0.0995
+  seed 13: cert=True iters=1 L=2.07 worst=-0.0499
+  seed 14: cert=True iters=1 L=1.23 worst=-0.0424
+  seed 15: cert=True iters=2 L=1.04 worst=-0.0592
+  seed 16: cert=True iters=1 L=1.27 worst=-0.0488
+  seed 17: cert=True iters=1 L=1.94 worst=-0.0553
+  seed 18: cert=True iters=1 L=1.49 worst=-0.0291
+  seed 19: cert=True iters=1 L=0.94 worst=-0.0999
+  runtime 21.2s
+  certified 19/20, diverged 1, median iters 1.0
+  example seed 0: L=1.56 sampled slack=0.0487 b=2.243
+  wrote results/pendulum.json and paper/fig_pendulum.pdf
+  -> PASS: certified 19/20; diverged 1; example uniform slack 0.0432158 (24.2s)
+
+[5/8] neural-metric benchmark
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/bench_neural.py --experiment
+[neural dC firewall] max |analytic - FD| = 4.22e-09
+[neural enclosure] fails=0, cert/emp L ratio min=42.4 median=324.7 max=381.9
+
+ACCEPTANCE: dC firewall PASS, enclosure PASS
+=== neural metric (6 tanh units), 20 seeds ===
+  seed  0: op(grid 8001)=True iters=1 L=54.0 worst=-0.028
+  seed  1: op(grid 8001)=True iters=3 L=383.9 worst=-0.167
+  seed  2: op(grid 8001)=True iters=1 L=762.0 worst=-0.306
+  seed  3: op(grid 8001)=True iters=1 L=565.3 worst=-0.288
+  seed  4: op(grid 8001)=True iters=3 L=412.9 worst=-0.180
+  seed  5: op(grid 8001)=False iters=8 L=299826686.7 worst=+168.597
+  seed  6: op(grid 8001)=True iters=2 L=733.9 worst=-0.355
+  seed  7: op(grid 8001)=True iters=1 L=47.1 worst=-0.042
+  seed  8: op(grid 8001)=True iters=1 L=824.7 worst=-0.378
+  seed  9: op(grid 8001)=False iters=8 L=864097480.2 worst=+33.348
+  seed 10: op(grid 8001)=True iters=1 L=44.3 worst=-0.020
+  seed 11: op(grid 8001)=True iters=4 L=730.9 worst=-0.338
+  seed 12: op(grid 8001)=True iters=2 L=51.4 worst=-0.028
+  seed 13: op(grid 8001)=False iters=8 L=997784880.2 worst=+193.200
+  seed 14: op(grid 8001)=True iters=2 L=649.2 worst=-0.331
+  seed 15: op(grid 8001)=False iters=8 L=279077070.3 worst=+127.700
+  seed 16: op(grid 8001)=False iters=8 L=538618347.4 worst=+74.091
+  seed 17: op(grid 8001)=False iters=8 L=441608449.1 worst=+16.918
+  seed 18: op(grid 8001)=False iters=8 L=116701089.5 worst=+98.807
+  seed 19: op(grid 8001)=True iters=1 L=88.5 worst=-0.034
+  runtime 1072s
+  certified 13/20 at grid 8001, 1/20 of those also at grid 2001; diverged 7; median iters 1.0
+  wrote results/neural.json and paper/fig_neural.pdf
+  -> PASS: certified 13/20; diverged 7; example uniform slack 0.0090816 (1074.4s)
+
+[6/8] P1 smoke diagnostic
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/smoke_p1.py
+candidate: seed=0 n_grid=2001 depth=3 certified=True iters=3
+L_cert            = 19.7013
+L_emp_raw         = 0.1035
+L_emp_1p5         = 0.1552
+conservatism (cert/raw_emp) = 190.4x
+tau               = 0.001414
+worst_gt          = -0.049420
+s (certified slack) = +0.021558
+a                 = 0.1000
+b                 = 5.9334
+mu1               = 1.8663
+wall_verify_s     = 2.749
+wall_bounds_s     = 0.021
+wrote /Users/preciado/Desktop/NeuroSymbolic/results/smoke_p1.json
+  -> PASS: certified smoke candidate; uniform slack 0.0215583 (9.8s)
+
+[7/8] fill_tex
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/fill_tex.py
+wrote /Users/preciado/Desktop/NeuroSymbolic/paper/numbers.tex: 64 macros from 6 source(s); git 7cd50d2
+  \PolyRoundCap = 12
+  \PolyTrainSteps = 500
+  \PolyLearningRate = 0.02
+  \PolyInitialSamples = 500
+  \OutcomeGrowthFactor = 100
+  \numSeeds = 20
+  \numGridCoarse = 121
+  \numGridOp = 2001
+  \numTauOp = 0.00142
+  \numEpsZero = 0.05
+  \numGamma = 1.3
+  \numStallCount = 19
+  \numStallCertified = 1
+  \numDivCount = 20
+  \numDivGrowth = 9.9 \times 10^{6}
+  \numCertCount = 19
+  \numCertMedIters = 2
+  \numGridMedianRatio = 0.0057
+  \numGridMinRatio = 0.00164
+  \numGridMaxRatio = 0.0145
+  \numGridB = 4.26
+  \numGridPtsTwo = 2.5 \times 10^{5}
+  \numGridPtsFour = 2.4 \times 10^{11}
+  \numGridPtsSix = 4.1 \times 10^{17}
+  \numEta = 0.0386
+  \numBupper = 5.94
+  \numMuOne = 1.87
+  \numCdZero = 1.42
+  \numCdOne = 1.23
+  \numDeltaStar = 0.00224
+  \numDeltaEmpRatio = 4
+  \PendRoundCap = 10
+  \PendTrainSteps = 500
+  \PendLearningRate = 0.02
+  \PendInitialSamples = 500
+  \numPendSeeds = 20
+  \numPendCert = 19
+  \numPendDiv = 1
+  \numPendMedIters = 1
+  \numPendRate = 0.2
+  \numPendBox = 1
+  \numPendGrid = 401
+  \numPendL = 1.56
+  \numPendSlack = 0.0487
+  \numPendB = 2.25
+  \NeuralRoundCap = 8
+  \NeuralTrainSteps = 600
+  \NeuralLearningRate = 0.01
+  \NeuralInitialSamples = 800
+  \numNeuralUnits = 6
+  \numNeuralSeeds = 20
+  \numNeuralCert = 13
+  \numNeuralCoarse = 1
+  \numNeuralDiv = 7
+  \numNeuralMedIters = 1
+  \numNeuralOpGrid = 8001
+  \numNeuralCoarseGrid = 2001
+  \numNeuralL = 54.1
+  \numNeuralSlack = 0.0281
+  \numNeuralUniformSlack = 0.00908
+  \numNeuralA = 0.1
+  \numNeuralB = 5.24
+  \numCertConservatism = 190
+  \numCertA = 0.1
+  -> PASS: fresh outputs validated (0.6s)
+
+[8/8] pdflatex x2 + log check
+$ pdflatex -interaction=nonstopmode -halt-on-error nsp_contraction_paper_ieee
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./nsp_contraction_paper_ieee.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+(/usr/local/texlive/2024/texmf-dist/tex/latex/ieeetran/IEEEtran.cls
+Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
+-- See the "IEEEtran_HOWTO" manual for usage information.
+-- http://www.michaelshell.org/tex/ieeetran/
+(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1ptm.fd)
+-- Using 8.5in x 11in (letter) paper.
+-- Using PDF output.
+-- This is a 12 point document.
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lineno/lineno.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/algorithms/algorithm.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/ifthen.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty)) (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+))) (/usr/local/texlive/2024/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/placeins/placeins.sty)
+(./numbers.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(./nsp_contraction_paper_ieee.aux)
+-- Lines per column: 32 (exact).
+(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(./nsp_contraction_paper_ieee.out) (./nsp_contraction_paper_ieee.out)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1phv.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/usr/local/t
+exlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/20
+24/texmf-dist/fonts/enc/dvips/base/8r.enc}] [2]
+
+LaTeX Warning: Reference `rem:finite' on page 3 undefined on input line 75.
+
+[3] [4] [5]
+
+LaTeX Warning: Reference `rem:finite' on page 6 undefined on input line 147.
+
+[6] [7] [8]
+
+LaTeX Warning: Reference `rem:finite' on page 9 undefined on input line 258.
+
+[9] [10] [11] [12] [13]
+
+LaTeX Warning: Reference `rem:finite' on page 14 undefined on input line 342.
+
+
+LaTeX Warning: Reference `rem:finite' on page 14 undefined on input line 370.
+
+[14]
+
+LaTeX Warning: Reference `rem:finite' on page 15 undefined on input line 412.
+
+[15]
+
+LaTeX Warning: Reference `tab:protocol' on page 16 undefined on input line 416.
+
+
+[16]
+
+LaTeX Warning: Reference `tab:protocol' on page 17 undefined on input line 436.
+
+
+[17] [18 <./fig_traces.pdf> <./fig_heatmaps.pdf>] [19 <./fig_gridcost.pdf>]
+[20 <./fig_residual.pdf>] [21 <./fig_pendulum.pdf>] [22] [23 <./fig_neural.pdf>
+] [24] [25] (./nsp_contraction_paper_ieee.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
+></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></u
+sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
+/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/l
+ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
+/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/te
+xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texli
+ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
+2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/202
+4/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2024
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-
+dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/te
+xmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2024/texmf-dis
+t/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2024/texmf-dist/font
+s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/ur
+w/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/ut
+mri8a.pfb>
+Output written on nsp_contraction_paper_ieee.pdf (25 pages, 480119 bytes).
+Transcript written on nsp_contraction_paper_ieee.log.
+$ pdflatex -interaction=nonstopmode -halt-on-error nsp_contraction_paper_ieee
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./nsp_contraction_paper_ieee.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+(/usr/local/texlive/2024/texmf-dist/tex/latex/ieeetran/IEEEtran.cls
+Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
+-- See the "IEEEtran_HOWTO" manual for usage information.
+-- http://www.michaelshell.org/tex/ieeetran/
+(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1ptm.fd)
+-- Using 8.5in x 11in (letter) paper.
+-- Using PDF output.
+-- This is a 12 point document.
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lineno/lineno.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/algorithms/algorithm.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/ifthen.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty)) (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+))) (/usr/local/texlive/2024/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/placeins/placeins.sty)
+(./numbers.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(./nsp_contraction_paper_ieee.aux)
+-- Lines per column: 32 (exact).
+(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(./nsp_contraction_paper_ieee.out) (./nsp_contraction_paper_ieee.out)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1phv.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/usr/local/t
+exlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/20
+24/texmf-dist/fonts/enc/dvips/base/8r.enc}] [2] [3] [4] [5] [6] [7] [8]
+[9] [10] [11] [12] [13] [14] [15] [16] [17] [18 <./fig_traces.pdf> <./fig_heatm
+aps.pdf>] [19 <./fig_gridcost.pdf>] [20 <./fig_residual.pdf>] [21 <./fig_pendul
+um.pdf>] [22] [23 <./fig_neural.pdf>] [24] [25]
+(./nsp_contraction_paper_ieee.aux) )</usr/local/texlive/2024/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mss12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8
+.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.p
+fb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm
+10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+</usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/
+local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texl
+ive/2024/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/t
+exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on nsp_contraction_paper_ieee.pdf (25 pages, 479773 bytes).
+Transcript written on nsp_contraction_paper_ieee.log.
+  -> PASS: 25 pages, zero errors/undefined references/citations; 0 warning(s) (1.9s)
+
+SUMMARY
+  PASS        1. bounds self-tests: directed arithmetic, regression tests, and polynomial acceptance checks passed
+  PASS        2. multi-seed regimes: main outcomes validated
+  PASS        3. residual experiment: residual bounds validated
+  PASS        4. non-polynomial benchmark: certified 19/20; diverged 1; example uniform slack 0.0432158
+  PASS        5. neural-metric benchmark: certified 13/20; diverged 7; example uniform slack 0.0090816
+  PASS        6. P1 smoke diagnostic: certified smoke candidate; uniform slack 0.0215583
+  PASS        7. fill_tex: fresh outputs validated
+  PASS        8. pdflatex x2 + log check: 25 pages, zero errors/undefined references/citations; 0 warning(s)
+
+ALL STAGES PASS

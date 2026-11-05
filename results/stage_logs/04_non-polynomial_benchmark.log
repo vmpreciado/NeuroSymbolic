@@ -1,0 +1,33 @@
+
+[4/8] non-polynomial benchmark
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/bench_pendulum.py --experiment
+[pendulum assembly] 200 pairs, max rel err = 7.77e-16
+[pendulum enclosure] fails=0, cert/emp L ratio min=179.81 median=373.51 max=874.83
+
+ACCEPTANCE: assembly PASS, enclosure PASS
+=== pendulum (rate 0.2, box 1.0), 20 seeds, grid 401 ===
+  seed  0: cert=True iters=1 L=1.56 worst=-0.0487
+  seed  1: cert=True iters=1 L=3.58 worst=-0.0414
+  seed  2: cert=True iters=1 L=4.12 worst=-0.0644
+  seed  3: cert=True iters=1 L=1.56 worst=-0.0535
+  seed  4: cert=True iters=2 L=1.84 worst=-0.0538
+  seed  5: cert=False iters=10 L=18631443.15 worst=+27.6666
+  seed  6: cert=True iters=1 L=1.12 worst=-0.0383
+  seed  7: cert=True iters=1 L=4.35 worst=-0.0442
+  seed  8: cert=True iters=1 L=1.65 worst=-0.0089
+  seed  9: cert=True iters=1 L=5.69 worst=-0.0420
+  seed 10: cert=True iters=1 L=2.05 worst=-0.0334
+  seed 11: cert=True iters=1 L=1.74 worst=-0.0464
+  seed 12: cert=True iters=2 L=1.02 worst=-0.0995
+  seed 13: cert=True iters=1 L=2.07 worst=-0.0499
+  seed 14: cert=True iters=1 L=1.23 worst=-0.0424
+  seed 15: cert=True iters=2 L=1.04 worst=-0.0592
+  seed 16: cert=True iters=1 L=1.27 worst=-0.0488
+  seed 17: cert=True iters=1 L=1.94 worst=-0.0553
+  seed 18: cert=True iters=1 L=1.49 worst=-0.0291
+  seed 19: cert=True iters=1 L=0.94 worst=-0.0999
+  runtime 21.2s
+  certified 19/20, diverged 1, median iters 1.0
+  example seed 0: L=1.56 sampled slack=0.0487 b=2.243
+  wrote results/pendulum.json and paper/fig_pendulum.pdf
+  -> PASS: certified 19/20; diverged 1; example uniform slack 0.0432158 (24.2s)

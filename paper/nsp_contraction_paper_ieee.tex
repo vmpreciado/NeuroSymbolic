@@ -7,13 +7,10 @@
 \usepackage{graphicx}
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
 \usepackage{xcolor}
-\usepackage{draftwatermark}
-\SetWatermarkText{Working draft: Jun 10, 2026}
-\SetWatermarkFontSize{30pt}
-\SetWatermarkAngle{55}
-\SetWatermarkLightness{0.85}
+\usepackage{placeins}
+\setlength{\emergencystretch}{2em}
 
-% number displayed equations' lines (amsmath makes \[ \] = equation*)
+% Continuous reviewer line numbers, including displayed equations.
 \newcommand*\linenomathpatchAMS[1]{%
   \expandafter\pretocmd\csname #1\endcsname {\linenomathAMS}{}{}%
   \expandafter\pretocmd\csname #1*\endcsname{\linenomathAMS}{}{}%
@@ -42,7 +39,9 @@
 \newcommand{\lmax}{\lambda_{\max}}
 \providecommand{\tr}{}
 \renewcommand{\tr}{\operatorname{tr}}
-\newcommand{\todo}[1]{\textcolor{red}{[VR: #1]}}
+% Generated numbers (fill_tex.py). Every value introduced from the P1
+% revision onward is a macro defined here, never a hand-typed literal.
+\IfFileExists{numbers.tex}{\input{numbers.tex}}{}
 
 \title{Neurosymbolic Synthesis of Contraction Certificates}
 
@@ -50,17 +49,16 @@
 \thanks{V.~M.~Preciado is with the Department of Electrical and Systems
 Engineering and the Department of Computer and Information Science,
 University of Pennsylvania, Philadelphia, PA 19104 USA
-(e-mail: preciado@seas.upenn.edu).}%
-\thanks{Working draft of June 10, 2026. Not yet submitted.}}
+(e-mail: preciado@seas.upenn.edu).}}
 
-\markboth{Working draft, June 10, 2026}{Preciado: Neurosymbolic Synthesis of Contraction Certificates}
+\markboth{Preciado: Neurosymbolic Synthesis of Contraction Certificates}{Preciado: Neurosymbolic Synthesis of Contraction Certificates}
 
 \begin{document}
 \maketitle
 \linenumbers
 
 \begin{abstract}
-We propose a neurosymbolic framework for synthesizing contraction metrics with formal guarantees: a neural learner proposes a candidate metric, a sound symbolic oracle either certifies the contraction condition over a compact domain or returns counterexamples, and the counterexamples drive retraining. Counterexample-guided inductive synthesis (CEGIS) of this kind is established for Lyapunov and barrier certificates, but the contraction case has remained open because the certificate condition is a parametrized matrix inequality rather than a scalar one. We close the loop and analyze it. We prove that the certifiability of a candidate metric is invariant under positive scaling, which implies that margin-driven learners operating on the raw contraction condition can diverge by inflating the metric's scale, and that a trace-normalized test function removes the degeneracy. We characterize a stall mode of fixed-margin learners as a non-certified fixed point of the loop. We then show that verification slack converts into guarantees: a metric certified with uniform margin $\eta$ yields contraction at a rate improved by $\eta/(2b)$, and when the dynamics are themselves learned with residual bounds $(\delta_0, \delta_1)$, the same slack absorbs the model error and yields an explicit contraction rate for the true system. Computational experiments on a benchmark with a known state-dependent metric illustrate all three phenomena: the stall, the scale chase, and certification by the normalized margin-coupled loop in one retraining round, together with a quantification of the grid oracle's exponential cost in the state dimension. The controlled case via control contraction metrics is the subject of a sequel.
+We propose a neurosymbolic framework for synthesizing contraction metrics with formal guarantees: a learner proposes a candidate metric, a sound verification oracle either certifies the contraction condition over a compact domain by certified interval bounds or returns counterexamples, and the counterexamples drive retraining. Counterexample-guided inductive synthesis (CEGIS) is established for Lyapunov and barrier certificates, and related learning and verification methods exist for contraction metrics. We study the continuous-time autonomous case, where the certificate condition is a parametrized matrix inequality, and analyze the synthesis loop's failure modes. Under a scale-equivariant oracle, we prove that the certifiability of a candidate metric is invariant under positive scaling. In a scale-closed family, a uniformly negative raw test with a positive scale-equivariant Lipschitz bound can support an infinite scale chase when the grid oracle still rejects it. A trace-normalized test function removes this scaling degeneracy. We characterize a stall mode in which a zero-subgradient learner with zero optimizer state can remain at a non-certified candidate. We then show that verification slack converts into differential guarantees: a metric certified with uniform margin $\eta > 0$, the verified slack in the contraction condition, yields contraction at a rate improved by $\eta/(2b)$, where $b$ upper-bounds the metric on the domain, and when the dynamics are themselves learned with residual magnitude and slope bounds $(\delta_0, \delta_1)$, the same slack absorbs the model error and yields an explicit contraction rate for the true system. Finite trajectory-distance bounds additionally require connecting trajectories to remain in the certified domain. Computational experiments on a benchmark with a known state-dependent metric illustrate finite-budget outcomes across $\numSeeds$ seeds: fixed-margin training stalls, coupling the margin to the certified oracle exhibits Lipschitz growth on a coarse grid, and the normalized margin-coupled loop certifies on a finer grid, in a median of $\numCertMedIters$ retraining rounds. A residual-robustness experiment exercises the model-error theorem, and a cost analysis quantifies the grid oracle's exponential growth in the state dimension. A second benchmark with trigonometric dynamics is certified without a polynomial approximation by the same oracle extended to enclose trigonometric terms, and a neural metric parametrization is certified by interval bound propagation on a finer grid in the tested configuration. The controlled case via control contraction metrics is the subject of a sequel.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -72,9 +70,11 @@ learning-based control, neurosymbolic AI.
 
 Learning-based methods now propose models and controllers for nonlinear systems faster than formal methods can certify them. The certificate-learning literature addresses this gap by training neural networks to represent stability and safety certificates, then verifying the result \cite{dawson2023}. For Lyapunov and barrier functions the mature architecture is neurosymbolic: a neural learner proposes a candidate, a sound symbolic verifier (an SMT solver, an interval engine, or a neural network verifier) either certifies it over a whole domain or returns counterexamples, and the counterexamples augment the training set. This counterexample-guided inductive synthesis (CEGIS) loop \cite{solar2006} is implemented end to end in tools such as Fossil 2.0 \cite{edwards2024} and has been used to certify deep reinforcement learning controllers \cite{mandal2024,chang2019,abate2021}.
 
-Contraction certificates have not received the same treatment. Contraction theory \cite{lohmiller1998,manchester2017,tsukamoto2021tutorial} certifies incremental stability, the exponential convergence of trajectories toward one another, through a Riemannian metric whose induced differential dynamics decay uniformly. The payoff exceeds that of point-stability certificates: contraction yields tracking guarantees, composes across interconnections, and extends to stochastic settings. Neural representations of contraction metrics exist \cite{tsukamoto2021ncm,sun2021}, and sound a posteriori verification schemes for them exist, based on Lipschitz margins over grids \cite{sun2021} or interval matrix analysis \cite{anonymous2026}. What does not exist, to our knowledge, is the loop: no published method feeds contraction verification failures back into metric training, and no work places contraction analysis within the neurosymbolic paradigm.
+Contraction certificates require a matrix-valued extension of this architecture. Contraction theory \cite{lohmiller1998,manchester2017,tsukamoto2021tutorial} certifies incremental stability, the exponential convergence of trajectories toward one another, through a Riemannian metric whose induced differential dynamics decay uniformly. The payoff exceeds that of point-stability certificates: contraction yields tracking guarantees, composes across interconnections, and extends to stochastic settings. Contraction metrics for polynomial systems can be synthesized directly by sum-of-squares programming, with global certificates \cite{aylward2008}, and rigorous numerical constructions based on meshfree collocation and error estimates exist \cite{giesl2019}. Contraction and stability certificates with statistical guarantees have also been learned from sampled trajectories \cite{boffi2020}. For discrete-time systems, Li et al. \cite{li2025} train neural contraction metrics with projected-gradient counterexamples and perform final verification with $\alpha,\beta$-CROWN. Their condition compares local distances rather than differentiating a continuous-time matrix inequality. Neural representations of continuous-time contraction metrics also exist \cite{tsukamoto2021ncm,sun2021}, and sound a posteriori verification schemes for them exist, based on Lipschitz margins over grids \cite{sun2021} or interval matrix analysis \cite{anonymous2026}. Closest to our aim, Harapanahalli, Coogan, and Davydov \cite{anonymous2026} jointly train a neural controller and a neural Riemannian metric so that an interval bound-propagation check of a closed-loop contraction condition holds over a region, placing verification inside training. That method certifies during training by differentiable bound propagation rather than by returning counterexamples that augment a dataset, it addresses the controlled synthesis problem, and it does not analyze the scale-invariance obstruction or the stall we identify. Our focus is a continuous-time autonomous CEGIS loop with a grid oracle, together with an analysis of scale degeneracy, fixed-margin stalls, and the guarantees obtained from verified slack. This combination distinguishes the present study from the discrete-time distance condition and from direct optimization of a differentiable interval certificate. Prior work thus establishes both counterexample-guided metric training and verification during training; our contribution is the continuous-time synthesis analysis stated above. The benchmark used here is polynomial and within the reach of sum-of-squares synthesis \cite{aylward2008}; we use it because its certified answer is known, which isolates the loop's failure modes, not because grid CEGIS competes with sum-of-squares on this class. The value of the loop is that it does not depend on polynomial structure; Section~\ref{sec:experiments} certifies a benchmark with trigonometric dynamics by extending the oracle to enclose those terms directly. Standard polynomial SOS synthesis does not apply to this representation without an approximation or reformulation.
 
-This paper closes the loop and shows that doing so is not a transcription exercise. The matrix structure of the contraction condition introduces failure modes with no Lyapunov analogue, and their analysis produces the paper's main results. Our contributions are as follows. First, we formalize neurosymbolic synthesis of contraction metrics and prove soundness of the grid-based verification oracle and of the resulting CEGIS loop, which we call CEGIS-C (Section~\ref{sec:framework}). Second, we prove a scale-invariance lemma: positive scaling of the metric scales the contraction condition, its worst value, and its Lipschitz constant identically, so certifiability depends only on the metric's shape. The lemma implies that a margin-driven learner operating on the raw condition can satisfy every training requirement by inflating the metric's scale while making no progress toward certification, and it dictates the remedy, a trace-normalized test function (Section~\ref{sec:results}). Third, we characterize the stall mode of fixed-margin learners as a non-certified fixed point of the loop (Section~\ref{sec:results}). Fourth, we prove two slack-to-guarantee theorems: certification with uniform margin $\eta$ improves the contraction rate by $\eta/(2b)$, and when the vector field is itself a learned surrogate with residual bounds, the same margin absorbs the model error and yields an explicit contraction rate for the true dynamics (Section~\ref{sec:results}). Fifth, we illustrate every phenomenon computationally on a benchmark with a known state-dependent metric, and we quantify the exponential cost of the grid oracle in the state dimension, locating the current certification frontier (Section~\ref{sec:experiments}).
+This paper analyzes a counterexample-guided loop for continuous-time contraction metrics. Its main results concern the effect of homogeneity and verification margins on synthesis. These mechanisms can also arise for other homogeneous certificate conditions; we study their consequences for the contraction matrix inequality. Our contributions are as follows. First, we formalize neurosymbolic synthesis of contraction metrics and prove soundness of the grid-based verification oracle and of the resulting CEGIS loop, which we call CEGIS-C (Section~\ref{sec:framework}). Second, we prove a scale-invariance lemma: positive scaling of the metric scales the contraction condition, its worst value, and a scale-equivariant Lipschitz bound identically, so certifiability depends only on the metric's shape. Under uniform negativity, a positive Lipschitz bound, and initial noncertification, a scale-closed family admits learner responses that satisfy successive raw training margins by scaling while making no progress toward certification. This motivates a trace-normalized test function (Section~\ref{sec:results}). Third, we characterize a stall mode of fixed-margin learners that select zero subgradients with zero optimizer state (Section~\ref{sec:results}). Fourth, we prove two slack-to-guarantee theorems: certification with uniform margin $\eta$ improves the differential contraction rate by $\eta/(2b)$, and when the vector field is itself a learned surrogate with residual bounds, the same margin absorbs the model error and yields an explicit differential contraction rate for the true dynamics (Section~\ref{sec:results}). Finite trajectory-distance conclusions use the geometric and flow conditions in Remark~\ref{rem:finite}. Fifth, we demonstrate finite-budget stalls, coupled-margin Lipschitz growth, and certification on a benchmark with a known state-dependent metric. We exercise the residual theorem and extrapolate the grid oracle's dimensional cost from the measured two-dimensional slack-to-Lipschitz ratio (Section~\ref{sec:experiments}).
+
+The framework separates the learner from the verification oracle. Lemmas~\ref{lem:scale} and \ref{lem:stall} describe their interaction under the stated hypotheses. The main study uses a Cholesky factor linear in fixed features, trained by subgradient descent, and an oracle based on polynomial coefficient bounds. Section~\ref{sec:experiments} also studies a neural Cholesky factor verified by interval bound propagation. We use the term neurosymbolic for this learner-verifier architecture.
 
 We restrict attention to autonomous contraction. The controlled case, control contraction metrics \cite{manchester2017}, involves the dual metric $W = M^{-1}$ and additional structural conditions; carrying the present framework to that setting is the subject of a sequel.
 
@@ -86,7 +86,7 @@ Consider the system
 \dot{x} = f(x), \qquad x \in \X \subset \R^n,
 \label{eq:sys}
 \end{equation}
-with $f$ continuously differentiable and $\X$ compact. Write $A(x) = \partial f/\partial x\,(x)$. A continuously differentiable $M : \X \to \Sym^n_{++}$ with
+with $f$ twice continuously differentiable on a neighborhood of the compact set $\X$. Write $A(x) = \partial f/\partial x\,(x)$. The condition $f \in C^2$ is sufficient for $A$ to be locally Lipschitz; it is stronger than that requirement. The polynomial and neural metric parametrizations studied here are smooth, so their test functions are Lipschitz on the compact boxes. The grid oracle explicitly requires such a Lipschitz bound. A continuously differentiable $M : \X \to \Sym^n_{++}$ with
 \begin{equation}
 a I \preceq M(x) \preceq b I \quad \text{on } \X, \qquad 0 < a \le b,
 \label{eq:bounds}
@@ -97,7 +97,16 @@ C(x) \;:=\; \dot{M}(x) + A(x)^\top M(x) + M(x) A(x) + 2\lambda M(x) \;\preceq\; 
 \qquad \text{for all } x \in \X,
 \label{eq:contraction}
 \end{equation}
-where $\dot{M}(x) = \sum_{i=1}^{n} \frac{\partial M}{\partial x_i}(x) f_i(x)$. If \eqref{eq:contraction} holds, then for any two trajectories remaining in $\X$ the virtual displacement satisfies $\|\delta x(t)\| \le \sqrt{b/a}\, e^{-\lambda t} \|\delta x(0)\|$ \cite{lohmiller1998}.
+where $\dot{M}(x) = \sum_{i=1}^{n} \frac{\partial M}{\partial x_i}(x) f_i(x)$. A variational displacement $\delta x$ along a trajectory $x(t)$ solves $\dot{\delta x}=A(x(t))\delta x$. If \eqref{eq:contraction} holds, then $\|\delta x(t)\| \le \sqrt{b/a}\, e^{-\lambda t} \|\delta x(0)\|$ throughout any time interval during which $x(t)$ remains in $\X$ \cite{lohmiller1998}.
+
+\begin{remark}[Finite trajectory distances]
+\label{rem:finite}
+Let $x_0(t)$ and $x_1(t)$ be two solutions. Suppose a piecewise continuously differentiable curve $c_0:[0,1]\to\X$ connects their initial states and its flowing family $c(t,s)$, defined by $\partial_t c=f(c)$ and $c(0,s)=c_0(s)$, remains in $\X$ over the time interval considered. Integrating the variational bound over $s$ gives
+\[
+\|x_1(t)-x_0(t)\| \le \sqrt{b/a}\,e^{-\lambda t}\,\operatorname{length}_{E}(c_0),
+\]
+where $\operatorname{length}_{E}$ is Euclidean arc length. If the straight segment is admissible, this is the displayed exponential bound with $\|x_1(0)-x_0(0)\|$ on the right. A convex forward-invariant domain is a sufficient condition. Merely keeping the two endpoint trajectories inside a compact box does not ensure the connecting family remains there. Every finite trajectory-distance conclusion below uses this condition for the relevant dynamics.
+\end{remark}
 
 The candidate metric is a parametric family $M_\theta$, $\theta \in \Theta \subseteq \R^p$, with symmetry and the bounds \eqref{eq:bounds} enforced by construction, for instance the Cholesky-type parametrization
 \begin{equation}
@@ -122,7 +131,7 @@ Both functions are sign-equivalent to \eqref{eq:contraction} pointwise since $\t
 Given $f$, $\X$, $\lambda$, and a candidate $\theta$, decide whether $g_\theta(x) \le 0$ for all $x \in \X$, and if not, produce counterexamples $x_c \in \X$.
 \end{definition}
 
-An oracle is sound if its positive answers are correct. We use a grid oracle in the style of \cite{sun2021}, stated here for an arbitrary test function $h \in \{g_\theta, \tilde g_\theta\}$.
+An oracle is sound if its positive answers are correct. The grid oracle below is sound but not complete: it can reject a candidate that satisfies the contraction condition when the true slack falls below the grid margin, so Definition~\ref{def:oracle} decides only up to that margin, and we return to this incompleteness in Remark~\ref{rem:complete}. We use a grid oracle in the style of \cite{sun2021}, stated here for an arbitrary test function $h \in \{g_\theta, \tilde g_\theta\}$.
 
 \begin{definition}[Grid oracle]
 \label{def:oracle}
@@ -135,7 +144,7 @@ If the grid oracle certifies with test function $g_\theta$ or $\tilde g_\theta$,
 \end{proposition}
 
 \begin{proof}
-The map $S \mapsto \lmax(S)$ is $1$-Lipschitz on symmetric matrices in the spectral norm by Weyl's inequality, so $g_\theta$ is Lipschitz whenever $x \mapsto C_\theta(x)$ is, and $\tilde g_\theta$ is Lipschitz as a quotient of Lipschitz functions with denominator bounded below by $n\alpha$ on the compact $\X$. Fix $x \in \X$ and a grid point $x_i$ with $\|x - x_i\| \le \tau$. Then $h(x) \le h(x_i) + L_h \tau \le 0$. Since $h$ is sign-equivalent to \eqref{eq:contraction} pointwise, the condition holds on $\X$, and the contraction conclusion is the theorem of \cite{lohmiller1998}.
+The map $S \mapsto \lmax(S)$ is $1$-Lipschitz on symmetric matrices in the spectral norm by Weyl's inequality, so $g_\theta$ is Lipschitz whenever $x \mapsto C_\theta(x)$ is, and $\tilde g_\theta$ is Lipschitz as a quotient of Lipschitz functions with denominator bounded below by $n\alpha$ on the compact $\X$; Lemma~\ref{lem:certconst} furnishes the explicit constant $L_h$ the oracle consumes for the class \eqref{eq:class}. Fix $x \in \X$ and a grid point $x_i$ with $\|x - x_i\| \le \tau$. Then $h(x) \le h(x_i) + L_h \tau \le 0$. Since $h$ is sign-equivalent to \eqref{eq:contraction} pointwise, the condition holds on $\X$ and gives the variational conclusion of Section~\ref{sec:prelim}. Finite trajectory-distance bounds use Remark~\ref{rem:finite}.
 \end{proof}
 
 \begin{corollary}[Uniform margin from grid margin]
@@ -147,85 +156,178 @@ If additionally $h(x_i) \le -L_h\tau - \eta$ for all $i$ with $\eta > 0$, then $
 Identical, carrying the extra $-\eta$ through the Lipschitz estimate.
 \end{proof}
 
+\subsection{Certified constants for the polynomial class}
+\label{sec:certconst}
+
+The oracle of Definition~\ref{def:oracle} consumes a Lipschitz constant $L_h$, and its soundness rests on that constant being valid. For the class \eqref{eq:class} with polynomial features and polynomial $f$, every entry of $C_\theta$ and of $\partial C_\theta/\partial x_k$ is a polynomial in $x$ whose coefficients are explicit in $\theta$, so $L_h$ is computed, not estimated. We record the bounds the implementation uses.
+
+\begin{lemma}[Coefficient bound]
+\label{lem:coeff}
+Let $p(x) = \sum_{a} c_a\, x^a$ be a polynomial on $\X = [-B, B]^n$, with multi-index $a$ and $|a| = \sum_i a_i$. Then
+\[
+\sup_{x \in \X} |p(x)| \;\le\; \sum_{a} |c_a|\, B^{|a|} .
+\]
+Subdividing $\X$ into congruent subboxes and recentering $p$ on each by the exact binomial shift $x \mapsto c + y$ yields the same bound applied at the subbox half-width, and the resulting refined bound is monotone nonincreasing in the subdivision depth.
+\end{lemma}
+
+\begin{proof}
+On $\X$ each monomial satisfies $|x^a| \le B^{|a|}$, and the triangle inequality gives the first claim. The recentered polynomial equals $p$ on its subbox, so the bound applied at the half-width is valid there, and the maximum over subboxes bounds $\sup_\X |p|$. Refining a subbox can only lower its local bound, which gives monotonicity.
+\end{proof}
+
+We write $\mathrm{sb}(p)$ for the value of Lemma~\ref{lem:coeff} at a fixed subdivision depth. Every constant below is an instance of it.
+
+\begin{lemma}[Certified Lipschitz and class constants]
+\label{lem:certconst}
+Let $\X = [-B,B]^n$ with $n = 2$, let $f$ be polynomial, and let $M_\theta$ be the class \eqref{eq:class} with polynomial features, so that the independent entries $c_{11}, c_{12}, c_{22}$ of $C_\theta$, the entries $m_{11}, m_{12}, m_{22}$ of $M_\theta$, and $v := \tr M_\theta$ are polynomials with coefficients explicit in $\theta$. Set
+\[
+D_k \;:=\; \big( \mathrm{sb}(\partial_k c_{11})^2 + 2\,\mathrm{sb}(\partial_k c_{12})^2 + \mathrm{sb}(\partial_k c_{22})^2 \big)^{1/2},
+\]
+which bounds $\sup_\X \|\partial C_\theta/\partial x_k\|_F$. The following hold.
+(i) The raw test $g_\theta$ is Lipschitz on $\X$ with
+\[
+L_g \;\le\; \Big( \textstyle\sum_{k=1}^{n} D_k^2 \Big)^{1/2}.
+\]
+(ii) The trace $v$ satisfies $v \ge n\alpha$ on $\X$ and is Lipschitz with $L_v \le \big( \sum_k \mathrm{sb}(\partial_k v)^2 \big)^{1/2}$. Let $\underline v$ be any certified lower bound on $v$ over $\X$, taken as $\underline v = \max\{\, n\alpha,\; \inf\nolimits_\X v \,\}$ with the infimum bounded below through Lemma~\ref{lem:coeff}, and let $\widehat G$ certify $\sup_\X |\tilde g_\theta|$. Then the normalized test $\tilde g_\theta = g_\theta / v$ is Lipschitz with
+\[
+L_{\tilde g} \;\le\; \frac{ L_g + \widehat G\, L_v }{ \underline v }.
+\]
+A certified $\widehat G$ is obtained per subbox as $\big(\mathrm{sb}(\|C_\theta\|_F^2)\big)^{1/2}$ over the local lower bound on $v$, maximized over subboxes; the coarser bound $\widehat G \le \big(\mathrm{sb}(\|C_\theta\|_F^2)\big)^{1/2}/(n\alpha)$ also holds.
+(iii) The class bounds \eqref{eq:bounds} hold with $a = \alpha$ exactly and
+\[
+b \;\le\; \big( \mathrm{sb}(m_{11})^2 + 2\,\mathrm{sb}(m_{12})^2 + \mathrm{sb}(m_{22})^2 \big)^{1/2},
+\]
+the Frobenius coefficient bound on the entries of $M_\theta$.
+(iv) The constant $\mu_1$ of Theorem~\ref{thm:residual} satisfies
+\[
+\mu_1 \;\le\; \Big( \textstyle\sum_{k=1}^{n} \big( \mathrm{sb}(\partial_k m_{11})^2 + 2\,\mathrm{sb}(\partial_k m_{12})^2 + \mathrm{sb}(\partial_k m_{22})^2 \big) \Big)^{1/2}.
+\]
+\end{lemma}
+
+\begin{proof}
+(i) By Weyl's inequality $|g_\theta(x) - g_\theta(y)| \le \|C_\theta(x) - C_\theta(y)\|_2 \le \|C_\theta(x) - C_\theta(y)\|_F$. Since $\X$ is convex, the mean value inequality along the segment from $y$ to $x$ gives $\|C_\theta(x) - C_\theta(y)\|_F \le \sup_{z} \big\| \sum_k (x - y)_k\, \partial_k C_\theta(z) \big\|_F \le \sum_k |(x-y)_k|\, \sup_z \|\partial_k C_\theta(z)\|_F \le \sum_k |(x - y)_k|\, D_k \le \big(\sum_k D_k^2\big)^{1/2}\|x - y\|_2$, using the triangle inequality, Cauchy--Schwarz, and $\sup_z\|\partial_k C_\theta\|_F \le D_k$ from Lemma~\ref{lem:coeff} applied entrywise.
+(ii) From $M_\theta = \alpha I + L_\theta^\top L_\theta$, $v = 2\alpha + \|L_\theta\|_F^2 \ge n\alpha$, and $L_v$ follows from Lemma~\ref{lem:coeff} applied to $\partial_k v$. The identity $\tilde g_\theta(x) - \tilde g_\theta(y) = \frac{g_\theta(x) - g_\theta(y)}{v(x)} + \tilde g_\theta(y)\,\frac{v(y) - v(x)}{v(x)}$ and $v \ge \underline v$ give $|\tilde g_\theta(x) - \tilde g_\theta(y)| \le \big(L_g + \widehat G L_v\big)\|x - y\|_2/\underline v$. On each subbox $|\tilde g_\theta| \le \|C_\theta\|_2/v \le \|C_\theta\|_F/v$, which bounds $\widehat G$ as stated.
+(iii) $a = \alpha$ since $L_\theta^\top L_\theta \succeq 0$; and $\lambda_{\max}(M_\theta) = \|M_\theta\|_2 \le \|M_\theta\|_F$, bounded entrywise by Lemma~\ref{lem:coeff}.
+(iv) $\|\partial_k M_\theta\|_2 \le \|\partial_k M_\theta\|_F$ entrywise, then Cauchy--Schwarz over $k$ and Lemma~\ref{lem:coeff}.
+\end{proof}
+
+\begin{lemma}[Grid sufficiency]
+\label{lem:gridsuff}
+Let $h$ be Lipschitz with constant $L_h \ge 0$ on $\X$ and let $\X_\tau$ have covering radius $\tau$. Write $s_* := -\sup_\X h$ for the true uniform slack and $\underline s := -\max_i h(x_i)-L_h\tau$ for its grid-based lower bound. If $s_* \ge L_h\tau+\eta$ for some $\eta\ge0$, then every grid point satisfies $h(x_i)\le-(L_h\tau+\eta)$ and the oracle of Definition~\ref{def:oracle} certifies. Whenever the oracle certifies, $0\le\underline s\le s_*$, so $h\le-\underline s$ on $\X$. For $\X=[-B,B]^n$ and a uniform axis grid with $N_{\mathrm{ax}}\ge2$ points per axis, the covering radius is $\tau=B\sqrt n/(N_{\mathrm{ax}}-1)$. If $s_*>0$, a sufficient axis count is
+\[
+N_{\mathrm{ax}} \;\ge\; 1 + \frac{B\sqrt{n}\, L_h}{s_*},
+\]
+with $N=N_{\mathrm{ax}}^n$ points in total. If $L_h=0$, any nonempty grid certifies exactly when $s_*\ge0$. If $s_*=0<L_h$, this sufficiency argument gives no finite axis count.
+\end{lemma}
+
+\begin{proof}
+Every grid value is at most $\sup_\X h=-s_*$, which proves the first implication. For each $x\in\X$, choose a grid point within $\tau$. The Lipschitz estimate gives $h(x)\le\max_i h(x_i)+L_h\tau=-\underline s$, hence $s_*\ge\underline s$. Certification is exactly $\underline s\ge0$. The uniform-grid covering radius is half its cell diagonal; solving $L_h\tau\le s_*$ for $N_{\mathrm{ax}}$ when $s_*>0$ gives the stated sufficient count. When $L_h=0$, the Lipschitz inequality makes $h$ constant on $\X$, which proves the remaining case.
+\end{proof}
+
+\noindent\textit{Numerical implementation.} The verifier interprets the stored binary64 parameters as exact real inputs. It constructs polynomial coefficients, derivatives, and shifts with exact rational arithmetic, then converts bounds outward. Interval operations enclose each elementary binary64 operation with adjacent representable endpoints. Transcendental enclosures use directed MPFR evaluation through gmpy2 \cite{fousse2007}; large batches use a tabulated interpolant with a rigorous derivative-based remainder. Linear interpolation on cells of width $h$ has error at most $h^2\sup|u^{\prime\prime}|/8$, so directed nodal enclosures and a bound on the second derivative enclose the interpolant error. The verifier bounds the covering radius from the largest gap between the actual stored grid nodes. Ordinary floating-point evaluations can reject a candidate, but a positive answer requires an outward-rounded upper bound at every grid point to clear the outward-rounded product $L_h\tau$. The neural verifier may enclose groups of grid nodes by interval boxes, subdividing unresolved groups down to individual nodes; this changes the cost of establishing the same grid inequalities. Returned training points are diagnostic candidates; a screening rejection or inconclusive interval comparison does not prove a contraction violation. The returned certified slack is rounded downward, as are sufficient robustness budgets. Overflow and invalid interval operations fail verification. These guarantees rely on IEEE binary64 arithmetic with round-to-nearest and gradual underflow and on MPFR's directed-rounding contract; the reproduction checks test these arithmetic assumptions. Finite-difference and dense-sampling diagnostics remain implementation checks rather than substitutes for the enclosure argument.
+
 \subsection{The CEGIS-C loop}
 
-Algorithm~\ref{alg:cegis} states the loop in its final form: the learner minimizes a hinge loss on the normalized test function with a margin coupled to the oracle's requirement. Sections~\ref{sec:results} and \ref{sec:experiments} justify each of these choices by exhibiting the failure of the alternatives.
+Algorithm~\ref{alg:cegis} states the loop in its final form: the learner minimizes a hinge loss on the normalized test function with a margin coupled to the oracle's requirement. Sections~\ref{sec:results} and \ref{sec:experiments} explain how these choices remove the scale degeneracy and fixed-margin stall, without guaranteeing progress for every learner or grid.
 
 \begin{algorithm}[t]
 \caption{CEGIS-C (normalized, margin-coupled)}
 \label{alg:cegis}
 \begin{algorithmic}[1]
-\Require dynamics $f$, domain $\X$, rate $\lambda$, family $\{M_\theta\}$, grid $\X_\tau$, base margin $\varepsilon_0 > 0$, coupling factor $\gamma > 1$, perturbation count $m$, iteration cap $K$
-\State $\D \gets$ initial samples in $\X$; \quad $\varepsilon \gets \varepsilon_0$
+\Require dynamics $f$, domain $\X$, rate $\lambda$, family $\{M_\theta\}$, initial parameter $\theta_0$, grid $\X_\tau$, base margin $\varepsilon_0 > 0$, coupling factor $\gamma > 1$, perturbation count $m$, iteration cap $K$
+\State $\theta \gets \theta_0$; \quad $\D \gets$ initial samples in $\X$; \quad $\varepsilon \gets \varepsilon_0$
 \For{$k = 0, 1, \dots, K$}
-  \State $(\textsf{status}, \mathcal{C}, L_h) \gets \mathsf{Ver}(\tilde g_\theta, \X_\tau)$ \Comment{grid oracle, Def.~\ref{def:oracle}}
-  \If{$\textsf{status} = \textsf{certified}$} \Return $(\theta, \textsf{certified})$
+  \State $(\textsf{status}, \mathcal{C}, L_h, \underline s) \gets \mathsf{Ver}(\tilde g_\theta, \X_\tau)$ \Comment{$\underline s = -\max_i \tilde g_\theta(x_i) - L_h\tau$}
+  \If{$\textsf{status} = \textsf{certified}$} \Return $(\theta, \textsf{certified}, L_h, \underline s, a, b)$ \Comment{$a = \alpha$; certified metric bound $b$}
+  \EndIf
+  \If{$k = K$} \Return $(\theta, \textsf{failure})$ \Comment{at most $K$ retraining rounds}
   \EndIf
   \State $\varepsilon \gets \max\{\varepsilon_0,\; \gamma L_h \tau\}$ \Comment{margin coupling}
   \State $\D \gets \D \cup \mathcal{C} \cup \mathsf{Perturb}(\mathcal{C}, m)$
-  \State $\theta \gets \arg\min_\theta \frac{1}{|\D|}\sum_{x \in \D} \max\{0,\; \tilde g_\theta(x) + \varepsilon\}$ \Comment{learner}
+  \State $\theta \gets \textsc{Learn}(\theta, \D, \varepsilon)$ \Comment{fixed-budget subgradient steps on $\frac{1}{|\D|}\sum_{x \in \D} \max\{0,\, \tilde g_\theta(x) + \varepsilon\}$, warm-started at $\theta$}
 \EndFor
 \State \Return $(\theta, \textsf{failure})$
 \end{algorithmic}
 \end{algorithm}
 
+A successful run returns the certified metric together with the constants a downstream guarantee consumes: the oracle constant $L_h$, the certified lower bound $\underline s$ on uniform normalized slack from Lemma~\ref{lem:gridsuff}, and the class bounds $a=\alpha$ and $b$. The polynomial implementation obtains $b$ from Lemma~\ref{lem:certconst}(iii); the neural implementation uses outward interval bounds on the metric entries over the whole domain. Theorems~\ref{thm:rate} and \ref{thm:residual} read the raw uniform margin $\eta$ from $\underline s$ through $\tr M_\theta\ge na$, as Remark~\ref{rem:eta} makes precise.
+
+The learner $\textsc{Learn}$ is a fixed-budget subgradient method, Adam in our experiments, warm-started at the current $\theta$. We write it as a finite-step update rather than an exact minimizer because the stall analysis of Lemma~\ref{lem:stall} concerns gradient steps, and an exact argmin is non-unique under the stall, where every $\theta$ of zero loss qualifies.
+
 \begin{proposition}[Soundness of CEGIS-C]
 \label{prop:cegis}
-If the oracle is sound and Algorithm~\ref{alg:cegis} returns $(\theta, \textsf{certified})$, then $M_\theta$ is a contraction metric with rate $\lambda$ on $\X$, and trajectories of \eqref{eq:sys} remaining in $\X$ satisfy $\|\delta x(t)\| \le \sqrt{b/a}\, e^{-\lambda t}\|\delta x(0)\|$.
+If the oracle is sound and Algorithm~\ref{alg:cegis} returns $(\theta, \textsf{certified})$, then $M_\theta$ is a contraction metric with rate $\lambda$ on $\X$. Every variational displacement along a trajectory of \eqref{eq:sys} remaining in $\X$ satisfies $\|\delta x(t)\| \le \sqrt{b/a}\, e^{-\lambda t}\|\delta x(0)\|$. Finite trajectory-distance bounds require the connecting-family condition of Remark~\ref{rem:finite}.
 \end{proposition}
 
 \begin{proof}
-Immediate from Proposition~\ref{prop:grid}: the loop affects which candidate reaches the oracle, never what certification means.
+Immediate from Proposition~\ref{prop:grid}: the loop affects which candidate reaches the oracle, never what certification means. When the grid margin is strict, $\max_i \tilde g_\theta(x_i) < -L_h\tau$, Corollary~\ref{cor:margin} and Remark~\ref{rem:eta} upgrade the returned certificate to the improved rate of Theorem~\ref{thm:rate}.
 \end{proof}
 
-We make no termination claim; like all CEGIS schemes over expressive classes, the loop may exhaust its budget \cite{abate2021}. What we prove instead, in the next section, is which design choices are necessary for the loop to be capable of progress at all.
+\begin{remark}[Soundness without completeness]
+\label{rem:complete}
+Proposition~\ref{prop:cegis} is a soundness statement; the loop is not complete. The grid oracle can reject a metric whose true uniform slack is positive but below $L_h\tau$, and we make no termination claim. Lemma~\ref{lem:gridsuff} supplies the sufficiency half of a completeness analysis: a candidate whose true slack exceeds $L_h\tau$ is certified at resolution $\tau$. Whether the corrected loop is relatively complete, certifying in finitely many rounds whenever the class contains a metric with normalized slack strictly above $\gamma L_h\tau$ and the learner minimizes over the accumulated data, is open and left to future work.
+\end{remark}
+
+We make no termination claim; like all CEGIS schemes over expressive classes, the loop may exhaust its budget \cite{abate2021}. The next section identifies failure mechanisms and shows how normalization and margin coupling address them.
 
 \section{Main results}
 \label{sec:results}
 
-\subsection{Scale invariance and the necessity of normalization}
+\subsection{Scale invariance and normalization}
 
 The contraction condition \eqref{eq:contraction} is homogeneous of degree one in the metric. This elementary fact has a non-elementary consequence for synthesis.
 
 \begin{lemma}[Scale invariance of certifiability]
 \label{lem:scale}
-Fix $x \mapsto M(x)$ and $c > 0$, and let $C(\cdot\,; M)$ denote the matrix in \eqref{eq:contraction}. Then $C(x; cM) = c\, C(x; M)$ for all $x$, hence $\lmax(C(x; cM)) = c\,\lmax(C(x; M))$, and any Lipschitz constant $L$ of $x \mapsto \lmax(C(x;M))$ scales to $cL$. Consequently, for every grid $\X_\tau$, the metric $cM$ passes the grid oracle on the test function $g$ if and only if $M$ does: certifiability is a property of the metric's shape, invariant under positive scaling. The normalized test function $\tilde g$ of \eqref{eq:tests} is itself invariant: $\tilde g(x; cM) = \tilde g(x; M)$.
+Fix $x \mapsto M(x)$ and $c > 0$, and let $C(\cdot\,; M)$ denote the matrix in \eqref{eq:contraction}. Then $C(x; cM) = c\, C(x; M)$ for all $x$, hence $\lmax(C(x; cM)) = c\,\lmax(C(x; M))$, and any Lipschitz constant $L$ of $x \mapsto \lmax(C(x;M))$ scales to $cL$. Consequently, provided the oracle's Lipschitz constant is produced by a scale-equivariant bounding procedure, so that its value at $cM$ equals $c$ times its value at $M$, which the coefficient bound of Lemma~\ref{lem:certconst} satisfies, for every grid $\X_\tau$ the metric $cM$ passes the grid oracle on the test function $g$ if and only if $M$ does: certifiability is a property of the metric's shape, invariant under positive scaling. The normalized test function $\tilde g$ of \eqref{eq:tests} is itself invariant: $\tilde g(x; cM) = \tilde g(x; M)$.
 \end{lemma}
 
 \begin{proof}
-Each term of \eqref{eq:contraction} is linear in $M$: $\dot{(cM)} = c\dot M$, $A^\top (cM) + (cM) A = c(A^\top M + MA)$, and $2\lambda (cM) = 2c\lambda M$. Eigenvalues are positively homogeneous, giving the second claim, and $|c\,g(x) - c\,g(y)| = c\,|g(x) - g(y)|$ gives the third, with the converse scaling $1/c$ showing the constant is exactly $cL$ when $L$ is tight. The oracle's certificate reads $c\,g(x_i) \le -cL\tau$, which is the original inequality divided by $c$. For the last claim, $\tr(cM) = c \tr M$ cancels the numerator's scaling.
+Each term of \eqref{eq:contraction} is linear in $M$: $\dot{(cM)} = c\dot M$, $A^\top (cM) + (cM) A = c(A^\top M + MA)$, and $2\lambda (cM) = 2c\lambda M$. Eigenvalues are positively homogeneous, giving the second claim, and $|c\,g(x) - c\,g(y)| = c\,|g(x) - g(y)|$ gives the third, with the converse scaling $1/c$ showing the constant is exactly $cL$ when $L$ is tight. Under the scale-equivariance hypothesis the oracle's certificate reads $c\,g(x_i) \le -cL\tau$, which is the original inequality divided by $c$. For the last claim, $\tr(cM) = c \tr M$ cancels the numerator's scaling.
 \end{proof}
+
+\begin{definition}[Certifiability gap]
+\label{def:gap}
+For a candidate metric $M$ and grid $\X_\tau$ with oracle constant $L_h$, the certifiability gap on the test $h \in \{g, \tilde g\}$ is
+\[
+\Gamma(M) \;:=\; \max_i h(x_i) + L_h\tau,
+\]
+the worst grid value of $h$ minus the oracle's required margin $-L_h\tau$; the oracle certifies exactly when $\Gamma(M) \le 0$. On the raw test the gap is scale-covariant, $\Gamma(cM) = c\,\Gamma(M)$ for $c > 0$ by Lemma~\ref{lem:scale}, while on the normalized test it is scale-invariant provided the oracle bound also respects that invariance.
+\end{definition}
 
 \begin{corollary}[The scale chase]
 \label{cor:chase}
-Consider a margin-coupled learner trained on the raw test function $g$, with requirement $g_\theta(x) \le -\varepsilon_k$ on the data and $\varepsilon_k = \gamma L_k \tau$ updated from the oracle's current Lipschitz constant $L_k$. If the family is closed under scaling in the sense that for each $\theta$ and $c \ge 1$ there is $\theta'$ with $M_{\theta'} = c M_\theta$ on $\X$, then every training requirement is satisfiable by scaling alone, the certifiability gap never changes sign, and the sequence $L_k$ admits unbounded growth.
+Fix a grid $\X_\tau$ and an initial metric $M_0$ whose raw test satisfies $g_0(x)<0$ throughout the compact domain $\X$. Suppose the raw oracle bound is scale-equivariant with $L_0>0$ and the initial gap is $\Gamma(M_0)>0$. Assume the family is closed under scaling: every $cM_0$ with $c\ge1$ belongs to the family. At a rejected candidate $M_k$, let the next training requirement be $g(x)\le-\varepsilon_k$ on the augmented data, where $\varepsilon_k=\gamma L_k\tau$ and $\gamma>1$. Then there exists an infinite sequence of learner responses obtained by scaling $M_0$ alone. Every response satisfies its training requirement, every candidate remains uncertified, and $L_k\to\infty$.
 \end{corollary}
 
 \begin{proof}
-By Lemma~\ref{lem:scale}, replacing $M_\theta$ by $cM_\theta$ multiplies the worst data value of $g$ by $c$, so the requirement $g \le -\varepsilon_k$ on the data holds for $c$ large whenever $g < 0$ there, while the oracle's certificate $g(x_i) \le -L\tau$ is invariant. The next round's requirement $\varepsilon_{k+1} = \gamma L_{k+1}\tau$ has grown by the same factor $c$, inviting the same response.
+Continuity and compactness give $m_0:=-\sup_\X g_0>0$. Write $M_k=c_kM_0$ with $c_0=1$. After the oracle returns its candidates and the data are augmented, choose $c_{k+1}\ge\max\{2c_k,\varepsilon_k/m_0\}$. Then $g_{k+1}(x)=c_{k+1}g_0(x)\le-\varepsilon_k$ on all of $\X$, hence on every future training point as well. Lemma~\ref{lem:scale} gives $L_k=c_kL_0$ and $\Gamma(M_k)=c_k\Gamma(M_0)>0$. Thus the oracle keeps rejecting while $c_k\ge2^k$ and $L_k\to\infty$. This constructs admissible responses; it does not require a particular optimizer to choose them.
 \end{proof}
 
-The corollary identifies a degeneracy, not an inevitability: a gradient-based learner is not forced to scale, but scaling is the cheapest descent direction for the raw hinge loss, and Section~\ref{sec:experiments} shows it is the one taken in practice, with the measured Lipschitz constant growing by three orders of magnitude across twelve iterations. Lemma~\ref{lem:scale} also dictates the remedy. The normalized test function $\tilde g$ is scale-invariant, so a learner trained on $\tilde g$ can reduce the certifiability gap only by changing the metric's shape. This is why Algorithm~\ref{alg:cegis} trains on $\tilde g$, and the choice is necessary, not stylistic.
+Negativity on the current dataset alone suffices for a single fixed-data scaling step, but cannot support the corollary after new points are added: scaling preserves the sign of every raw test value. The uniform negativity hypothesis supplies the missing control over future data. The positive bound and initial positive gap ensure a growing, noncertifying sequence.
+
+The implemented class \eqref{eq:class} with fixed $\alpha$ is generally not closed under scaling, since $cM_\theta=c\alpha I+cL_\theta^\top L_\theta$ need not admit a factorization $\alpha I+L'^\top L'$ with $L'$ linear in the same features. Corollary~\ref{cor:chase} therefore does not by itself establish a scale chase for this fixed-floor class. If $L_\theta^\top L_\theta$ is uniformly positive definite, scaling that term makes the fixed floor relatively negligible; establishing an infinite learner sequence for this limit would require additional hypotheses. The normalized experiments below do not claim to demonstrate pure scale chasing.
+
+The corollary identifies a degeneracy, not an inevitability: a gradient-based learner is not forced to scale, and on our benchmark it reaches a certifiable shape rather than inflating pure scale. The coupled-margin divergence that Section~\ref{sec:experiments} does exhibit is driven by the metric's shape through its Lipschitz constant, a different mechanism from pure scale inflation. Lemma~\ref{lem:scale} motivates a remedy for the scaling degeneracy. The normalized test function $\tilde g$ is scale-invariant, so scaling alone cannot lower its training values. If the oracle bound is also invariant, reducing the certifiability gap requires changing the metric's shape. Scale invariance removes this degeneracy; the lemma does not require the trace quotient in particular or rule out other ways to control metric scale. The generalized-eigenvalue normalization $\lmax(M^{-1/2} C M^{-1/2})$ is equally scale-invariant and reads directly as the pointwise rate deficit. We use the trace normalization because its denominator $\tr M_\theta$ is a low-degree polynomial with a certified Lipschitz constant and the exact lower bound $n\alpha$, which keeps the oracle's constant computable by Lemma~\ref{lem:certconst}, whereas the generalized-eigenvalue quotient would entangle the denominator's Lipschitz analysis with a matrix inverse. Algorithm~\ref{alg:cegis} therefore trains on $\tilde g$, with the trace chosen for tractable Lipschitz bounds.
 
 \subsection{The stall mode of fixed-margin learners}
 
 \begin{lemma}[Stall]
 \label{lem:stall}
-Fix a test function $h_\theta \in \{g_\theta, \tilde g_\theta\}$, a grid $\X_\tau$ with oracle constant $L_h$, and a fixed learner margin $\varepsilon < L_h \tau$. Suppose the current candidate satisfies
+Fix a test function $h_\theta \in \{g_\theta, \tilde g_\theta\}$ that is locally Lipschitz in $\theta$, a grid $\X_\tau$ with oracle constant $L_h$, and a fixed learner margin $\varepsilon < L_h \tau$. Suppose the current candidate satisfies
 \begin{equation}
 \sup_{x \in \X} h_\theta(x) \le -\varepsilon
 \qquad \text{and} \qquad
 \max_i h_\theta(x_i) > -L_h \tau .
 \label{eq:stallband}
 \end{equation}
-Then the candidate is uncertified, the hinge loss $\max\{0, h_\theta + \varepsilon\}$ vanishes identically on $\X$, every gradient-based update of the learner leaves $\theta$ unchanged regardless of how many counterexamples are appended, and the loop remains at this non-certified point forever.
+Then the candidate is uncertified and the hinge loss $\max\{0,h_\theta+\varepsilon\}$ vanishes identically on $\X$. For every finite dataset $\D\subset\X$, zero belongs to the Clarke subdifferential of the empirical loss at $\theta$. A learner that selects this zero subgradient and has zero optimizer state can keep $\theta$ fixed after every data augmentation. Thus the loop can remain at this non-certified point.
 \end{lemma}
 
 \begin{proof}
-The second inequality in \eqref{eq:stallband} is the negation of the oracle's certificate. The first implies $h_\theta(x) + \varepsilon \le 0$ for every $x \in \X$, hence for every point of any dataset $\D \subset \X$, including all counterexamples the oracle can ever return. On the open set where $h_\theta + \varepsilon < 0$ the hinge is locally constant at zero, so its gradient in $\theta$ is zero; where $h_\theta + \varepsilon = 0$ the hinge subdifferential contains zero and a (sub)gradient method admits the null step. The learner therefore returns $\theta$, the oracle re-evaluates the same candidate, and \eqref{eq:stallband} persists.
+The second inequality in \eqref{eq:stallband} is the negation of the oracle's certificate. The first makes the empirical hinge loss zero on every finite dataset in $\X$, including all points the oracle can ever return. This nonnegative, locally Lipschitz loss attains a global minimum at $\theta$, so its Clarke subdifferential contains zero. Selecting zero at each update with zero optimizer state leaves $\theta$ unchanged, and \eqref{eq:stallband} persists after augmentation. A different boundary subgradient selection or nonzero momentum can move the parameter; the conclusion asserts the existence of a stalled update sequence.
 \end{proof}
 
-The interval $(-L_h\tau, -\varepsilon]$ in \eqref{eq:stallband} is the stall band. It is nonempty exactly when $\varepsilon < L_h\tau$, that is, when the learner's ambition falls short of the oracle's conservatism. The remedy is the coupling step of Algorithm~\ref{alg:cegis}, which keeps $\varepsilon \ge \gamma L_h \tau > L_h \tau$ and so empties the band; Lemma~\ref{lem:scale} explains why the coupling must act on the normalized test function to avoid trading the stall for the scale chase. The two lemmas together justify the algorithm's design: normalization without coupling stalls, coupling without normalization chases, and the combination is the minimal repair.
+The interval $(-L_h\tau, -\varepsilon]$ in \eqref{eq:stallband} is the stall band. It is nonempty exactly when $\varepsilon < L_h\tau$, that is, when the learner's ambition falls short of the oracle's conservatism. The coupling step of Algorithm~\ref{alg:cegis} sets the next training margin above the current oracle requirement. This removes the fixed-margin stall band for that candidate when $L_h\tau > 0$. Retraining changes $L_h$, so the step does not guarantee certification. Lemma~\ref{lem:scale} motivates combining this step with normalization to remove pure scale inflation as a way to satisfy the training margin. The two lemmas justify these design choices as remedies for the stated failure mechanisms, not as necessary or sufficient conditions for convergence.
 
 \subsection{Slack converts to guarantees}
 
@@ -237,7 +339,7 @@ Suppose the grid oracle certifies $g_\theta$ with uniform extra margin $\eta > 0
 \[
 \lambda' = \lambda + \frac{\eta}{2b},
 \]
-and trajectories remaining in $\X$ satisfy $\|\delta x(t)\| \le \sqrt{b/a}\, e^{-\lambda' t} \|\delta x(0)\|$.
+and every variational displacement along a trajectory remaining in $\X$ satisfies $\|\delta x(t)\| \le \sqrt{b/a}\, e^{-\lambda' t} \|\delta x(0)\|$. The same rate applies to finite trajectory-distance bounds under Remark~\ref{rem:finite}.
 \end{theorem}
 
 \begin{proof}
@@ -248,8 +350,9 @@ From $M_\theta \preceq bI$ we get $I \succeq M_\theta / b$, hence $-\eta I \prec
 which rearranges to $\dot M_\theta + A^\top M_\theta + M_\theta A + 2\lambda' M_\theta \preceq 0$ with $\lambda' = \lambda + \eta/(2b)$. Apply \cite{lohmiller1998}.
 \end{proof}
 
-\begin{remark}
-For the normalized test function the same argument gives $\lambda' = \lambda + \eta_n \tr M_\theta /(2b) \ge \lambda + \eta_n\, n a/(2b)$ when $\tilde g_\theta \le -\eta_n$ on $\X$, since $\tr M_\theta \ge na$.
+\begin{remark}[Uniform margin delivered to the theorems]
+\label{rem:eta}
+If the loop certifies the normalized test with certified lower slack bound $\eta_n=\underline s\ge0$, then $\tilde g_\theta\le-\eta_n$ and $g_\theta=\tilde g_\theta\tr M_\theta\le-\eta_n\tr M_\theta\le-\eta_n na$ on $\X$. When $\underline s>0$, the loop therefore delivers the uniform raw margin $\eta=na\underline s$ to Theorems~\ref{thm:rate} and \ref{thm:residual}, and the certified rate is $\lambda'=\lambda+na\underline s/(2b)$. This uses the computable lower bound, not the unknown true slack $s_*$. When $\underline s=0$, the base-rate certificate remains valid but these strict-margin improvements do not follow.
 \end{remark}
 
 The second theorem addresses the setting that motivates neurosymbolic synthesis in the first place: the vector field is itself a learned surrogate, and the certificate must say something about the true system.
@@ -264,7 +367,7 @@ If $\eta > \mu_1 \delta_0 + 2 b \delta_1$, then $M_\theta$ is a contraction metr
 \[
 \lambda'' = \lambda + \frac{\eta - \mu_1 \delta_0 - 2 b \delta_1}{2b},
 \]
-and trajectories of the true system remaining in $\X$ satisfy $\|\delta x(t)\| \le \sqrt{b/a}\, e^{-\lambda'' t} \|\delta x(0)\|$.
+and every variational displacement along a trajectory of the true system remaining in $\X$ satisfies $\|\delta x(t)\| \le \sqrt{b/a}\, e^{-\lambda'' t} \|\delta x(0)\|$. Finite trajectory-distance bounds at this rate require Remark~\ref{rem:finite} for the true flow $f+d$.
 \end{theorem}
 
 \begin{proof}
@@ -293,7 +396,7 @@ Combining with $\lmax(C_\theta) \le -\eta$, $\|M_\theta\|_2 \le b$, and $\|D\|_2
 \end{proof}
 
 \begin{remark}
-Theorem~\ref{thm:residual} turns the verified margin into a robustness budget with an explicit exchange rate: each unit of margin absorbs $\mu_1^{-1}$ units of residual magnitude or $(2b)^{-1}$ units of residual slope. In a pipeline where $f$ is identified from data with statistical or deterministic residual bounds, the theorem specifies how much verification slack the synthesis stage must achieve for the certificate to transfer to the true plant. The quantity $\mu_1$ is computable for the class \eqref{eq:class} since the metric derivatives are explicit in the features.
+Theorem~\ref{thm:residual} turns the verified margin into a robustness budget with an explicit exchange rate: each unit of margin absorbs $\mu_1^{-1}$ units of residual magnitude or $(2b)^{-1}$ units of residual slope. In a pipeline where $f$ is identified from data with statistical or deterministic residual bounds, the theorem specifies how much verification slack the synthesis stage must achieve for the certificate to transfer to the true plant. The quantity $\mu_1$ is computable for the class \eqref{eq:class} since the metric derivatives are explicit in the features. The Jacobian bound $\delta_1$ is the more demanding input for a learned surrogate. A Lipschitz bound on the surrogate alone does not bound the residual Jacobian. One needs additional information about the true vector field, a direct bound on $\partial(f_{\mathrm{true}}-f)/\partial x$, or a statistical derivative-error bound with its stated confidence. Separate Jacobian bounds on the true field and a spectrally constrained surrogate yield a conservative residual bound by the triangle inequality. A Gaussian-process derivative-error bound is another possibility under the model's assumptions. Setting $\delta_1 = 0$ requires a residual with zero Jacobian; a magnitude bound $\delta_0$ alone does not justify it.
 \end{remark}
 
 \section{Computational illustrations}
@@ -306,18 +409,36 @@ We construct a benchmark whose certified answer is known. Let $\varphi(x) = (x_1
 f(x) = \big( -x_1,\; -(x_2 - x_1^2) \big), \qquad \X = [-2, 2]^2 .
 \label{eq:bench}
 \end{equation}
-The system contracts with rate $1$ in the pullback metric $M^*(x) = J_\varphi(x)^\top J_\varphi(x)$, whose Cholesky factor has entries linear in $x$, so the metric class \eqref{eq:class} with features $(1, x_1, x_2)$ contains the ground truth shape. The identity-scaled metric fails: for $M = \beta I$ the condition matrix is $\beta(A^\top + A + 2\lambda I)$ with symmetric-part eigenvalues $-1 \pm |x_1|$, so at target rate $\lambda = 0.4$ the violation region is exactly $|x_1| > 0.6$, independent of $\beta$ in accordance with Lemma~\ref{lem:scale}. The experiment is a controlled study by design: the hypothesis class contains a certifiable shape, so every failure of a loop variant is attributable to the loop, not to the class. Harder benchmarks, in which realizability itself is in question, are deferred to the sequel.
+The system contracts with rate $1$ in the pullback metric $M^*(x) = J_\varphi(x)^\top J_\varphi(x)$, whose Cholesky factor has entries linear in $x$, so the metric class \eqref{eq:class} with features $(1, x_1, x_2)$ contains certifiable metrics at the target rate. The fixed floor $\alpha I$ places the pullback metric $M^*$ itself outside the family, but $\alpha I + c\, J_\varphi^\top J_\varphi$ lies in the family and certifies at rate $0.4$ once $c$ is large enough that the floor is negligible. The identity-scaled metric fails: for $M = \beta I$ the condition matrix is $\beta(A^\top + A + 2\lambda I)$ with symmetric-part eigenvalues $-1 \pm |x_1|$, so at target rate $\lambda = 0.4$ the violation region is exactly $|x_1| > 0.6$, independent of $\beta$ in accordance with Lemma~\ref{lem:scale}. The experiment is a controlled study by design: the hypothesis class contains a certifiable shape, so every failure of a loop variant is attributable to the loop, not to the class. A harder benchmark, non-polynomial and with realizability not guaranteed by construction, is studied at the end of this section. The certificates give variational decay along trajectories while they remain in $\X$. The box $\X=[-2,2]^2$ is not forward invariant for \eqref{eq:bench}, since a trajectory started at $(2,2)$ leaves through the top face before converging. Finite trajectory-distance bounds require the connecting-family condition of Remark~\ref{rem:finite}; a convex forward-invariant subset of $\X$ suffices. We do not assert pairwise convergence solely from both endpoint trajectories remaining in the box.
 
-All experiments use the parametrization \eqref{eq:class} with $\alpha = 0.1$, target rate $\lambda = 0.4$, a verification grid of $121^2$ points (covering radius $\tau \approx 0.024$), Adam as the learner, $60$ worst violators returned per round with $5$ Gaussian perturbations each, and a hinge margin base $\varepsilon_0 = 0.05$. The full loop runs in seconds on a laptop-class CPU.\footnote{In the experiments reported here the oracle's Lipschitz constant is estimated by dense sampling of the test function's gradient with a safety factor of $1.5$. For the polynomial class \eqref{eq:class} all entries of $\nabla_x C_\theta$ are polynomials, so a certified interval bound is mechanical; \todo{replace the sampled estimate with the certified interval bound in the released implementation before submission}.}
+We round reported upper bounds upward and certified margins and robustness budgets downward for display; verification inequalities and residual budgets use the full-precision values saved in the result files. The main polynomial study uses the parametrization \eqref{eq:class} with $\alpha = \numCertA$, target rate $\lambda = 0.4$, an initial dataset of $\PolyInitialSamples$ uniform samples, Adam as the learner with at most $\PolyTrainSteps$ steps per round, $\numSeeds$ seeds, $60$ worst violators returned per round with $5$ Gaussian perturbations each, projected back into $\X$ by clipping, coupling factor $\gamma = \numGamma$, and a hinge margin base $\varepsilon_0 = \numEpsZero$. The coarse grid has $\numGridCoarse^2$ points and the operating grid $\numGridOp^2$ points, with covering radius $\tau \approx \numTauOp$. Every output has the certified lower bound $a = \numCertA$. The median of the computed upper bounds $b$ over the certified seeds is $\numGridB$; each output uses its own bound in the overshoot $\sqrt{b/a}$ and Theorem~\ref{thm:rate}. The reproduction report records stage runtimes and the execution environment. Separate timing files for the polynomial, pendulum, and neural studies record learner and oracle times and grid evaluation counts per round, including bound computation in oracle time. Timings depend on the machine and verification grid.\footnote{The oracle's Lipschitz constant is a certified upper bound computed by interval coefficient bounds, with box subdivision, on the polynomial entries of $\nabla_x C_\theta$ for the class \eqref{eq:class}; the implementation is included in the companion reproduction archive.}
 
-\subsection{Stall, scale chase, and certification}
+All studies use Adam with the budgets in Table~\ref{tab:protocol}. A successful run can terminate before its retraining cap. The numerical outputs record these settings together with the grid, subdivision depth, seed, and per-round trace.
 
-Figure~\ref{fig:traces} shows the certifiability gap, the worst grid value of the test function minus the oracle's required margin, for three loop variants started from the identity-scaled metric. The fixed-margin variant ($\varepsilon = 0.05 < L\tau \approx 0.12$) drives the raw condition negative everywhere and then stalls in the band of Lemma~\ref{lem:stall}: the gap is flat at $3 \times 10^{-2}$ for twelve iterations, with zero training loss throughout. The margin-coupled variant on the raw test function enters the scale chase of Corollary~\ref{cor:chase}: the measured Lipschitz constant grows from $3.3$ to $9.2 \times 10^3$ across twelve iterations while the gap's sign never changes. The normalized margin-coupled variant, Algorithm~\ref{alg:cegis}, certifies after a single retraining round. Figure~\ref{fig:heatmaps} shows the corresponding condition heatmaps: the initial candidate violates exactly on $|x_1| > 0.6$ as predicted, and the certified output is uniformly negative with normalized interior slack $0.043$.
+\begin{table}[t]
+\caption{Maximum learner budgets and initialization sizes}
+\label{tab:protocol}
+\centering
+\small
+\begin{tabular}{lrrrr}
+\hline
+Study & \shortstack{Retraining\\cap $K$} & \shortstack{Adam steps\\per round} & \shortstack{Learning\\rate} & \shortstack{Initial\\samples} \\
+\hline
+Polynomial & $\PolyRoundCap$ & $\PolyTrainSteps$ & $\PolyLearningRate$ & $\PolyInitialSamples$ \\
+Pendulum & $\PendRoundCap$ & $\PendTrainSteps$ & $\PendLearningRate$ & $\PendInitialSamples$ \\
+Neural & $\NeuralRoundCap$ & $\NeuralTrainSteps$ & $\NeuralLearningRate$ & $\NeuralInitialSamples$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Stall, coupled-margin divergence, and certification}
+
+Figure~\ref{fig:traces} shows the normalized certifiability gap $\Gamma$ of Definition~\ref{def:gap} over $\numSeeds$ seeds for three regimes of the loop, all trained on the normalized test so the gaps share one scale-invariant axis. An uncertified run is labeled diverged when $\max_k L_k>\OutcomeGrowthFactor L_0$. In the polynomial study, the remaining uncertified runs are labeled stalled. These labels describe outcomes within the budgets of Table~\ref{tab:protocol}; they do not prove exact stationary points or infinite-time divergence. With a fixed margin $\varepsilon_0 = \numEpsZero$ on the coarse grid of $\numGridCoarse^2$ points, the loop stalls in $\numStallCount$ of $\numSeeds$ runs. At the stalled candidates, the margin lies below the oracle's requirement $L_h\tau$, so the stall band of Lemma~\ref{lem:stall} is nonempty. Coupling the margin on the same coarse grid raises the next training margin above the current oracle requirement, but the certified $L_h$ is conservative, so the required margin $\gamma L_h\tau$ outgrows the slack achieved by the learner, and the loop diverges in $\numDivCount$ of $\numSeeds$ runs, increasing the certified Lipschitz bound for the normalized test by up to a factor $\numDivGrowth$. On the operating grid of $\numGridOp^2$ points, where the learner can achieve slack above $\gamma L_h\tau$, Algorithm~\ref{alg:cegis} certifies in $\numCertCount$ of $\numSeeds$ runs with a median of $\numCertMedIters$ retraining rounds. The scale chase of Corollary~\ref{cor:chase} is a distinct theoretical failure mechanism; on this benchmark the learner reaches a certifiable shape rather than inflating pure scale, so when the coupled loop diverges it does so through growth of the shape-dependent certified Lipschitz bound, consistent with the corollary being a degeneracy the learner is not forced into. Figure~\ref{fig:heatmaps} shows the condition heatmaps: the identity-scaled candidate violates on $|x_1| > 0.6$ as predicted, and a certified output is uniformly negative.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.72\textwidth]{fig_traces.pdf}
-\caption{Certifiability gap per CEGIS iteration for three loop variants on the benchmark \eqref{eq:bench}. The fixed-margin learner stalls (Lemma~\ref{lem:stall}); the unnormalized margin-coupled learner chases scale without progress (Lemma~\ref{lem:scale}, Corollary~\ref{cor:chase}); the normalized margin-coupled learner of Algorithm~\ref{alg:cegis} certifies in one retraining round.}
+\caption{Normalized certifiability gap $\Gamma$ per CEGIS iteration over $\numSeeds$ seeds (thin lines) with per-regime medians (bold), on a symlog axis so certification appears as a crossing below zero. Fixed margin on the coarse grid stalls (Lemma~\ref{lem:stall}); coupling the margin on the coarse grid diverges as the required margin $\gamma L_h\tau$ outgrows the achieved slack; the normalized margin-coupled loop of Algorithm~\ref{alg:cegis} certifies on the operating grid.}
 \label{fig:traces}
 \end{figure}
 
@@ -330,23 +451,61 @@ Figure~\ref{fig:traces} shows the certifiability gap, the worst grid value of th
 
 \subsection{The cost of the grid oracle}
 
-Proposition~\ref{prop:grid} certifies at resolution $\tau$ if and only if the achieved normalized slack exceeds $L_h \tau$, and by Lemma~\ref{lem:scale} the ratio $\mathrm{slack}/L_h$ is the invariant currency. Using the measured values from the certified candidate ($L_h = 0.9$, slack $0.043$), the number of grid points required on $[-2,2]^n$ scales as shown in Figure~\ref{fig:gridcost}: $3.7 \times 10^3$ points at $n = 2$, $5.3 \times 10^7$ at $n = 4$, and $1.3 \times 10^{12}$ at $n = 6$. At a budget of $10^9$ evaluations the frontier of pure grid certification sits between $n = 4$ and $n = 5$ for this benchmark's slack-to-Lipschitz ratio. The figure quantifies, rather than laments, the central obstacle: progress beyond moderate dimension requires verification oracles whose cost is not a covering number, such as interval matrix analysis with adaptive subdivision \cite{anonymous2026} or satisfiability-based encodings of the matrix inequality.
+By Lemma~\ref{lem:gridsuff} the oracle certifies at resolution $\tau$ whenever the achieved normalized slack exceeds $L_h \tau$, and certification in turn implies a nonnegative uniform slack; the reverse equivalence fails, since grid values can clear the margin with true slack slightly below $L_h\tau$. By Lemma~\ref{lem:scale} the ratio $\mathrm{slack}/L_h$ is the invariant currency. Across the $\numCertCount$ certified candidates we estimate slack as the negative maximum of the normalized test on a separate dense grid. This sampled slack is an upper bound on the true uniform slack, not a certified lower bound. Its median ratio to the certified Lipschitz bound is $\numGridMedianRatio$, with range $[\numGridMinRatio, \numGridMaxRatio]$, and holding this measured two-dimensional ratio fixed gives the grid-count extrapolation in Figure~\ref{fig:gridcost}: $\numGridPtsTwo$ points at $n = 2$, $\numGridPtsFour$ at $n = 4$, and $\numGridPtsSix$ at $n = 6$. These counts are estimates, not certified minimum grid requirements or experiments in higher dimensions. At a budget of $10^9$ evaluations the extrapolation crosses the budget between $n = 3$ and $n = 4$. The counts describe the stored uniform grid. Interval grouping can reduce the cost of proving its inequalities, while the nominal rejection screen still evaluates the full grid in this implementation. The extrapolation illustrates the covering-number cost: progress beyond moderate dimension requires verification oracles whose cost is not a covering number, such as interval matrix analysis with adaptive subdivision \cite{anonymous2026} or satisfiability-based encodings of the matrix inequality.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.58\textwidth]{fig_gridcost.pdf}
-\caption{Grid points required for certification on $[-2,2]^n$ as a function of state dimension, computed from the measured slack-to-Lipschitz ratio of the certified candidate. The dotted line marks $10^9$ points.}
+\caption{Extrapolated grid-point counts on $[-2,2]^n$, holding the median sampled slack-to-Lipschitz ratio of the two-dimensional certified candidates fixed. These are cost estimates, not higher-dimensional certification results. The dotted line marks $10^9$ points.}
 \label{fig:gridcost}
 \end{figure}
 
+\subsection{Residual robustness of the certified metric}
+
+We exercise Theorem~\ref{thm:residual} on the benchmark. A certified candidate attains uniform raw margin $\eta = \numEta$ on $\X$, with certified constants $b \le \numBupper$ and $\mu_1 \le \numMuOne$ computed by interval bounds on the polynomial entries of $M_\theta$ and its derivatives. We perturb the dynamics with the polynomial residual $d(x) = \delta \cdot 0.25\,(x_2^2,\; x_1 x_2)$, for which the certified residual constants are $\delta_0 = \numCdZero\,\delta$ and $\delta_1 = \numCdOne\,\delta$, so the theorem guarantees contraction of the true system for $\delta < \delta^\star = \numDeltaStar$. Figure~\ref{fig:residual} compares, across a sweep of $\delta$, the measured worst value of the true contraction condition on the verification grid against the theoretical bound $-\eta + \mu_1\delta_0 + 2b\delta_1$. The measured curve stays below the bound throughout. The largest tested residual scale is $\numDeltaEmpRatio$ times the predicted budget, and all sampled condition values remain negative through that endpoint. This observation does not locate a failure threshold or certify the region beyond $\delta^\star$. The gap between the curves illustrates the conservatism of the norm-based bound on this benchmark.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.62\textwidth]{fig_residual.pdf}
+\caption{Residual robustness (Theorem~\ref{thm:residual}): measured worst value of the true contraction condition versus the theoretical bound as the residual scale $\delta$ grows. The shaded region is the certified budget $\delta < \delta^\star$.}
+\label{fig:residual}
+\end{figure}
+
+\subsection{A benchmark with trigonometric dynamics}
+
+To test the framework beyond the polynomial class, we apply it to the damped pendulum $f(x) = (x_2,\ -\sin x_1 - x_2)$ on $\X = [-\numPendBox, \numPendBox]^2$, whose dynamics are not polynomial in the original state coordinates. Standard polynomial SOS synthesis would require a reformulation or a polynomial approximation with a controlled remainder. Our oracle encloses the trigonometric terms directly. The metric class is unchanged, so $M_\theta$ and its derivatives stay polynomial and only the contraction matrix $C_\theta$ acquires the atoms $\sin x_1$ and $\cos x_1$. We certify it with the same interval bounds by carrying $C_\theta$ and its partials as polynomials in $(x_1, x_2, \sin x_1, \cos x_1)$, closed under the derivations $\partial_{x_1}: \sin x_1 \mapsto \cos x_1$, $\cos x_1 \mapsto -\sin x_1$, and bounding $\sin x_1$ and $\cos x_1$ as atoms of magnitude at most one, tightened per subbox by their Lipschitz enclosures. The analytic enclosure needs no polynomial-approximation remainder. Outward rounding also covers the coefficient algebra and trigonometric enclosures. Dense sampling checks implementation consistency; the interval construction supplies the enclosure guarantee.
+
+Unlike the constructed polynomial benchmark, this study does not assume a known certifiable metric in the chosen class. It does not establish infeasibility at other target rates. At rate $\lambda = \numPendRate$ the loop certifies in $\numPendCert$ of $\numPendSeeds$ seeds with a median of $\numPendMedIters$ retraining round and diverges in $\numPendDiv$, showing both certification and divergence under the normalized coupled-margin loop. This study does not run a fixed-margin stall comparison. A certified candidate attains certified constants $L_h = \numPendL$, a lower bound $\numPendSlack$ on grid slack, and $b \le \numPendB$, and it passes the oracle on the operating grid of $\numPendGrid^2$. The grid slack is the negative maximum at grid points; subtracting $L_h\tau$ gives a certified uniform normalized margin in real arithmetic. Figure~\ref{fig:pendulum} shows the condition heatmaps: the identity metric is positive throughout, and the certified output is uniformly negative.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_pendulum.pdf}
+\caption{Non-polynomial benchmark (damped pendulum): $\lmax(C_\theta(x))$ for the identity metric (left, positive throughout) and the certified CEGIS-C output (right, uniformly negative), certified by the trig-polynomial interval oracle.}
+\label{fig:pendulum}
+\end{figure}
+
+\subsection{A neural metric parametrization}
+
+We replace the linear-in-features Cholesky factor with a one-hidden-layer $\tanh$ network of $\numNeuralUnits$ units, $L(x) = W_2 \tanh(W_1 x + b_1) + b_2$, on the polynomial benchmark, using the same normalized, coupled-margin principle. The neural study also uses its own initialization, optimizer settings, and finer verification grid, as recorded in the implementation and reproduction outputs; it is not a controlled comparison of expressiveness alone. The metric is no longer polynomial, so the coefficient-bound oracle does not apply. We certify with hand-rolled interval arithmetic that propagates enclosures through the exact computation of $C_\theta$ and its partials, enclosing $\tanh$ and its first two derivatives by interval operations; the analytic enclosure follows from interval arithmetic. Outward rounding encloses parameter products, nonlinear terms, matrix entries, and grid evaluations. Dense sampling and finite-difference checks test the implementation; positive verification uses interval endpoints.
+
+The neural parametrization drives the normalized condition below zero in successful runs. In this configuration, its certified bounds and achieved slack lead to certification on a finer grid and more frequent finite-budget divergence than in the linear-feature study. The learned functions, initialization, optimizer, and oracle all change, so the comparison does not isolate interval-bound conservatism or representational expressiveness. A larger certified Lipschitz bound can reflect both actual metric variation and enclosure overestimation. On the operating grid of $\numNeuralOpGrid^2$ points the loop certifies $\numNeuralCert$ of $\numNeuralSeeds$ seeds with a median of $\numNeuralMedIters$ retraining round and diverges in $\numNeuralDiv$; of the certified metrics only $\numNeuralCoarse$ still passes the oracle at the linear class's grid of $\numNeuralCoarseGrid^2$. A certified candidate attains $L_h=\numNeuralL$, a lower bound $\numNeuralSlack$ on normalized grid slack, and global metric bounds $a=\numNeuralA$ and $b\le\numNeuralB$. Its certified uniform normalized slack is at least $\numNeuralUniformSlack$. The saved outputs include the raw margin, improved rate, and overshoot computed with directed bounds. The coarse-grid recheck tests these already learned metrics; it does not measure the success rate of training the neural loop on the coarse grid. These observations exercise the grid-cost constraint for this neural parametrization and oracle. Figure~\ref{fig:neural} shows a certified condition, uniformly negative.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_neural.pdf}
+\caption{Neural metric ($\numNeuralUnits$-unit $\tanh$ network): $\lmax(C_\theta(x))$ for the untrained network (left) and a certified CEGIS-C output (right, uniformly negative), certified by interval bound propagation through the network.}
+\label{fig:neural}
+\end{figure}
+
+\FloatBarrier
 \section{Conclusion}
 \label{sec:conclusion}
 
-We closed the counterexample-guided synthesis loop for contraction metrics and showed that the closure has theoretical content of its own. The homogeneity of the contraction condition makes certifiability a property of metric shape alone, which renders naive margin-driven training divergent and makes normalization a necessity (Lemma~\ref{lem:scale}); fixed-margin training admits non-certified fixed points (Lemma~\ref{lem:stall}); and the verified margin the corrected loop achieves converts into improved contraction rates and explicit robustness to model residuals (Theorems~\ref{thm:rate} and \ref{thm:residual}), making the framework suitable for end-to-end pipelines in which the dynamics themselves are learned. The experiments confirm each phenomenon and locate the grid oracle's dimensional frontier.
+We closed the counterexample-guided synthesis loop for contraction metrics and showed that the closure has theoretical content of its own. Under a scale-equivariant oracle, the homogeneity of the contraction condition makes certifiability a property of metric shape alone. A uniformly negative raw test in a scale-closed family with a positive Lipschitz bound can support an uncertified scale chase (Corollary~\ref{cor:chase}), which motivates a scale-invariant training test (Lemma~\ref{lem:scale}); fixed-margin training can admit non-certified fixed points when zero subgradients are selected with zero optimizer state (Lemma~\ref{lem:stall}); and the verified margin the corrected loop achieves converts into improved contraction rates and explicit robustness to model residuals (Theorems~\ref{thm:rate} and \ref{thm:residual}), making the framework suitable for end-to-end pipelines in which the dynamics themselves are learned. The experiments demonstrate stalls, shape-dependent coupled-margin divergence, and certification, and exercise the residual bound. They do not directly demonstrate pure scale chasing. The dimensional cost study extrapolates a measured two-dimensional ratio; all synthesis experiments remain two-dimensional.
 
 Two continuations follow directly. The first is the controlled case: carrying the loop to control contraction metrics \cite{manchester2017}, where synthesis acts on the dual metric and the verified object is related to the learned object through a matrix inverse, is the subject of a sequel in preparation. The second is the oracle: replacing covering-number verification with interval and satisfiability-based engines for parametrized matrix inequalities, the direction our cost analysis identifies as the binding constraint.
 
-\paragraph{Reproducibility.} The complete implementation, including the three loop variants and figure generation, is available at \url{https://github.com/vmpreciado/NeuroSymbolic}.
+\noindent\textit{Reproducibility.} Release \texttt{v1.0.0} archives the verified scientific reproduction snapshot and this line-numbered manuscript \cite{nsp_release}. The reproduction archive contains the three loop variants, outward-rounded verifiers, dependency specifications, result files, figure generation, and the paper sources used in the full run. Its manifest records source and artifact hashes, the numerical environment, and all stage outcomes. The separately attached manuscript includes the final wording and release citation; an editorial build manifest records those changes without altering the full-run evidence. The documented runner reconstructs the scientific results and paper.
 
 
 \begin{thebibliography}{99}
@@ -410,7 +569,38 @@ in \emph{Proceedings of ASPLOS}, 2006.
 \bibitem{anonymous2026}
 A.~Harapanahalli, S.~Coogan, and A.~Davydov,
 ``Learning certified neural network controllers using contraction and interval analysis,''
-arXiv:2603.28011, 2026.
+\emph{IEEE Control Systems Letters}, vol.~10, pp. 1615--1620, 2026, doi: 10.1109/LCSYS.2026.3707155. arXiv:2603.28011.
+
+\bibitem{aylward2008}
+E.~M. Aylward, P.~A. Parrilo, and J.-J.~E. Slotine,
+``Stability and robustness analysis of nonlinear systems via contraction metrics and SOS programming,''
+\emph{Automatica}, vol.~44, no.~8, pp. 2163--2170, 2008.
+
+\bibitem{giesl2019}
+P.~Giesl,
+``Computation of a contraction metric for a periodic orbit using meshfree collocation,''
+\emph{SIAM Journal on Applied Dynamical Systems}, vol.~18, no.~3, pp. 1536--1564, 2019.
+
+\bibitem{li2025}
+H.~Li, X.~Zhong, B.~Hu, and H.~Zhang,
+``Neural contraction metrics with formal guarantees for discrete-time nonlinear dynamical systems,''
+in \emph{Proceedings of the 7th Annual Learning for Dynamics \& Control Conference}, PMLR vol.~283, pp. 1447--1459, 2025.
+
+\bibitem{boffi2020}
+N.~M. Boffi, S.~Tu, N.~Matni, J.-J.~E. Slotine, and V.~Sindhwani,
+``Learning stability certificates from data,''
+in \emph{Proceedings of the Conference on Robot Learning (CoRL)}, PMLR vol.~155, pp. 1341--1350, 2021. arXiv:2008.05952.
+
+\bibitem{fousse2007}
+L.~Fousse, G.~Hanrot, V.~Lef\`evre, P.~P\'elissier, and P.~Zimmermann,
+``MPFR: A multiple-precision binary floating-point library with correct rounding,''
+\emph{ACM Transactions on Mathematical Software}, vol.~33, no.~2, article 13, 2007, doi: 10.1145/1236463.1236468.
+
+\bibitem{nsp_release}
+V.~M.~Preciado,
+``Neurosymbolic synthesis of contraction certificates: Verified reproduction snapshot and review manuscript,''
+version v1.0.0, GitHub release, 2026. [Online]. Available:
+\url{https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.0.0}
 
 \end{thebibliography}
 

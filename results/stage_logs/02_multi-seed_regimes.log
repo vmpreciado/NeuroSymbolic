@@ -1,0 +1,97 @@
+
+[2/8] multi-seed regimes
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/experiments.py
+=== multi-seed regimes (20 seeds, depth=3) ===
+  stall    seed  0: cert=False iters=12 L0=1.41 Lmax=2.36e+01 gap=+0.2630  (1.7s)
+  stall    seed  1: cert=False iters=12 L0=1.41 Lmax=4.92e+01 gap=+0.6417  (2.3s)
+  stall    seed  2: cert=False iters=12 L0=1.41 Lmax=3.89e+01 gap=+0.3356  (1.9s)
+  stall    seed  3: cert=False iters=12 L0=1.41 Lmax=2.06e+01 gap=+0.1867  (1.7s)
+  stall    seed  4: cert=False iters=12 L0=1.41 Lmax=3.00e+01 gap=+0.0658  (2.4s)
+  stall    seed  5: cert=False iters=12 L0=1.41 Lmax=2.72e+01 gap=+0.0564  (1.9s)
+  stall    seed  6: cert=False iters=12 L0=1.41 Lmax=2.22e+01 gap=+0.0423  (1.7s)
+  stall    seed  7: cert=False iters=12 L0=1.41 Lmax=2.14e+01 gap=+0.1919  (1.6s)
+  stall    seed  8: cert=True iters= 2 L0=1.41 Lmax=2.09e+01 gap=-0.0116  (0.7s)
+  stall    seed  9: cert=False iters=12 L0=1.41 Lmax=2.29e+01 gap=+0.0593  (2.0s)
+  stall    seed 10: cert=False iters=12 L0=1.41 Lmax=5.62e+01 gap=+0.9997  (2.7s)
+  stall    seed 11: cert=False iters=12 L0=1.41 Lmax=2.91e+01 gap=+0.0112  (2.1s)
+  stall    seed 12: cert=False iters=12 L0=1.41 Lmax=1.73e+01 gap=+0.0235  (1.6s)
+  stall    seed 13: cert=False iters=12 L0=1.41 Lmax=2.71e+01 gap=+0.2079  (1.7s)
+  stall    seed 14: cert=False iters=12 L0=1.41 Lmax=2.11e+01 gap=+0.0854  (1.7s)
+  stall    seed 15: cert=False iters=12 L0=1.41 Lmax=1.94e+01 gap=+0.2946  (1.8s)
+  stall    seed 16: cert=False iters=12 L0=1.41 Lmax=1.86e+01 gap=+0.1573  (1.7s)
+  stall    seed 17: cert=False iters=12 L0=1.41 Lmax=2.10e+01 gap=+0.1245  (1.7s)
+  stall    seed 18: cert=False iters=12 L0=1.41 Lmax=2.16e+01 gap=+0.0898  (1.9s)
+  stall    seed 19: cert=False iters=12 L0=1.41 Lmax=2.69e+01 gap=+0.2313  (2.9s)
+  diverge  seed  0: cert=False iters=12 L0=1.41 Lmax=3.60e+06 gap=+44361.5471  (9.9s)
+  diverge  seed  1: cert=False iters=12 L0=1.41 Lmax=7.10e+06 gap=+167290.4674  (10.2s)
+  diverge  seed  2: cert=False iters=12 L0=1.41 Lmax=7.09e+06 gap=+150052.7619  (10.2s)
+  diverge  seed  3: cert=False iters=12 L0=1.41 Lmax=7.93e+06 gap=+165438.0557  (10.1s)
+  diverge  seed  4: cert=False iters=12 L0=1.41 Lmax=3.87e+06 gap=+63124.2951  (10.1s)
+  diverge  seed  5: cert=False iters=12 L0=1.41 Lmax=4.69e+06 gap=+31082.5810  (9.9s)
+  diverge  seed  6: cert=False iters=12 L0=1.41 Lmax=5.73e+06 gap=+118248.7011  (9.6s)
+  diverge  seed  7: cert=False iters=12 L0=1.41 Lmax=5.31e+06 gap=+93426.5566  (9.9s)
+  diverge  seed  8: cert=False iters=12 L0=1.41 Lmax=3.68e+06 gap=+52925.4025  (9.9s)
+  diverge  seed  9: cert=False iters=12 L0=1.41 Lmax=3.28e+06 gap=+40577.7325  (10.0s)
+  diverge  seed 10: cert=False iters=12 L0=1.41 Lmax=4.56e+06 gap=+78651.3147  (9.4s)
+  diverge  seed 11: cert=False iters=12 L0=1.41 Lmax=7.26e+06 gap=+163226.9093  (9.2s)
+  diverge  seed 12: cert=False iters=12 L0=1.41 Lmax=2.27e+06 gap=+53433.6480  (9.3s)
+  diverge  seed 13: cert=False iters=12 L0=1.41 Lmax=6.86e+06 gap=+60039.2493  (9.8s)
+  diverge  seed 14: cert=False iters=12 L0=1.41 Lmax=2.81e+06 gap=+35399.2419  (10.5s)
+  diverge  seed 15: cert=False iters=12 L0=1.41 Lmax=4.84e+06 gap=+53205.5532  (9.7s)
+  diverge  seed 16: cert=False iters=12 L0=1.41 Lmax=1.40e+07 gap=+319783.1935  (9.4s)
+  diverge  seed 17: cert=False iters=12 L0=1.41 Lmax=5.41e+06 gap=+127549.9007  (9.3s)
+  diverge  seed 18: cert=False iters=12 L0=1.41 Lmax=4.52e+06 gap=+74400.8761  (9.3s)
+  diverge  seed 19: cert=False iters=12 L0=1.41 Lmax=5.09e+06 gap=+58670.8424  (9.3s)
+  certify  seed  0: cert=True iters= 3 L0=1.41 Lmax=3.07e+01 gap=-0.0216  (6.9s)
+  certify  seed  1: cert=True iters= 2 L0=1.41 Lmax=2.70e+01 gap=-0.0285  (5.1s)
+  certify  seed  2: cert=True iters= 2 L0=1.41 Lmax=2.72e+01 gap=-0.0381  (4.4s)
+  certify  seed  3: cert=True iters= 2 L0=1.41 Lmax=2.11e+01 gap=-0.0355  (4.4s)
+  certify  seed  4: cert=True iters= 3 L0=1.41 Lmax=2.85e+01 gap=-0.0305  (5.9s)
+  certify  seed  5: cert=True iters= 3 L0=1.41 Lmax=2.86e+01 gap=-0.0377  (5.6s)
+  certify  seed  6: cert=True iters= 2 L0=1.41 Lmax=2.35e+01 gap=-0.0063  (4.6s)
+  certify  seed  7: cert=True iters= 2 L0=1.41 Lmax=2.24e+01 gap=-0.0310  (4.4s)
+  certify  seed  8: cert=True iters= 3 L0=1.41 Lmax=3.46e+01 gap=-0.0509  (6.1s)
+  certify  seed  9: cert=True iters= 2 L0=1.41 Lmax=3.12e+01 gap=-0.0291  (4.9s)
+  certify  seed 10: cert=True iters= 3 L0=1.41 Lmax=3.47e+01 gap=-0.0557  (5.9s)
+  certify  seed 11: cert=True iters= 2 L0=1.41 Lmax=3.05e+01 gap=-0.0490  (4.5s)
+  certify  seed 12: cert=True iters= 1 L0=1.41 Lmax=1.95e+01 gap=-0.0054  (3.7s)
+  certify  seed 13: cert=True iters= 3 L0=1.41 Lmax=3.13e+01 gap=-0.0457  (5.1s)
+  certify  seed 14: cert=True iters= 2 L0=1.41 Lmax=2.12e+01 gap=-0.0086  (4.8s)
+  certify  seed 15: cert=False iters=12 L0=1.41 Lmax=8.37e+06 gap=+11853.1922  (16.1s)
+  certify  seed 16: cert=True iters= 3 L0=1.41 Lmax=3.33e+01 gap=-0.0538  (5.9s)
+  certify  seed 17: cert=True iters= 4 L0=1.41 Lmax=3.24e+01 gap=-0.0450  (7.1s)
+  certify  seed 18: cert=True iters= 2 L0=1.41 Lmax=2.68e+01 gap=-0.0061  (4.8s)
+  certify  seed 19: cert=True iters= 2 L0=1.41 Lmax=2.33e+01 gap=-0.0423  (4.4s)
+total runtime: 347.5s
+
+  stall   : certified 1/20, diverged 0, stalled 19, median iters 2.0, max L growth 3.98e+01
+  diverge : certified 0/20, diverged 20, stalled 0, median iters None, max L growth 9.88e+06
+  certify : certified 19/20, diverged 1, stalled 0, median iters 2.0, max L growth 5.92e+06
+  wrote /Users/preciado/Desktop/NeuroSymbolic/results/traces.json
+
+=== gridcost: slack/L ratio across certified seeds ===
+  seed  0: slack=0.0494  L_cert=19.70  b=5.933  slack/L=0.00251
+  seed  1: slack=0.0473  L_cert=13.34  b=8.592  slack/L=0.00355
+  seed  2: slack=0.0441  L_cert=4.23  b=3.300  slack/L=0.01042
+  seed  3: slack=0.0472  L_cert=8.29  b=4.799  slack/L=0.00570
+  seed  4: slack=0.0504  L_cert=14.04  b=3.859  slack/L=0.00359
+  seed  5: slack=0.0463  L_cert=6.09  b=3.367  slack/L=0.00760
+  seed  6: slack=0.0396  L_cert=23.52  b=5.748  slack/L=0.00168
+  seed  7: slack=0.0441  L_cert=9.26  b=4.365  slack/L=0.00477
+  seed  8: slack=0.0580  L_cert=5.01  b=2.458  slack/L=0.01157
+  seed  9: slack=0.0515  L_cert=15.84  b=5.371  slack/L=0.00325
+  seed 10: slack=0.0621  L_cert=4.52  b=3.013  slack/L=0.01372
+  seed 11: slack=0.0544  L_cert=3.84  b=3.438  slack/L=0.01416
+  seed 12: slack=0.0330  L_cert=19.48  b=4.380  slack/L=0.00169
+  seed 13: slack=0.0555  L_cert=6.92  b=6.673  slack/L=0.00802
+  seed 14: slack=0.0339  L_cert=17.89  b=4.252  slack/L=0.00189
+  seed 16: slack=0.0596  L_cert=4.12  b=3.005  slack/L=0.01446
+  seed 17: slack=0.0572  L_cert=8.59  b=3.158  slack/L=0.00666
+  seed 18: slack=0.0441  L_cert=26.85  b=5.066  slack/L=0.00164
+  seed 19: slack=0.0486  L_cert=4.47  b=3.632  slack/L=0.01087
+  ratio: median=0.0056954534289796275 min=0.0016432236571661276 max=0.014455753225468387
+  wrote /Users/preciado/Desktop/NeuroSymbolic/results/gridcost.json
+
+=== regenerate fig_heatmaps, fig_traces, fig_gridcost ===
+  figures written
+  -> PASS: main outcomes validated (351.6s)

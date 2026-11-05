@@ -6,20 +6,29 @@ Code and manuscript for the paper "Neurosymbolic Synthesis of Contraction
 Certificates" (V. M. Preciado). The code implements CEGIS-C: a
 counterexample-guided loop that trains a state-dependent contraction metric
 and certifies it with a sound grid oracle. The manuscript is
-`paper/nsp_contraction_paper_ieee.tex` (IEEEtran, single column, lineno,
-draft watermark).
+`paper/nsp_contraction_paper_ieee.tex` (IEEEtran reviewer draft, single column,
+continuous line numbers). README.md
+describes the current reproduction workflow; PLAN.md, REVISION_PLAN.md, and
+P4_FINDINGS.md are historical records rather than a pending task list.
 
 ## Repository layout
 
 ```
-cegis_c.py        core: dynamics, metric class, test functions, learner,
-                  grid oracle, CEGIS loop
-figures.py        experiment runner + figure generation (figs 1-3)
-bounds.py         (TO BE CREATED, Task 1) certified polynomial bounds
-residual.py       (TO BE CREATED, Task 3) Theorem 2 experiment (fig 4)
-results/          JSON files of measured numbers, written by scripts
-paper/            nsp_contraction_paper_ieee.tex + fig_*.pdf
-PLAN.md           the task list; execute tasks in order
+cegis_c.py        core dynamics, metric class, learner, and grid oracle
+bounds.py         polynomial bounds and acceptance checks
+rounding.py       outward interval operations, MPFR enclosures, platform checks
+experiments.py    current multi-seed regimes and figures 1-3
+residual.py       Theorem 2 experiment and figure 4
+bench_pendulum.py non-polynomial benchmark and figure 5
+bench_neural.py   neural metric benchmark and figure 6
+smoke_p1.py       independently reverify a certified operating-grid candidate
+fill_tex.py       validate result inputs and generate paper/numbers.tex
+run_all.py        full reproduction, logs, and source/environment provenance
+package_reproduction.py hash-verified local reviewer archive after a passing run
+results/         scientific JSON outputs, timings, and run records
+paper/           manuscript, generated numbers, figures, and compiled PDF
+figures.py       historical prototype, not the current figure pipeline
+cert_ladder.py   historical diagnostic, not part of run_all.py
 ```
 
 ## Mathematical context (do not rederive; trust these)
@@ -46,9 +55,13 @@ gt(x) = g(x)/tr M(x) (normalized; the oracle and learner use this one).
 
 Grid oracle (sound iff L is a TRUE Lipschitz upper bound): certify iff
 gt(x_i) <= -L*tau on all grid points, tau = covering radius.
-The current `lipschitz_estimate` in cegis_c.py is an EMPIRICAL sampled
-estimate with a 1.5 safety factor. Replacing it with a certified bound is
-Task 1 and is the point of this work session.
+The default verifier uses bounds.py and rounding.py. `lipschitz_estimate`
+remains an EMPIRICAL diagnostic and never supports a certificate. Positive
+answers require outward-rounded bounds, actual-grid coverage, and interval
+grid values. Polynomial construction uses exact rational coefficients;
+transcendental endpoints use MPFR through gmpy2. Nominal rejection screens
+cannot certify. State IEEE binary64/gradual-underflow and MPFR assumptions;
+do not describe sampling tests as a proof of enclosure.
 
 ## Hard rules
 
@@ -61,38 +74,45 @@ Task 1 and is the point of this work session.
    (finer grid first, then subdivision depth), and if it still fails,
    STOP and write results/FAILURE_REPORT.md describing exactly what failed
    and the measured gap.
-3. All randomness seeded (npr.seed). A rerun of any script on the SAME
-   machine must reproduce the JSON up to float formatting. Cross-platform
+3. All randomness seeded (npr.seed). A rerun in the SAME numerical environment
+   must reproduce the scientific values up to float formatting; timings and
+   run metadata vary. Cross-platform
    bitwise reproducibility is NOT expected (BLAS and FP differences steer
    the optimizer); this is exactly why every claim about loop behavior is
    statistical over seeds (PLAN.md Task 2). Never present a single-seed
    outcome as the behavior of a variant.
-4. Keep autograd + numpy + matplotlib only. No torch, no jax, no sympy
+4. Use autograd + numpy + matplotlib for the learner and experiments, and
+   gmpy2/MPFR for directed verification arithmetic (explicitly requested in
+   the outward-rounding revision). No torch, no jax, no sympy
    unless Task 1's hand-rolled polynomial class fails its tests, in which
    case sympy is the approved fallback for constructing coefficients
    (bounds must still be computed by bounds.py, not by sympy heuristics).
 5. Manuscript style (strict): active voice, short direct sentences,
    no em dashes anywhere, never the words "notably" or "importantly",
    no bullet lists in prose, commas and colons to structure ideas.
-6. Do not touch the theorem statements or proofs in the tex. If a measured
-   quantity contradicts a theorem, that is a bug in the code or a soundness
-   violation; investigate, do not edit the theorem.
+6. Preserve theorem statements and proofs unless the user authorizes a
+   mathematical revision. The current eight-issue referee revision explicitly
+   authorizes corrections to hypotheses, proofs, quantifiers, and interpretation.
+   Investigate numerical contradictions rather than changing a theorem to fit
+   experimental values. Differential contraction does not imply finite pairwise
+   convergence without the connecting-flow/domain hypotheses in the manuscript.
 7. LaTeX must compile with zero errors and zero undefined references:
    run pdflatex twice and grep the log before declaring any tex task done.
 8. Figures: regenerate via scripts only, never hand-edit PDFs. Fonts and
    sizes must match the existing figures (matplotlib defaults as in
    figures.py).
 
-## Definition of done (whole session)
+## Definition of done (current reproduction)
 
-- bounds.py exists, passes its acceptance tests (PLAN.md Task 1).
-- cegis_c.py verifier uses the certified bound; safety-factor language
-  removed from code comments.
-- Figures 1-3 regenerated with certified constants; results/*.json updated.
-- residual.py produces fig_residual.pdf and results/residual.json.
-- Manuscript: footnote replaced (exact text in PLAN.md Task 4), new
-  subsection V-D inserted (skeleton in PLAN.md Task 3), all [XX]
-  placeholders filled by the fill script, zero \todo markers remain,
-  compiles clean.
-- `python3 run_all.py` (create it: runs everything in order) succeeds
-  end to end from a clean checkout.
+- Bound and derivative acceptance checks pass before benchmark outputs count.
+- All production scientific results and six figures regenerate from the
+  documented seeded configuration; historical diagnostics stay labeled.
+- Smoke verification certifies at the same grid and depth as its producer.
+- fill_tex.py validates all required inputs and records their content hashes.
+- Two successful LaTeX passes produce the current PDF without errors or
+  undefined references/citations; inspect the rendered pages.
+- `python3 run_all.py` succeeds end to end, with current logs and a manifest
+  recording source/artifact hashes, environment, and stage outcomes.
+- `python3 package_reproduction.py` produces the complete checked local reviewer
+  archive. Do not claim this revision is public until it has actually been
+  published with an immutable identifier.

@@ -1,0 +1,43 @@
+{
+  "verification_backend": {
+    "outward_rounded": true,
+    "backend": "binary64-nextafter with MPFR directed transcendental enclosures",
+    "gmpy2_version": "2.3.0",
+    "mpfr_version": "MPFR 4.2.2",
+    "parameter_semantics": "stored binary64 parameters and grid nodes denote exact real values",
+    "elementary_arithmetic": "IEEE 754 binary64 round-to-nearest ties-to-even, correctly rounded sqrt, gradual underflow",
+    "overflow_policy": "fail closed",
+    "transcendental_precision_bits": 160,
+    "large_batch_transcendental_method": "directed-MPFR node interpolation plus analytic second-derivative remainder",
+    "interpolation_step": 0.0009765625,
+    "interpolation_domain": [
+      -16.0,
+      16.0
+    ]
+  },
+  "outward_rounded": true,
+  "grid_enclosed": true,
+  "rounding_mode": "outward",
+  "candidate": {
+    "seed": 0,
+    "n_grid": 2001,
+    "depth": 3,
+    "certified": true,
+    "iters": 3,
+    "grid_enclosed": true,
+    "outward_rounded": true,
+    "reproduced_from": "experiments.run_variant(True, True, seed=0, n_grid=2001, max_iter=12, depth=3); first certifying seed from results/gridcost.json"
+  },
+  "L_cert": 19.70126046490654,
+  "L_emp_raw": 0.10349393242995321,
+  "L_emp_1p5": 0.15523278647432676,
+  "conservatism_factor": 190.36150238315423,
+  "tau": 0.0014142135623732542,
+  "worst_gt": -0.0494200668662477,
+  "s": 0.021558277120928858,
+  "a": 0.1,
+  "b": 5.933434772621471,
+  "mu1": 1.8663064888806253,
+  "wall_verify_s": 2.7491211891174316,
+  "wall_bounds_s": 0.021446943283081055
+}

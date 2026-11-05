@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "verification_backend": {
+    "outward_rounded": true,
+    "backend": "binary64-nextafter with MPFR directed transcendental enclosures",
+    "gmpy2_version": "2.3.0",
+    "mpfr_version": "MPFR 4.2.2",
+    "parameter_semantics": "stored binary64 parameters and grid nodes denote exact real values",
+    "elementary_arithmetic": "IEEE 754 binary64 round-to-nearest ties-to-even, correctly rounded sqrt, gradual underflow",
+    "overflow_policy": "fail closed",
+    "transcendental_precision_bits": 160,
+    "large_batch_transcendental_method": "directed-MPFR node interpolation plus analytic second-derivative remainder",
+    "interpolation_step": 0.0009765625,
+    "interpolation_domain": [
+      -16.0,
+      16.0
+    ]
+  },
+  "checks": {
+    "test_1b": true,
+    "test_1c_lower_bound": true,
+    "test_1c_monotone": true
+  },
+  "regression_tests": "unittest discovery passed",
+  "checked_at": "2026-11-05T02:27:04.875886+00:00"
+}

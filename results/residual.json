@@ -1,0 +1,163 @@
+{
+  "verification_backend": {
+    "outward_rounded": true,
+    "backend": "binary64-nextafter with MPFR directed transcendental enclosures",
+    "gmpy2_version": "2.3.0",
+    "mpfr_version": "MPFR 4.2.2",
+    "parameter_semantics": "stored binary64 parameters and grid nodes denote exact real values",
+    "elementary_arithmetic": "IEEE 754 binary64 round-to-nearest ties-to-even, correctly rounded sqrt, gradual underflow",
+    "overflow_policy": "fail closed",
+    "transcendental_precision_bits": 160,
+    "large_batch_transcendental_method": "directed-MPFR node interpolation plus analytic second-derivative remainder",
+    "interpolation_step": 0.0009765625,
+    "interpolation_domain": [
+      -16.0,
+      16.0
+    ]
+  },
+  "outward_rounded": true,
+  "grid_enclosed": true,
+  "budget_outward_rounded": true,
+  "rounding_mode": "outward",
+  "eta": 0.038617112570834465,
+  "b_upper": 5.933434772621471,
+  "mu1": 1.8663064888806253,
+  "c_d0": 1.4142135623730951,
+  "c_d1": 1.2247448713915892,
+  "delta_star": 0.002248679023789366,
+  "delta_emp": 0.008994716095157463,
+  "delta_emp_ratio": 4.0,
+  "sweep_endpoint": 0.008994716095157463,
+  "failure_threshold_identified": false,
+  "interpretation": "delta_emp is the largest tested scale with nonpositive measured grid values, not a certified robustness threshold.",
+  "Lg": 9.61388444404702,
+  "n_grid_eta": 4001,
+  "n_grid_meas": 2001,
+  "rows": [
+    {
+      "delta": 0.0001124339511894683,
+      "measured": -0.045484696549452475,
+      "bound": -0.03668625694229274
+    },
+    {
+      "delta": 0.0001349562149067662,
+      "measured": -0.045498621348112056,
+      "bound": -0.03629947662188255
+    },
+    {
+      "delta": 0.00016199003725546663,
+      "measured": -0.04551533487998133,
+      "bound": -0.03583521820624595
+    },
+    {
+      "delta": 0.00019443915338138181,
+      "measured": -0.045535395498223996,
+      "bound": -0.035277961631607346
+    },
+    {
+      "delta": 0.0002333883305924894,
+      "measured": -0.04555947288928969,
+      "bound": -0.034609077924777513
+    },
+    {
+      "delta": 0.0002801396319079266,
+      "measured": -0.045588367822633535,
+      "bound": -0.03380620644039426
+    },
+    {
+      "delta": 0.00033625594375811526,
+      "measured": -0.04562304818985119,
+      "bound": -0.03284250734912646
+    },
+    {
+      "delta": 0.00040361322295812395,
+      "measured": -0.045664671725405614,
+      "bound": -0.03168576438767501
+    },
+    {
+      "delta": 0.00048446320955988434,
+      "measured": -0.0457146275560385,
+      "bound": -0.030297307875687247
+    },
+    {
+      "delta": 0.0005815087020610705,
+      "measured": -0.045774582322483603,
+      "bound": -0.028630721996260548
+    },
+    {
+      "delta": 0.0006979939114054687,
+      "measured": -0.04584653543836814,
+      "bound": -0.026630293124687097
+    },
+    {
+      "delta": 0.0008378129142905588,
+      "measured": -0.04593288527147349,
+      "bound": -0.024229147333387577
+    },
+    {
+      "delta": 0.001005639831354178,
+      "measured": -0.046036508369983464,
+      "bound": -0.021347014810204953
+    },
+    {
+      "delta": 0.001207085082070399,
+      "measured": -0.04616085425235894,
+      "bound": -0.017887546455019658
+    },
+    {
+      "delta": 0.0014488829399237878,
+      "measured": -0.046310058741648064,
+      "bound": -0.013735092949060513
+    },
+    {
+      "delta": 0.0017391166577931116,
+      "measured": -0.04648907936059815,
+      "bound": -0.008750838621858078
+    },
+    {
+      "delta": 0.0020874886894400005,
+      "measured": -0.04670385691873952,
+      "bound": -0.002768160871803891
+    },
+    {
+      "delta": 0.0025056450405515724,
+      "measured": -0.04696150811950861,
+      "bound": 0.0044129399933045205
+    },
+    {
+      "delta": 0.0030075645923259677,
+      "measured": -0.047270553616320765,
+      "bound": 0.013032526705022864
+    },
+    {
+      "delta": 0.0036100264126085768,
+      "measured": -0.04764114419055976,
+      "bound": 0.0233787502822223
+    },
+    {
+      "delta": 0.00433317067669451,
+      "measured": -0.048085519329197246,
+      "bound": 0.03579748286064989
+    },
+    {
+      "delta": 0.005201171949264905,
+      "measured": -0.04861825820257609,
+      "bound": 0.05070388012760742
+    },
+    {
+      "delta": 0.006243047335134377,
+      "measured": -0.0492567431761432,
+      "bound": 0.0685962598915731
+    },
+    {
+      "delta": 0.00749362651512358,
+      "measured": -0.05002169376413784,
+      "bound": 0.09007276074450614
+    },
+    {
+      "delta": 0.008994716095157463,
+      "measured": -0.050937897570988155,
+      "bound": 0.1158513377125034
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+# Reference environment: CPython 3.12.7. Full platform/BLAS details are recorded
+# by run_all.py in results/run_manifest.json for each reproduction.
+numpy==1.26.4
+autograd==1.8.0
+matplotlib==3.9.2
+gmpy2==2.3.0

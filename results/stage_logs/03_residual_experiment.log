@@ -1,0 +1,41 @@
+
+[3/8] residual experiment
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/residual.py
+=== Task 3: residual robustness experiment ===
+selecting a certified candidate ...
+  eta      = 0.03862
+  b_upper  = 5.9334
+  mu1      = 1.8663
+  c_d0     = 1.4142
+  c_d1     = 1.2247
+  delta*   = 0.00225
+    delta=0.0001  meas=-0.04548  bound=-0.03669
+    delta=0.0001  meas=-0.04550  bound=-0.03630
+    delta=0.0002  meas=-0.04552  bound=-0.03584
+    delta=0.0002  meas=-0.04554  bound=-0.03528
+    delta=0.0002  meas=-0.04556  bound=-0.03461
+    delta=0.0003  meas=-0.04559  bound=-0.03381
+    delta=0.0003  meas=-0.04562  bound=-0.03284
+    delta=0.0004  meas=-0.04566  bound=-0.03169
+    delta=0.0005  meas=-0.04571  bound=-0.03030
+    delta=0.0006  meas=-0.04577  bound=-0.02863
+    delta=0.0007  meas=-0.04585  bound=-0.02663
+    delta=0.0008  meas=-0.04593  bound=-0.02423
+    delta=0.0010  meas=-0.04604  bound=-0.02135
+    delta=0.0012  meas=-0.04616  bound=-0.01789
+    delta=0.0014  meas=-0.04631  bound=-0.01374
+    delta=0.0017  meas=-0.04649  bound=-0.00875
+    delta=0.0021  meas=-0.04670  bound=-0.00277
+    delta=0.0025  meas=-0.04696  bound=+0.00441
+    delta=0.0030  meas=-0.04727  bound=+0.01303
+    delta=0.0036  meas=-0.04764  bound=+0.02338
+    delta=0.0043  meas=-0.04809  bound=+0.03580
+    delta=0.0052  meas=-0.04862  bound=+0.05070
+    delta=0.0062  meas=-0.04926  bound=+0.06860
+    delta=0.0075  meas=-0.05002  bound=+0.09007
+    delta=0.0090  meas=-0.05094  bound=+0.11585
+  all measured values below the bound: sampled consistency check PASS
+  largest tested delta with measured grid maximum <= 0: 0.008994716095157463
+  wrote /Users/preciado/Desktop/NeuroSymbolic/paper/fig_residual.pdf
+  wrote /Users/preciado/Desktop/NeuroSymbolic/results/residual.json
+  -> PASS: residual bounds validated (25.3s)

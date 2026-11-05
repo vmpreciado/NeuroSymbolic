@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite the versioned release and the associated research paper."
+title: "Neurosymbolic Synthesis of Contraction Certificates: Verified Reproduction Snapshot and Review Manuscript"
+type: software
+authors:
+  - family-names: Preciado
+    given-names: Victor M.
+version: 1.0.0
+url: "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.0.0"
+repository-code: "https://github.com/vmpreciado/NeuroSymbolic"
