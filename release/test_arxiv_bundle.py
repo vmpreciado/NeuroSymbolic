@@ -96,6 +96,21 @@ class ArxivBundleTests(unittest.TestCase):
             report = json.loads((root / "results/arxiv_bundle.json").read_text())
             self.assertEqual(report["status"], "fail")
 
+    def test_revision_dependencies_are_transitive_and_unused_files_are_excluded(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder)
+            paper=self.fixture(root)
+            with (paper/bundle.MAIN).open("a") as stream:
+                stream.write(r"\input{revision_numbers.tex}\input{revision_tables.tex}")
+            (paper/"revision_numbers.tex").write_text(r"\providecommand{\RevCount}{3}")
+            (paper/"revision_tables.tex").write_text(r"\includegraphics{fig_extension3d.pdf}")
+            (paper/"fig_extension3d.pdf").write_bytes(b"%PDF-1.4\nfigure\n")
+            (paper/"fig_surrogate.pdf").write_bytes(b"unused\n")
+            files=bundle.collect_sources(paper)
+            self.assertIn("fig_extension3d.pdf",files)
+            self.assertNotIn("fig_surrogate.pdf",files)
+            self.assertEqual(len(files),11)
+
 
 if __name__ == "__main__":
     unittest.main()

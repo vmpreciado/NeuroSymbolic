@@ -1,4 +1,4 @@
-# CLAUDE.md — NeuroSymbolic (CEGIS-C for contraction certificates)
+# CLAUDE.md — CEGIS-C for contraction certificates
 
 ## What this repository is
 
@@ -91,8 +91,9 @@ do not describe sampling tests as a proof of enclosure.
    no em dashes anywhere, never the words "notably" or "importantly",
    no bullet lists in prose, commas and colons to structure ideas.
 6. Preserve theorem statements and proofs unless the user authorizes a
-   mathematical revision. The current eight-issue referee revision explicitly
-   authorizes corrections to hypotheses, proofs, quantifiers, and interpretation.
+   mathematical revision. The user authorized implementation of the external
+   review plan, including corrected hypotheses, an idealized finite-grid
+   termination proposition, general-dimensional bounds, and new experiments.
    Investigate numerical contradictions rather than changing a theorem to fit
    experimental values. Differential contraction does not imply finite pairwise
    convergence without the connecting-flow/domain hypotheses in the manuscript.
@@ -113,6 +114,9 @@ do not describe sampling tests as a proof of enclosure.
   undefined references/citations; inspect the rendered pages.
 - `python3 run_all.py` succeeds end to end, with current logs and a manifest
   recording source/artifact hashes, environment, and stage outcomes.
+- All twelve declared stages pass, including the new studies, complete
+  reporting, and a clean arXiv bundle compilation. The fixed-budget Adam
+  implementation is not covered by the idealized termination proposition.
 - `python3 package_reproduction.py` produces the complete checked local reviewer
   archive. Do not claim this revision is public until it has actually been
   published with an immutable identifier.

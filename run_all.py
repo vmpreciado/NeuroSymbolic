@@ -1,4 +1,4 @@
-"""Reproduce and validate all eight stages, stopping at the first failure.
+"""Reproduce and validate every declared stage, stopping at the first failure.
 
 Run ``python3 run_all.py`` from any directory. Complete output is captured in
 results/run_all.log and results/stage_logs/. results/run_manifest.json records
@@ -7,6 +7,7 @@ Successful process exit alone is insufficient: outputs must be fresh and pass
 scientific consistency checks. No empirical bound enters a certificate.
 """
 import contextlib
+import argparse
 import hashlib
 import importlib.metadata
 import io
@@ -25,6 +26,8 @@ HERE = Path(__file__).resolve().parent
 PAPER = HERE / "paper"
 RESULTS = HERE / "results"
 TEX = "nsp_contraction_paper_ieee"
+PRECOMPUTED = {}
+SCIENCE_REPLAY_WORKERS = 1
 
 
 class ValidationError(RuntimeError):
@@ -61,8 +64,10 @@ def sha256(path):
 def source_hashes():
     paths = list(HERE.glob("*.py")) + list(HERE.glob("requirements*.txt"))
     paths += list((HERE / "tests").glob("*.py"))
+    paths += list((HERE / "release").glob("*.py"))
+    paths += list((HERE / "reviews").glob("*.md"))
     paths += [PAPER / (TEX + ".tex"), HERE / "README.md", HERE / "CLAUDE.md",
-              HERE / "RESPONSE_TO_REFEREE.md"]
+              HERE / "RESPONSE_TO_REFEREE.md", HERE / "RESPONSE_TO_CLAUDE.md", HERE / "CITATION.cff"]
     return {str(p.relative_to(HERE)): sha256(p) for p in sorted(paths) if p.is_file()}
 
 
@@ -70,8 +75,12 @@ def artifact_hashes():
     paths = [RESULTS / name for name in (
         "traces.json", "gridcost.json", "residual.json", "pendulum.json",
         "neural.json", "smoke_p1.json", "timing_polynomial.json",
-        "timing_pendulum.json", "timing_neural.json", "rounding_checks.json")]
-    paths += [PAPER / "numbers.tex", PAPER / (TEX + ".pdf")]
+        "timing_pendulum.json", "timing_neural.json", "rounding_checks.json",
+        "revision_experiments.json", "revision_extensions.json", "revision_report.json",
+        "timing_revision.json", "arxiv_bundle.json")]
+    paths += [PAPER / "numbers.tex", PAPER / "revision_numbers.tex",
+              PAPER / "revision_tables.tex", PAPER / (TEX + ".pdf")]
+    paths += list((HERE / "dist").glob("*-claude-revision.tar.gz"))
     paths += list(PAPER.glob("fig_*.pdf")) + list(PAPER.glob("fig_*.png"))
     return {str(p.relative_to(HERE)): sha256(p) for p in sorted(paths) if p.is_file()}
 
@@ -378,8 +387,28 @@ def run_command(command, cwd=HERE):
 
 
 def run_script(script, args=(), outputs=(), validator=None):
-    started_ns = time.time_ns()
-    run_command([sys.executable, "-u", str(HERE / script), *args])
+    prepared=PRECOMPUTED.get(script)
+    if prepared is None:
+        started_ns = time.time_ns()
+        run_command([sys.executable, "-u", str(HERE / script), *args])
+    else:
+        if tuple(args) != prepared["args"]:
+            raise ValidationError("prefetched producer arguments changed")
+        PRECOMPUTED.pop(script)
+        started_ns=prepared["started_ns"]
+        process=prepared["process"]
+        try:
+            code=process.wait()
+        except BaseException:
+            if process.poll() is None:
+                process.terminate()
+                process.wait()
+            raise
+        finally:
+            prepared["stream"].close()
+        print(f"$ {script} (independent producer started earlier; full output follows)",flush=True)
+        print(prepared["path"].read_text(errors="replace"),end="",flush=True)
+        require(code==0,f"prefetched process exited {code}: {script}")
     require_fresh([HERE / p for p in outputs], started_ns)
     for path in outputs:
         if str(path).endswith(".json"):
@@ -387,11 +416,39 @@ def run_script(script, args=(), outputs=(), validator=None):
     return validator() if validator else "fresh outputs validated"
 
 
+def start_prefetch(script,args=()):
+    """Run an independent producer once, preserving exit status and fresh-output epoch."""
+    if script in PRECOMPUTED:
+        raise ValidationError("producer already running: "+script)
+    path=RESULTS/"stage_logs"/("prefetch_"+Path(script).stem+".log")
+    stream=path.open("w",buffering=1)
+    started_ns=time.time_ns()
+    try:
+        process=subprocess.Popen([sys.executable,"-u",str(HERE/script),*args],cwd=HERE,
+                                 stdout=stream,stderr=subprocess.STDOUT,text=True)
+    except BaseException:
+        stream.close()
+        raise
+    PRECOMPUTED[script]=dict(process=process,stream=stream,path=path,
+                             started_ns=started_ns,args=tuple(args))
+    print("Started independent scientific producer: "+script,flush=True)
+
+
+def stop_prefetch():
+    for entry in PRECOMPUTED.values():
+        if entry["process"].poll() is None:
+            entry["process"].terminate()
+            entry["process"].wait()
+        entry["stream"].close()
+    PRECOMPUTED.clear()
+
+
 def bounds_tests():
     import bounds
     import rounding
     require(rounding.self_test() is True, "directed arithmetic acceptance failed")
     run_command([sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"])
+    run_command([sys.executable, "-m", "unittest", "discover", "-s", "release", "-p", "test_*.py", "-v"])
     checks = {name: bool(getattr(bounds, name)(verbose=True)) for name in (
         "test_1b", "test_1c_lower_bound", "test_1c_monotone")}
     require(all(checks.values()), f"bounds acceptance checks failed: {checks}")
@@ -417,8 +474,12 @@ def validate_latex_log(log):
 
 def latex():
     started_ns = time.time_ns()
-    for _ in range(2):
+    for attempt in range(1,5):
         run_command(["pdflatex", "-interaction=nonstopmode", "-halt-on-error", TEX], cwd=PAPER)
+        if attempt>=2:
+            current=(PAPER/(TEX+".log")).read_text(errors="replace")
+            if not re.search(r"Label\(s\) may have changed|rerunfilecheck Warning|Rerun to get",current):
+                break
     log_path = PAPER / (TEX + ".log")
     pdf_path = PAPER / (TEX + ".pdf")
     require_fresh([log_path, pdf_path], started_ns)
@@ -427,6 +488,31 @@ def latex():
     for warning in warnings:
         print("LaTeX warning: " + warning)
     return f"{pages} pages, zero errors/undefined references/citations; {len(warnings)} warning(s)"
+
+
+def validate_revision_experiments():
+    import revision_experiments
+    data = read_json("revision_experiments.json")
+    require_outward(data)
+    revision_experiments.validate_results(data)
+    return "controlled ablation, constrained variants, scale illustration and controls validated"
+
+
+def validate_revision_extensions():
+    import revision_extensions
+    data = read_json("revision_extensions.json")
+    require_outward(data)
+    revision_extensions.validate_results(data,replay_workers=SCIENCE_REPLAY_WORKERS)
+    return "adaptive proof coverage, 3D synthesis and fitted-model transfer validated"
+
+
+def validate_arxiv_bundle():
+    data = read_json("arxiv_bundle.json")
+    require(data.get("status") == "pass" and data.get("clean_build", {}).get("status") == "pass",
+            "arXiv source bundle did not compile cleanly")
+    require(data["clean_build"]["warnings"] == [], "clean arXiv build has layout or reference warnings")
+    require(sha256(HERE / data["archive"]) == data["sha256"], "arXiv archive hash mismatch")
+    return f"{data['member_count']} source files; clean {data['clean_build']['passes']}-pass build, zero warnings"
 
 
 def stages():
@@ -447,17 +533,35 @@ def stages():
             validator=lambda: validate_benchmark(read_json("neural.json"), neural=True))),
         ("P1 smoke diagnostic", lambda: run_script("smoke_p1.py", outputs=("results/smoke_p1.json",),
             validator=lambda: validate_smoke(read_json("smoke_p1.json")))),
-        ("fill_tex", lambda: run_script("fill_tex.py", outputs=("paper/numbers.tex",))),
-        ("pdflatex x2 + log check", latex),
+        ("controlled revision experiments", lambda: run_script("revision_experiments.py", outputs=(
+            "results/revision_experiments.json", "results/timing_revision.json",
+            "paper/fig_ablation.pdf", "paper/fig_scale_chase.pdf"),
+            validator=validate_revision_experiments)),
+        ("adaptive higher-dimensional and surrogate extensions", lambda: run_script("revision_extensions.py", outputs=(
+            "results/revision_extensions.json", "paper/fig_extension3d.pdf", "paper/fig_surrogate.pdf"),
+            validator=validate_revision_extensions)),
+        ("complete certified reporting", lambda: run_script("revision_report.py", outputs=(
+            "results/revision_report.json",))),
+        ("fill_tex", lambda: run_script("fill_tex.py", outputs=("paper/numbers.tex",
+            "paper/revision_numbers.tex", "paper/revision_tables.tex"))),
+        ("pdflatex stable references + log check", latex),
+        ("clean arXiv source bundle", lambda: run_script("release/build_arxiv.py", ("--check",), outputs=(
+            "results/arxiv_bundle.json", "dist/neurosymbolic-arxiv-claude-revision.tar.gz"),
+            validator=validate_arxiv_bundle)),
     ]
 
 
-def main():
+def main(parallel_science=False):
+    global SCIENCE_REPLAY_WORKERS
+    SCIENCE_REPLAY_WORKERS=4 if parallel_science else 1
     pipeline_started = time.perf_counter()
     RESULTS.mkdir(exist_ok=True)
     log_dir = RESULTS / "stage_logs"
     log_dir.mkdir(exist_ok=True)
-    manifest = {"schema_version": 1, "started_at": utc_now(), "status": "running",
+    declared_stages = stages()
+    manifest = {"schema_version": 2, "started_at": utc_now(), "status": "running",
+                "expected_stage_count": len(declared_stages),
+                "execution_mode": "overlapping independent scientific producers" if parallel_science else "sequential",
                 "environment": environment(), "sources_at_start": source_hashes(), "stages": []}
     manifest_path = RESULTS / "run_manifest.json"
 
@@ -472,7 +576,7 @@ def main():
             print(f"Reproduction started {manifest['started_at']}")
             save_manifest()
             try:
-                for index, (name, function) in enumerate(stages(), 1):
+                for index, (name, function) in enumerate(declared_stages, 1):
                     stage_path = log_dir / f"{index:02d}_{name.replace(' ', '_')}.log"
                     item = {"index": index, "name": name, "started_at": utc_now(),
                             "source_sha256": source_hashes(), "status": "running"}
@@ -481,7 +585,7 @@ def main():
                     started = time.perf_counter()
                     with stage_path.open("w", buffering=1) as stage_log:
                         with contextlib.redirect_stdout(Tee(sys.stdout, stage_log)), contextlib.redirect_stderr(Tee(sys.stderr, stage_log)):
-                            print(f"\n[{index}/8] {name}")
+                            print(f"\n[{index}/{len(declared_stages)}] {name}")
                             try:
                                 detail = function()
                                 item.update(status="pass", detail=detail)
@@ -495,12 +599,23 @@ def main():
                     if not all_ok:
                         print("Pipeline stopped; later stages were not run.")
                         break
+                    if parallel_science and name=="bounds self-tests":
+                        start_prefetch("bench_neural.py",("--experiment",))
+                        start_prefetch("revision_experiments.py")
+                    if parallel_science and name=="multi-seed regimes":
+                        start_prefetch("revision_extensions.py")
             except KeyboardInterrupt:
                 all_ok = False
                 manifest["status"] = "interrupted"
                 if manifest["stages"] and manifest["stages"][-1]["status"] == "running":
                     manifest["stages"][-1].update(status="interrupted", finished_at=utc_now())
                 print("Pipeline interrupted; later stages were not run.")
+            except Exception as error:
+                all_ok=False
+                manifest["runner_error"]=f"{type(error).__name__}: {error}"
+                print("Pipeline orchestration failed: "+manifest["runner_error"])
+            finally:
+                stop_prefetch()
             if manifest["status"] != "interrupted":
                 manifest["status"] = "pass" if all_ok else "fail"
             manifest.update(finished_at=utc_now(), sources_at_finish=source_hashes(),
@@ -517,4 +632,7 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--parallel-science",action="store_true",
+                        help="overlap independent scientific producers; per-study timings include contention")
+    sys.exit(main(parallel_science=parser.parse_args().parallel_science))

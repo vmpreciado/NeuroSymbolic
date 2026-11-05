@@ -1,4 +1,10 @@
-# Neurosymbolic Synthesis of Contraction Certificates
+# Counterexample-Guided Synthesis of Contraction Metrics with Certified Verification
+
+This working revision addresses the November 2026 external referee report.
+It is developed on `codex/claude-revision` from immutable release v1.0.1.
+The new experiments and manuscript are local revision artifacts, not a new
+published release. `RESPONSE_TO_CLAUDE.md` records every review disposition;
+`reviews/claude-2026-11-04.md` preserves the source report as review evidence.
 
 Research code and manuscript for CEGIS-C: counterexample-guided learning and
 verification of continuous-time autonomous contraction metrics. The paper
@@ -30,10 +36,12 @@ From the repository root, run:
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 python run_all.py
 ```
 
-The runner executes all eight stages: polynomial-bound acceptance checks,
+The runner executes twelve stages: arithmetic and regression checks,
 three-regime multi-seed experiments, residual robustness, pendulum benchmark,
-neural metric benchmark, smoke verification, LaTeX-number generation, and two
-LaTeX passes. It returns a nonzero exit status on failure. The neural study
+neural metric benchmark, smoke verification, controlled revision experiments,
+adaptive verification and higher-dimensional/learned-surrogate extensions,
+complete certificate reporting, LaTeX-number generation, two LaTeX passes,
+and a clean arXiv source-bundle build. It returns a nonzero exit status on failure. The neural study
 dominates runtime; it evaluates grids with up to 8001 points per axis over 20
 seeds. It retains only the worst counterexamples between evaluation blocks.
 The reference command fixes BLAS threading to one thread for predictable
@@ -47,6 +55,10 @@ The manifest records the environment, source hashes, artifact hashes, and
 stage outcomes and timings. A Git revision alone does not identify a dirty
 working tree; use the recorded file hashes to identify the actual inputs.
 Do not redirect output to `results/run_all.log`: the runner manages that file.
+Option `--parallel-science` overlaps the independent neural, ablation, and
+extension producers after their prerequisites. It keeps separate producer
+logs, checks each exit status and freshness epoch, and stops remaining workers
+on failure. Timings in this mode include competition for machine resources.
 The paper uses a single-column, single-spaced preprint layout with continuous
 line numbers, including displayed equations, for feedback. It retains the
 standard IEEEtran class and omits its double-spaced referee-mode option.
@@ -101,7 +113,7 @@ packaging a source tree containing later editorial changes. Release asset
 
 ## arXiv source bundle
 
-The release asset `neurosymbolic-arxiv-v1.0.1.tar.gz` contains exactly the
+The baseline release asset `neurosymbolic-arxiv-v1.0.1.tar.gz` contains exactly the
 top-level manuscript TeX, `numbers.tex`, and the six included figure PDFs.
 It has no compiled manuscript, logs, experiment data, or nested archive.
 The bibliography is embedded in the TeX, so no separate BibTeX input is needed.
@@ -116,6 +128,35 @@ python release/build_arxiv.py --check
 `results/arxiv_bundle.json` records the archive and member hashes and the
 two-pass clean compilation. Install the documented TeX packages before this
 check. The local build test does not submit anything to arXiv.
+
+For this working revision the output is
+`dist/neurosymbolic-arxiv-claude-revision.tar.gz`. The dependency scanner
+collects the current manuscript, both generated numerical inputs, generated
+tables, and only the figures actually included. It checks a reviewed flat-file
+allowlist, normalized archive metadata, input hashes, and clean PDFLaTeX passes until references stabilize
+(at least two and at most four), with shell escape disabled. The earlier published bundle is unchanged.
+
+## External-review revision studies
+
+`revision_experiments.py` runs the matched raw/normalized and fixed/coupled
+operating-grid ablation, constrained variants, a constructive scale-chase
+illustration, short-horizon sensitivity diagnostics, and a pendulum control.
+Their configurations and every seed outcome are saved in
+`results/revision_experiments.json`, with timings in `results/timing_revision.json`.
+
+`revision_extensions.py` supplies general-dimensional exact polynomial algebra
+and an outward adaptive matrix oracle, a coupled three-dimensional synthesis
+benchmark, matched-candidate oracle checks, and a polynomial surrogate fitted
+to trajectories. The known polynomial truth is used to certify the residual
+and Jacobian globally; sampled fitting errors alone are not residual certificates.
+Adaptive proof budgets can return inconclusive and do not remove worst-case
+dimensional complexity. Results are in `results/revision_extensions.json`.
+
+`revision_report.py` builds the full per-certified-seed constant table and timing
+summaries in `results/revision_report.json`. `fill_tex.py` checks its input hashes
+and writes `paper/revision_numbers.tex` and `paper/revision_tables.tex` alongside
+the original numerical macros. Componentwise medians describe distributions;
+only complete per-candidate rows supply joint guarantees.
 
 ## Scientific outputs and provenance
 

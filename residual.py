@@ -12,6 +12,7 @@ sweep delta, and compare
 Outputs results/residual.json and paper/fig_residual.pdf.
 """
 import json
+import hashlib
 import math
 import os
 import numpy as np
@@ -152,6 +153,8 @@ def plot_residual(info, rows, out_path):
                 label=r"measured $\max_x\lambda_{\max}(C^{\rm true}_\theta(x))$")
     ax.axhline(0.0, color="black", lw=0.7, ls=":")
     ax.axvline(info["delta_star"], color="gray", lw=0.8, ls="--")
+    ax.axhline(info["zero_residual_measured"], color="tab:blue", lw=0.8, ls=":",
+               label=r"measured baseline $\delta=0$")
     ax.axvspan(min(deltas), info["delta_star"], color="tab:green", alpha=0.10,
                label=r"$\delta<\delta^\star$ (certified budget)")
     ax.set_xlabel(r"residual scale $\delta$")
@@ -201,6 +204,7 @@ def main():
     ds = info["delta_star"]
     deltas = list(np.geomspace(0.05 * ds, 4.0 * ds, 25))
     rows = sweep(theta, info, deltas)
+    info["zero_residual_measured"] = sweep(theta, info, [0.0])[0]["measured"]
     for r in rows:
         print(f"    delta={r['delta']:.4f}  meas={r['measured']:+.5f}  "
               f"bound={r['bound']:+.5f}")
@@ -241,6 +245,14 @@ def main():
         "n_grid_eta": info["n_grid_eta"],
         "n_grid_meas": 2001,
         "rows": rows,
+        "zero_residual_measured": info["zero_residual_measured"],
+        "provenance": {"candidate_seed": 0, "depth": 3,
+                       "margin_method": "separate outward raw-test grid check; not normalized slack conversion",
+                       "n_grid_eta": info["n_grid_eta"], "tau": info["tau"],
+                       "worst_raw_grid_upper": info["worst_raw_grid"],
+                       "metric_sha256": hashlib.sha256(json.dumps(
+                           np.asarray(theta).tolist(), sort_keys=True,
+                           separators=(",", ":")).encode()).hexdigest()},
     }
     with open(os.path.join(RESULTS, "residual.json"), "w") as f:
         json.dump(out, f, indent=2, default=float)

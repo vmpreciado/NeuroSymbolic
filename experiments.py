@@ -324,9 +324,9 @@ def plot_traces(all_runs):
     seed, bold median per regime, legend reports the outcome counts."""
     fig, ax = plt.subplots(figsize=(6.0, 3.7), constrained_layout=True)
     style = {
-        "stall":   ("tab:red",    "fixed $\\varepsilon$, coarse grid (stall)"),
-        "diverge": ("tab:orange", "coupled $\\varepsilon_k$, coarse grid (diverge)"),
-        "certify": ("tab:blue",   "coupled $\\varepsilon_k$, operating grid (certify)"),
+        "stall":   ("tab:red",    "fixed margin, coarse grid"),
+        "diverge": ("tab:orange", "coupled margin, coarse grid"),
+        "certify": ("tab:blue",   "coupled margin, operating grid"),
     }
     for name in ["stall", "diverge", "certify"]:
         color, base = style[name]

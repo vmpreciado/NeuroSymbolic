@@ -64,7 +64,11 @@ def fmt(x, sig=4):
         while abs(m) < 1.0:
             m *= 10.0; e -= 1
         return r"%.*g \times 10^{%d}" % (sig, m, e)
-    return "%.*g" % (sig, x)
+    value="%.*g" % (sig,x)
+    if "e" in value.lower():
+        mantissa,exponent=value.lower().split("e")
+        return mantissa+r" \times 10^{"+str(int(exponent))+"}"
+    return value
 
 
 def fmt_directed(x, sig=3, upward=True):
@@ -270,6 +274,8 @@ def main():
     print(f"wrote {OUT}: {len(macros)} macros from {len(sources)} source(s); git {githash}")
     for name, val in macros:
         print(f"  \\{name} = {val}")
+    import revision_report
+    revision_report.render()
 
 
 if __name__ == "__main__":

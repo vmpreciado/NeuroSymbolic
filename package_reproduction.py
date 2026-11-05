@@ -19,12 +19,19 @@ REQUIRED_SOURCES = {
     "bench_neural.py", "smoke_p1.py", "fill_tex.py", "README.md",
     "requirements.txt", "requirements-lock.txt",
     "paper/nsp_contraction_paper_ieee.tex",
+    "revision_experiments.py", "revision_extensions.py", "revision_report.py",
+    "RESPONSE_TO_CLAUDE.md", "release/build_arxiv.py",
 }
 REQUIRED_ARTIFACTS = {
     "results/traces.json", "results/gridcost.json", "results/residual.json",
     "results/pendulum.json", "results/neural.json", "results/smoke_p1.json",
     "results/rounding_checks.json", "paper/numbers.tex",
     "paper/nsp_contraction_paper_ieee.pdf",
+    "results/revision_experiments.json", "results/revision_extensions.json",
+    "results/revision_report.json", "results/timing_revision.json",
+    "results/arxiv_bundle.json", "paper/revision_numbers.tex", "paper/revision_tables.tex",
+    *("paper/fig_" + name + ".pdf" for name in
+      ("ablation", "scale_chase", "extension3d", "surrogate")),
     *("paper/fig_" + name + ".pdf" for name in
       ("traces", "heatmaps", "gridcost", "residual", "pendulum", "neural")),
 }
@@ -53,9 +60,11 @@ def snapshot_files(root):
     manifest_bytes = checked_bytes(root, manifest_path)
     manifest = json.loads(manifest_bytes)
     stages = manifest.get("stages", [])
-    if (manifest.get("status") != "pass" or len(stages) != 8
+    expected = manifest.get("expected_stage_count", 8)
+    if (manifest.get("status") != "pass" or not isinstance(expected, int) or expected < 8
+            or len(stages) != expected
             or any(stage.get("status") != "pass" for stage in stages)):
-        raise ValueError("a complete passing eight-stage reproduction is required")
+        raise ValueError("a complete passing reproduction with every declared stage is required")
     sources = manifest.get("sources_at_finish", {})
     artifacts = manifest.get("artifact_sha256", {})
     if sources != manifest.get("sources_at_start"):

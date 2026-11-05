@@ -1,4 +1,4 @@
-"""Create and optionally compile the minimal v1.0.1 arXiv source archive.
+"""Create and optionally compile the current minimal arXiv source archive.
 
 The archive contains only the main TeX, generated numbers, and six referenced
 PDF figures. It excludes the compiled paper, logs, scientific data, programs,
@@ -18,11 +18,13 @@ import tarfile
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v1.0.1"
+VERSION = "claude-revision"
 MAIN = "nsp_contraction_paper_ieee.tex"
 FIGURES = {"fig_" + name + ".pdf" for name in
            ("traces", "heatmaps", "gridcost", "residual", "pendulum", "neural")}
 EXPECTED = {MAIN, "numbers.tex"} | FIGURES
+ALLOWED = EXPECTED | {"revision_numbers.tex", "revision_tables.tex"} | {
+    "fig_" + name + ".pdf" for name in ("ablation", "scale_chase", "extension3d", "surrogate")}
 SYSTEM_CLASSES = {"IEEEtran"}
 SYSTEM_PACKAGES = {"amsmath", "amssymb", "amsthm", "etoolbox", "lineno",
                    "algorithm", "algpseudocode", "graphicx", "hyperref",
@@ -50,12 +52,14 @@ def uncomment(source):
 
 
 def collect_sources(paper):
-    """Scan the actual literal TeX dependencies and collect exactly eight files."""
+    """Collect exactly the transitive literal dependencies from a reviewed allowlist."""
     paper = Path(paper)
     pending = [MAIN]
     files = {}
     while pending:
         name = pending.pop()
+        if name not in ALLOWED:
+            raise ValueError(f"unreviewed manuscript dependency: {name}")
         if name in files:
             continue
         path = paper / name
@@ -75,8 +79,8 @@ def collect_sources(paper):
             allowed = SYSTEM_CLASSES if kind == "documentclass" else SYSTEM_PACKAGES
             if not set(part.strip() for part in raw.split(",")).issubset(allowed):
                 raise ValueError(f"nonstandard TeX {kind} dependency needs explicit bundling: {raw}")
-    if set(files) != EXPECTED:
-        raise ValueError(f"unexpected manuscript input set: missing={sorted(EXPECTED-set(files))}, extra={sorted(set(files)-EXPECTED)}")
+    if not {MAIN, "numbers.tex"}.issubset(files):
+        raise ValueError("manuscript omits its main source or generated numerical input")
     return files
 
 
@@ -140,18 +144,22 @@ def compile_clean(archive, member_hashes, root):
     for variable in ("TEXINPUTS", "BIBINPUTS", "BSTINPUTS"):
         environment[variable] = ""
     command = ["pdflatex", "-no-shell-escape", "-interaction=nonstopmode", "-halt-on-error", Path(MAIN).stem]
-    for attempt in (1, 2):
+    for attempt in range(1, 5):
         with (directory / f"build-pass-{attempt}.log").open("w") as stream:
             process = subprocess.run(command, cwd=directory, env=environment,
                                      stdout=stream, stderr=subprocess.STDOUT, text=True)
         if process.returncode != 0:
             raise ValueError(f"clean arXiv LaTeX pass {attempt} exited {process.returncode}; see {directory}")
+        if attempt >= 2:
+            current=(directory / Path(MAIN).with_suffix(".log")).read_text(errors="replace")
+            if not re.search(r"Label\(s\) may have changed|rerunfilecheck Warning|Rerun to get",current):
+                break
     log_path = directory / Path(MAIN).with_suffix(".log")
     pdf_path = directory / Path(MAIN).with_suffix(".pdf")
     pages, warnings = validate_latex_log(log_path.read_text(errors="replace"))
     if not pdf_path.read_bytes().startswith(b"%PDF-"):
         raise ValueError("clean arXiv build did not produce a PDF")
-    return {"status": "pass", "passes": 2, "pages": pages, "warnings": warnings,
+    return {"status": "pass", "passes": attempt, "pages": pages, "warnings": warnings,
             "directory": str(directory.relative_to(root)),
             "pdf": str(pdf_path.relative_to(root)), "pdf_sha256": sha(pdf_path.read_bytes()),
             "log": str(log_path.relative_to(root)), "log_sha256": sha(log_path.read_bytes()),
@@ -169,7 +177,8 @@ def build(root=ROOT, check=False, output=None):
     temporary.write_bytes(content)
     temporary.replace(output)
     output.with_name(output.name + ".sha256").write_text(sha(content) + "  " + output.name + "\n")
-    report = {"schema_version": 1, "status": "prepared", "release_tag": VERSION,
+    report = {"schema_version": 2, "status": "prepared", "release_tag": None,
+              "manuscript_revision": VERSION, "publication_status": "local revision; not a published release",
               "kind": "minimal arXiv TeX source bundle",
               "created_at": datetime.now(timezone.utc).isoformat(),
               "archive": str(output.relative_to(root)) if output.is_relative_to(root) else str(output),
