@@ -163,14 +163,14 @@ def main():
         process = subprocess.run([sys.executable, "VERIFY_CURRENT_REPRODUCTION.py"],
                                  cwd=project, capture_output=True, text=True, check=True)
         summary = json.loads(process.stdout)
-        if (summary["status"] != "pass" or summary["version"] != "v1.1.0"
+        if (summary["status"] != "pass" or summary["version"] != manifest["release_tag"]
                 or summary["arxiv_source_files"] != 13):
             raise ValueError("Nested current reproduction verification failed")
         if ((project / "paper/nsp_contraction_paper_ieee.pdf").read_bytes() != read("PAPER_CURRENT.pdf")
                 or (project / "paper/nsp_contraction_paper_ieee.tex").read_bytes() != read("source/nsp_contraction_paper_ieee.tex")):
             raise ValueError("Nested current reproduction uses a different manuscript")
     print("PASS: " + str(len(files)) + " payload files and checksum inventory.")
-    print("PASS: original 12-stage scientific snapshot, v1.1.0 reproduction overlay, and current editorial provenance.")
+    print("PASS: original 12-stage scientific snapshot, v1.1.1 reproduction overlay, and current editorial provenance.")
     print("PASS: current PDF, 13 manuscript inputs, source archive, and build evidence.")
     print("PASS: identical manuscript/metadata abstract within 1,920 characters; no line-numbering hooks.")
     print("Integrity checks do not establish mathematical correctness or rerun experiments.")

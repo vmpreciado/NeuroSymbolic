@@ -118,7 +118,7 @@ do not describe sampling tests as a proof of enclosure.
   reporting, and a clean arXiv bundle compilation. The fixed-budget Adam
   implementation is not covered by the idealized termination proposition.
 - `python3 package_reproduction.py` produces the complete checked local reviewer
-  archive after a fresh full run. The v1.1.0 editorial overlay uses
+  archive after a fresh full run. The v1.1.1 editorial overlay uses
   `release/package_current.py`, with the original twelve-stage snapshot and
   explicit editorial provenance. Do not infer a new experimental run from
   an editorial rebuild.

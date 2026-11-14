@@ -56,7 +56,7 @@ class CurrentReproductionTests(unittest.TestCase):
         self.write(root, "tmp/clean/paper.log", b"clean build pass\n")
         members = {name.removeprefix("paper/"): (root / name).read_bytes()
                    for name in ("paper/nsp_contraction_paper_ieee.tex", "paper/numbers.tex")}
-        bundle_name = "dist/neurosymbolic-arxiv-v1.1.0.tar.gz"
+        bundle_name = "dist/neurosymbolic-arxiv-v1.1.1.tar.gz"
         bundle_bytes = build_arxiv.archive_bytes(members)
         self.write(root, bundle_name, bundle_bytes)
         self.write(root, bundle_name + ".sha256", (current.digest(bundle_bytes) + "  " + Path(bundle_name).name + "\n").encode())
@@ -140,7 +140,7 @@ class CurrentReproductionTests(unittest.TestCase):
             self.fixture(root)
             archive, _, _ = current.package(root)
             with zipfile.ZipFile(archive, "a") as packed:
-                packed.writestr("neurosymbolic-reproduction-v1.1.0/uninventoried.txt", b"untracked")
+                packed.writestr("neurosymbolic-reproduction-v1.1.1/uninventoried.txt", b"untracked")
             with self.assertRaisesRegex(ValueError, "uninventoried"):
                 current.extract_checked(archive, root / "extract")
 

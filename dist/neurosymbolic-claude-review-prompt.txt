@@ -58,8 +58,8 @@ DEEP CHECKS
    Check the comparisons with Jaffe et al. and Davydov directly; assess whether
    the stated distinctions establish a sufficient contribution beyond prior work.
 10. Audit reproducibility and provenance: distinguish the original full-run
-    snapshot from the final v1.1.0 editorial overlay and the published v1.0.1
-    baseline. Check whether the immutable v1.1.0 release provides the current
+    snapshot from the final v1.1.1 editorial overlay and the published v1.0.1
+    baseline. Check whether the immutable v1.1.1 release provides the current
     evidence and whether that evidence supports the manuscript. Review the source
     bundle, AI disclosure, figures/tables, notation and presentation. Assess
     whether the stated neural and symbolic roles support the title and scope.

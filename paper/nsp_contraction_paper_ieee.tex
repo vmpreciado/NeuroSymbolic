@@ -625,7 +625,20 @@ Tables~\ref{tab:certconstants} and \ref{tab:certsummaries} give complete represe
 
 The results establish sound positive certificates within the stated domains and finite computational budgets. They do not establish completeness of the numerical learners. The scale sequence is constructive, the neural and polynomial learners are not a controlled expressiveness comparison, and the dimensional grid extrapolation assumes a fixed measured ratio. The three-dimensional benchmark extends the implementation beyond the plane but does not remove worst-case subdivision growth. The surrogate transfer uses known truth to certify global residuals. Variational and finite-distance conclusions retain the flow conditions of Remark~\ref{rem:finite} for the relevant true or model dynamics.
 
+% Keep the generated table contents unchanged while allowing the conclusion
+% to follow the final table on the same page rather than on a new float page.
+\FloatBarrier
+\begingroup
+\makeatletter
+\renewenvironment{table}[1][]{%
+  \par\addvspace{\intextsep}\noindent
+  \begin{minipage}{\linewidth}\def\@captype{table}%
+}{%
+  \end{minipage}\par\addvspace{\intextsep}%
+}
+\makeatother
 \IfFileExists{revision_tables.tex}{\input{revision_tables.tex}}{}
+\endgroup
 
 \FloatBarrier
 \section{Conclusion}
@@ -636,7 +649,7 @@ We studied counterexample-guided synthesis of contraction metrics with sound ver
 The matched polynomial operating-grid ablation did not demonstrate an advantage in certification counts from trace normalization or margin coupling within the tested budgets. The contribution centers on the analysis of failure mechanisms and sound certification; these results do not establish the training choices as necessary or generally superior. The experiments also distinguish a constructive scale sequence, adaptive verification, and a known-truth fitted-surrogate test. The next methodological questions concern learner progress under practical constraints and verification cost on less structured higher-dimensional systems. Extensions to controller synthesis could use dual control-contraction-metric formulations \cite{manchester2017} or direct joint controller-and-primal-metric learning \cite{davydov2025partitioning,harapanahalli2026}.
 
 \subsection*{Data and code availability}
-Immutable release \texttt{v1.1.0} archives the current manuscript without reviewer line numbers, its tested arXiv source bundle, the independent-review package, and the verified reproduction \cite{nsp_release}. It preserves the original passing twelve-stage scientific snapshot, including result files, input and artifact hashes, numerical environment, and stage logs, alongside the current editorial sources and provenance linking the rebuilt paper to those results. The publication rebuild reuses the verified scientific results; it does not claim a new experimental run. The earlier immutable \texttt{v1.0.1} baseline remains unchanged.
+Immutable release \texttt{v1.1.1} archives the current manuscript without reviewer line numbers, its tested arXiv source bundle, the independent-review package, and the verified reproduction \cite{nsp_release}. It preserves the original passing twelve-stage scientific snapshot, including result files, input and artifact hashes, numerical environment, and stage logs, alongside the current editorial sources and provenance linking the rebuilt paper to those results. The publication rebuild reuses the verified scientific results; it does not claim a new experimental run. The earlier immutable \texttt{v1.0.1} baseline remains unchanged.
 
 \subsection*{Acknowledgment of AI assistance}
 OpenAI Codex assisted with mathematical analysis and exposition, literature searches and reference checking, manuscript drafting and revision, software implementation, and execution and checking of the computational pipeline. Anthropic Claude supplied a critical review that informed the revision. The author retains responsibility for the final manuscript, code, interpretation of the results, and scientific claims.
@@ -763,8 +776,8 @@ L.~Fousse, G.~Hanrot, V.~Lef\`evre, P.~P\'elissier, and P.~Zimmermann,
 \bibitem{nsp_release}
 V.~M.~Preciado,
 ``Neurosymbolic synthesis of contraction metrics with certified verification: Verified reproduction and submission artifacts,''
-version v1.1.0, GitHub release, 2026. [Online]. Available:
-\url{https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.0}
+version v1.1.1, GitHub release, 2026. [Online]. Available:
+\url{https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.1}
 
 \bibitem{fitzsimmons2024}
 M.~Fitzsimmons and J.~Liu,

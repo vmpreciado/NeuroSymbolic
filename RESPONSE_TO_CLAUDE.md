@@ -104,3 +104,14 @@ All four requested points are addressed in the v1.1.0 manuscript and release.
 
 The abstract's negative certification-count finding, mathematical statements,
 proofs, numerical results, and disclosed limitations are preserved.
+
+
+## Optional presentation and navigation cleanup (v1.1.1)
+
+The final table is integrated with narrative text by adjusting float placement,
+without editing generated table values, scientific statements, or proofs.
+The public default branch receives a navigation README that directs readers to
+versioned paper, source, reproduction, and review assets and instructs a tag
+checkout before running the current pipeline. The historical code on that branch
+is preserved. Immutable release v1.1.0 remains unchanged; v1.1.1 records this
+presentation-only rebuild and updates the current release citation.

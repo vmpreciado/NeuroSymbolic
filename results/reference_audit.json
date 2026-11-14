@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "status": "pass",
-  "verified_at": "2026-11-14T16:54:50.298995+00:00",
-  "scope": "Preserves the 31-source literature audit and updates the release citation to the prepared v1.1.0 artifacts. Public release status is verified separately after publication; the unchanged prior audit is preserved.",
+  "verified_at": "2026-11-14T19:14:18.452299+00:00",
+  "scope": "Preserves the 31-source literature audit and updates only the release citation for the prepared layout-only v1.1.1 artifacts. Earlier audit and immutable v1.1.0 are preserved. Public status is checked separately after publication.",
   "entry_count": 31,
   "nonexistent_references": [],
   "entries": [
@@ -472,7 +472,7 @@
       "key": "nsp_release",
       "exists": true,
       "primary_sources": [
-        "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.0"
+        "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.1"
       ],
       "metadata": {
         "authors": [
@@ -480,12 +480,12 @@
         ],
         "title": "Neurosymbolic Synthesis of Contraction Metrics with Certified Verification: Verified Reproduction and Submission Artifacts",
         "year": 2026,
-        "version": "v1.1.0",
+        "version": "v1.1.1",
         "venue": "GitHub release"
       },
       "corrections": [],
-      "context_check": "Identifies the current verified scientific snapshot and final editorial reproduction prepared for immutable release v1.1.0. Publication and public asset hashes are checked separately after all assets are uploaded; no new experimental run is claimed.",
-      "publication_check": "pending release publication; verify separately before declaring the task complete"
+      "context_check": "Identifies the same verified twelve-stage scientific snapshot and a layout/citation-only editorial reproduction prepared for immutable v1.1.1. The earlier immutable v1.1.0 release is unchanged. Publication and public asset hashes are checked separately.",
+      "publication_check": "pending release publication; verify separately before declaring task complete"
     },
     {
       "key": "fitzsimmons2024",

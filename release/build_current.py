@@ -1,4 +1,4 @@
-"""Rebuild the v1.1.0 editorial paper from the unchanged verified science.
+"""Rebuild the v1.1.1 layout-only paper from the unchanged verified science.
 
 This validates saved results and replays adaptive certificates. It does not
 rerun learning or replace the original twelve-stage run manifest.
@@ -12,20 +12,24 @@ from pathlib import Path
 import re
 import shutil
 import sys
+import tarfile
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-VERSION = "v1.1.0"
-REPORT = "results/editorial_v1.1.0.json"
-LOG = "results/editorial_v1.1.0.log"
+VERSION = "v1.1.1"
+REPORT = "results/editorial_v1.1.1.json"
+LOG = "results/editorial_v1.1.1.log"
 PARENT = "dist/neurosymbolic-reproduction-claude-revision.zip"
 PARENT_SHA = "c1cdea042cca4f5495a3ed025174570bb68e494df2695641af2e97d91437eb39"
+PRECEDING_BUNDLE = "dist/neurosymbolic-arxiv-v1.1.0.tar.gz"
+PRECEDING_BUNDLE_SHA = "175b3936a04a53be327065235b9cc71ebd207d1abe421dad7fa7367f55253036"
 CURRENT_INPUTS = (
     "paper/nsp_contraction_paper_ieee.tex", "README.md", "CITATION.cff",
     "CLAUDE.md", "RESPONSE_TO_CLAUDE.md", "release/build_current.py",
     "release/package_current.py", "release/test_current_package.py",
-    "release/build_review_packet.py", "release/RELEASE_NOTES_v1.1.0.md",
+    "release/build_review_packet.py", "release/RELEASE_NOTES_v1.1.1.md",
+    "release/DEFAULT_BRANCH_README.md",
     "release/review_packet/START_HERE.txt", "release/review_packet/REVIEW_PROMPT.txt",
     "release/review_packet/VERIFY_PACKAGE.py",
 )
@@ -91,6 +95,16 @@ def main():
         raise ValueError("The arXiv metadata abstract is invalid")
     if "did not demonstrate an advantage in certification counts within the tested budgets" not in abstract:
         raise ValueError("Main empirical finding is missing")
+    if sha(read(PRECEDING_BUNDLE)) != PRECEDING_BUNDLE_SHA:
+        raise ValueError("The preceding immutable v1.1.0 source bundle changed")
+    with tarfile.open(ROOT / PRECEDING_BUNDLE, "r:gz") as archive:
+        preceding_tex = archive.extractfile("nsp_contraction_paper_ieee.tex").read().decode()
+    preceding_abstract = re.search(r"\\begin\{abstract\}\s*(.*?)\s*\\end\{abstract\}", preceding_tex, re.S).group(1)
+    formal_pattern = r"\\begin\{(theorem|proposition|lemma|corollary|definition|assumption|remark|proof)\}.*?\\end\{\1\}"
+    preceding_formal = [match.group() for match in re.finditer(formal_pattern, preceding_tex, re.S)]
+    current_formal = [match.group() for match in re.finditer(formal_pattern, tex, re.S)]
+    if abstract != preceding_abstract or current_formal != preceding_formal:
+        raise ValueError("The layout-only revision changed the abstract or formal mathematics")
     audit = json.loads(read("results/reference_audit.json"))
     keys = re.findall(r"\\bibitem\{([^}]+)\}", tex)
     citations = {key.strip() for group in re.findall(r"\\cite\{([^}]+)\}", tex) for key in group.split(",")}
@@ -132,7 +146,7 @@ def main():
         latex_status = run_all.latex()
         print(latex_status, flush=True)
         bundle = build_arxiv.build(root=ROOT, check=True,
-                                   output=ROOT / "dist/neurosymbolic-arxiv-v1.1.0.tar.gz")
+                                   output=ROOT / "dist/neurosymbolic-arxiv-v1.1.1.tar.gz")
         bundle.update(release_tag=VERSION, manuscript_revision=VERSION,
                       publication_status="prepared release asset; public publication is verified separately")
         (ROOT / "results/arxiv_bundle.json").write_text(json.dumps(bundle, indent=2) + "\n")
@@ -147,15 +161,17 @@ def main():
         if sha(read(name)) != info["final_sha256"]:
             raise ValueError("Editorial input changed during the build: " + name)
     (ROOT / "dist/arxiv_abstract.txt").write_text(abstract + "\n")
-    for name in ("dist/neurosymbolic-paper-v1.1.0.pdf", "dist/neurosymbolic_paper_without_line_numbers.pdf",
+    for name in ("dist/neurosymbolic-paper-v1.1.1.pdf", "dist/neurosymbolic_paper_without_line_numbers.pdf",
                  "dist/paper_without_line_numbers.pdf"):
         shutil.copyfile(ROOT / "paper/nsp_contraction_paper_ieee.pdf", ROOT / name)
     outputs = (
-        "paper/nsp_contraction_paper_ieee.pdf", "dist/neurosymbolic-paper-v1.1.0.pdf",
-        "dist/arxiv_abstract.txt", "dist/neurosymbolic-arxiv-v1.1.0.tar.gz",
-        "dist/neurosymbolic-arxiv-v1.1.0.tar.gz.sha256", "results/arxiv_bundle.json",
-        "results/reference_audit.json", "results/reference_audit_before_v1.1.0.json", LOG,
-        "results/reference_audit_before_bullo.json",
+        "paper/nsp_contraction_paper_ieee.pdf", "dist/neurosymbolic-paper-v1.1.1.pdf",
+        "dist/arxiv_abstract.txt", "dist/neurosymbolic-arxiv-v1.1.1.tar.gz",
+        "dist/neurosymbolic-arxiv-v1.1.1.tar.gz.sha256", "results/arxiv_bundle.json",
+        "results/reference_audit.json", "results/reference_audit_before_v1.1.1.json", LOG,
+        "results/reference_audit_before_v1.1.0.json", "results/reference_audit_before_bullo.json",
+        "results/editorial_v1.1.0.json", "results/editorial_v1.1.0.log",
+        PRECEDING_BUNDLE, PRECEDING_BUNDLE + ".sha256",
         *("results/editorial_" + name + suffix for name in (
             "empirical_finding", "references_ai", "no_lines", "abstract", "neurosymbolic", "bullo_positioning"
         ) for suffix in (".json", ".log")),
@@ -163,6 +179,9 @@ def main():
     report = {
         "schema_version": 1, "kind": "editorial-only rebuild", "status": "pass",
         "built_at": started, "verified_at": datetime.now(timezone.utc).isoformat(),
+        "revision_scope": "layout and release-navigation update; scientific results unchanged",
+        "preceding_release": {"tag": "v1.1.0", "source_bundle": PRECEDING_BUNDLE,
+                              "source_bundle_sha256": PRECEDING_BUNDLE_SHA},
         "title": title, "release_tag": VERSION,
         "publication_status": "prepared for immutable release; publication is checked separately",
         "scientific_experiments_rerun": False,
@@ -177,11 +196,13 @@ def main():
                      "empirical_finding_preserved": True},
         "arxiv_bundle": bundle["archive"], "saved_result_validation": validations,
         "adaptive_replay_workers": run_all.SCIENCE_REPLAY_WORKERS,
-        "changes": ["dual CCM and direct primal controller synthesis distinguished",
-                    "novelty hierarchy clarified", "Davydov training objective compared explicitly",
-                    "availability and citation identify current immutable v1.1.0 assets"],
+        "changes": ["table float layout compacted without changing generated table data",
+                    "current release citation updated to immutable v1.1.1",
+                    "release navigation identifies the versioned current source and reproduction"],
         "checks": {"latex": latex_status, "clean_arxiv_build": "pass",
                    "original_scientific_snapshot_unchanged": True,
+                   "abstract_unchanged_from_v1.1.0": True,
+                   "formal_environments_unchanged_from_v1.1.0": len(current_formal),
                    "visual_inspection": "Required separately before publication; not an automated build assertion"},
     }
     (ROOT / REPORT).write_text(json.dumps(report, indent=2) + "\n")

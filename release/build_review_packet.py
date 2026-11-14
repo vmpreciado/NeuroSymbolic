@@ -14,8 +14,8 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = Path(__file__).resolve().parent / "review_packet"
 DATE = "2026-11-14"
-EDITORIAL_REPORT = "results/editorial_v1.1.0.json"
-NAME = "neurosymbolic-claude-deep-review-v1.1.0"
+EDITORIAL_REPORT = "results/editorial_v1.1.1.json"
+NAME = "neurosymbolic-claude-deep-review-v1.1.1"
 OUT = ROOT / "dist" / (NAME + ".zip")
 PAYLOAD = {}
 ORIGINS = {}
@@ -71,7 +71,10 @@ def main():
         if digest((ROOT / name).read_bytes()) != expected:
             raise ValueError("Scientific input/output changed: " + name)
     for name in ("START_HERE.txt", "REVIEW_PROMPT.txt", "VERIFY_PACKAGE.py"):
-        add(name, (DOCS / name).read_bytes())
+        content = (DOCS / name).read_bytes()
+        if name == "START_HERE.txt":
+            content = content.replace(b"{PAPER_PAGES}", str(report["pages"]).encode())
+        add(name, content)
     copy("PAPER_CURRENT.pdf", "paper/nsp_contraction_paper_ieee.pdf")
     copy("ARXIV_ABSTRACT.txt", "dist/arxiv_abstract.txt")
     pdftotext = shutil.which("pdftotext")
@@ -101,7 +104,9 @@ def main():
             copy("code/" + origin, origin)
         elif origin.startswith("results/"):
             copy("evidence/" + origin, origin)
-    for origin in ("results/editorial_v1.1.0.json",
+    for origin in ("results/editorial_v1.1.1.json",
+                   "results/editorial_v1.1.1.log",
+                   "results/editorial_v1.1.0.json",
                    "results/editorial_v1.1.0.log",
                    "results/editorial_empirical_finding.json",
                    "results/editorial_empirical_finding.log",
@@ -153,7 +158,7 @@ def main():
             copy("evidence/current_outputs/" + Path(origin).name, origin)
     manifest = {
         "schema_version": 1,
-        "kind": "Independent deep pre-arXiv review packet for immutable release v1.1.0",
+        "kind": "Independent deep pre-arXiv review packet for immutable release v1.1.1",
         "prepared_at": datetime.now(ZoneInfo("America/New_York")).isoformat(),
         "current_paper": {"pdf": "PAPER_CURRENT.pdf", "pages": report["pages"],
                           "reviewer_line_numbers": False,
@@ -164,12 +169,12 @@ def main():
                           "title": report["title"]},
         "scientific_experiments_rerun_for_packaging": False,
         "current_editorial_report": EDITORIAL_REPORT,
-        "release_tag": "v1.1.0",
-        "release_url": "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.0",
+        "release_tag": "v1.1.1",
+        "release_url": "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.1",
         "files": {name: {"sha256": digest(content), "size_bytes": len(content),
                          **({"origin": ORIGINS[name]} if name in ORIGINS else {})}
                   for name, content in sorted(PAYLOAD.items())},
-        "provenance_note": "Original full scientific snapshot is unchanged; current editorial report identifies the final manuscript. Prepared as an asset of immutable release v1.1.0. Prior reviews are optional history. Checksums establish integrity, not scientific correctness."
+        "provenance_note": "Original full scientific snapshot is unchanged; current editorial report identifies the final manuscript. Prepared as an asset of immutable release v1.1.1. Prior reviews are optional history. Checksums establish integrity, not scientific correctness."
     }
     PAYLOAD["PACKAGE_MANIFEST.json"] = (json.dumps(manifest, indent=2) + "\n").encode()
     PAYLOAD["SHA256SUMS.txt"] = "".join(digest(content) + "  " + name + "\n"

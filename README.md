@@ -1,14 +1,16 @@
 # Neurosymbolic Synthesis of Contraction Metrics with Certified Verification
 
-This release addresses the November 2026 external referee report and the final novelty/comparison review.
+This release preserves the November 2026 referee and novelty revisions and adds a table-layout and repository-navigation cleanup.
 The neural extension couples a learned metric factor to explicit contraction
 conditions, analytic/exact algebra where applicable, and outward-rounded
 verification. The main controlled ablations use fixed polynomial features;
 the neural parametrization is evaluated separately.
+The presentation update lets the final table share a page with narrative text.
+Scientific results, generated numerical inputs, and formal statements are unchanged.
 The introduction distinguishes certificate search for a fixed vector field
 from contracting-model architectures and partitioned neural controller/metric
 training, with explicit comparisons to Jaffe et al. and Davydov.
-Release [v1.1.0](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.0)
+Release [v1.1.1](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.1)
 archives the current manuscript and verified reproduction. It was developed on
 `codex/claude-revision` from immutable release v1.0.1. `RESPONSE_TO_CLAUDE.md` records every review disposition;
 `reviews/claude-2026-11-04.md` preserves the source report as review evidence.
@@ -86,11 +88,11 @@ same passing snapshot produces the same ZIP bytes.
 
 ## Published snapshot and final manuscript
 
-[Immutable release v1.1.0](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.0)
+[Immutable release v1.1.1](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.1)
 contains the current paper without reviewer line numbers, the tested arXiv source
 bundle, the complete current reproduction, and the Claude independent-review
 package. `CITATION.cff` and reference [18] in the paper identify this release.
-The earlier immutable v1.0.0 and v1.0.1 releases remain unchanged.
+The earlier immutable v1.0.0, v1.0.1, and v1.1.0 releases remain unchanged.
 
 The scientific evidence comes from a passing twelve-stage run. Its exact original
 archive is preserved byte-for-byte as `neurosymbolic-reproduction-scientific-verified.zip`
@@ -98,7 +100,7 @@ with SHA256 `c1cdea042cca4f5495a3ed025174570bb68e494df2695641af2e97d91437eb39`.
 Its manifest, stage logs, learned parameters, proof records, figures, and numerical
 results are unchanged. Its embedded manuscript predates the final editorial edits.
 
-`neurosymbolic-reproduction-v1.1.0.zip` is the complete current runnable project.
+`neurosymbolic-reproduction-v1.1.1.zip` is the complete current runnable project.
 It overlays the final manuscript and metadata on the unchanged scientific files,
 preserves the original scientific archive under `provenance/`, and provides
 `SNAPSHOT.json` and a standalone `VERIFY_CURRENT_REPRODUCTION.py`. After extraction,
@@ -106,7 +108,7 @@ run that verifier with Python 3.12 before rebuilding. The verifier checks hashes
 original run evidence, and the declared editorial changes; it does not establish
 mathematical correctness or rerun experiments.
 
-`results/editorial_v1.1.0.json` records the source changes, reused scientific
+`results/editorial_v1.1.1.json` records the source changes, reused scientific
 snapshot, saved-result validation, new manuscript compilation, and clean arXiv
 build. This release does not claim a new full experimental run. To create a new
 scientific run, use `run_all.py`; the original strict `package_reproduction.py`
@@ -124,7 +126,7 @@ They do not publish a GitHub release. `release/SHA256SUMS` lists the release ass
 
 ## arXiv source bundle
 
-Release asset `neurosymbolic-arxiv-v1.1.0.tar.gz` contains thirteen flat manuscript
+Release asset `neurosymbolic-arxiv-v1.1.1.tar.gz` contains thirteen flat manuscript
 inputs: the main TeX source with embedded bibliography, both generated numerical
 inputs, generated tables, and nine included figure PDFs. It contains no compiled
 manuscript, logs, experiment data, or nested archive. The manuscript uses a
@@ -133,7 +135,7 @@ single-column, single-spaced layout without reviewer line numbers.
 To regenerate it and test compilation after extraction into a clean directory:
 
 ```sh
-python release/build_arxiv.py --check --output dist/neurosymbolic-arxiv-v1.1.0.tar.gz
+python release/build_arxiv.py --check --output dist/neurosymbolic-arxiv-v1.1.1.tar.gz
 ```
 
 `results/arxiv_bundle.json` records the member hashes and clean compilation.

@@ -19,8 +19,8 @@ import tempfile
 import zipfile
 
 
-VERSION = "v1.1.0"
-REPORT = "results/editorial_v1.1.0.json"
+VERSION = "v1.1.1"
+REPORT = "results/editorial_v1.1.1.json"
 ORIGINAL = "provenance/original-scientific-snapshot.zip"
 ROOT = (Path(__file__).resolve().parent if Path(__file__).name == "VERIFY_CURRENT_REPRODUCTION.py"
         else Path(__file__).resolve().parents[1])

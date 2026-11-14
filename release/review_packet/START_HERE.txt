@@ -3,7 +3,7 @@ Prepared: November 14, 2026 (America/New_York)
 
 Paper: Neurosymbolic Synthesis of Contraction Metrics with Certified Verification
 Author: Victor M. Preciado
-Current manuscript: PAPER_CURRENT.pdf, 26 pages, without reviewer line numbers.
+Current manuscript: PAPER_CURRENT.pdf, {PAPER_PAGES} pages, without reviewer line numbers.
 
 HOW TO USE
 1. Extract this package and start a fresh Claude chat.
@@ -33,7 +33,7 @@ FILE MAP
 - evidence/results/: scientific outputs, saved proof records, full-run stage
   logs, current editorial-build evidence and the reference audit.
 - evidence/clean_arxiv_build/: the current clean-source compiled PDF and logs.
-- reproduction/: the complete current v1.1.0 reproduction, unchanged original
+- reproduction/: the complete current v1.1.1 reproduction, unchanged original
   scientific snapshot, minimal arXiv source archive, and their checksums.
 - optional_history/: earlier referee report and response records, provided
   only for a later comparison after the independent first pass.
@@ -59,19 +59,21 @@ now centers on the distinction between learning a metric and establishing its
 dynamical guarantee. The current bibliography has 31 entries.
 Scientific source, results and original
 full-run evidence were reused unchanged. These later edits did not rerun the
-experiments. evidence/results/editorial_v1.1.0.json links the unchanged
+experiments. evidence/results/editorial_v1.1.1.json links the unchanged
 full snapshot to the CURRENT TeX, PDF, source bundle and reference audit.
 evidence/results/editorial_empirical_finding.json, editorial_references_ai.json
-editorial_no_lines.json, editorial_abstract.json, editorial_neurosymbolic.json
-and editorial_bullo_positioning.json
-are earlier editorial checkpoints; their output hashes describe those earlier
-versions, not the current PDF. The original run_manifest.json is preserved unchanged and should
+editorial_no_lines.json, editorial_abstract.json, editorial_neurosymbolic.json,
+editorial_bullo_positioning.json and editorial_v1.1.0.json are earlier editorial
+checkpoints; their output hashes describe those earlier versions, not the current PDF. The original run_manifest.json is preserved unchanged and should
 not be read as asserting that the current editorial PDF was the full-run PDF.
 
-The published v1.0.1 release is an older baseline. This package is prepared as an
-asset of immutable release v1.1.0:
-https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.0
-No arXiv submission is claimed. The final revision clarifies the novelty hierarchy,
+The published v1.0.1 release is an older baseline; v1.1.0 is the preceding
+immutable revision. This package is prepared as an asset of immutable release
+v1.1.1:
+https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.1
+No arXiv submission is claimed. The v1.1.1 changes tighten table placement and
+update release navigation/citation. Scientific results and formal mathematics are
+unchanged from v1.1.0. The preceding scientific revision clarifies the novelty hierarchy,
 the partition-certificate versus sampled-hinge objective, and the distinction
 between dual CCM formulations and direct primal controller/metric learning.
 Tests, hashes and previous AI audits provide evidence; they do not establish
@@ -93,8 +95,8 @@ be copied elsewhere first if you want to keep the review package unchanged.
 
 REPRODUCE THE FULL SCIENTIFIC PIPELINE
 Work outside the extracted review-package directory:
-1. Extract reproduction/neurosymbolic-reproduction-v1.1.0.zip.
-   Its project folder is neurosymbolic-reproduction-v1.1.0/ and is runnable
+1. Extract reproduction/neurosymbolic-reproduction-v1.1.1.zip.
+   Its project folder is neurosymbolic-reproduction-v1.1.1/ and is runnable
    directly, with the final manuscript already in paper/.
 2. Run python3 VERIFY_CURRENT_REPRODUCTION.py in that project directory.
    It checks the current overlay and preserved original scientific archive.
