@@ -8,6 +8,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path, PurePosixPath
+import stat
 import zipfile
 
 
@@ -21,6 +22,11 @@ REQUIRED_SOURCES = {
     "paper/nsp_contraction_paper_ieee.tex",
     "revision_experiments.py", "revision_extensions.py", "revision_report.py",
     "RESPONSE_TO_CLAUDE.md", "release/build_arxiv.py",
+    "application_comparison.py", "application_protocol.json",
+    "application_baseline.py", "application_verifier.py", "application_report.py",
+    "comparison_sources/fitzsimmons_liu_2024.json",
+    "comparison_sources/preliminary_application_summary.json",
+    "release/build_application_packet.py", "release/verify_application_packet.py",
 }
 REQUIRED_ARTIFACTS = {
     "results/traces.json", "results/gridcost.json", "results/residual.json",
@@ -30,6 +36,8 @@ REQUIRED_ARTIFACTS = {
     "results/revision_experiments.json", "results/revision_extensions.json",
     "results/revision_report.json", "results/timing_revision.json",
     "results/arxiv_bundle.json", "paper/revision_numbers.tex", "paper/revision_tables.tex",
+    "results/application_comparison.json", "paper/application_numbers.tex",
+    "paper/application_tables.tex", "paper/fig_application.pdf",
     *("paper/fig_" + name + ".pdf" for name in
       ("ablation", "scale_chase", "extension3d", "surrogate")),
     *("paper/fig_" + name + ".pdf" for name in
@@ -110,10 +118,68 @@ def package(root=HERE, destination=None):
     return destination, checksum, len(files)
 
 
+def verify_archive(path):
+    """Verify a complete snapshot without extracting or executing its code."""
+    with zipfile.ZipFile(path) as archive:
+        members = archive.infolist()
+        names = [member.filename for member in members]
+        if len(names) != len(set(names)):
+            raise ValueError("duplicate reproduction member")
+        roots = set()
+        for member in members:
+            name = PurePosixPath(member.filename)
+            if (name.is_absolute() or ".." in name.parts or "\\" in member.filename
+                    or member.is_dir() or stat.S_ISLNK(member.external_attr >> 16)
+                    or len(name.parts) < 2):
+                raise ValueError("unsafe reproduction member")
+            roots.add(name.parts[0])
+        if len(roots) != 1:
+            raise ValueError("reproduction must have one root")
+        prefix = roots.pop() + "/"
+        snapshot = json.loads(archive.read(prefix + "SNAPSHOT.json"))
+        hashes = snapshot["files"]
+        if set(names) != {prefix + name for name in hashes} | {prefix + "SNAPSHOT.json"}:
+            raise ValueError("reproduction inventory differs from snapshot")
+        files = {name: archive.read(prefix + name) for name in hashes}
+    for name, expected in hashes.items():
+        if digest(files[name]) != expected:
+            raise ValueError("reproduction hash mismatch: " + name)
+    run_bytes = files["results/run_manifest.json"]
+    if digest(run_bytes) != snapshot["run_manifest_sha256"]:
+        raise ValueError("reproduction run manifest hash mismatch")
+    run = json.loads(run_bytes)
+    stages = run.get("stages", [])
+    expected = run.get("expected_stage_count", 8)
+    if (run.get("status") != "pass" or not isinstance(expected, int) or expected < 8
+            or len(stages) != expected or any(s.get("status") != "pass" for s in stages)
+            or run.get("sources_at_start") != run.get("sources_at_finish")):
+        raise ValueError("reproduction is not a complete stable passing run")
+    sources, artifacts = run["sources_at_finish"], run["artifact_sha256"]
+    if not REQUIRED_SOURCES.issubset(sources) or not REQUIRED_ARTIFACTS.issubset(artifacts):
+        raise ValueError("reproduction omits required scientific sources or artifacts")
+    recorded = dict(sources)
+    recorded.update(artifacts)
+    recorded[run["run_log"]] = run["run_log_sha256"]
+    for stage in stages:
+        recorded[stage["log"]] = stage["log_sha256"]
+    recorded["results/run_manifest.json"] = digest(run_bytes)
+    if set(recorded) != set(files):
+        raise ValueError("reproduction payload differs from run provenance")
+    for name, expected in recorded.items():
+        if digest(files[name]) != expected:
+            raise ValueError("run provenance mismatch: " + name)
+    return {"status": "pass", "payload_files": len(files), "stages": len(stages),
+            "run_manifest_sha256": digest(run_bytes)}, files
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--verify", type=Path, help="verify an existing archive without executing its code")
     args = parser.parse_args()
+    if args.verify:
+        print(json.dumps(verify_archive(args.verify)[0], indent=2))
+        return
     path, checksum, count = package(destination=args.output)
     print(f"Packaged {count} files: {path}\nSHA256 {checksum}")
 

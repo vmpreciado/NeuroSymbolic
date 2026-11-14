@@ -1,6 +1,6 @@
 """Create and optionally compile the current minimal arXiv source archive.
 
-The archive contains only the main TeX, generated numbers, and six referenced
+The archive contains only the main TeX, its generated inputs, and referenced
 PDF figures. It excludes the compiled paper, logs, scientific data, programs,
 and third-party papers. Archive metadata is normalized for repeatable bytes.
 """
@@ -18,13 +18,15 @@ import tarfile
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "claude-revision"
+VERSION = "application-comparison"
 MAIN = "nsp_contraction_paper_ieee.tex"
 FIGURES = {"fig_" + name + ".pdf" for name in
            ("traces", "heatmaps", "gridcost", "residual", "pendulum", "neural")}
 EXPECTED = {MAIN, "numbers.tex"} | FIGURES
-ALLOWED = EXPECTED | {"revision_numbers.tex", "revision_tables.tex"} | {
-    "fig_" + name + ".pdf" for name in ("ablation", "scale_chase", "extension3d", "surrogate")}
+ALLOWED = EXPECTED | {"revision_numbers.tex", "revision_tables.tex",
+                      "application_numbers.tex", "application_tables.tex"} | {
+    "fig_" + name + ".pdf" for name in
+    ("ablation", "scale_chase", "extension3d", "surrogate", "application")}
 SYSTEM_CLASSES = {"IEEEtran"}
 SYSTEM_PACKAGES = {"amsmath", "amssymb", "amsthm", "etoolbox", "lineno",
                    "algorithm", "algpseudocode", "graphicx", "hyperref",

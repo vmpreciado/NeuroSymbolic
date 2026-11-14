@@ -66,6 +66,8 @@ def source_hashes():
     paths += list((HERE / "tests").glob("*.py"))
     paths += list((HERE / "release").glob("*.py"))
     paths += list((HERE / "reviews").glob("*.md"))
+    paths += list((HERE / "comparison_sources").glob("*.json"))
+    paths += [HERE / "application_protocol.json"]
     paths += [PAPER / (TEX + ".tex"), HERE / "README.md", HERE / "CLAUDE.md",
               HERE / "RESPONSE_TO_REFEREE.md", HERE / "RESPONSE_TO_CLAUDE.md", HERE / "CITATION.cff"]
     return {str(p.relative_to(HERE)): sha256(p) for p in sorted(paths) if p.is_file()}
@@ -77,10 +79,12 @@ def artifact_hashes():
         "neural.json", "smoke_p1.json", "timing_polynomial.json",
         "timing_pendulum.json", "timing_neural.json", "rounding_checks.json",
         "revision_experiments.json", "revision_extensions.json", "revision_report.json",
-        "timing_revision.json", "arxiv_bundle.json")]
+        "timing_revision.json", "arxiv_bundle.json", "application_comparison.json")]
     paths += [PAPER / "numbers.tex", PAPER / "revision_numbers.tex",
-              PAPER / "revision_tables.tex", PAPER / (TEX + ".pdf")]
-    paths += list((HERE / "dist").glob("*-claude-revision.tar.gz"))
+              PAPER / "revision_tables.tex", PAPER / "application_numbers.tex",
+              PAPER / "application_tables.tex", PAPER / (TEX + ".pdf")]
+    paths += [HERE / "dist/neurosymbolic-arxiv-application-comparison.tar.gz",
+              HERE / "dist/neurosymbolic-arxiv-application-comparison.tar.gz.sha256"]
     paths += list(PAPER.glob("fig_*.pdf")) + list(PAPER.glob("fig_*.png"))
     return {str(p.relative_to(HERE)): sha256(p) for p in sorted(paths) if p.is_file()}
 
@@ -515,6 +519,14 @@ def validate_arxiv_bundle():
     return f"{data['member_count']} source files; clean {data['clean_build']['passes']}-pass build, zero warnings"
 
 
+def validate_application():
+    import application_comparison
+    data = read_json("application_comparison.json")
+    require(data.get("production_run") is True, "a pilot cannot support application claims")
+    application_comparison.validate_results(data, replay=True)
+    return f"{len(data['runs'])} matched application runs; all positive certificates replayed"
+
+
 def stages():
     return [
         ("bounds self-tests", bounds_tests),
@@ -540,13 +552,17 @@ def stages():
         ("adaptive higher-dimensional and surrogate extensions", lambda: run_script("revision_extensions.py", outputs=(
             "results/revision_extensions.json", "paper/fig_extension3d.pdf", "paper/fig_surrogate.pdf"),
             validator=validate_revision_extensions)),
+        ("matched power-system application", lambda: run_script("application_comparison.py", outputs=(
+            "results/application_comparison.json", "paper/fig_application.pdf"),
+            validator=validate_application)),
         ("complete certified reporting", lambda: run_script("revision_report.py", outputs=(
             "results/revision_report.json",))),
         ("fill_tex", lambda: run_script("fill_tex.py", outputs=("paper/numbers.tex",
-            "paper/revision_numbers.tex", "paper/revision_tables.tex"))),
+            "paper/revision_numbers.tex", "paper/revision_tables.tex",
+            "paper/application_numbers.tex", "paper/application_tables.tex"))),
         ("pdflatex stable references + log check", latex),
         ("clean arXiv source bundle", lambda: run_script("release/build_arxiv.py", ("--check",), outputs=(
-            "results/arxiv_bundle.json", "dist/neurosymbolic-arxiv-claude-revision.tar.gz"),
+            "results/arxiv_bundle.json", "dist/neurosymbolic-arxiv-application-comparison.tar.gz"),
             validator=validate_arxiv_bundle)),
     ]
 

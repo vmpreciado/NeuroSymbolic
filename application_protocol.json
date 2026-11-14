@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "study": "Matched neural metric learning on the published two-machine swing model",
+  "status": "fixed before the production comparison",
+  "model_source": "Fitzsimmons and Liu, IEEE Control Systems Letters 8 (2024), Example 3, DOI 10.1109/LCSYS.2024.3478272",
+  "dynamics": "theta_dot=omega; omega_dot=-omega/2-sin(theta)/2-sqrt(3)*(cos(theta)-1)/2",
+  "physical_interpretation": "Dimensionless relative rotor angle and angular-speed deviation in a two-machine power-system model",
+  "domain_halfwidths": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "pilot_seeds_excluded_from_analysis": [
+    1000
+  ],
+  "methods": [
+    "cegis_hinge",
+    "fitzsimmons_liu_pdi",
+    "hinge_fixed"
+  ],
+  "metric": "M=alpha I+L^T L; three lower-triangular factor entries from a shared one-hidden-layer tanh network",
+  "hidden_units": 6,
+  "parameters": 39,
+  "metric_floor": 0.1,
+  "initialization_scale": 0.1,
+  "target_rate": 0.05,
+  "training_raw_margin": 0.01,
+  "verification_raw_margin": 0.0001,
+  "initial_samples": 512,
+  "batch_size": 512,
+  "max_rounds": 5,
+  "training_steps_per_round": 400,
+  "learning_rate": 0.01,
+  "optimizer": "Adam",
+  "optimizer_state": "reset each retraining round for both methods",
+  "adam_beta1": 0.9,
+  "adam_beta2": 0.999,
+  "adam_epsilon": 1e-08,
+  "returned_points": 64,
+  "screen_axis_points": 33,
+  "verification_max_boxes": 8191,
+  "verification_max_depth": 24,
+  "evaluation_schedule": "The initial candidate and each of five equal-sized training blocks receive the same verifier and budget; stop at first positive certificate.",
+  "sampling": "Identical initial collocations. PDI and the fixed-data hinge control use the fixed set; CEGIS accumulates at most 64 verifier diagnostic points after each rejection. Each optimizer update uses a seeded batch of 512, sampled without replacement when the dataset is larger. The fixed-data hinge arm isolates the effect of diagnostic augmentation from the change in loss.",
+  "objective_matching": "Both losses vanish exactly when C_rate(x)+q I is negative semidefinite at every training point. CEGIS uses positive-part(lambda_max(C_rate)+q)/trace(M); PDI averages the squared positive parts of both eigenvalues of C_rate+q I. The common factor guarantees M>=alpha I.",
+  "comparison_scope": "Controlled adaptation of the Fitzsimmons-Liu PDI objective to the same rate, metric class, initialization, collocations, optimizer-update budget and outward verifier. Not a reproduction or ranking of their original neural architecture, learned invariant domain, full training budget, or dReal verifier.",
+  "primary_outcomes": [
+    "certification count on each fixed box",
+    "paired certification outcomes",
+    "optimizer updates to first certification",
+    "learner and verification wall times",
+    "failure categories"
+  ],
+  "secondary_outcomes": [
+    "largest certified box among the prespecified ladder",
+    "certified metric upper bound and rate",
+    "certified invariant energy subset"
+  ],
+  "timing": "All methods run serially within each seed; order reverses on odd seeds. The application producer runs after other scientific producers finish. Equal optimizer-update and oracle-operation caps, not equal wall-clock budgets.",
+  "failure_semantics": "Nominal positive grid values are rejection diagnostics, never proofs of invalidity. Exhausted box/depth budgets and nonfinite learner outputs are reported separately. A failed run is not a proof of infeasibility.",
+  "selection_policy": "Report every method, seed and domain. Domains and rate are not shrunk or tuned after seeing production outcomes. Timing and arithmetic pilot seed is excluded. All initial candidates, trajectories and positive proof records are retained.",
+  "secondary_refinement": {
+    "exploratory": true,
+    "selected_after_preliminary_outcomes": true,
+    "max_boxes": 65535,
+    "selection_note": "The larger verification-only budget was chosen after inspecting preliminary primary outcomes, before the formal full pipeline run. It is an exploratory sensitivity diagnostic, not a prespecified primary endpoint.",
+    "candidate_policy": "Freeze and recheck every final candidate from all methods, seeds and boxes, including primary successes. No learning or selection by outcome.",
+    "fixed_settings": "Retain candidate parameters, model, domain, target rate, raw verification margin, maximum subdivision depth, split rule and nominal screen. Only the per-call box cap changes.",
+    "cost_accounting": "Report the additional verification cost and total primary-run plus additional verification cost; retain original primary outcomes and timings unchanged."
+  }
+}

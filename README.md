@@ -1,279 +1,125 @@
 # Neurosymbolic Synthesis of Contraction Metrics with Certified Verification
 
-This release preserves the November 2026 referee and novelty revisions and adds a table-layout and repository-navigation cleanup.
-The neural extension couples a learned metric factor to explicit contraction
-conditions, analytic/exact algebra where applicable, and outward-rounded
-verification. The main controlled ablations use fixed polynomial features;
-the neural parametrization is evaluated separately.
-The presentation update lets the final table share a page with narrative text.
-Scientific results, generated numerical inputs, and formal statements are unchanged.
-The introduction distinguishes certificate search for a fixed vector field
-from contracting-model architectures and partitioned neural controller/metric
-training, with explicit comparisons to Jaffe et al. and Davydov.
-Release [v1.1.1](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.1)
-archives the current manuscript and verified reproduction. It was developed on
-`codex/claude-revision` from immutable release v1.0.1. `RESPONSE_TO_CLAUDE.md` records every review disposition;
-`reviews/claude-2026-11-04.md` preserves the source report as review evidence.
+This is the local **application-comparison** scientific revision. It adds a
+published two-machine power-system swing model, a matched adaptation of the
+Fitzsimmons–Liu PDI learning objective, and a fixed-data hinge control. The
+paper has no reviewer line numbers. The previous immutable
+[v1.1.1 release](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.1)
+remains unchanged and does not contain this new experiment. This revision has
+not been published as a new immutable release or submitted to arXiv.
 
-Research code and manuscript for CEGIS-C: counterexample-guided learning and
-verification of continuous-time autonomous contraction metrics. The paper
-analyzes scale degeneracy, fixed-margin stalling, and the conversion of verified
-slack into rate and model-error guarantees.
+## Reproduce all scientific results and the paper
 
-## Reproduce the paper
-
-The reference Python version is **3.12.7**. Install the runtime dependencies in
-an isolated Python 3.12 environment:
+Use Python 3.12.7 and the locked dependencies. A TeX installation must provide
+PDFLaTeX, IEEEtran, amsmath, amssymb, amsthm, algorithm, algpseudocode, graphicx,
+hyperref, xcolor, and placeins.
 
 ```sh
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements-lock.txt
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 python run_all.py --parallel-science
 ```
 
-`requirements.txt` pins the direct dependencies, including gmpy2 for MPFR
-directed arithmetic; `requirements-lock.txt`
-also pins their runtime dependencies to the local reproduction environment.
-Install a TeX distribution providing `pdflatex`, `IEEEtran.cls`, `amsmath`,
-`amssymb`, `amsthm`, `algorithm`, `algpseudocode`, `graphicx`,
-`hyperref`, `xcolor`, and `placeins`. PDF inspection additionally uses Poppler's `pdfinfo`
-and `pdftoppm`; these are not needed by the experiment scripts. Building the
-Claude review package additionally requires Poppler's `pdftotext` on `PATH`.
+All thirteen stages must pass. The runner executes arithmetic/regression tests,
+the original polynomial, residual, pendulum and neural studies, smoke checks,
+the controlled revision experiments, adaptive three-dimensional and surrogate
+extensions, the new matched power-system application, complete reporting,
+generated manuscript numbers/tables, LaTeX compilation, and a fresh extracted
+arXiv-source compilation. Independent legacy producers can overlap; the new
+application runs after they have completed, with serial method timings.
 
-From the repository root, run:
+The runner records exact input/output hashes, environment, complete logs and
+stage outcomes in `results/run_manifest.json`, `results/run_all.log`, and
+`results/stage_logs/`. It stops on a failed stage or invalid/stale output.
+Training paths can differ across numerical environments; the seed, environment,
+parameters, and positive proof records are retained. Positive certificates
+require directed arithmetic and complete verification; samples cannot certify.
+
+## New application and comparison
+
+`application_protocol.json` fixes every domain, seed, target, learning and
+verification budget. `application_comparison.py` runs all three learners.
+`application_baseline.py` independently implements the spectral PDI objective
+from Fitzsimmons and Liu (2024), Eq. (5). The source mapping, original protocol,
+and explicit adaptations are in `comparison_sources/fitzsimmons_liu_2024.json`.
+No original unlicensed source code is included.
+
+All arms share the neural metric class, initialization, initial collocations,
+raw training target, requested contraction rate, optimizer-update caps, and
+outward verification budget. A fixed-data hinge control isolates diagnostic
+feedback from the loss choice. The comparison is an adaptation of a published
+learning objective, not a reproduction or ranking of the original LyZNet/dReal
+toolchain. No per-method tuning or post-outcome domain shrinking is performed.
+Every prespecified outcome is retained, including unsuccessful runs.
+An explicitly exploratory secondary analysis was selected after preliminary
+primary outcomes: all frozen final candidates are reverified with a common
+65,535-box budget and no change to parameters, domains, margins or learning.
+This diagnostic reports added verification cost and leaves primary outcomes
+unchanged; it is not a prespecified confirmatory performance comparison.
+
+`application_verifier.py` uses exact-real physical constants, directed MPFR
+transcendental bounds, adaptive complete binary partitions, and outward matrix
+checks. It saves and replays every positive leaf. Energy sublevels restricted
+to the verification box give forward-invariant regions for interpreting
+successful certificates as convergence to the synchronized equilibrium.
+Exhausted budgets and nominal rejection remain inconclusive. The model is
+physically motivated; it is not operational grid data or hardware validation.
 
 ```sh
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 python run_all.py
+python application_comparison.py
+python application_comparison.py --validate
 ```
 
-The runner executes twelve stages: arithmetic and regression checks,
-three-regime multi-seed experiments, residual robustness, pendulum benchmark,
-neural metric benchmark, smoke verification, controlled revision experiments,
-adaptive verification and higher-dimensional/learned-surrogate extensions,
-complete certificate reporting, LaTeX-number generation, two LaTeX passes,
-and a clean arXiv source-bundle build. It returns a nonzero exit status on failure. The neural study
-dominates runtime; it evaluates grids with up to 8001 points per axis over 20
-seeds. It retains only the worst counterexamples between evaluation blocks.
-The reference command fixes BLAS threading to one thread for predictable
-execution and to avoid overhead on these small matrix products. The runner
-records these settings; it also works with inherited settings, whose numerical
-paths and timings can differ.
+The standalone development pilot uses excluded seed 1000 and writes only under
+`tmp/`. It cannot enter the paper or pass the production validator.
+`fill_tex.py` validates the scientific results and calls `application_report.py`
+to generate the application numbers and tables. Never hand-edit generated data.
 
-The rebuilt paper is `paper/nsp_contraction_paper_ieee.pdf`. The runner writes
-`results/run_all.log`, individual stage logs, and `results/run_manifest.json`.
-The manifest records the environment, source hashes, artifact hashes, and
-stage outcomes and timings. A Git revision alone does not identify a dirty
-working tree; use the recorded file hashes to identify the actual inputs.
-Do not redirect output to `results/run_all.log`: the runner manages that file.
-Option `--parallel-science` overlaps the independent neural, ablation, and
-extension producers after their prerequisites. It keeps separate producer
-logs, checks each exit status and freshness epoch, and stops remaining workers
-on failure. Timings in this mode include competition for machine resources.
-The current paper uses a single-column, single-spaced preprint layout without
-reviewer line numbers. Feedback can cite pages and section or theorem labels. It retains the
-standard IEEEtran class and omits its double-spaced referee-mode option.
+## Rebuilt artifacts and independent review
 
-After a passing run, create the complete local reviewer archive:
+After the complete pipeline passes, with no source or result changes, install
+Poppler and put `pdftotext` on PATH, then run:
 
 ```sh
-python package_reproduction.py
+python release/build_application_packet.py
 ```
 
-This writes `dist/neurosymbolic-reproduction.zip` and its SHA256 checksum.
-The archive contains the source, locked dependency specifications, manuscript, figures,
-scientific results, stage logs, and run manifest. Its `SNAPSHOT.json` records
-the hash of every included file. Packaging rejects changed inputs or outputs,
-failed or incomplete runs, and source changes during the run. Repackaging the
-same passing snapshot produces the same ZIP bytes.
+The outputs are:
 
-## Published snapshot and final manuscript
+- `dist/neurosymbolic-paper-application-comparison.pdf`
+- `dist/neurosymbolic-arxiv-application-comparison.tar.gz`
+- `dist/neurosymbolic-reproduction-application-comparison.zip`
+- `dist/neurosymbolic-claude-deep-review-application-comparison.zip`
+- `dist/arxiv_abstract.txt`
+- `dist/neurosymbolic-claude-review-prompt.txt`
 
-[Immutable release v1.1.1](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.1)
-contains the current paper without reviewer line numbers, the tested arXiv source
-bundle, the complete current reproduction, and the Claude independent-review
-package. `CITATION.cff` and reference [18] in the paper identify this release.
-The earlier immutable v1.0.0, v1.0.1, and v1.1.0 releases remain unchanged.
+The arXiv archive contains only the main TeX, its generated TeX dependencies,
+and referenced PDF figures, with an embedded bibliography. It is compiled in
+an empty directory with shell escape disabled and must have no warnings or
+unresolved references. The reproduction ZIP contains the complete manifest-
+verified source, scientific artifacts and stage logs of this fresh run.
 
-The scientific evidence comes from a passing twelve-stage run. Its exact original
-archive is preserved byte-for-byte as `neurosymbolic-reproduction-scientific-verified.zip`
-with SHA256 `c1cdea042cca4f5495a3ed025174570bb68e494df2695641af2e97d91437eb39`.
-Its manifest, stage logs, learned parameters, proof records, figures, and numerical
-results are unchanged. Its embedded manuscript predates the final editorial edits.
+The Claude ZIP includes the current PDF, text export, source archive, complete
+runnable project, full reproduction ZIP, and a neutral independent-review
+prompt. Extract it and run its standard-library `VERIFY_PACKAGE.py` to check
+all hashes, the passing-run evidence, and nested reproduction integrity without
+executing scientific code. Checksums establish file integrity, not mathematical
+correctness. Prior referee material in `project/reviews/` is optional history.
 
-`neurosymbolic-reproduction-v1.1.1.zip` is the complete current runnable project.
-It overlays the final manuscript and metadata on the unchanged scientific files,
-preserves the original scientific archive under `provenance/`, and provides
-`SNAPSHOT.json` and a standalone `VERIFY_CURRENT_REPRODUCTION.py`. After extraction,
-run that verifier with Python 3.12 before rebuilding. The verifier checks hashes,
-original run evidence, and the declared editorial changes; it does not establish
-mathematical correctness or rerun experiments.
+Packaging rejects stale outputs, changed sources, incomplete runs, or edited
+proof data. It does not publish anything or overwrite immutable release assets.
+The older `release/build_current.py` and `release/package_current.py` describe
+the v1.1.1 editorial overlay and must not be used to package this new science.
 
-`results/editorial_v1.1.1.json` records the source changes, reused scientific
-snapshot, saved-result validation, new manuscript compilation, and clean arXiv
-build. This release does not claim a new full experimental run. To create a new
-scientific run, use `run_all.py`; the original strict `package_reproduction.py`
-requires a fresh passing run with all current inputs. To reconstruct the released
-editorial overlay from saved results, run:
+## Scope and limitations
 
-```sh
-python release/build_current.py
-python release/package_current.py
-python release/build_review_packet.py
-```
-
-These commands rebuild the editorial outputs from the verified scientific inputs.
-They do not publish a GitHub release. `release/SHA256SUMS` lists the release assets.
-
-## arXiv source bundle
-
-Release asset `neurosymbolic-arxiv-v1.1.1.tar.gz` contains thirteen flat manuscript
-inputs: the main TeX source with embedded bibliography, both generated numerical
-inputs, generated tables, and nine included figure PDFs. It contains no compiled
-manuscript, logs, experiment data, or nested archive. The manuscript uses a
-single-column, single-spaced layout without reviewer line numbers.
-
-To regenerate it and test compilation after extraction into a clean directory:
-
-```sh
-python release/build_arxiv.py --check --output dist/neurosymbolic-arxiv-v1.1.1.tar.gz
-```
-
-`results/arxiv_bundle.json` records the member hashes and clean compilation.
-The dependency scanner checks a reviewed flat-file allowlist, normalized archive
-metadata, and PDFLaTeX passes until references stabilize, with shell escape disabled.
-This local test does not submit anything to arXiv. The earlier published source
-bundles remain unchanged.
-
-## External-review revision studies
-
-`revision_experiments.py` runs the matched raw/normalized and fixed/coupled
-operating-grid ablation, constrained variants, a constructive scale-chase
-illustration, short-horizon sensitivity diagnostics, and a pendulum control.
-Their configurations and every seed outcome are saved in
-`results/revision_experiments.json`, with timings in `results/timing_revision.json`.
-
-`revision_extensions.py` supplies general-dimensional exact polynomial algebra
-and an outward adaptive matrix oracle, a coupled three-dimensional synthesis
-benchmark, matched-candidate oracle checks, and a polynomial surrogate fitted
-to trajectories. The known polynomial truth is used to certify the residual
-and Jacobian globally; sampled fitting errors alone are not residual certificates.
-Adaptive proof budgets can return inconclusive and do not remove worst-case
-dimensional complexity. Results are in `results/revision_extensions.json`.
-
-`revision_report.py` builds the full per-certified-seed constant table and timing
-summaries in `results/revision_report.json`. `fill_tex.py` checks its input hashes
-and writes `paper/revision_numbers.tex` and `paper/revision_tables.tex` alongside
-the original numerical macros. Componentwise medians describe distributions;
-only complete per-candidate rows supply joint guarantees.
-
-## Scientific outputs and provenance
-
-| Producer | Output | Role |
-| --- | --- | --- |
-| `experiments.py` | `results/traces.json` | Three regimes over the same 20 seeds |
-| `experiments.py` | `results/gridcost.json` | Sampled 2-D slack ratios and dimension-cost extrapolation |
-| `residual.py` | `results/residual.json` | Sufficient residual budget and measured perturbation sweep |
-| `bench_pendulum.py --experiment` | `results/pendulum.json` | Non-polynomial dynamics benchmark |
-| `bench_neural.py --experiment` | `results/neural.json` | Six-unit neural metric benchmark |
-| `smoke_p1.py` | `results/smoke_p1.json` | Reverification at the producer's grid and subdivision depth |
-| `fill_tex.py` | `paper/numbers.tex` | Validated numbers and source-content hashes |
-
-Each experiment regenerates its associated figures through Matplotlib.
-`fill_tex.py` requires the complete set of production results and fails if a
-required input is absent or invalid. Edit numerical code or configuration and
-rerun the producers, then the fill script; do not hand-edit measured values in
-the manuscript or `numbers.tex`.
-
-Random seeds fix the sampling and initialization. Scientific values can still
-depend on NumPy, BLAS, hardware, and arithmetic order through optimizer paths.
-Timings and run timestamps vary on every run; PDF metadata can also change.
-Compare scientific fields rather than expecting byte-identical JSON or PDFs
-across environments. The run manifest and separate timing records document
-these differences.
-
-Scientific result files, figure PDFs, the paper PDF, and provenance records
-belong in the research snapshot. `.gitignore` excludes caches and transient
-LaTeX files, and deliberately permits `results/` and its logs. This workflow
-does not create a Git commit automatically.
-
-## Scope and interpretation
-
-The original polynomial, pendulum, and neural studies have two state variables.
-The revision adds a coupled three-dimensional benchmark with adaptive verification.
-Uniform-grid cost extrapolations separately hold a measured 2-D ratio fixed; those
-extrapolated counts are not higher-dimensional experiments. Differential guarantees apply to
-solutions of the variational equation along trajectories remaining in the
-certified domain. A finite two-trajectory bound additionally needs an initial
-connecting curve whose entire flow remains in that domain. Convex forward
-invariance is a sufficient condition for the displayed Euclidean overshoot
-bound. Two trajectories remaining in the box alone do not imply that condition.
-The box in the polynomial benchmark is not forward invariant, and no global
-incremental-convergence claim is made for it.
-
-The scale-chase result is a theoretical degeneracy under a scale-closed family,
-global strict negativity of the fixed shape, a positive scale-equivariant
-Lipschitz bound, and initial noncertification. Negativity on current data alone
-does not support an infinite scale chase after data augmentation. The normalized
-coarse-grid experiment exhibits growth of the shape-dependent certified
-Lipschitz bound for the normalized test as the coupled target outgrows the
-achieved slack. The corrected loop has no general
-termination or relative-completeness guarantee. Control contraction metrics
-remain outside this paper's implemented scope.
-
-The residual theorem supplies a sufficient budget. A negative sampled
-contraction condition beyond that budget does not certify the whole domain or
-locate a failure threshold. An unsuccessful metric search does not establish
-that the hypothesis class is infeasible.
-
-The verifier treats stored binary64 parameters as exact real inputs. Polynomial
-coefficients, derivatives, and recentering use exact rational arithmetic before
-conversion to outward endpoints. Interval operations widen each elementary
-binary64 operation in the required direction. Transcendental enclosures use
-MPFR through gmpy2, with rigorous interpolation remainders for large batches.
-They do not assume an error bound for NumPy's transcendental functions.
-
-Ordinary floating-point evaluations are a rejection screen. Returned training
-points are diagnostic candidates; rejection is not a proof of a contraction
-violation. A positive result
-requires outward upper eigenvalue/trace-quotient enclosures at every grid node,
-an outward bound on the covering radius from the largest actual node gap, and
-an upward-rounded Lipschitz margin. Certified slack and sufficient residual
-budgets are rounded downward. Every positive result records that the grid was
-enclosed. The neural verifier can prove groups of grid nodes together using
-adaptive interval boxes and subdivides unresolved groups down to individual
-nodes; it retains the original grid and Lipschitz margin. Nonfinite arithmetic
-and invalid interval operations fail closed.
-
-The trusted arithmetic assumptions are IEEE binary64 round-to-nearest with
-gradual underflow and MPFR's directed-rounding contract. The arithmetic
-acceptance tests check these platform properties and compare enclosures with
-exact rational and higher-precision calculations. Dense sampling and derivative
-tests remain diagnostics rather than proofs of enclosure soundness.
-
-## Code and historical notes
-
-`cegis_c.py` supplies the polynomial dynamics, metric, learner, and default
-bound-based oracle. `bounds.py` builds exact polynomial coefficient bounds;
-`rounding.py` supplies outward elementary operations, MPFR transcendental
-enclosures, and arithmetic platform checks.
-`experiments.py`, `residual.py`, and the two `bench_*.py` scripts are the current
-paper producers. `run_all.py` is the authoritative reproduction entry point.
-The experiment JSON files record operational outcome definitions, per-study
-round caps, and training settings. Neural certificates also export outward
-metric bounds and conservative overshoot and improved differential-rate bounds.
-`package_reproduction.py` packages and checks the completed run for reviewers.
-
-`figures.py` and `cert_ladder.py` are retained historical prototype/diagnostic
-scripts. The current figure producers are listed above.
-`RESPONSE_TO_REFEREE.md` records the manuscript's revision response.
-`release/build_editorial.py` preserves the historical v1.0.1 editorial workflow.
-`release/build_current.py` validates reuse of the twelve-stage snapshot and rebuilds
-the current manuscript; `release/build_arxiv.py` checks standalone compilation.
-`release/package_current.py` creates the verified current reproduction overlay,
-and `release/build_review_packet.py` creates the independent-review package.
-
-Run focused regression checks without rerunning the experiments:
-
-```sh
-python -m unittest discover -s tests -v
-```
+The original matched polynomial study did not demonstrate a certification-count
+advantage from normalization or margin coupling. Practical Adam has no proved
+termination guarantee. The constructed scale chase requires a scale-closed
+class, which the main fixed-floor class generally lacks. Three-dimensional and
+neural results remain finite-budget demonstrations. Surrogate transfer uses
+known truth to certify global residual and Jacobian bounds; it is not a
+finite-data guarantee for unknown noisy dynamics. The new physical comparison
+has its own explicitly limited common-class/common-verifier scope. The paper
+acknowledges AI assistance and retains author responsibility for all claims.

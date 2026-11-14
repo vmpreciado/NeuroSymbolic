@@ -114,11 +114,22 @@ do not describe sampling tests as a proof of enclosure.
   undefined references/citations; inspect the rendered pages.
 - `python3 run_all.py` succeeds end to end, with current logs and a manifest
   recording source/artifact hashes, environment, and stage outcomes.
-- All twelve declared stages pass, including the new studies, complete
+- All thirteen declared stages pass, including the new studies, complete
   reporting, and a clean arXiv bundle compilation. The fixed-budget Adam
   implementation is not covered by the idealized termination proposition.
 - `python3 package_reproduction.py` produces the complete checked local reviewer
-  archive after a fresh full run. The v1.1.1 editorial overlay uses
-  `release/package_current.py`, with the original twelve-stage snapshot and
-  explicit editorial provenance. Do not infer a new experimental run from
-  an editorial rebuild.
+  archive after a fresh full run. The current application-comparison revision uses
+  `release/build_application_packet.py` after a fresh full passing run. The
+  older v1.1.1 editorial-overlay scripts are historical and cannot package
+  newly generated scientific evidence.
+
+## Current application revision
+
+`application_protocol.json` fixes the swing-model comparison. The new module
+`application_verifier.py` verifies the shared neural metric;
+`application_baseline.py` independently implements a documented adaptation of
+Fitzsimmons–Liu Eq. (5), not the original full SMT workflow.
+`application_comparison.py` retains every prespecified outcome and proof;
+`application_report.py` renders validated results through `fill_tex.py`.
+The invariant energy region is the sublevel restricted to the verification
+box. Do not claim the unrestricted global tilted-potential sublevel is compact.

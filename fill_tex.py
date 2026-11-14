@@ -276,6 +276,8 @@ def main():
         print(f"  \\{name} = {val}")
     import revision_report
     revision_report.render()
+    import application_report
+    application_report.render()
 
 
 if __name__ == "__main__":

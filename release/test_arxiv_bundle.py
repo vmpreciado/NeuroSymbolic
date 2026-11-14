@@ -111,6 +111,22 @@ class ArxivBundleTests(unittest.TestCase):
             self.assertNotIn("fig_surrogate.pdf",files)
             self.assertEqual(len(files),11)
 
+    def test_application_dependencies_and_local_revision_metadata(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            paper = self.fixture(root)
+            with (paper / bundle.MAIN).open("a") as stream:
+                stream.write(r"\input{application_numbers.tex}\input{application_tables.tex}")
+            (paper / "application_numbers.tex").write_text(r"\providecommand{\AppCount}{10}")
+            (paper / "application_tables.tex").write_text(r"\includegraphics{fig_application.pdf}")
+            (paper / "fig_application.pdf").write_bytes(b"%PDF-1.4\nfixture\n")
+            report = bundle.build(root)
+            self.assertEqual(report["manuscript_revision"], "application-comparison")
+            self.assertIsNone(report["release_tag"])
+            self.assertEqual(report["publication_status"], "local revision; not a published release")
+            self.assertTrue({"application_numbers.tex", "application_tables.tex", "fig_application.pdf"}
+                            .issubset(report["member_sha256"]))
+
 
 if __name__ == "__main__":
     unittest.main()

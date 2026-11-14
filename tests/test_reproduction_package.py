@@ -45,6 +45,10 @@ class ReproductionPackageTests(unittest.TestCase):
                 for name, expected in snapshot["files"].items():
                     self.assertEqual(packaging.digest(archive.read(prefix + name)), expected)
             self.assertEqual(packaging.package(root)[1], first_hash)
+            summary, contents = packaging.verify_archive(path)
+            self.assertEqual(summary["status"], "pass")
+            self.assertEqual(summary["stages"], 8)
+            self.assertEqual(set(contents), set(snapshot["files"]))
 
     def test_changed_source_artifact_or_log_is_rejected(self):
         for name in ("rounding.py", "results/neural.json", "results/stage_logs/4.log"):
@@ -73,6 +77,24 @@ class ReproductionPackageTests(unittest.TestCase):
             for name in ("../outside", "/absolute", "..\\outside"):
                 with self.subTest(name=name), self.assertRaisesRegex(ValueError, "unsafe"):
                     packaging.checked_bytes(Path(folder), name)
+
+    def test_archive_verification_rejects_tampering_and_extra_members(self):
+        for extra in (False, True):
+            with self.subTest(extra=extra), tempfile.TemporaryDirectory() as folder:
+                root = Path(folder)
+                self.fixture(root)
+                path, _, _ = packaging.package(root)
+                with zipfile.ZipFile(path) as archive:
+                    members = {name: archive.read(name) for name in archive.namelist()}
+                if extra:
+                    members[packaging.PREFIX + "/unrecorded.txt"] = b"extra"
+                else:
+                    members[packaging.PREFIX + "/results/neural.json"] = b"tampered"
+                with zipfile.ZipFile(path, "w") as archive:
+                    for name, content in members.items():
+                        archive.writestr(name, content)
+                with self.assertRaises(ValueError):
+                    packaging.verify_archive(path)
 
 
 if __name__ == "__main__":

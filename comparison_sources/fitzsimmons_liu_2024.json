@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "study": "Matched neural contraction-metric learning on the two-machine swing model",
+  "baseline_name": "Fitzsimmons--Liu PDI objective, controlled common-class/common-verifier adaptation",
+  "implementation": "Independent equation-based implementation; no external source code copied",
+  "primary_source": {
+    "authors": [
+      "Maxwell Fitzsimmons",
+      "Jun Liu"
+    ],
+    "title": "Computation and Formal Verification of Neural Network Contraction Metrics",
+    "journal": "IEEE Control Systems Letters",
+    "volume": 8,
+    "pages": "2367--2372",
+    "year": 2024,
+    "doi": "10.1109/LCSYS.2024.3478272",
+    "url": "https://math.uwaterloo.ca/~j49liu/papers/2024/fitzsimmons2024computation.pdf",
+    "retrieved_date": "2026-11-14",
+    "retrieved_pdf_sha256": "e98b6b60a26070db33649646691462473e04215b6391ef8fb47e1c2de16a9e23"
+  },
+  "source_mapping": {
+    "application": "Section IV, Example 3, Eq. (11): xdot_1=x_2; xdot_2=-0.5x_2-[sin(x_1+pi/3)-sin(pi/3)]",
+    "loss": "Section III-B.2, Eq. (5): (N n)^(-1) sum_j sum_i ReLU(lambda_i(R(x_j)))^2 + gamma (N n)^(-1) sum_j sum_i ReLU(-lambda_i(M(x_j)-S(x_j)))^2",
+    "matrix": "Eq. (6): R=Mdot+Df^T M+M Df+Q; Eq. (7): Mhat=M-S",
+    "original_margins": "Table I caption: Q=S=I for every original example; gamma=0 variants also reported",
+    "original_representation": "Direct symmetric matrix output of a multilayer neural network, as described in Section III-B",
+    "original_training": "Section IV Example 1: 1,200,000 collocations, 200 or 400 epochs, batch size 512; subsequent examples follow a similar procedure; sizes vary by reported case",
+    "original_domain": "Sublevel sets of separately verified neural Lyapunov functions; largest verified level determined with dReal",
+    "original_verifier": "Section III-B.3: post-training dReal SMT verification of Sylvester conditions"
+  },
+  "controlled_adaptations": [
+    "Use the same six-unit tanh triangular factor and 39 parameters for all three compared arms; M=0.1 I+L^T L replaces the original direct symmetric output.",
+    "Set S=0.1 I, so the positivity penalty is identically zero by the common representation.",
+    "Use R=C_lambda+q I with lambda=0.05 and q=0.01 to match the common target-rate matrix condition. This replaces original Q=I by Q=2 lambda M+q I.",
+    "Use the same fixed boxes [-B,B]^2, B in {0.25,0.5,0.75}, instead of independently learned invariant Lyapunov sublevel sets.",
+    "Use 20 shared seeds, 512 shared initial samples, five rounds of 400 Adam steps, batch size 512, learning rate 0.01, and reset Adam state per round.",
+    "PDI baseline and normalized-hinge fixed-data control retain the fixed initial collocation set. The normalized-hinge CEGIS arm adds at most 64 returned diagnostic points per round. All arms receive the same verifier call schedule and per-call budget.",
+    "All arms use the same outward-rounded verifier with prescribed raw margin 0.0001 instead of dReal. The comparison does not compare complete external tools or reproduce published certified region sizes.",
+    "All learner objectives have the same pointwise zero set lambda_max(C_lambda)<=-q. The PDI versus CEGIS comparison changes spectral aggregation, squaring/normalization, and diagnostic feedback. The normalized-hinge fixed-data control holds the objective fixed to isolate diagnostic-feedback effects under the shared budget."
+  ],
+  "upstream_access": {
+    "url": "https://git.uwaterloo.ca/hybrid-systems-lab/lyznet/",
+    "observed_date": "2026-11-14",
+    "result": "Repository, raw-file, and git accesses redirected to sign-in or required authentication. No original contraction implementation or commit was obtained.",
+    "consequence": "No claim of running author code or reproducing the original end-to-end experiment."
+  },
+  "interpretation": "This is a matched comparison of a published learning objective against the present sampled-hinge CEGIS configuration under a shared representation and verifier. It does not isolate any single component unless supplemented by a separate control, and does not establish superiority over the original Fitzsimmons--Liu or Davydov methods.",
+  "certification_semantics": "All training arithmetic is heuristic binary64. Only the common outward-rounded verifier can give a positive certificate; time/budget exhaustion is inconclusive.",
+  "arms": {
+    "pdi_fixed": "Published PDI objective adaptation with fixed collocation data",
+    "hinge_fixed": "Internal normalized max-eigenvalue hinge control with fixed collocation data; not an external method",
+    "hinge_cegis": "Same normalized hinge with diagnostic-point dataset augmentation"
+  }
+}

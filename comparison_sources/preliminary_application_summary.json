@@ -1,0 +1,115 @@
+{
+  "description": "Development primary outcomes motivating the explicitly exploratory frozen-candidate verification-budget diagnostic. This is not the final full-run evidence. No primary domain, training setting, or primary verifier budget was changed.",
+  "initial_results_sha256": "63c221d48ebaf526ff8099cee2936333309c253a63086178506e6b20f5a57df7",
+  "initial_protocol_sha256": "08080aa99d71c2fa50346a89c2ce9c33274cfd10d2ce46987e28432369c1c4a8",
+  "domain_halfwidths": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "primary_max_boxes": 8191,
+  "proposed_secondary_max_boxes": 65535,
+  "rows": [
+    {
+      "halfwidth": 0.25,
+      "method": "cegis_hinge",
+      "runs": 20,
+      "certified": 20,
+      "failures": {}
+    },
+    {
+      "halfwidth": 0.25,
+      "method": "fitzsimmons_liu_pdi",
+      "runs": 20,
+      "certified": 18,
+      "failures": {
+        "nominal_screen_inconclusive": 1,
+        "depth_budget_exhausted": 1
+      }
+    },
+    {
+      "halfwidth": 0.25,
+      "method": "hinge_fixed",
+      "runs": 20,
+      "certified": 20,
+      "failures": {}
+    },
+    {
+      "halfwidth": 0.5,
+      "method": "cegis_hinge",
+      "runs": 20,
+      "certified": 0,
+      "failures": {
+        "box_budget_exhausted": 19,
+        "nominal_screen_inconclusive": 1
+      }
+    },
+    {
+      "halfwidth": 0.5,
+      "method": "fitzsimmons_liu_pdi",
+      "runs": 20,
+      "certified": 0,
+      "failures": {
+        "nominal_screen_inconclusive": 20
+      }
+    },
+    {
+      "halfwidth": 0.5,
+      "method": "hinge_fixed",
+      "runs": 20,
+      "certified": 0,
+      "failures": {
+        "nominal_screen_inconclusive": 20
+      }
+    },
+    {
+      "halfwidth": 0.75,
+      "method": "cegis_hinge",
+      "runs": 20,
+      "certified": 0,
+      "failures": {
+        "nominal_screen_inconclusive": 20
+      }
+    },
+    {
+      "halfwidth": 0.75,
+      "method": "fitzsimmons_liu_pdi",
+      "runs": 20,
+      "certified": 0,
+      "failures": {
+        "nominal_screen_inconclusive": 20
+      }
+    },
+    {
+      "halfwidth": 0.75,
+      "method": "hinge_fixed",
+      "runs": 20,
+      "certified": 0,
+      "failures": {
+        "nominal_screen_inconclusive": 20
+      }
+    }
+  ]
+}
