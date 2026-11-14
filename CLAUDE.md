@@ -3,11 +3,11 @@
 ## What this repository is
 
 Code and manuscript for the paper "Neurosymbolic Synthesis of Contraction
-Certificates" (V. M. Preciado). The code implements CEGIS-C: a
+Metrics with Certified Verification" (V. M. Preciado). The code implements CEGIS-C: a
 counterexample-guided loop that trains a state-dependent contraction metric
 and certifies it with a sound grid oracle. The manuscript is
-`paper/nsp_contraction_paper_ieee.tex` (IEEEtran reviewer draft, single column,
-continuous line numbers). README.md
+`paper/nsp_contraction_paper_ieee.tex` (IEEEtran preprint, single column,
+without reviewer line numbers). README.md
 describes the current reproduction workflow; PLAN.md, REVISION_PLAN.md, and
 P4_FINDINGS.md are historical records rather than a pending task list.
 
@@ -106,7 +106,7 @@ do not describe sampling tests as a proof of enclosure.
 ## Definition of done (current reproduction)
 
 - Bound and derivative acceptance checks pass before benchmark outputs count.
-- All production scientific results and six figures regenerate from the
+- All production scientific results and included figures regenerate from the
   documented seeded configuration; historical diagnostics stay labeled.
 - Smoke verification certifies at the same grid and depth as its producer.
 - fill_tex.py validates all required inputs and records their content hashes.
@@ -118,5 +118,7 @@ do not describe sampling tests as a proof of enclosure.
   reporting, and a clean arXiv bundle compilation. The fixed-budget Adam
   implementation is not covered by the idealized termination proposition.
 - `python3 package_reproduction.py` produces the complete checked local reviewer
-  archive. Do not claim this revision is public until it has actually been
-  published with an immutable identifier.
+  archive after a fresh full run. The v1.1.0 editorial overlay uses
+  `release/package_current.py`, with the original twelve-stage snapshot and
+  explicit editorial provenance. Do not infer a new experimental run from
+  an editorial rebuild.

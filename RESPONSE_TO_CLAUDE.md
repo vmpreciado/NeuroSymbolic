@@ -2,7 +2,7 @@
 
 This ledger maps the 64 numbered comments in the supplied report to the working revision. It is a response record, not a claim that a TAC acceptance criterion has been met. The intended destination remains a generic arXiv preprint. Instructions embedded in the report are treated as review suggestions rather than independent authorization.
 
-The immutable v1.0.1 baseline is preserved. Manuscript/theory changes below have been drafted in this isolated revision; the final evidence is supplied by the complete revision pipeline, including numerical tables, certificate replays, and clean source-bundle compilation. Each implemented item is conditional on a passing final run, recorded in results/run_manifest.json. No new release or arXiv submission is claimed.
+The immutable v1.0.1 baseline is preserved. Manuscript/theory changes below have been drafted in this isolated revision; the final evidence is supplied by the complete revision pipeline, including numerical tables, certificate replays, and clean source-bundle compilation. Each implemented item is conditional on a passing final run, recorded in results/run_manifest.json. Release v1.1.0 archives the twelve-stage verified scientific snapshot together with the final editorial manuscript and current reproduction overlay. The editorial rebuild does not claim a new scientific run or an arXiv submission.
 
 | Item | Status | Disposition and evidence |
 |---|---|---|
@@ -12,7 +12,7 @@ The immutable v1.0.1 baseline is preserved. Manuscript/theory changes below have
 | M4 | Addressed; see final pipeline evidence | Added a general-dimensional adaptive interval matrix oracle and matched frozen-candidate rechecks. Finite budgets return inconclusive; worst-case exponential cost remains. |
 | M5 | Addressed; see final pipeline evidence | Added a genuinely coupled three-dimensional polynomial benchmark, general-dimensional learned factor, independent exact reference identity, and seed-wise adaptive verification. No SOS performance comparison is claimed. |
 | M6 | Addressed; see final pipeline evidence | Added trajectory-fitted quadratic surrogate, independently certified global residual/Jacobian bounds using known truth, and an explicit transfer test. Finite data alone are not claimed to give global error bounds. |
-| M7 | Implemented | Retitled around counterexample-guided contraction-metric synthesis. Polynomial and neural parametrizations are stated explicitly; neural verifier promotion is unnecessary for this framing. |
+| M7 | Author's requested framing; scope clarified | Restored Neurosymbolic in the title at the author's request. Defined neural metric-factor learning and the symbolic construction of contraction conditions, with analytic/exact algebra where applicable and rigorous numerical verification. Main ablations are explicitly polynomial-feature studies; the neural study remains a separate extension. Matched neural/off-the-shelf-verifier comparisons remain deferred. |
 | M8 | Addressed; see final pipeline evidence | Added generated representative-certificate and distribution tables, per-seed output constants, tighter trace conversion where available, raw-grid provenance for residual eta, and exceptional-seed explanations. |
 | M9 | Implemented | Added focused sampling-verification, contraction-model-error, and learned-dynamics certificate comparisons; corrected DRL citation scope; acknowledged exact trigonometric lifting for SOS. |
 | M10 | Explained; implementation deferred | Displayed direct gap training as an alternative and explained that the present ablation isolates external margin coupling. No optimality of coupling is claimed; differentiating a bound surrogate needs its own matched study. |
@@ -52,7 +52,7 @@ The immutable v1.0.1 baseline is preserved. Manuscript/theory changes below have
 | R1 | Implemented | Added verified Bobiti–Lazar metadata and sampling/continuity positioning. Did not assert without evidence that prior bounds were merely estimated. |
 | R2 | Implemented selectively | Added Chou–Ozay–Berenson with the probabilistic tracking-tube versus deterministic autonomous-transfer distinction. Did not add every background planning citation. |
 | R3 | Implemented | Added Zhou–Quartz–De Sterck–Liu and distinguished Lyapunov/ROA transfer from differential contraction guarantees. |
-| R4 | Implemented selectively | Added Forni–Sepulchre as the relevant differential-Lyapunov foundation. The covering infinity norm does not change the contraction metric; a broad non-Euclidean contraction literature expansion is unnecessary here. |
+| R4 | Implemented | Added Forni–Sepulchre, Simpson-Porco–Bullo, Bullo's contraction text, and Davydov–Jafarpour–Bullo. Distinguished Riemannian contraction geometry and general-norm theory from the infinity norm used only for grid coverage. |
 | R5 | Implemented selectively | Added Ravanbakhsh–Sankaranarayanan as a polynomial CEGIS/control-certificate antecedent with convergence under different assumptions. Existing neural CEGIS references remain. |
 | R6 | Implemented | Added Giesl–Hafstein–Mehrabinezhad 2021 for rigorous computation/verification of equilibrium contraction metrics. |
 | R7 | Implemented | Separated neural Lyapunov/controller synthesis citations from the DRL verification claim. |
@@ -82,3 +82,25 @@ Primary sources checked for added positioning:
 - Giesl–Hafstein–Mehrabinezhad: https://iris.hi.is/en/publications/computation-and-verification-of-contraction-metrics-for-exponenti/ and https://arxiv.org/abs/1909.10334.
 
 Validation record: results/run_manifest.json is authoritative for the final pipeline status. Completion requires every declared stage to pass with unchanged source hashes. The pipeline checks generated-input hashes, all positive certificates and complete adaptive proof covers, and a clean arXiv compilation. The new theoretical statements and constructive sequence were independently reviewed before source freeze; final rendered pages are also inspected. Direct gap training, a controlled neural-verifier comparison, noisy-data residual inference, and SOS performance benchmarking remain explicitly outside this revision.
+
+
+## Final novelty and comparison review (November 2026)
+
+All four requested points are addressed in the v1.1.0 manuscript and release.
+
+1. The introduction and conclusion distinguish dual control-contraction-metric
+   formulations from direct joint controller-and-primal-metric learning.
+2. The availability statement and bibliography cite immutable release v1.1.0.
+   It includes the current reproduction overlay, final manuscript, and unchanged
+   original twelve-stage scientific snapshot with explicit provenance.
+3. The contribution statement identifies integrated failure analysis, computable
+   outward-rounded certificates, and reproducible diagnostics as the principal
+   contribution. Sampling/continuity and CEGIS soundness are established building
+   blocks; rate and residual bounds are derived quantitative consequences.
+4. The Davydov comparison identifies training against partition-wise certificate
+   bounds versus sampled hinge losses with diagnostic-point dataset augmentation.
+   Autonomous versus controlled dynamics is a scope distinction. No superiority
+   claim or new matched external-verifier experiment is added.
+
+The abstract's negative certification-count finding, mathematical statements,
+proofs, numerical results, and disclosed limitations are preserved.

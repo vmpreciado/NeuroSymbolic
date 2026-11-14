@@ -1,0 +1,848 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "verified_at": "2026-11-07T01:41:52.716574+00:00",
+  "scope": "Preserves the 26 previously verified bibliography records and adds five primary-source checks for the Bullo foundations/learning references and Davydov comparison. Checks citation-key completeness and the new comparisons; prior audits are retained as historical evidence.",
+  "entry_count": 31,
+  "nonexistent_references": [],
+  "entries": [
+    {
+      "key": "lohmiller1998",
+      "exists": true,
+      "primary_sources": [
+        "https://www.sciencedirect.com/science/article/pii/S0005109898000193"
+      ],
+      "metadata": {
+        "authors": [
+          "W. Lohmiller",
+          "J.-J. E. Slotine"
+        ],
+        "title": "On contraction analysis for non-linear systems",
+        "venue": "Automatica",
+        "volume": 34,
+        "issue": 6,
+        "pages": "683\u2013696",
+        "year": 1998,
+        "doi": "10.1016/S0005-1098(98)00019-3"
+      },
+      "corrections": [
+        "Current metadata correct; add DOI."
+      ],
+      "context_check": "Foundational contraction background and variational decay claim supported."
+    },
+    {
+      "key": "manchester2017",
+      "exists": true,
+      "primary_sources": [
+        "https://arxiv.org/abs/1503.03144"
+      ],
+      "metadata": {
+        "authors": [
+          "I. R. Manchester",
+          "J.-J. E. Slotine"
+        ],
+        "title": "Control contraction metrics: Convex and intrinsic criteria for nonlinear feedback design",
+        "venue": "IEEE Transactions on Automatic Control",
+        "volume": 62,
+        "issue": 6,
+        "pages": "3046\u20133053",
+        "year": 2017,
+        "doi": "10.1109/TAC.2017.2668380"
+      },
+      "corrections": [
+        "Current metadata correct; add DOI. Publisher DOI fetch unavailable; author-deposited original confirms identity."
+      ],
+      "context_check": "Broad dual-metric/structural background outside manuscript scope is appropriate. Author amendment https://arxiv.org/abs/1711.08128 concerns integrability for rank-changing input matrices; add if expanding controlled-system claims."
+    },
+    {
+      "key": "tsukamoto2021tutorial",
+      "exists": true,
+      "primary_sources": [
+        "https://arxiv.org/abs/2110.00675",
+        "https://www.sciencedirect.com/science/article/abs/pii/S1367578821000766"
+      ],
+      "metadata": {
+        "authors": [
+          "H. Tsukamoto",
+          "S.-J. Chung",
+          "J.-J. E. Slotine"
+        ],
+        "title": "Contraction theory for nonlinear stability analysis and learning-based control: A tutorial overview",
+        "venue": "Annual Reviews in Control",
+        "volume": 52,
+        "issue": null,
+        "pages": "135\u2013169",
+        "year": 2021,
+        "doi": "10.1016/j.arcontrol.2021.10.001"
+      },
+      "corrections": [
+        "Current metadata correct; add DOI. Author record explicitly gives volume/year/pages/DOI."
+      ],
+      "context_check": "Contraction tutorial/background citation supported."
+    },
+    {
+      "key": "dawson2023",
+      "exists": true,
+      "primary_sources": [
+        "https://ieeexplore.ieee.org/abstract/document/10015199/",
+        "https://arxiv.org/abs/2202.11762"
+      ],
+      "metadata": {
+        "authors": [
+          "C. Dawson",
+          "S. Gao",
+          "C. Fan"
+        ],
+        "title": "Safe control with learned certificates: A survey of neural Lyapunov, barrier, and contraction methods for robotics and control",
+        "venue": "IEEE Transactions on Robotics",
+        "volume": 39,
+        "issue": 3,
+        "pages": "1749\u20131767",
+        "year": 2023,
+        "doi": "10.1109/TRO.2022.3232542"
+      },
+      "corrections": [
+        "Current metadata correct; add DOI. DOI contains 2022, journal issue year is correctly 2023."
+      ],
+      "context_check": "Broad learned-certificate survey scope supported."
+    },
+    {
+      "key": "sun2021",
+      "exists": true,
+      "primary_sources": [
+        "https://proceedings.mlr.press/v155/sun21b.html",
+        "https://proceedings.mlr.press/v155/sun21b/sun21b.pdf"
+      ],
+      "metadata": {
+        "authors": [
+          "D. Sun",
+          "S. Jha",
+          "C. Fan"
+        ],
+        "title": "Learning certified control using contraction metric",
+        "venue": "Proceedings of the 2020 Conference on Robot Learning, Proceedings of Machine Learning Research",
+        "volume": 155,
+        "issue": null,
+        "pages": "1519\u20131539",
+        "year": 2021,
+        "doi": null
+      },
+      "corrections": [
+        "Clarify conference name as Proceedings of the 2020 Conference on Robot Learning while retaining publication year 2021.",
+        "Add official proceedings URL."
+      ],
+      "context_check": "Lipschitz/grid verification comparison supported by Section3.2 and AppendixB.2. AppendixB.2 estimates L_dotM by maximum gradient norm over10K random samples; current cautious comparison is appropriate."
+    },
+    {
+      "key": "tsukamoto2021ncm",
+      "exists": true,
+      "primary_sources": [
+        "https://arxiv.org/abs/2006.04361",
+        "https://ieeexplore.ieee.org/document/9115010"
+      ],
+      "metadata": {
+        "authors": [
+          "H. Tsukamoto",
+          "S.-J. Chung"
+        ],
+        "title": "Neural contraction metrics for robust estimation and control: A convex optimization approach",
+        "venue": "IEEE Control Systems Letters",
+        "volume": 5,
+        "issue": 1,
+        "pages": "211\u2013216",
+        "year": 2021,
+        "doi": "10.1109/LCSYS.2020.3001646"
+      },
+      "corrections": [
+        "Current metadata correct; add DOI. Author record explicitly gives issue and DOI."
+      ],
+      "context_check": "Neural contraction-metric representation background supported."
+    },
+    {
+      "key": "chang2019",
+      "exists": true,
+      "primary_sources": [
+        "https://proceedings.neurips.cc/paper/2019/hash/2647c1dba23bc0e0f9cdf75339e120d2-Abstract.html"
+      ],
+      "metadata": {
+        "authors": [
+          "Y.-C. Chang",
+          "N. Roohi",
+          "S. Gao"
+        ],
+        "title": "Neural Lyapunov control",
+        "venue": "Advances in Neural Information Processing Systems",
+        "volume": 32,
+        "issue": null,
+        "pages": null,
+        "year": 2019,
+        "doi": null
+      },
+      "corrections": [
+        "Current metadata correct; add volume32 and official proceedings URL. No DOI needed."
+      ],
+      "context_check": "CEGIS learner/falsifier and neural Lyapunov/controller synthesis description supported by primary abstract."
+    },
+    {
+      "key": "abate2021",
+      "exists": true,
+      "primary_sources": [
+        "https://ieeexplore.ieee.org/abstract/document/9126840",
+        "https://arxiv.org/abs/2003.08910"
+      ],
+      "metadata": {
+        "authors": [
+          "A. Abate",
+          "D. Ahmed",
+          "M. Giacobbe",
+          "A. Peruffo"
+        ],
+        "title": "Formal synthesis of Lyapunov neural networks",
+        "venue": "IEEE Control Systems Letters",
+        "volume": 5,
+        "issue": 3,
+        "pages": "773\u2013778",
+        "year": 2021,
+        "doi": "10.1109/LCSYS.2020.3005328"
+      },
+      "corrections": [
+        "Current metadata correct; add DOI."
+      ],
+      "context_check": "CEGIS/sound SMT Lyapunov synthesis description supported by primary abstract."
+    },
+    {
+      "key": "edwards2024",
+      "exists": true,
+      "primary_sources": [
+        "https://repository.tudelft.nl/record/uuid%3A92a65336-6964-4345-a86c-edb1c1e84175",
+        "https://arxiv.org/abs/2311.09793",
+        "https://dl.acm.org/doi/10.1145/3641513.3651398"
+      ],
+      "metadata": {
+        "authors": [
+          "A. Edwards",
+          "A. Peruffo",
+          "A. Abate"
+        ],
+        "title": "Fossil 2.0: Formal certificate synthesis for the verification and control of dynamical models",
+        "venue": "Proceedings of the 27th ACM International Conference on Hybrid Systems: Computation and Control",
+        "volume": null,
+        "issue": null,
+        "pages": "1\u201310",
+        "article_number": 26,
+        "year": 2024,
+        "doi": "10.1145/3641513.3651398"
+      },
+      "corrections": [
+        "Add conference ordinal, article26,10-page extent,and DOI; current authors/title/year correct."
+      ],
+      "context_check": "CEGIS certificate-learning tool description supported by original author-deposited final publication and arXiv abstract."
+    },
+    {
+      "key": "mandal2024",
+      "exists": true,
+      "primary_sources": [
+        "https://repositum.tuwien.at/handle/20.500.12708/200782",
+        "https://arxiv.org/abs/2405.14058"
+      ],
+      "metadata": {
+        "title": "Formally Verifying Deep Reinforcement Learning Controllers with Lyapunov Barrier Certificates",
+        "authors": [
+          "Udayan Mandal",
+          "Guy Amir",
+          "Haoze Wu",
+          "Ieva Daukantas",
+          "Fletcher Lee Newell",
+          "Umberto J. Ravaioli",
+          "Baoluo Meng",
+          "Michael Durling",
+          "Milan Ganai",
+          "Tobey Shim",
+          "Guy Katz",
+          "Clark Barrett"
+        ],
+        "year": 2024,
+        "venue": "Proceedings of the 24th Conference on Formal Methods in Computer-Aided Design (FMCAD)",
+        "volume": null,
+        "issue": null,
+        "pages": "95\u2013106",
+        "doi": "10.34727/2024/isbn.978-3-85448-065-5_15"
+      },
+      "corrections": [
+        "Replace arXiv-only metadata with published FMCAD 2024 venue, pages 95\u2013106 and publication DOI."
+      ],
+      "context_check": "The related-work claim about formal verification of DRL controllers using Lyapunov-barrier certificates is supported; paper also uses a CEGIS loop."
+    },
+    {
+      "key": "solar2006",
+      "exists": true,
+      "primary_sources": [
+        "https://people.eecs.berkeley.edu/~sseshia/pubs/b2hd-solar-asplos06.html",
+        "https://people.csail.mit.edu/asolar/"
+      ],
+      "metadata": {
+        "title": "Combinatorial sketching for finite programs",
+        "authors": [
+          "Armando Solar-Lezama",
+          "Liviu Tancau",
+          "Rastislav Bod\u00edk",
+          "Sanjit A. Seshia",
+          "Vijay A. Saraswat"
+        ],
+        "year": 2006,
+        "venue": "Proceedings of the 12th International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS)",
+        "volume": null,
+        "issue": null,
+        "pages": "404\u2013415",
+        "doi": "10.1145/1168857.1168907"
+      },
+      "corrections": [
+        "Complete venue and pages 404\u2013415; add DOI.",
+        "Restore Bod\u00edk accent and S. A. Seshia and V. A. Saraswat middle initials."
+      ],
+      "context_check": "Foundational counterexample-guided synthesis citation is appropriate. Current last-two-author ordering matches official author bibliography; an older author-hosted PDF differs."
+    },
+    {
+      "key": "harapanahalli2026",
+      "exists": true,
+      "primary_sources": [
+        "https://www.coogan.ece.gatech.edu/pubs.html",
+        "https://arxiv.org/abs/2603.28011",
+        "https://arxiv.org/html/2603.28011v2"
+      ],
+      "metadata": {
+        "title": "Learning Certified Neural Network Controllers Using Contraction and Interval Analysis",
+        "authors": [
+          "Akash Harapanahalli",
+          "Samuel Coogan",
+          "Alexander Davydov"
+        ],
+        "year": 2026,
+        "venue": "IEEE Control Systems Letters",
+        "volume": 10,
+        "issue": null,
+        "pages": "1615\u20131620",
+        "doi": "10.1109/LCSYS.2026.3707155"
+      },
+      "corrections": [
+        "Existing bibliography metadata is correct; optionally rename anonymous2026 key to harapanahalli2026.",
+        "Replace related-work phrase differentiable interval bound propagation with differentiable bound propagation and interval matrix checks, or differentiable linear bound propagation."
+      ],
+      "context_check": "Original section II-C uses CROWN-style linear bound propagation through immrax, distinct from basic interval bound propagation. Joint controller/metric training with certification is supported; no counterexample dataset-augmentation loop is described.",
+      "previous_key": "anonymous2026"
+    },
+    {
+      "key": "aylward2008",
+      "exists": true,
+      "primary_sources": [
+        "https://www.sciencedirect.com/science/article/abs/pii/S0005109808000563",
+        "https://arxiv.org/abs/math/0603313"
+      ],
+      "metadata": {
+        "title": "Stability and robustness analysis of nonlinear systems via contraction metrics and SOS programming",
+        "authors": [
+          "Erin M. Aylward",
+          "Pablo A. Parrilo",
+          "Jean-Jacques E. Slotine"
+        ],
+        "year": 2008,
+        "venue": "Automatica",
+        "volume": 44,
+        "issue": 8,
+        "pages": "2163\u20132170",
+        "doi": "10.1016/j.automatica.2007.12.012"
+      },
+      "corrections": [
+        "Existing metadata correct; add publication DOI."
+      ],
+      "context_check": "Polynomial contraction metric synthesis through SOS is directly supported."
+    },
+    {
+      "key": "giesl2019",
+      "exists": true,
+      "primary_sources": [
+        "https://epubs.siam.org/doi/abs/10.1137/18M1220182?journalCode=sjaday"
+      ],
+      "metadata": {
+        "title": "Computation of a Contraction Metric for a Periodic Orbit Using Meshfree Collocation",
+        "authors": [
+          "Peter Giesl"
+        ],
+        "year": 2019,
+        "venue": "SIAM Journal on Applied Dynamical Systems",
+        "volume": 18,
+        "issue": 3,
+        "pages": "1536\u20131564",
+        "doi": "10.1137/18M1220182"
+      },
+      "corrections": [
+        "Existing title, single author, volume, issue and pages are all correct; no title/page mismatch.",
+        "Add DOI."
+      ],
+      "context_check": "Supports rigorous numerical meshfree contraction-metric constructions. It concerns contraction transverse to flow toward a periodic orbit, so avoid treating it as a full equilibrium-contraction theorem; the manuscript broad description is acceptable."
+    },
+    {
+      "key": "li2025",
+      "exists": true,
+      "primary_sources": [
+        "https://proceedings.mlr.press/v283/li25e.html",
+        "https://arxiv.org/html/2504.17102v1"
+      ],
+      "metadata": {
+        "title": "Neural Contraction Metrics with Formal Guarantees for Discrete-Time Nonlinear Dynamical Systems",
+        "authors": [
+          "Haoyu Li",
+          "Xiangru Zhong",
+          "Bin Hu",
+          "Huan Zhang"
+        ],
+        "year": 2025,
+        "venue": "Proceedings of the 7th Annual Learning for Dynamics & Control Conference; Proceedings of Machine Learning Research",
+        "volume": 283,
+        "issue": null,
+        "pages": "1447\u20131459",
+        "doi": null
+      },
+      "corrections": [
+        "Existing metadata correct; add official proceedings URL."
+      ],
+      "context_check": "Original section 4.3 explicitly uses projected-gradient attacks to generate candidate counterexamples for training and separate final alpha,beta-CROWN verification. The discrete-time local-distance versus continuous-time differential distinction is supported."
+    },
+    {
+      "key": "boffi2020",
+      "exists": true,
+      "primary_sources": [
+        "https://proceedings.mlr.press/v155/boffi21a.html",
+        "https://proceedings.mlr.press/v155/boffi21a/boffi21a.pdf",
+        "https://arxiv.org/abs/2008.05952"
+      ],
+      "metadata": {
+        "title": "Learning Stability Certificates from Data",
+        "authors": [
+          "Nicholas M. Boffi",
+          "Stephen Tu",
+          "Nikolai Matni",
+          "Jean-Jacques E. Slotine",
+          "Vikas Sindhwani"
+        ],
+        "year": 2021,
+        "venue": "Proceedings of the 2020 Conference on Robot Learning; Proceedings of Machine Learning Research",
+        "volume": 155,
+        "issue": null,
+        "pages": "1341\u20131350",
+        "doi": null
+      },
+      "corrections": [
+        "Publication year 2021 already correct despite internal key boffi2020 and 2020 event year.",
+        "For precision identify venue as the 2020 Conference on Robot Learning, published 2021; add official proceedings URL."
+      ],
+      "context_check": "Learning stability certificates from trajectories with statistical generalization guarantees is directly supported."
+    },
+    {
+      "key": "fousse2007",
+      "exists": true,
+      "primary_sources": [
+        "https://www.mpfr.org/algo.html",
+        "https://www.mpfr.org/mpfr-current/mpfr.html",
+        "https://perso.ens-lyon.fr/guillaume.hanrot/Papers/toms.pdf"
+      ],
+      "metadata": {
+        "title": "MPFR: A Multiple-Precision Binary Floating-Point Library With Correct Rounding",
+        "authors": [
+          "Laurent Fousse",
+          "Guillaume Hanrot",
+          "Vincent Lef\u00e8vre",
+          "Patrick P\u00e9lissier",
+          "Paul Zimmermann"
+        ],
+        "year": 2007,
+        "venue": "ACM Transactions on Mathematical Software",
+        "volume": 33,
+        "issue": 2,
+        "pages": null,
+        "article_number": 13,
+        "doi": "10.1145/1236463.1236468"
+      },
+      "corrections": [
+        "No correction required: existing accents, journal, volume, issue, article number and DOI are correct."
+      ],
+      "context_check": "Appropriate primary reference for MPFR correctly rounded multiprecision arithmetic and directed-rounding implementation contract."
+    },
+    {
+      "key": "nsp_release",
+      "exists": true,
+      "primary_sources": [
+        "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.0.1"
+      ],
+      "metadata": {
+        "authors": [
+          "Victor M. Preciado"
+        ],
+        "title": "Neurosymbolic Synthesis of Contraction Certificates: Verified Reproduction Snapshot and Review Manuscript",
+        "year": 2026,
+        "version": "v1.0.1",
+        "venue": "GitHub release"
+      },
+      "corrections": [],
+      "context_check": "Published immutable v1.0.1 release exists. It is cited only as the baseline snapshot; manuscript separately distinguishes the additional unpublished local revision."
+    },
+    {
+      "key": "fitzsimmons2024",
+      "exists": true,
+      "primary_sources": [
+        "https://math.uwaterloo.ca/~j49liu/papers/2024/fitzsimmons2024computation.pdf",
+        "https://math.uwaterloo.ca/~j49liu/publications.html",
+        "https://doi.org/10.1109/LCSYS.2024.3478272"
+      ],
+      "metadata": {
+        "title": "Computation and Formal Verification of Neural Network Contraction Metrics",
+        "authors": [
+          "Maxwell Fitzsimmons",
+          "Jun Liu"
+        ],
+        "year": 2024,
+        "venue": "IEEE Control Systems Letters",
+        "volume": "8",
+        "issue": null,
+        "pages": "2367\u20132372",
+        "doi": "10.1109/LCSYS.2024.3478272"
+      },
+      "corrections": [],
+      "context_check": "Supported. Author-hosted final IEEE PDF explicitly treats autonomous systems and post-training SMT/dReal verification (printed pp.2367\u20132369)."
+    },
+    {
+      "key": "forni2014",
+      "exists": true,
+      "primary_sources": [
+        "https://orbi.uliege.be/handle/2268/165111",
+        "https://arxiv.org/abs/1208.2943",
+        "https://doi.org/10.1109/TAC.2013.2285771"
+      ],
+      "metadata": {
+        "title": "A Differential Lyapunov Framework for Contraction Analysis",
+        "authors": [
+          "Fulvio Forni",
+          "Rodolphe Sepulchre"
+        ],
+        "year": 2014,
+        "venue": "IEEE Transactions on Automatic Control",
+        "volume": "59",
+        "issue": "3",
+        "pages": "614\u2013628",
+        "doi": "10.1109/TAC.2013.2285771"
+      },
+      "corrections": [],
+      "context_check": "Supported. Tangent-bundle differential Lyapunov/Finsler framework and incremental stability by integration along connecting curves match the foundational positioning."
+    },
+    {
+      "key": "bobiti2018",
+      "exists": true,
+      "primary_sources": [
+        "https://ieeexplore.ieee.org/document/8267231/",
+        "https://research.tue.nl/nl/publications/automated-sampling-based-stability-verification-and-doa-estimatio/fingerprints/",
+        "https://api.crossref.org/works/10.1109/TAC.2018.2797196"
+      ],
+      "metadata": {
+        "title": "Automated-Sampling-Based Stability Verification and DOA Estimation for Nonlinear Systems",
+        "authors": [
+          "Ruxandra Bobiti",
+          "Mircea Lazar"
+        ],
+        "year": 2018,
+        "venue": "IEEE Transactions on Automatic Control",
+        "volume": "63",
+        "issue": "11",
+        "pages": "3659\u20133674",
+        "doi": "10.1109/TAC.2018.2797196"
+      },
+      "corrections": [],
+      "context_check": "Supported. Publisher abstract extends finite sampled inequalities using local continuity, with multiresolution hyperrectangles. R.V. Bobiti initials in current manuscript are supported by author institution record, although published IEEE/Crossref abbreviates R. Bobiti; this is not a fabricated author."
+    },
+    {
+      "key": "chou2021",
+      "exists": true,
+      "primary_sources": [
+        "https://arxiv.org/abs/2104.08695",
+        "https://arm.robotics.umich.edu/download.php?p=102",
+        "https://ieeexplore.ieee.org/document/9683354",
+        "https://api.crossref.org/works/10.1109/CDC45484.2021.9683354"
+      ],
+      "metadata": {
+        "title": "Model Error Propagation via Learned Contraction Metrics for Safe Feedback Motion Planning of Unknown Systems",
+        "authors": [
+          "Glen Chou",
+          "Necmiye Ozay",
+          "Dmitry Berenson"
+        ],
+        "year": 2021,
+        "venue": "2021 60th IEEE Conference on Decision and Control (CDC)",
+        "volume": null,
+        "issue": null,
+        "pages": "3576\u20133583",
+        "doi": "10.1109/CDC45484.2021.9683354"
+      },
+      "corrections": [
+        "Complete conference metadata with pp.3576\u20133583 and DOI10.1109/CDC45484.2021.9683354. Existing title/authors/year/venue are correct."
+      ],
+      "context_check": "Supported. Abstract and lab-hosted paper explicitly give probabilistic local model-error bounds and trajectory tracking tubes for learned control-affine dynamics. arXiv latest v2 (2022) is extended; 2021 abridged conference citation is explicitly acknowledged on arXiv."
+    },
+    {
+      "key": "zhou2022",
+      "exists": true,
+      "primary_sources": [
+        "https://proceedings.neurips.cc/paper_files/paper/2022/hash/bba3160c42f4c1d23175b5abf04347f5-Abstract-Conference.html",
+        "https://proceedings.neurips.cc/paper_files/paper/17394-/bibtex",
+        "https://arxiv.org/abs/2206.01913"
+      ],
+      "metadata": {
+        "title": "Neural Lyapunov Control of Unknown Nonlinear Systems with Stability Guarantees",
+        "authors": [
+          "Ruikun Zhou",
+          "Thanin Quartz",
+          "Hans De Sterck",
+          "Jun Liu"
+        ],
+        "year": 2022,
+        "venue": "Advances in Neural Information Processing Systems",
+        "volume": "35",
+        "issue": null,
+        "pages": "29113\u201329125",
+        "doi": "10.52202/068431-2111"
+      },
+      "corrections": [
+        "Complete official proceedings metadata with pp.29113\u201329125 and DOI10.52202/068431-2111. Existing title/authors/year/volume are correct."
+      ],
+      "context_check": "Supported. Official proceedings abstract verifies learned Lyapunov/controller conditions for an unknown nonlinear system under stated assumptions. Manuscript correctly distinguishes this from differential contraction transfer."
+    },
+    {
+      "key": "tedrake2026",
+      "exists": true,
+      "primary_sources": [
+        "https://underactuated.mit.edu/lyapunov.html"
+      ],
+      "metadata": {
+        "title": "Underactuated Robotics, Chapter 9: Lyapunov Analysis",
+        "authors": [
+          "Russ Tedrake"
+        ],
+        "year": null,
+        "venue": "MIT online course notes; accessed November 2026",
+        "volume": null,
+        "issue": null,
+        "pages": null,
+        "doi": null
+      },
+      "corrections": [],
+      "context_check": "Supported. Chapter explicitly introduces s=sin(theta),c=cos(theta), polynomial pendulum dynamics and circle constraint for SOS. Current item correctly states access date rather than asserting a 2026 publication year; page header says copyright2024."
+    },
+    {
+      "key": "giesl2021",
+      "exists": true,
+      "primary_sources": [
+        "https://iris.hi.is/en/publications/computation-and-verification-of-contraction-metrics-for-exponenti/",
+        "https://arxiv.org/abs/1909.10334",
+        "https://doi.org/10.1016/j.cam.2020.113332"
+      ],
+      "metadata": {
+        "title": "Computation and verification of contraction metrics for exponentially stable equilibria",
+        "authors": [
+          "Peter Giesl",
+          "Sigurdur Hafstein",
+          "Iman Mehrabinezhad"
+        ],
+        "year": 2021,
+        "venue": "Journal of Computational and Applied Mathematics",
+        "volume": "390",
+        "issue": null,
+        "pages": "Article113332",
+        "doi": "10.1016/j.cam.2020.113332"
+      },
+      "corrections": [],
+      "context_check": "Supported. RBF meshfree collocation plus rigorous CPA interpolation/finitely checked inequalities, with sufficient-resolution existence guarantee. Institutional publisher record confirms July2021 volume390 article113332."
+    },
+    {
+      "key": "ravanbakhsh2019",
+      "exists": true,
+      "primary_sources": [
+        "https://link.springer.com/article/10.1007/s10514-018-9791-9",
+        "https://arxiv.org/abs/1804.05285"
+      ],
+      "metadata": {
+        "title": "Learning control lyapunov functions from counterexamples and demonstrations",
+        "authors": [
+          "Hadi Ravanbakhsh",
+          "Sriram Sankaranarayanan"
+        ],
+        "year": 2019,
+        "venue": "Autonomous Robots",
+        "volume": "43",
+        "issue": null,
+        "pages": "275\u2013307",
+        "doi": "10.1007/s10514-018-9791-9"
+      },
+      "corrections": [],
+      "context_check": "Supported. Publisher abstract explicitly has iterative learner/demonstrator/verifier, polynomial CLF-like functions, counterexamples, and convergence via ellipsoidal approximations. Published online2018 but journal volume year2019 is correct."
+    },
+    {
+      "key": "simpsonporco2014",
+      "exists": true,
+      "primary_sources": [
+        "https://www.control.utoronto.ca/~jwsimpson/papers/2012za/",
+        "https://www.control.utoronto.ca/~jwsimpson/papers/2012za.pdf",
+        "https://fbullo.github.io/papers/Year/2014.complete.html"
+      ],
+      "metadata": {
+        "authors": [
+          "John W. Simpson-Porco",
+          "Francesco Bullo"
+        ],
+        "title": "Contraction Theory on Riemannian Manifolds",
+        "year": 2014,
+        "venue": "Systems & Control Letters",
+        "volume": 65,
+        "issue": null,
+        "pages": "74-80",
+        "doi": "10.1016/j.sysconle.2013.12.016"
+      },
+      "corrections": [],
+      "context_check": "Author-hosted full published text gives intrinsic coordinate-free Riemannian contraction and emphasizes geometric/flow assumptions for finite trajectory-distance conclusions. Appropriate in foundational related work and the finite-trajectory-distance remark. It is background, not evidence that the current compact verification box is forward invariant."
+    },
+    {
+      "key": "davydov2022noneuclidean",
+      "exists": true,
+      "primary_sources": [
+        "https://arxiv.org/abs/2103.12263",
+        "https://fbullo.github.io/papers/Year/2022.complete.html"
+      ],
+      "metadata": {
+        "authors": [
+          "Alexander Davydov",
+          "Saber Jafarpour",
+          "Francesco Bullo"
+        ],
+        "title": "Non-Euclidean Contraction Theory for Robust Nonlinear Stability",
+        "year": 2022,
+        "venue": "IEEE Transactions on Automatic Control",
+        "volume": 67,
+        "issue": 12,
+        "pages": "6667-6681",
+        "doi": "10.1109/TAC.2022.3183966"
+      },
+      "corrections": [],
+      "context_check": "Primary abstract and final author bibliography establish contraction/incremental stability in arbitrary norms via weak pairings, norm-dependent Jacobian characterizations, incremental input-to-state stability and interconnections. Cite in related work for broader norm-dependent contraction and robustness. Do not attribute the coordinatewise infinity-norm grid covering bound to this paper or suggest changing covering norm changes the Riemannian contraction metric."
+    },
+    {
+      "key": "bullo2026",
+      "exists": true,
+      "primary_sources": [
+        "https://fbullo.github.io/ctds/"
+      ],
+      "metadata": {
+        "authors": [
+          "Francesco Bullo"
+        ],
+        "title": "Contraction Theory for Dynamical Systems",
+        "year": 2026,
+        "venue": "Kindle Direct Publishing",
+        "publisher": "Kindle Direct Publishing",
+        "edition": "1.3",
+        "isbn": "979-8836646806",
+        "volume": null,
+        "issue": null,
+        "pages": null,
+        "doi": null
+      },
+      "corrections": [],
+      "context_check": "The author website explicitly lists edition1.3, Jan1,2026 and provides the quoted BibTeX with year2026, edition1.3 and ISBN. Broad textbook background for continuous-time contraction, logarithmic norms, Euclidean/non-Euclidean norms and extensions. Cite as book rather than journal article; version2.0 is only work in progress for2027."
+    },
+    {
+      "key": "jaffe2024",
+      "exists": true,
+      "primary_sources": [
+        "https://proceedings.neurips.cc/paper_files/paper/2024/hash/79cafa874121a3435d8a54f454b646b4-Abstract-Conference.html",
+        "https://proceedings.neurips.cc/paper_files/paper/24468-/bibtex",
+        "https://proceedings.neurips.cc/paper_files/paper/2024/file/79cafa874121a3435d8a54f454b646b4-Paper-Conference.pdf"
+      ],
+      "metadata": {
+        "authors": [
+          "Sean Jaffe",
+          "Alexander Davydov",
+          "Deniz Lapsekili",
+          "Ambuj K. Singh",
+          "Francesco Bullo"
+        ],
+        "title": "Learning Neural Contracting Dynamics: Extended Linearization and Global Guarantees",
+        "venue": "Advances in Neural Information Processing Systems",
+        "volume": 37,
+        "pages": "66204--66225",
+        "year": 2024,
+        "doi": "10.52202/079017-2116"
+      },
+      "corrections": [
+        "New reference. Metadata obtained directly from official NeurIPS BibTeX."
+      ],
+      "context_check": "Learns a vector field through an extended-linearization neural parametrization with stability/contraction structure, and learned diffeomorphisms. It is appropriately contrasted with metric search for given dynamics or a surrogate frozen after fitting. Avoid asserting a computable global Riemannian metric is always directly supplied by its basic model: its Section3.2 uses a converse result and a metric on compact subsets."
+    },
+    {
+      "key": "davydov2025partitioning",
+      "exists": true,
+      "primary_sources": [
+        "https://arxiv.org/abs/2512.02262",
+        "https://arxiv.org/html/2512.02262v1",
+        "https://api.crossref.org/works/10.1109/IEEECONF67917.2025.11443716",
+        "https://cmsworkshops.com/Asilomar2025/view_paper.php?PaperNum=1433",
+        "https://github.com/davydovalexander/interval-bound-contraction"
+      ],
+      "metadata": {
+        "authors": [
+          "Alexander Davydov"
+        ],
+        "title": "Verifying Closed-Loop Contractivity of Learning-Based Controllers via Partitioning",
+        "venue": "2025 59th Asilomar Conference on Signals, Systems, and Computers",
+        "pages": "1740--1744",
+        "year": 2025,
+        "doi": "10.1109/IEEECONF67917.2025.11443716",
+        "extended_report": "arXiv:2512.02262"
+      },
+      "corrections": [
+        "New reference. Published conference venue/pages/DOI verified through the primary DOI registration, author code citation, and official conference program; IEEE page is robot-blocked."
+      ],
+      "context_check": "Joint neural controller/metric learning uses IBP/Jacobian intervals and symmetric Metzler-majorant regional tests in a partition loss. SectionV and AppendixA refine verification partitions and grow the domain; they do not describe CEGIS augmentation of a point dataset. In-loop verification and domain partitioning are therefore established antecedents, not novelty claims for the current paper. No relative numerical-rigor or performance superiority is inferred."
+    }
+  ],
+  "applied_changes": [
+    "Updated Mandal et al. from arXiv-only to published FMCAD2024 metadata.",
+    "Completed verified DOI identifiers, proceedings details, page ranges and Solar-Lezama coauthor initials/accent.",
+    "Clarified CoRL2020 event year versus 2021 publication year for Sun and Boffi.",
+    "Provided clickable DOI or original-source links for all 26 references.",
+    "Corrected Harapanahalli et al. description from interval bound propagation to linear bound propagation with interval matrix checks; renamed internal citation key.",
+    "Added explicit acknowledgment of OpenAI Codex assistance and Anthropic Claude review, with author responsibility.",
+    "Added Simpson-Porco and Bullo2014 Riemannian contraction foundations and Bullo2026 edition1.3 text.",
+    "Added Davydov,Jafarpour and Bullo2022 while distinguishing general-norm contraction from infinity-norm grid coverage.",
+    "Added Jaffe et al. NeurIPS2024 and distinguished contracting model construction from certificate search for a fixed vector field.",
+    "Added Davydov published Asilomar2025 metadata and compared partitioned interval-based neural controller/metric training with autonomous diagnostic-point certificate synthesis.",
+    "Sharpened opening around learning versus proof and positioned the contribution without claiming verification during training or partitioning is new."
+  ],
+  "checks": {
+    "bibliography_keys_unique": true,
+    "all_citations_resolve": true,
+    "no_uncited_entries": true,
+    "primary_source_evidence_for_every_entry": true,
+    "all_entries_have_clickable_source_identifiers": true,
+    "new_entry_count": 5
+  },
+  "ai_disclosure": "OpenAI Codex: mathematical analysis/exposition, literature searches/reference checking, drafting/revision, software implementation, pipeline execution/checks. Anthropic Claude: critical review. Author responsibility stated; no unsupported claim of independent human validation.",
+  "previous_audit": {
+    "path": "results/reference_audit_before_bullo.json",
+    "sha256": "24729e254ef9d8ca48cd2932437ec81cdfa40c55f16563d22b37aea881861556",
+    "entry_count": 26,
+    "verified_at": "2026-11-05T23:57:53.202382+00:00"
+  },
+  "new_primary_source_checks": [
+    "simpsonporco2014",
+    "davydov2022noneuclidean",
+    "bullo2026",
+    "jaffe2024",
+    "davydov2025partitioning"
+  ]
+}

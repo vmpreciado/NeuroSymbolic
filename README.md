@@ -1,9 +1,16 @@
-# Counterexample-Guided Synthesis of Contraction Metrics with Certified Verification
+# Neurosymbolic Synthesis of Contraction Metrics with Certified Verification
 
-This working revision addresses the November 2026 external referee report.
-It is developed on `codex/claude-revision` from immutable release v1.0.1.
-The new experiments and manuscript are local revision artifacts, not a new
-published release. `RESPONSE_TO_CLAUDE.md` records every review disposition;
+This release addresses the November 2026 external referee report and the final novelty/comparison review.
+The neural extension couples a learned metric factor to explicit contraction
+conditions, analytic/exact algebra where applicable, and outward-rounded
+verification. The main controlled ablations use fixed polynomial features;
+the neural parametrization is evaluated separately.
+The introduction distinguishes certificate search for a fixed vector field
+from contracting-model architectures and partitioned neural controller/metric
+training, with explicit comparisons to Jaffe et al. and Davydov.
+Release [v1.1.0](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.0)
+archives the current manuscript and verified reproduction. It was developed on
+`codex/claude-revision` from immutable release v1.0.1. `RESPONSE_TO_CLAUDE.md` records every review disposition;
 `reviews/claude-2026-11-04.md` preserves the source report as review evidence.
 
 Research code and manuscript for CEGIS-C: counterexample-guided learning and
@@ -26,9 +33,10 @@ python -m pip install -r requirements-lock.txt
 directed arithmetic; `requirements-lock.txt`
 also pins their runtime dependencies to the local reproduction environment.
 Install a TeX distribution providing `pdflatex`, `IEEEtran.cls`, `amsmath`,
-`amssymb`, `amsthm`, `etoolbox`, `algorithm`, `algpseudocode`, `graphicx`,
-`hyperref`, `xcolor`, `placeins`, and `lineno`. PDF inspection additionally uses Poppler's `pdfinfo`
-and `pdftoppm`; these are not needed by the experiment scripts.
+`amssymb`, `amsthm`, `algorithm`, `algpseudocode`, `graphicx`,
+`hyperref`, `xcolor`, and `placeins`. PDF inspection additionally uses Poppler's `pdfinfo`
+and `pdftoppm`; these are not needed by the experiment scripts. Building the
+Claude review package additionally requires Poppler's `pdftotext` on `PATH`.
 
 From the repository root, run:
 
@@ -59,8 +67,8 @@ Option `--parallel-science` overlaps the independent neural, ablation, and
 extension producers after their prerequisites. It keeps separate producer
 logs, checks each exit status and freshness epoch, and stops remaining workers
 on failure. Timings in this mode include competition for machine resources.
-The paper uses a single-column, single-spaced preprint layout with continuous
-line numbers, including displayed equations, for feedback. It retains the
+The current paper uses a single-column, single-spaced preprint layout without
+reviewer line numbers. Feedback can cite pages and section or theorem labels. It retains the
 standard IEEEtran class and omits its double-spaced referee-mode option.
 
 After a passing run, create the complete local reviewer archive:
@@ -78,63 +86,61 @@ same passing snapshot produces the same ZIP bytes.
 
 ## Published snapshot and final manuscript
 
-[Release v1.0.1](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.0.1)
-provides the exact verified reproduction ZIP and its checksum, together with
-the updated line-numbered PDF, TeX source, generated numbers, a tested arXiv
-source bundle, and editorial-build provenance. GitHub release immutability
-protects the published tag and assets. The earlier
-[v1.0.0 release](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.0.0)
-remains unchanged.
-The verified ZIP has SHA256
-`c67b4247793c591125dfd71c1d86776a21b95ba1a59d116126c51d29cd934070`.
+[Immutable release v1.1.0](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.0)
+contains the current paper without reviewer line numbers, the tested arXiv source
+bundle, the complete current reproduction, and the Claude independent-review
+package. `CITATION.cff` and reference [18] in the paper identify this release.
+The earlier immutable v1.0.0 and v1.0.1 releases remain unchanged.
 
-The ZIP preserves the complete passing scientific run, including the manuscript
-at that run. The separately attached manuscript includes the final wording,
-the Fitzsimmons--Liu related-work comparison, and the current release citation.
-The tag's paper sources contain these edits. `results/editorial_rebuild.json`
-records the parent snapshot, unchanged
-scientific inputs and outputs, the editorial changes, and the new PDF build.
-The original `results/run_manifest.json` and scientific results remain
-unchanged; the editorial rebuild does not claim another full experimental run.
+The scientific evidence comes from a passing twelve-stage run. Its exact original
+archive is preserved byte-for-byte as `neurosymbolic-reproduction-scientific-verified.zip`
+with SHA256 `c1cdea042cca4f5495a3ed025174570bb68e494df2695641af2e97d91437eb39`.
+Its manifest, stage logs, learned parameters, proof records, figures, and numerical
+results are unchanged. Its embedded manuscript predates the final editorial edits.
 
-To rebuild only the final manuscript from the tag's sources and saved results:
+`neurosymbolic-reproduction-v1.1.0.zip` is the complete current runnable project.
+It overlays the final manuscript and metadata on the unchanged scientific files,
+preserves the original scientific archive under `provenance/`, and provides
+`SNAPSHOT.json` and a standalone `VERIFY_CURRENT_REPRODUCTION.py`. After extraction,
+run that verifier with Python 3.12 before rebuilding. The verifier checks hashes,
+original run evidence, and the declared editorial changes; it does not establish
+mathematical correctness or rerun experiments.
+
+`results/editorial_v1.1.0.json` records the source changes, reused scientific
+snapshot, saved-result validation, new manuscript compilation, and clean arXiv
+build. This release does not claim a new full experimental run. To create a new
+scientific run, use `run_all.py`; the original strict `package_reproduction.py`
+requires a fresh passing run with all current inputs. To reconstruct the released
+editorial overlay from saved results, run:
 
 ```sh
-python fill_tex.py
-cd paper
-pdflatex -interaction=nonstopmode -halt-on-error nsp_contraction_paper_ieee
-pdflatex -interaction=nonstopmode -halt-on-error nsp_contraction_paper_ieee
+python release/build_current.py
+python release/package_current.py
+python release/build_review_packet.py
 ```
 
-Use the full `run_all.py` command above for a fresh scientific reproduction.
-The strict packager intentionally requires that fresh passing run before
-packaging a source tree containing later editorial changes. Release asset
-`SHA256SUMS` lists the published checksums.
+These commands rebuild the editorial outputs from the verified scientific inputs.
+They do not publish a GitHub release. `release/SHA256SUMS` lists the release assets.
 
 ## arXiv source bundle
 
-The baseline release asset `neurosymbolic-arxiv-v1.0.1.tar.gz` contains exactly the
-top-level manuscript TeX, `numbers.tex`, and the six included figure PDFs.
-It has no compiled manuscript, logs, experiment data, or nested archive.
-The bibliography is embedded in the TeX, so no separate BibTeX input is needed.
-The bundle preserves the single-spaced manuscript and continuous line numbers.
+Release asset `neurosymbolic-arxiv-v1.1.0.tar.gz` contains thirteen flat manuscript
+inputs: the main TeX source with embedded bibliography, both generated numerical
+inputs, generated tables, and nine included figure PDFs. It contains no compiled
+manuscript, logs, experiment data, or nested archive. The manuscript uses a
+single-column, single-spaced layout without reviewer line numbers.
 
 To regenerate it and test compilation after extraction into a clean directory:
 
 ```sh
-python release/build_arxiv.py --check
+python release/build_arxiv.py --check --output dist/neurosymbolic-arxiv-v1.1.0.tar.gz
 ```
 
-`results/arxiv_bundle.json` records the archive and member hashes and the
-two-pass clean compilation. Install the documented TeX packages before this
-check. The local build test does not submit anything to arXiv.
-
-For this working revision the output is
-`dist/neurosymbolic-arxiv-claude-revision.tar.gz`. The dependency scanner
-collects the current manuscript, both generated numerical inputs, generated
-tables, and only the figures actually included. It checks a reviewed flat-file
-allowlist, normalized archive metadata, input hashes, and clean PDFLaTeX passes until references stabilize
-(at least two and at most four), with shell escape disabled. The earlier published bundle is unchanged.
+`results/arxiv_bundle.json` records the member hashes and clean compilation.
+The dependency scanner checks a reviewed flat-file allowlist, normalized archive
+metadata, and PDFLaTeX passes until references stabilize, with shell escape disabled.
+This local test does not submit anything to arXiv. The earlier published source
+bundles remain unchanged.
 
 ## External-review revision studies
 
@@ -190,9 +196,10 @@ does not create a Git commit automatically.
 
 ## Scope and interpretation
 
-All implemented benchmarks have two state variables. Higher-dimensional grid
-costs extrapolate a measured 2-D ratio while holding it fixed; they are not
-experiments on higher-dimensional dynamics. Differential guarantees apply to
+The original polynomial, pendulum, and neural studies have two state variables.
+The revision adds a coupled three-dimensional benchmark with adaptive verification.
+Uniform-grid cost extrapolations separately hold a measured 2-D ratio fixed; those
+extrapolated counts are not higher-dimensional experiments. Differential guarantees apply to
 solutions of the variational equation along trajectories remaining in the
 certified domain. A finite two-trajectory bound additionally needs an initial
 connecting curve whose entire flow remains in that domain. Convex forward
@@ -257,9 +264,11 @@ metric bounds and conservative overshoot and improved differential-rate bounds.
 `figures.py` and `cert_ladder.py` are retained historical prototype/diagnostic
 scripts. The current figure producers are listed above.
 `RESPONSE_TO_REFEREE.md` records the manuscript's revision response.
-`release/build_editorial.py` validates reuse of the verified scientific
-snapshot and rebuilds the current paper; `release/build_arxiv.py` packages
-the manuscript inputs and checks their standalone compilation.
+`release/build_editorial.py` preserves the historical v1.0.1 editorial workflow.
+`release/build_current.py` validates reuse of the twelve-stage snapshot and rebuilds
+the current manuscript; `release/build_arxiv.py` checks standalone compilation.
+`release/package_current.py` creates the verified current reproduction overlay,
+and `release/build_review_packet.py` creates the independent-review package.
 
 Run focused regression checks without rerunning the experiments:
 

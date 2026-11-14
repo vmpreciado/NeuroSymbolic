@@ -1,7 +1,5 @@
 \documentclass[12pt,onecolumn,journal]{IEEEtran}
 \usepackage{amsmath,amssymb,amsthm}
-\usepackage{etoolbox}
-\usepackage[mathlines]{lineno}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{graphicx}
@@ -9,20 +7,6 @@
 \usepackage{xcolor}
 \usepackage{placeins}
 \setlength{\emergencystretch}{2em}
-
-% Continuous reviewer line numbers, including displayed equations.
-\newcommand*\linenomathpatchAMS[1]{%
-  \expandafter\pretocmd\csname #1\endcsname {\linenomathAMS}{}{}%
-  \expandafter\pretocmd\csname #1*\endcsname{\linenomathAMS}{}{}%
-  \expandafter\apptocmd\csname end#1\endcsname {\endlinenomath}{}{}%
-  \expandafter\apptocmd\csname end#1*\endcsname{\endlinenomath}{}{}%
-}
-\expandafter\ifx\csname linenomathWithnumbers\endcsname\relax
-  \let\linenomathAMS\linenomath
-\else
-  \let\linenomathAMS\linenomathWithnumbers
-\fi
-\linenomathpatchAMS{equation}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}{Proposition}
@@ -44,7 +28,8 @@
 \IfFileExists{numbers.tex}{\input{numbers.tex}}{}
 \IfFileExists{revision_numbers.tex}{\input{revision_numbers.tex}}{}
 
-\title{Counterexample-Guided Synthesis of Contraction Metrics with Certified Verification}
+\title{Neurosymbolic Synthesis of Contraction Metrics with Certified Verification}
+\hypersetup{pdftitle={Neurosymbolic Synthesis of Contraction Metrics with Certified Verification},pdfauthor={Victor M. Preciado}}
 
 \author{Victor~M.~Preciado,~\IEEEmembership{Senior~Member,~IEEE}%
 \thanks{V.~M.~Preciado is with the Department of Electrical and Systems
@@ -52,14 +37,13 @@ Engineering and the Department of Computer and Information Science,
 University of Pennsylvania, Philadelphia, PA 19104 USA
 (e-mail: preciado@seas.upenn.edu).}}
 
-\markboth{Preciado: Counterexample-Guided Contraction Metric Synthesis}{Preciado: Counterexample-Guided Contraction Metric Synthesis}
+\markboth{Preciado: Neurosymbolic Contraction Metric Synthesis}{Preciado: Neurosymbolic Contraction Metric Synthesis}
 
 \begin{document}
 \maketitle
-\linenumbers
 
 \begin{abstract}
-This paper studies counterexample-guided synthesis of Riemannian contraction metrics for continuous-time autonomous systems on compact domains. A parameterized learner proposes a metric, and a sound verifier certifies its matrix inequality or supplies margin violators for retraining. We give computable Lipschitz and metric bounds for polynomial parametrizations in arbitrary dimension and implement outward-rounded verification for polynomial, trigonometric, and neural representations. We separate soundness of the implemented finite-budget loop from conditional finite termination of an idealized bounded-parameter loop with an exact feasible learner. The analysis identifies two ways a valid metric can remain uncertified by a grid oracle. Positive scaling can meet raw training margins without changing certifiability in scale-closed families, and fixed-margin training can have stationary updates below the verification margin. The implemented fixed-floor family is generally not scale-closed; a separate construction illustrates scaling. Trace normalization and margin coupling address these mechanisms but do not guarantee optimizer convergence. Verified uniform slack yields an explicit contraction-rate improvement and a transfer bound for model residuals with certified magnitude and Jacobian bounds. Finite trajectory-distance conclusions require a connecting family that stays in the verified region. Experiments study polynomial and pendulum dynamics and a neural metric parametrization, while controlled ablations compare test functions, margin rules, and parameter constraints under shared seeds and budgets. Additional studies test adaptive verification in three dimensions and certificate transfer from a fitted surrogate. The numerical results and their limitations are reported with certified constants and reproducible outputs.
+We study counterexample-guided synthesis of Riemannian contraction metrics for continuous-time autonomous systems on compact domains. A learner proposes a metric; a sound verifier certifies its matrix inequality or returns diagnostic points for retraining. The neural extension pairs a learned metric factor with symbolic contraction conditions and rigorous numerical verification; main ablations use fixed polynomial features. We give computable polynomial bounds in arbitrary dimension and implement outward-rounded verification for polynomial, trigonometric, and neural representations. Soundness of the numerical loop is separated from conditional finite-grid termination under idealized feasibility assumptions. We analyze why scaling and fixed-margin training can leave valid metrics uncertified. The scaling construction requires a scale-closed family, which the fixed-floor experimental class generally lacks. Verified positive slack improves the differential contraction rate and quantifies model-error tolerances using certified residual and Jacobian bounds. Finite-distance conclusions require a flowing connecting family that stays in the verified region. Experiments include controlled ablations, adaptive three-dimensional verification, and transfer from a trajectory-fitted surrogate with known-truth residual certification. In matched polynomial operating-grid experiments, trace normalization and margin coupling did not demonstrate an advantage in certification counts within the tested budgets. These choices address specific failure mechanisms without guaranteeing optimizer convergence or general empirical superiority.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -69,23 +53,29 @@ learning-based control, rigorous numerics.
 
 \section{Introduction}
 
-Learning-based methods propose models and controllers for nonlinear systems, but their deployment requires guarantees about the resulting dynamics. Certificate learning addresses this problem by searching for stability or safety certificates and checking them over a domain \cite{dawson2023}. We study continuous-time contraction metrics, which describe decay of differential displacements in a state-dependent Riemannian metric. A learner proposes the metric; a verifier checks its contraction matrix inequality and returns diagnostic margin violators for retraining. Positive answers are sound, while rejection can reflect a conservative verification margin rather than a violated contraction condition.
+Learning a contraction metric and proving that it works are different tasks. A small training loss on sampled states does not establish the contraction inequality throughout a domain. Conversely, a verifier with a conservative margin can reject a metric that already satisfies that inequality. Certificate-learning methods must therefore account for both the gap between sampled training and domain-wide validity and the gap between validity and numerical certifiability \cite{dawson2023}.
+
+We study a counterexample-guided workflow for continuous-time autonomous systems that connects metric learning, sound numerical verification, and quantitative dynamical guarantees. A polynomial or neural parametrization proposes a metric; a verifier can certify its matrix inequality or return diagnostic points for retraining. Computable bounds and outward-rounded checks establish the meaning of a positive answer. Verified positive slack yields explicit contraction-rate improvements and, given global residual bounds, sufficient model-error tolerances. The implementation records the parameters, bounds, outcomes, and build provenance needed to audit successful certificates. The analysis explains how learning and certification can fail for different reasons, while the experiments delimit the evidence for the proposed training choices.
 
 \subsection{Related work}
 
-\noindent\textit{Contraction certificates.} Contraction analysis \cite{lohmiller1998,forni2014,tsukamoto2021tutorial} provides differential stability guarantees and, with suitable flow geometry, incremental trajectory bounds. Polynomial contraction metrics can be synthesized by sum-of-squares (SOS) programming \cite{aylward2008}; rigorous numerical constructions also use meshfree collocation \cite{giesl2019,giesl2021}. Stability certificates with statistical guarantees have been learned from trajectories \cite{boffi2020}. Sampling-based verification extends inequalities from finitely many points by continuity bounds \cite{bobiti2018}. Our grid oracle follows this established principle for a matrix certificate, with computed global constants and outward-rounded inequalities.
+\noindent\textit{Contraction certificates.} Contraction analysis \cite{lohmiller1998,forni2014,tsukamoto2021tutorial,bullo2026} provides differential stability guarantees and, with suitable flow geometry, incremental trajectory bounds. Simpson-Porco and Bullo \cite{simpsonporco2014} develop an intrinsic Riemannian formulation and clarify its geometric hypotheses. Contraction under general norms also yields robustness results \cite{davydov2022noneuclidean}. Our condition remains Riemannian; the infinity norm in Remark~\ref{rem:coordinate} is used only for grid coverage. Polynomial contraction metrics can be synthesized by sum-of-squares (SOS) programming \cite{aylward2008}; rigorous numerical constructions also use meshfree collocation \cite{giesl2019,giesl2021}. Stability certificates with statistical guarantees have been learned from trajectories \cite{boffi2020}. Sampling-based verification extends inequalities from finitely many points by continuity bounds \cite{bobiti2018}. Our grid oracle follows this established principle for a matrix certificate, with computed global constants and outward-rounded inequalities.
 
 \noindent\textit{Counterexample-guided certificate synthesis.} Counterexample-guided inductive synthesis (CEGIS) \cite{solar2006} alternates candidate generation and verification. Neural Lyapunov and controller synthesis use this architecture \cite{chang2019,abate2021}, and tools such as Fossil 2.0 implement certificate-learning loops \cite{edwards2024}. Related verification methods also certify deep reinforcement learning controllers \cite{mandal2024}. Polynomial control Lyapunov functions can also be learned from counterexamples and demonstrations, with convergence results under different learner and verifier assumptions \cite{ravanbakhsh2019}. For discrete-time systems, Li et al.\ \cite{li2025} train neural contraction metrics with projected-gradient counterexamples and perform final verification with $\alpha,\beta$-CROWN. Their condition compares local distances rather than differentiating a continuous-time matrix inequality.
 
-\noindent\textit{Verified neural contraction metrics.} Neural representations of continuous-time contraction metrics exist \cite{tsukamoto2021ncm,sun2021}. Verification includes Lipschitz margins over grids \cite{sun2021}, post-training SMT verification \cite{fitzsimmons2024}, and interval matrix analysis \cite{anonymous2026}. Fitzsimmons and Liu \cite{fitzsimmons2024} compute metrics for autonomous systems and formally verify them after training. Harapanahalli, Coogan, and Davydov \cite{anonymous2026} jointly train a neural controller and metric using differentiable interval bound propagation. Their controlled synthesis method verifies during training, but does not return counterexamples to augment a dataset or analyze the scaling and fixed-margin mechanisms considered here.
+\noindent\textit{Verified neural contraction metrics.} Neural representations of continuous-time contraction metrics exist \cite{tsukamoto2021ncm,sun2021}. Verification includes Lipschitz margins over grids \cite{sun2021} and post-training SMT verification \cite{fitzsimmons2024}. Fitzsimmons and Liu \cite{fitzsimmons2024} compute metrics for autonomous systems and formally verify them after training.
 
-\noindent\textit{Model error and certificate transfer.} Contraction-based planning with learned dynamics has been studied with probabilistic model-error bounds and tracking tubes \cite{chou2021}. Neural Lyapunov control for unknown dynamics also transfers learned-model certificates to the unknown system under stated error assumptions \cite{zhou2022}. Our residual result concerns deterministic preservation of an autonomous contraction inequality under uniform bounds on both the residual and its Jacobian. It complements tracking-tube results; it does not infer either bound from finite data alone.
+\noindent\textit{Verification during neural learning.} Davydov \cite{davydov2025partitioning} integrates interval bound propagation and partitioned Metzler-majorant matrix checks into joint neural controller-and-metric training, with a loss on partition-wise certificate bounds. Harapanahalli, Coogan, and Davydov \cite{harapanahalli2026} jointly train a neural controller and metric using differentiable linear bound propagation and interval matrix checks. Our learner instead trains sampled hinge losses, augments its dataset with diagnostic points, and then verifies the candidate. Verification during training and domain partitioning are established antecedents; autonomous rather than controlled synthesis is a scope distinction. Our focus is failure-mechanism analysis and computable conversion of verified slack into rate and model-error guarantees. The present experiments do not establish a performance advantage over these methods.
+
+\noindent\textit{Learning contracting models and certificate transfer.} Jaffe et al.\ \cite{jaffe2024} build contraction structure into learned dynamics through a neural vector-field parametrization and learned coordinate changes. Here, the given or fitted vector field is held fixed during metric synthesis, and its contraction condition is certified on a prescribed compact domain. Contraction-based planning with learned dynamics has been studied with probabilistic model-error bounds and tracking tubes \cite{chou2021}. Neural Lyapunov control for unknown dynamics also transfers learned-model certificates to the unknown system under stated error assumptions \cite{zhou2022}. Our residual result concerns deterministic preservation of an autonomous contraction inequality under uniform bounds on both the residual and its Jacobian. It complements tracking-tube results; it does not infer either bound from finite data alone.
 
 \subsection{Contributions and scope}
 
-We make four contributions. First, we give a sound grid oracle with computable polynomial constants and outward-rounded numerical checks, prove soundness of the CEGIS-C loop, and state a conditional finite-grid termination result for an idealized feasible learner (Section~\ref{sec:framework}). Second, we convert verified uniform slack into an improved differential contraction rate and an explicit tolerance to model residuals (Section~\ref{sec:results}). Third, scaling and stationary-loss observations identify failure mechanisms and motivate trace normalization, margin coupling, and bounded-parameter variants. The scale-chase construction requires a scale-closed family; the fixed-floor class used in the main experiments generally does not satisfy that hypothesis. Fourth, we report controlled ablations and studies of polynomial, trigonometric, and neural representations, together with certified constants and verification costs (Section~\ref{sec:experiments}). Finite trajectory-distance conclusions throughout use Remark~\ref{rem:finite}.
+The principal contribution is an integrated analysis of learning and certification failures, supported by computable outward-rounded certificates and reproducible diagnostics. Sampling-and-continuity verification and CEGIS supply established building blocks \cite{bobiti2018,solar2006}; the verified-margin rate and residual estimates below are derived consequences of the contraction inequality. We organize the development into four parts. First, we give computable polynomial constants and outward-rounded grid checks, establish loop soundness, and state conditional finite-grid termination for an idealized feasible learner (Section~\ref{sec:framework}). Second, we convert verified uniform slack into an improved differential contraction rate and an explicit tolerance to model residuals (Section~\ref{sec:results}). Third, scaling and stationary-loss observations identify failure mechanisms and motivate trace normalization, margin coupling, and bounded-parameter variants. The scale-chase construction requires a scale-closed family; the fixed-floor class used in the main experiments generally does not satisfy that hypothesis. Fourth, we report controlled ablations and studies of polynomial, trigonometric, and neural representations, together with certified constants and verification costs (Section~\ref{sec:experiments}). The matched polynomial operating-grid experiments show no certification-count advantage from normalization or margin coupling within the tested budgets. Finite trajectory-distance conclusions throughout use Remark~\ref{rem:finite}.
 
-The main learner uses a Cholesky factor linear in fixed polynomial features, while a separate study uses a neural factor. We therefore describe the common method as counterexample-guided synthesis. The polynomial benchmark has a known certifiable metric and isolates the loop's behavior; it does not establish an advantage over SOS on polynomial systems. The pendulum study works directly with trigonometric terms. SOS can also handle the pendulum through an exact sine/cosine lift with the circle constraint; that reformulation changes coordinates and the certificate representation \cite{tedrake2026}. We restrict attention to autonomous dynamics. Control contraction metrics use the dual metric $W=M^{-1}$ and additional structural conditions \cite{manchester2017}, and are outside the present scope.
+Here, \emph{neurosymbolic} refers to the neural-metric extension: a trainable network proposes a metric factor, while verification uses an explicit mathematical contraction condition. The symbolic role is the representation and derivation of that condition, including analytic derivatives and exact polynomial coefficient algebra where applicable. Outward-rounded interval bounds certify the resulting inequalities. The main controlled ablations use a factor linear in fixed polynomial features and study the shared counterexample-guided learner--verifier loop. Section~\ref{sec:neural} evaluates the neural parametrization separately.
+
+The polynomial benchmark has a known certifiable metric and isolates the loop's behavior; it does not establish an advantage over SOS on polynomial systems. The pendulum study works directly with trigonometric terms. SOS can also handle the pendulum through an exact sine/cosine lift with the circle constraint; that reformulation changes coordinates and the certificate representation \cite{tedrake2026}. We restrict attention to autonomous dynamics. Controller synthesis through dual control contraction metrics $W=M^{-1}$ with their associated structural conditions \cite{manchester2017}, or through direct joint controller-and-primal-metric learning \cite{davydov2025partitioning,harapanahalli2026}, is outside the present scope.
 
 \section{Preliminaries}
 \label{sec:prelim}
@@ -519,7 +509,7 @@ The matched operating-grid results do not show a certification-count benefit fro
 
 Sensitivity checks vary the coupling factor and returned-point count one at a time. Table~\ref{tab:sensitivity} records their smaller, separately specified coarse-grid budgets. \revSensitivitySettings{} They are short-horizon diagnostics, not estimates of the operating-grid certification rate. A fixed-margin pendulum comparison is reported under its stated budget as an additional check rather than inferred from the polynomial case.
 
-To connect Corollary~\ref{cor:chase} to a concrete family, we use $M_c=cM_0$, $c\ge1$, for a uniformly contracting polynomial metric $M_0$ that remains rejected on a coarse grid. This family is closed under upward scaling and preserves the positive lower metric bound at $c=1$. At each step, the next scale satisfies the corollary's sufficient inequality for the coupled margin $\varepsilon_k=\gamma L_k\tau$ supplied by the previous candidate. Directed bounds check uniform raw negativity, satisfaction of that training margin, and a strictly positive coarse-grid certifiability gap. The finite plotted prefix illustrates the proof construction; it is not evidence of an infinite numerical run. The normalized test and its exact bound remain unchanged. Figure~\ref{fig:scalechase} is a constructed sequence of admissible learner responses, not an observed Adam trajectory or an estimate of optimizer failure frequency. Normalization prevents scaling from improving the test but cannot certify a frozen shape that remains rejected. \revScaleChaseSummary
+To connect Corollary~\ref{cor:chase} to a concrete family, we use $M_c=cM_0$, $c\ge1$, for a uniformly contracting polynomial metric $M_0$ that remains rejected on a coarse grid. This family is closed under upward scaling and preserves the positive lower metric bound at $c=1$. At each step, the next scale satisfies the corollary's sufficient inequality for the coupled margin $\varepsilon_k=\gamma L_k\tau$ supplied by the previous candidate. Directed bounds check uniform raw negativity, satisfaction of that training margin, and a strictly positive coarse-grid certifiability gap. The finite plotted prefix illustrates the proof construction; it is not evidence of an infinite numerical run. The normalized test and its exact bound remain unchanged. It is not an observed Adam trajectory. Normalization prevents scaling from improving the test but cannot certify a frozen shape that remains rejected. \revScaleChaseSummary
 
 \IfFileExists{fig_ablation.pdf}{%
 \begin{figure}[t]\centering
@@ -643,10 +633,13 @@ The results establish sound positive certificates within the stated domains and 
 
 We studied counterexample-guided synthesis of contraction metrics with sound verification. Computable polynomial constants and outward-rounded checks establish the meaning of a positive answer. An idealized finite-grid result separates sufficient feasibility and boundedness assumptions from the behavior of finite-budget Adam. Scaling and fixed-margin stationary updates explain why an already valid metric can remain uncertified; normalization and margin coupling address the stated mechanisms without guaranteeing convergence. Verified slack improves the differential contraction rate and supports explicit transfer under bounded model error.
 
-The experiments distinguish controlled ablations, a constructive scale sequence, adaptive verification, and a known-truth fitted-surrogate test. The next methodological questions concern learner progress under practical constraints and verification cost on less structured higher-dimensional systems. Extending the loop to controlled contraction requires the dual metric and additional structural conditions \cite{manchester2017}.
+The matched polynomial operating-grid ablation did not demonstrate an advantage in certification counts from trace normalization or margin coupling within the tested budgets. The contribution centers on the analysis of failure mechanisms and sound certification; these results do not establish the training choices as necessary or generally superior. The experiments also distinguish a constructive scale sequence, adaptive verification, and a known-truth fitted-surrogate test. The next methodological questions concern learner progress under practical constraints and verification cost on less structured higher-dimensional systems. Extensions to controller synthesis could use dual control-contraction-metric formulations \cite{manchester2017} or direct joint controller-and-primal-metric learning \cite{davydov2025partitioning,harapanahalli2026}.
 
 \subsection*{Data and code availability}
-Immutable release \texttt{v1.0.1} contains the verified baseline scientific snapshot, its line-numbered manuscript, and its arXiv source bundle \cite{nsp_release}. That release is unchanged. The additional experiments and manuscript revision reported here belong to a separate working reproduction. Its result files, input and artifact hashes, numerical environment, stage outcomes, and generated tables are recorded by the revision pipeline. A working rebuild must not be confused with the immutable baseline snapshot; no new immutable release is claimed here.
+Immutable release \texttt{v1.1.0} archives the current manuscript without reviewer line numbers, its tested arXiv source bundle, the independent-review package, and the verified reproduction \cite{nsp_release}. It preserves the original passing twelve-stage scientific snapshot, including result files, input and artifact hashes, numerical environment, and stage logs, alongside the current editorial sources and provenance linking the rebuilt paper to those results. The publication rebuild reuses the verified scientific results; it does not claim a new experimental run. The earlier immutable \texttt{v1.0.1} baseline remains unchanged.
+
+\subsection*{Acknowledgment of AI assistance}
+OpenAI Codex assisted with mathematical analysis and exposition, literature searches and reference checking, manuscript drafting and revision, software implementation, and execution and checking of the computational pipeline. Anthropic Claude supplied a critical review that informed the revision. The author retains responsibility for the final manuscript, code, interpretation of the results, and scientific claims.
 
 \appendices
 \section{Polynomial coefficient bounds and proof of Lemma~\ref{lem:certconst}}
@@ -680,122 +673,123 @@ The verifier interprets the stored binary64 parameters as exact real inputs. It 
 
 \begin{thebibliography}{99}
 \small
+\setlength{\baselineskip}{11.5pt}
 
 \bibitem{lohmiller1998}
 W.~Lohmiller and J.-J.~E. Slotine,
 ``On contraction analysis for non-linear systems,''
-\emph{Automatica}, vol.~34, no.~6, pp. 683--696, 1998.
+\emph{Automatica}, vol.~34, no.~6, pp. 683--696, 1998, doi: \href{https://doi.org/10.1016/S0005-1098(98)00019-3}{\nolinkurl{10.1016/S0005-1098(98)00019-3}}.
 
 \bibitem{manchester2017}
 I.~R. Manchester and J.-J.~E. Slotine,
 ``Control contraction metrics: Convex and intrinsic criteria for nonlinear feedback design,''
-\emph{IEEE Transactions on Automatic Control}, vol.~62, no.~6, pp. 3046--3053, 2017.
+\emph{IEEE Transactions on Automatic Control}, vol.~62, no.~6, pp. 3046--3053, 2017, doi: \href{https://doi.org/10.1109/TAC.2017.2668380}{\nolinkurl{10.1109/TAC.2017.2668380}}.
 
 \bibitem{tsukamoto2021tutorial}
 H.~Tsukamoto, S.-J. Chung, and J.-J.~E. Slotine,
 ``Contraction theory for nonlinear stability analysis and learning-based control: A tutorial overview,''
-\emph{Annual Reviews in Control}, vol.~52, pp. 135--169, 2021.
+\emph{Annual Reviews in Control}, vol.~52, pp. 135--169, 2021, doi: \href{https://doi.org/10.1016/j.arcontrol.2021.10.001}{\nolinkurl{10.1016/j.arcontrol.2021.10.001}}.
 
 \bibitem{dawson2023}
 C.~Dawson, S.~Gao, and C.~Fan,
 ``Safe control with learned certificates: A survey of neural Lyapunov, barrier, and contraction methods for robotics and control,''
-\emph{IEEE Transactions on Robotics}, vol.~39, no.~3, pp. 1749--1767, 2023.
+\emph{IEEE Transactions on Robotics}, vol.~39, no.~3, pp. 1749--1767, 2023, doi: \href{https://doi.org/10.1109/TRO.2022.3232542}{\nolinkurl{10.1109/TRO.2022.3232542}}.
 
 \bibitem{sun2021}
 D.~Sun, S.~Jha, and C.~Fan,
 ``Learning certified control using contraction metric,''
-in \emph{Proceedings of the Conference on Robot Learning (CoRL)}, PMLR vol.~155, pp. 1519--1539, 2021.
+in \emph{Proceedings of the 2020 Conference on Robot Learning (CoRL)}, PMLR vol.~155, pp. 1519--1539, 2021. [Online]. Available: \url{https://proceedings.mlr.press/v155/sun21b.html}
 
 \bibitem{tsukamoto2021ncm}
 H.~Tsukamoto and S.-J. Chung,
 ``Neural contraction metrics for robust estimation and control: A convex optimization approach,''
-\emph{IEEE Control Systems Letters}, vol.~5, no.~1, pp. 211--216, 2021.
+\emph{IEEE Control Systems Letters}, vol.~5, no.~1, pp. 211--216, 2021, doi: \href{https://doi.org/10.1109/LCSYS.2020.3001646}{\nolinkurl{10.1109/LCSYS.2020.3001646}}.
 
 \bibitem{chang2019}
 Y.-C. Chang, N.~Roohi, and S.~Gao,
 ``Neural Lyapunov control,''
-in \emph{Advances in Neural Information Processing Systems (NeurIPS)}, 2019.
+in \emph{Advances in Neural Information Processing Systems (NeurIPS)}, vol.~32, 2019. [Online]. Available: \href{https://proceedings.neurips.cc/paper/2019/hash/2647c1dba23bc0e0f9cdf75339e120d2-Abstract.html}{NeurIPS proceedings}
 
 \bibitem{abate2021}
 A.~Abate, D.~Ahmed, M.~Giacobbe, and A.~Peruffo,
 ``Formal synthesis of Lyapunov neural networks,''
-\emph{IEEE Control Systems Letters}, vol.~5, no.~3, pp. 773--778, 2021.
+\emph{IEEE Control Systems Letters}, vol.~5, no.~3, pp. 773--778, 2021, doi: \href{https://doi.org/10.1109/LCSYS.2020.3005328}{\nolinkurl{10.1109/LCSYS.2020.3005328}}.
 
 \bibitem{edwards2024}
 A.~Edwards, A.~Peruffo, and A.~Abate,
 ``Fossil 2.0: Formal certificate synthesis for the verification and control of dynamical models,''
-in \emph{Proceedings of the ACM International Conference on Hybrid Systems: Computation and Control (HSCC)}, 2024. arXiv:2311.09793.
+in \emph{Proceedings of the 27th ACM International Conference on Hybrid Systems: Computation and Control (HSCC)}, article~26, pp.~1--10, 2024, doi: \href{https://doi.org/10.1145/3641513.3651398}{\nolinkurl{10.1145/3641513.3651398}}.
 
 \bibitem{mandal2024}
 U.~Mandal et al.,
 ``Formally verifying deep reinforcement learning controllers with Lyapunov barrier certificates,''
-arXiv:2405.14058, 2024.
+in \emph{Proceedings of the 24th Conference on Formal Methods in Computer-Aided Design (FMCAD)}, pp.~95--106, 2024, doi: \href{https://doi.org/10.34727/2024/isbn.978-3-85448-065-5_15}{\nolinkurl{10.34727/2024/isbn.978-3-85448-065-5_15}}.
 
 \bibitem{solar2006}
-A.~Solar-Lezama, L.~Tancau, R.~Bodik, S.~Seshia, and V.~Saraswat,
+A.~Solar-Lezama, L.~Tancau, R.~Bod\'{\i}k, S.~A. Seshia, and V.~A. Saraswat,
 ``Combinatorial sketching for finite programs,''
-in \emph{Proceedings of ASPLOS}, 2006.
+in \emph{Proceedings of the 12th International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS)}, pp.~404--415, 2006, doi: \href{https://doi.org/10.1145/1168857.1168907}{\nolinkurl{10.1145/1168857.1168907}}.
 
-\bibitem{anonymous2026}
+\bibitem{harapanahalli2026}
 A.~Harapanahalli, S.~Coogan, and A.~Davydov,
 ``Learning certified neural network controllers using contraction and interval analysis,''
-\emph{IEEE Control Systems Letters}, vol.~10, pp. 1615--1620, 2026, doi: 10.1109/LCSYS.2026.3707155. arXiv:2603.28011.
+\emph{IEEE Control Systems Letters}, vol.~10, pp. 1615--1620, 2026, doi: \href{https://doi.org/10.1109/LCSYS.2026.3707155}{\nolinkurl{10.1109/LCSYS.2026.3707155}}. arXiv:2603.28011.
 
 \bibitem{aylward2008}
 E.~M. Aylward, P.~A. Parrilo, and J.-J.~E. Slotine,
 ``Stability and robustness analysis of nonlinear systems via contraction metrics and SOS programming,''
-\emph{Automatica}, vol.~44, no.~8, pp. 2163--2170, 2008.
+\emph{Automatica}, vol.~44, no.~8, pp. 2163--2170, 2008, doi: \href{https://doi.org/10.1016/j.automatica.2007.12.012}{\nolinkurl{10.1016/j.automatica.2007.12.012}}.
 
 \bibitem{giesl2019}
 P.~Giesl,
 ``Computation of a contraction metric for a periodic orbit using meshfree collocation,''
-\emph{SIAM Journal on Applied Dynamical Systems}, vol.~18, no.~3, pp. 1536--1564, 2019.
+\emph{SIAM Journal on Applied Dynamical Systems}, vol.~18, no.~3, pp. 1536--1564, 2019, doi: \href{https://doi.org/10.1137/18M1220182}{\nolinkurl{10.1137/18M1220182}}.
 
 \bibitem{li2025}
 H.~Li, X.~Zhong, B.~Hu, and H.~Zhang,
 ``Neural contraction metrics with formal guarantees for discrete-time nonlinear dynamical systems,''
-in \emph{Proceedings of the 7th Annual Learning for Dynamics \& Control Conference}, PMLR vol.~283, pp. 1447--1459, 2025.
+in \emph{Proceedings of the 7th Annual Learning for Dynamics \& Control Conference}, PMLR vol.~283, pp. 1447--1459, 2025. [Online]. Available: \url{https://proceedings.mlr.press/v283/li25e.html}
 
 \bibitem{boffi2020}
 N.~M. Boffi, S.~Tu, N.~Matni, J.-J.~E. Slotine, and V.~Sindhwani,
 ``Learning stability certificates from data,''
-in \emph{Proceedings of the Conference on Robot Learning (CoRL)}, PMLR vol.~155, pp. 1341--1350, 2021. arXiv:2008.05952.
+in \emph{Proceedings of the 2020 Conference on Robot Learning (CoRL)}, PMLR vol.~155, pp. 1341--1350, 2021. [Online]. Available: \url{https://proceedings.mlr.press/v155/boffi21a.html}
 
 \bibitem{fousse2007}
 L.~Fousse, G.~Hanrot, V.~Lef\`evre, P.~P\'elissier, and P.~Zimmermann,
 ``MPFR: A multiple-precision binary floating-point library with correct rounding,''
-\emph{ACM Transactions on Mathematical Software}, vol.~33, no.~2, article 13, 2007, doi: 10.1145/1236463.1236468.
+\emph{ACM Transactions on Mathematical Software}, vol.~33, no.~2, article 13, 2007, doi: \href{https://doi.org/10.1145/1236463.1236468}{\nolinkurl{10.1145/1236463.1236468}}.
 
 \bibitem{nsp_release}
 V.~M.~Preciado,
-``Neurosymbolic synthesis of contraction certificates: Verified reproduction snapshot and review manuscript,''
-version v1.0.1, GitHub release, 2026. [Online]. Available:
-\url{https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.0.1}
+``Neurosymbolic synthesis of contraction metrics with certified verification: Verified reproduction and submission artifacts,''
+version v1.1.0, GitHub release, 2026. [Online]. Available:
+\url{https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.0}
 
 \bibitem{fitzsimmons2024}
 M.~Fitzsimmons and J.~Liu,
 ``Computation and formal verification of neural network contraction metrics,''
-\emph{IEEE Control Systems Letters}, vol.~8, pp.~2367--2372, 2024, doi: 10.1109/LCSYS.2024.3478272.
+\emph{IEEE Control Systems Letters}, vol.~8, pp.~2367--2372, 2024, doi: \href{https://doi.org/10.1109/LCSYS.2024.3478272}{\nolinkurl{10.1109/LCSYS.2024.3478272}}.
 
 \bibitem{forni2014}
 F.~Forni and R.~Sepulchre,
 ``A differential Lyapunov framework for contraction analysis,''
-\emph{IEEE Transactions on Automatic Control}, vol.~59, no.~3, pp.~614--628, 2014, doi: 10.1109/TAC.2013.2285771.
+\emph{IEEE Transactions on Automatic Control}, vol.~59, no.~3, pp.~614--628, 2014, doi: \href{https://doi.org/10.1109/TAC.2013.2285771}{\nolinkurl{10.1109/TAC.2013.2285771}}.
 
 \bibitem{bobiti2018}
 R.~V. Bobiti and M.~Lazar,
 ``Automated-sampling-based stability verification and DOA estimation for nonlinear systems,''
-\emph{IEEE Transactions on Automatic Control}, vol.~63, no.~11, pp.~3659--3674, 2018, doi: 10.1109/TAC.2018.2797196.
+\emph{IEEE Transactions on Automatic Control}, vol.~63, no.~11, pp.~3659--3674, 2018, doi: \href{https://doi.org/10.1109/TAC.2018.2797196}{\nolinkurl{10.1109/TAC.2018.2797196}}.
 
 \bibitem{chou2021}
 G.~Chou, N.~Ozay, and D.~Berenson,
 ``Model error propagation via learned contraction metrics for safe feedback motion planning of unknown systems,''
-in \emph{Proceedings of the IEEE Conference on Decision and Control}, 2021. arXiv:2104.08695.
+in \emph{Proceedings of the 60th IEEE Conference on Decision and Control (CDC)}, pp.~3576--3583, 2021, doi: \href{https://doi.org/10.1109/CDC45484.2021.9683354}{\nolinkurl{10.1109/CDC45484.2021.9683354}}. arXiv:2104.08695.
 
 \bibitem{zhou2022}
 R.~Zhou, T.~Quartz, H.~De Sterck, and J.~Liu,
 ``Neural Lyapunov control of unknown nonlinear systems with stability guarantees,''
-in \emph{Advances in Neural Information Processing Systems}, vol.~35, 2022. arXiv:2206.01913.
+in \emph{Advances in Neural Information Processing Systems}, vol.~35, pp.~29113--29125, 2022, doi: \href{https://doi.org/10.52202/068431-2111}{\nolinkurl{10.52202/068431-2111}}. arXiv:2206.01913.
 
 \bibitem{tedrake2026}
 R.~Tedrake,
@@ -804,12 +798,43 @@ R.~Tedrake,
 \bibitem{giesl2021}
 P.~Giesl, S.~Hafstein, and I.~Mehrabinezhad,
 ``Computation and verification of contraction metrics for exponentially stable equilibria,''
-\emph{Journal of Computational and Applied Mathematics}, vol.~390, article 113332, 2021, doi: 10.1016/j.cam.2020.113332. arXiv:1909.10334.
+\emph{Journal of Computational and Applied Mathematics}, vol.~390, article 113332, 2021, doi: \href{https://doi.org/10.1016/j.cam.2020.113332}{\nolinkurl{10.1016/j.cam.2020.113332}}. arXiv:1909.10334.
 
 \bibitem{ravanbakhsh2019}
 H.~Ravanbakhsh and S.~Sankaranarayanan,
 ``Learning control Lyapunov functions from counterexamples and demonstrations,''
-\emph{Autonomous Robots}, vol.~43, pp.~275--307, 2019, doi: 10.1007/s10514-018-9791-9. arXiv:1804.05285.
+\emph{Autonomous Robots}, vol.~43, pp.~275--307, 2019, doi: \href{https://doi.org/10.1007/s10514-018-9791-9}{\nolinkurl{10.1007/s10514-018-9791-9}}. arXiv:1804.05285.
+
+\bibitem{simpsonporco2014}
+J.~W. Simpson-Porco and F.~Bullo,
+``Contraction theory on Riemannian manifolds,''
+\emph{Systems \& Control Letters}, vol.~65, pp.~74--80, 2014,
+doi: \href{https://doi.org/10.1016/j.sysconle.2013.12.016}{\nolinkurl{10.1016/j.sysconle.2013.12.016}}.
+
+\bibitem{davydov2022noneuclidean}
+A.~Davydov, S.~Jafarpour, and F.~Bullo,
+``Non-Euclidean contraction theory for robust nonlinear stability,''
+\emph{IEEE Transactions on Automatic Control}, vol.~67, no.~12, pp.~6667--6681, 2022,
+doi: \href{https://doi.org/10.1109/TAC.2022.3183966}{\nolinkurl{10.1109/TAC.2022.3183966}}.
+
+\bibitem{bullo2026}
+F.~Bullo,
+\emph{Contraction Theory for Dynamical Systems}, 1.3~ed.
+Kindle Direct Publishing, 2026, ISBN: 979-8836646806.
+[Online]. Available: \url{https://fbullo.github.io/ctds/}
+
+\bibitem{jaffe2024}
+S.~Jaffe, A.~Davydov, D.~Lapsekili, A.~K. Singh, and F.~Bullo,
+``Learning neural contracting dynamics: Extended linearization and global guarantees,''
+in \emph{Advances in Neural Information Processing Systems}, vol.~37, pp.~66204--66225, 2024,
+doi: \href{https://doi.org/10.52202/079017-2116}{\nolinkurl{10.52202/079017-2116}}.
+
+\bibitem{davydov2025partitioning}
+A.~Davydov,
+``Verifying closed-loop contractivity of learning-based controllers via partitioning,''
+in \emph{Proceedings of the 59th Asilomar Conference on Signals, Systems, and Computers}, pp.~1740--1744, 2025,
+doi: \href{https://doi.org/10.1109/IEEECONF67917.2025.11443716}{\nolinkurl{10.1109/IEEECONF67917.2025.11443716}}.
+Extended report: \href{https://arxiv.org/abs/2512.02262}{arXiv:2512.02262}.
 
 \end{thebibliography}
 

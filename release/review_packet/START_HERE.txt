@@ -1,0 +1,114 @@
+INDEPENDENT PRE-ARXIV REVIEW PACKAGE
+Prepared: November 14, 2026 (America/New_York)
+
+Paper: Neurosymbolic Synthesis of Contraction Metrics with Certified Verification
+Author: Victor M. Preciado
+Current manuscript: PAPER_CURRENT.pdf, 26 pages, without reviewer line numbers.
+
+HOW TO USE
+1. Extract this package and start a fresh Claude chat.
+2. Paste REVIEW_PROMPT.txt into the chat and attach PAPER_CURRENT.pdf.
+   PAPER_CURRENT.txt is a searchable text extraction if useful; the PDF is
+   authoritative for mathematics, layout, figures, tables and page citations.
+3. Supply source/, code/ and evidence/ for the deeper mathematical, numerical,
+   literature and reproducibility checks. If an upload does not accept a ZIP,
+   upload the extracted files needed for each phase.
+4. Keep optional_history/ and the historical review documents inside the full
+   scientific snapshot unopened until Claude has written its initial review.
+   A separate AI review is additional scrutiny, not human peer review.
+
+FILE MAP
+- REVIEW_PROMPT.txt: request for a fresh, critical, evidence-based deep review.
+- PAPER_CURRENT.pdf: the current paper, including the empirical clarification,
+  verified-reference edits, and the "Acknowledgment of AI assistance" section.
+  Cite PDF pages and section, theorem, equation, figure or table labels.
+- PAPER_CURRENT.txt: layout-preserving text extraction of that exact PDF.
+- ARXIV_ABSTRACT.txt: the identical plain-text manuscript abstract for metadata
+  entry, 1,640 characters / 198 words, below arXiv's 1,920-character limit.
+- source/: the 13 current manuscript inputs, including embedded bibliography,
+  generated numbers/tables and the nine figures used by the paper.
+- code/: scientific Python modules, tests, locked dependencies and build tools
+  for direct inspection. This is an inspection copy; use the complete snapshot
+  procedure below for executing the full pipeline with its expected file layout.
+- evidence/results/: scientific outputs, saved proof records, full-run stage
+  logs, current editorial-build evidence and the reference audit.
+- evidence/clean_arxiv_build/: the current clean-source compiled PDF and logs.
+- reproduction/: the complete current v1.1.0 reproduction, unchanged original
+  scientific snapshot, minimal arXiv source archive, and their checksums.
+- optional_history/: earlier referee report and response records, provided
+  only for a later comparison after the independent first pass.
+- PACKAGE_MANIFEST.json: inventory, original relative paths and SHA256 hashes.
+- SHA256SUMS.txt and VERIFY_PACKAGE.py: checks of the extracted package and
+  the links between the current artifacts and the earlier scientific run.
+
+PROVENANCE: TWO DISTINCT BUILDS
+The original complete scientific run passed all 12 stages. Its exact archive
+is reproduction/neurosymbolic-reproduction-claude-revision.zip. It contains
+the manuscript from that run, which is EARLIER than PAPER_CURRENT.pdf.
+
+The paper subsequently received editorial changes: the explicit empirical
+finding in the abstract/conclusion, reference verification and corrections,
+disclosure of AI assistance, removal of reviewer line numbering, and an abstract
+shortened to meet arXiv's metadata limit while preserving the empirical finding.
+The current revision restores Neurosymbolic in the title and explicitly defines
+neural metric learning and symbolic/numerical verification, while identifying
+the main ablations as polynomial-feature experiments.
+It also adds five verified references and explicit comparisons with contracting
+model learning and partitioned neural controller/metric verification. The opening
+now centers on the distinction between learning a metric and establishing its
+dynamical guarantee. The current bibliography has 31 entries.
+Scientific source, results and original
+full-run evidence were reused unchanged. These later edits did not rerun the
+experiments. evidence/results/editorial_v1.1.0.json links the unchanged
+full snapshot to the CURRENT TeX, PDF, source bundle and reference audit.
+evidence/results/editorial_empirical_finding.json, editorial_references_ai.json
+editorial_no_lines.json, editorial_abstract.json, editorial_neurosymbolic.json
+and editorial_bullo_positioning.json
+are earlier editorial checkpoints; their output hashes describe those earlier
+versions, not the current PDF. The original run_manifest.json is preserved unchanged and should
+not be read as asserting that the current editorial PDF was the full-run PDF.
+
+The published v1.0.1 release is an older baseline. This package is prepared as an
+asset of immutable release v1.1.0:
+https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.0
+No arXiv submission is claimed. The final revision clarifies the novelty hierarchy,
+the partition-certificate versus sampled-hinge objective, and the distinction
+between dual CCM formulations and direct primal controller/metric learning.
+Tests, hashes and previous AI audits provide evidence; they do not establish
+independent mathematical correctness. Please evaluate the arguments afresh.
+
+VERIFY THE PACKAGE
+From the extracted package directory, run:
+    python3 VERIFY_PACKAGE.py
+This uses only the Python standard library and does not rerun experiments.
+
+REBUILD JUST THE CURRENT PAPER
+The source/ directory is flat and contains all 13 manuscript inputs.
+With a TeX distribution providing the packages named by the paper, run:
+    cd source
+    pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error nsp_contraction_paper_ieee
+Repeat until references are stable (the saved clean check used three passes).
+Inspect the resulting PDF and log. Source files and any rebuild outputs should
+be copied elsewhere first if you want to keep the review package unchanged.
+
+REPRODUCE THE FULL SCIENTIFIC PIPELINE
+Work outside the extracted review-package directory:
+1. Extract reproduction/neurosymbolic-reproduction-v1.1.0.zip.
+   Its project folder is neurosymbolic-reproduction-v1.1.0/ and is runnable
+   directly, with the final manuscript already in paper/.
+2. Run python3 VERIFY_CURRENT_REPRODUCTION.py in that project directory.
+   It checks the current overlay and preserved original scientific archive.
+3. Follow that project's README.md to create a Python 3.12 environment with
+   requirements-lock.txt and install a suitable TeX distribution. The recorded
+   reference Python is 3.12.7; dependency/platform differences can alter results.
+4. From that project root, run:
+   OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 python run_all.py
+   The optional --parallel-science flag overlaps independent producers.
+   This is a new full run and can overwrite its project's saved results.
+5. The separate reproduction/neurosymbolic-reproduction-claude-revision.zip
+   preserves the original twelve-stage run, including its earlier manuscript.
+   Inspect it for provenance rather than confusing it with PAPER_CURRENT.pdf.
+
+The manuscript target is a generic arXiv preprint without journal page limits.
+Report unresolved defects separately from disclosed limitations and optional
+future extensions. State which files and checks were actually examined.
