@@ -114,12 +114,12 @@ do not describe sampling tests as a proof of enclosure.
   undefined references/citations; inspect the rendered pages.
 - `python3 run_all.py` succeeds end to end, with current logs and a manifest
   recording source/artifact hashes, environment, and stage outcomes.
-- All fourteen declared stages pass, including the new studies, the analytical
-  constant-metric baseline, complete
+- All fifteen declared stages pass, including the new studies, the analytical
+  constant-metric baselines, complete
   reporting, and a clean arXiv bundle compilation. The fixed-budget Adam
   implementation is not covered by the idealized termination proposition.
 - `python3 package_reproduction.py` produces the complete checked local reviewer
-  archive after a fresh full run. The v1.2.0 revision uses
+  archive after a fresh full run. The v1.2.1 revision uses
   `release/build_application_packet.py` after a fresh full passing run. The
   older v1.1.1 editorial-overlay scripts are historical and cannot package
   newly generated scientific evidence.
@@ -144,3 +144,11 @@ state dependence is unnecessary for that result. Its pointwise violations on
 the larger box boundaries rule out this matrix for the whole-box condition;
 they do not rule out other constant metrics or contraction on the invariant
 interior energy sublevels. Preserve every original neural outcome and budget.
+
+`polynomial_constant_baseline.py` independently proves the fixed post hoc
+matrix diag(12,1) on the polynomial benchmark at the requested rate. Its exact
+endpoint proof covers decimal and binary64 rate conventions and does not run
+the learned-metric grid oracle. It has no training seeds, optimized search, or
+matched timing comparison. State dependence is unnecessary for this benchmark
+at this rate. Preserve the original learning counts, budgets, and the
+non-invariance/connecting-flow qualification.

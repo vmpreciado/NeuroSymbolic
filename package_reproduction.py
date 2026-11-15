@@ -14,10 +14,10 @@ import zipfile
 
 HERE = Path(__file__).resolve().parent
 PREFIX = "neurosymbolic-reproduction"
-VERSION = "v1.2.0"
+VERSION = "v1.2.1"
 RELEASE_URL = "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/" + VERSION
 PUBLICATION_STATUS = "release artifact; publication and immutability are established by the GitHub release record"
-MINIMUM_STAGES = 14
+MINIMUM_STAGES = 15
 REQUIRED_SOURCES = {
     "run_all.py", "package_reproduction.py", "rounding.py", "bounds.py",
     "cegis_c.py", "experiments.py", "residual.py", "bench_pendulum.py",
@@ -29,6 +29,7 @@ REQUIRED_SOURCES = {
     "application_comparison.py", "application_protocol.json",
     "application_baseline.py", "application_verifier.py", "application_report.py",
     "application_constant_baseline.py", "tests/test_application_constant_baseline.py",
+    "polynomial_constant_baseline.py", "tests/test_polynomial_constant_baseline.py",
     "comparison_sources/fitzsimmons_liu_2024.json",
     "comparison_sources/preliminary_application_summary.json",
     "release/build_application_packet.py", "release/verify_application_packet.py",
@@ -43,6 +44,7 @@ REQUIRED_ARTIFACTS = {
     "results/arxiv_bundle.json", "paper/revision_numbers.tex", "paper/revision_tables.tex",
     "results/application_comparison.json", "paper/application_numbers.tex",
     "results/application_constant_baseline.json",
+    "results/polynomial_constant_baseline.json", "paper/polynomial_constant_numbers.tex",
     "paper/application_tables.tex", "paper/fig_application.pdf",
     *("paper/fig_" + name + ".pdf" for name in
       ("ablation", "scale_chase", "extension3d", "surrogate")),

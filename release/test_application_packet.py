@@ -15,6 +15,7 @@ import build_application_packet as packet
 import build_arxiv
 import package_reproduction
 import verify_application_packet
+from polynomial_constant_baseline import build_report as polynomial_report
 
 
 class ApplicationPacketTests(unittest.TestCase):
@@ -32,9 +33,10 @@ class ApplicationPacketTests(unittest.TestCase):
         tex = (r"\documentclass{IEEEtran}\title{Fixture application paper}" + "\n"
                + r"\begin{document}\begin{abstract}A fixture abstract.\end{abstract}" + "\n"
                + r"\input{numbers.tex}\input{application_numbers.tex}\input{application_tables.tex}" + "\n"
+               + r"\input{polynomial_constant_numbers.tex}" + "\n"
                + packet.RELEASE_URL + "\n" + r"\end{document}" + "\n").encode()
         sources["paper/nsp_contraction_paper_ieee.tex"] = self.write(root, "paper/nsp_contraction_paper_ieee.tex", tex)
-        citation = ('version: 1.2.0\nurl: "' + packet.RELEASE_URL + '"\n').encode()
+        citation = ('version: 1.2.1\nurl: "' + packet.RELEASE_URL + '"\n').encode()
         sources["CITATION.cff"] = self.write(root, "CITATION.cff", citation)
         baseline = {"schema_version": 1, "status": "pass",
                     "method": "fixed_constant_metric_analytical_baseline",
@@ -49,11 +51,14 @@ class ApplicationPacketTests(unittest.TestCase):
                         for width in [0.25, 0.5, 0.75]]}
         artifacts["results/application_constant_baseline.json"] = self.write(
             root, "results/application_constant_baseline.json", json.dumps(baseline).encode())
+        artifacts["results/polynomial_constant_baseline.json"] = self.write(
+            root, "results/polynomial_constant_baseline.json", json.dumps(polynomial_report()).encode())
         verifier = Path(verify_application_packet.__file__).read_bytes()
         sources["release/verify_application_packet.py"] = self.write(root, "release/verify_application_packet.py", verifier)
         artifacts["paper/numbers.tex"] = self.write(root, "paper/numbers.tex", b"numbers\n")
         artifacts["paper/application_numbers.tex"] = self.write(root, "paper/application_numbers.tex", b"application numbers\n")
         artifacts["paper/application_tables.tex"] = self.write(root, "paper/application_tables.tex", b"application tables\n")
+        artifacts["paper/polynomial_constant_numbers.tex"] = self.write(root, "paper/polynomial_constant_numbers.tex", b"polynomial constants\n")
         report = build_arxiv.build(root)
         pdf = "tmp/clean/manuscript.pdf"
         log = "tmp/clean/manuscript.log"
@@ -63,11 +68,11 @@ class ApplicationPacketTests(unittest.TestCase):
         artifacts["results/arxiv_bundle.json"] = self.write(root, "results/arxiv_bundle.json", json.dumps(report).encode())
         artifacts[report["archive"]] = hashlib.sha256((root / report["archive"]).read_bytes()).hexdigest()
         stages = []
-        for index in range(14):
+        for index in range(15):
             name = f"results/stage_logs/{index}.log"
             stages.append({"status": "pass", "log": name,
                            "log_sha256": self.write(root, name, b"fixture stage\n")})
-        run = {"status": "pass", "expected_stage_count": 14, "stages": stages,
+        run = {"status": "pass", "expected_stage_count": 15, "stages": stages,
                "sources_at_start": sources, "sources_at_finish": dict(sources),
                "artifact_sha256": artifacts, "finished_at": "fixture time",
                "run_log": "results/run_all.log",
@@ -90,9 +95,9 @@ class ApplicationPacketTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
             report = self.build_fixture(root)
-            self.assertEqual(report["scientific_stages"], 14)
+            self.assertEqual(report["scientific_stages"], 15)
             self.assertEqual(report["publication_status"], packet.PUBLICATION_STATUS)
-            self.assertEqual(report["release_tag"], "v1.2.0")
+            self.assertEqual(report["release_tag"], "v1.2.1")
             with zipfile.ZipFile(root / report["archive"]) as archive:
                 archive.extractall(root / "extracted")
             destination = root / "extracted" / packet.NAME
@@ -123,11 +128,11 @@ class ApplicationPacketTests(unittest.TestCase):
             root = Path(folder)
             self.fixture(root)
             names = ["CITATION.cff", "paper/nsp_contraction_paper_ieee.tex",
-                     "results/application_constant_baseline.json"]
+                     "results/application_constant_baseline.json", "results/polynomial_constant_baseline.json"]
             project = {name: (root / name).read_bytes() for name in names}
             verify_application_packet.check_release_sources(project)
             changed = dict(project)
-            changed["CITATION.cff"] = project["CITATION.cff"].replace(b"v1.2.0", b"v1.1.1")
+            changed["CITATION.cff"] = project["CITATION.cff"].replace(b"v1.2.1", b"v1.1.1")
             with self.assertRaisesRegex(ValueError, "citation disagree"):
                 verify_application_packet.check_release_sources(changed)
             for key, value in [("post_hoc", False), ("seeds", 20), ("requested_raw_margin", 0.0)]:
@@ -138,6 +143,21 @@ class ApplicationPacketTests(unittest.TestCase):
                     changed[names[2]] = json.dumps(baseline).encode()
                     with self.assertRaisesRegex(ValueError, "identity or scope"):
                         verify_application_packet.check_release_sources(changed)
+            for key, value in [("post_hoc", False), ("training_performed", True),
+                               ("metric_rational", [["1/1", "0/1"], ["0/1", "1/1"]])]:
+                with self.subTest(polynomial_key=key):
+                    changed = dict(project)
+                    baseline = json.loads(project[names[3]])
+                    baseline[key] = value
+                    changed[names[3]] = json.dumps(baseline).encode()
+                    with self.assertRaisesRegex(ValueError, "Polynomial.*identity or scope"):
+                        verify_application_packet.check_release_sources(changed)
+            changed = dict(project)
+            baseline = json.loads(project[names[3]])
+            baseline["shared_binary64_target_check"]["rate_rational"] = "2/5"
+            changed[names[3]] = json.dumps(baseline).encode()
+            with self.assertRaisesRegex(ValueError, "Polynomial.*target metadata"):
+                verify_application_packet.check_release_sources(changed)
 
     def test_release_metadata_cannot_claim_a_different_tag(self):
         metadata = {"release_tag": packet.VERSION, "release_url": packet.RELEASE_URL,
@@ -146,6 +166,20 @@ class ApplicationPacketTests(unittest.TestCase):
         metadata["release_tag"] = "v1.1.1"
         with self.assertRaisesRegex(ValueError, "Release metadata"):
             verify_application_packet.release_metadata(metadata)
+
+    def test_polynomial_baseline_is_replayed_even_when_its_hash_matches(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            self.fixture(root)
+            name = "results/polynomial_constant_baseline.json"
+            baseline = json.loads((root / name).read_text())
+            baseline["decimal_target_check"]["rate_rational"] = "2/7"
+            checksum = self.write(root, name, json.dumps(baseline).encode())
+            run = json.loads((root / "results/run_manifest.json").read_text())
+            run["artifact_sha256"][name] = checksum
+            (root / "results/run_manifest.json").write_text(json.dumps(run))
+            with self.assertRaises(ValueError):
+                packet.build(root)
 
 
 if __name__ == "__main__":

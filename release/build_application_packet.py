@@ -1,4 +1,4 @@
-"""Package the v1.2.0 full scientific reproduction for independent review.
+"""Package the v1.2.1 full scientific reproduction for independent review.
 
 Requires a fresh passing run_all.py snapshot. This creates release assets;
 publication and immutable status are established separately by GitHub.
@@ -17,6 +17,7 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import package_reproduction
+from polynomial_constant_baseline import validate_report as validate_polynomial_baseline
 from verify_application_packet import verify, VERSION, RELEASE_URL, PUBLICATION_STATUS
 
 NAME = "neurosymbolic-claude-deep-review-" + VERSION
@@ -68,6 +69,15 @@ domain does not establish infeasibility for all constant metrics. Check that
 the original 180 learned outcomes and exploratory refinement retain their
 original meaning and are not relabeled by the added analytical certificate.
 
+Also reconstruct the fixed polynomial constant-metric certificate in
+polynomial_constant_baseline.py and results/polynomial_constant_baseline.json.
+Check the exact endpoint matrix tests for both the decimal and stored binary64
+rates, the whole-box affine interpolation argument, metric bounds and margins.
+This post-hoc analytical candidate also performs no training. Its success means
+that the constructed polynomial benchmark does not establish a need for neural
+or state-dependent metrics. Preserve the original matched experiment counts;
+do not interpret the certificate as a matched learning or runtime comparison.
+
 Assess novelty and scientific interest against the closest original papers,
 including Fitzsimmons-Liu, Davydov, and Harapanahalli-Coogan-Davydov where relevant.
 Check that the earlier matched polynomial ablation still reports its lack of a
@@ -77,9 +87,9 @@ the three-dimensional extension, and the known-truth surrogate experiment.
 
 Audit the fresh full-run provenance, manuscript/data consistency, source bundle,
 AI acknowledgment, citation accuracy, and scientific reproducibility. These are
-the v1.2.0 release assets; confirm publication and immutable status against the
-GitHub release record linked in CITATION.cff. The older v1.1.1 release has not
-been modified. The complete current runnable project is in
+the v1.2.1 release assets; confirm publication and immutable status against the
+GitHub release record linked in CITATION.cff. Earlier immutable releases have
+not been modified. The complete current runnable project is in
 project/ and as a separate reproduction ZIP; VERIFY_PACKAGE.py checks integrity
 without executing nested scientific code. Running experiments is optional;
 state exactly which commands you ran and which checks remain unexecuted.
@@ -105,8 +115,9 @@ def build(root=ROOT):
     root = Path(root).resolve()
     snapshot_files = package_reproduction.snapshot_files(root)
     run = json.loads(snapshot_files["results/run_manifest.json"])
-    if run["expected_stage_count"] < 14:
-        raise ValueError("The application and constant baseline need a new complete scientific run")
+    if run["expected_stage_count"] < 15:
+        raise ValueError("The application and both constant baselines need a new complete scientific run")
+    validate_polynomial_baseline(json.loads(snapshot_files["results/polynomial_constant_baseline.json"]))
     reproduction = root / "dist" / ("neurosymbolic-reproduction-" + VERSION + ".zip")
     _, reproduction_sha, _ = package_reproduction.package(root, reproduction)
     _, checked_project = package_reproduction.verify_archive(reproduction)
@@ -144,7 +155,7 @@ def build(root=ROOT):
 These are the {VERSION} release assets after a fresh full scientific pipeline
 run. Publication and immutable status are confirmed by the GitHub release record:
 {RELEASE_URL}
-The earlier immutable v1.1.1 release remains unchanged.
+Earlier immutable releases, including v1.2.0, remain unchanged.
 The current PDF has {bundle['clean_build']['pages']} pages and no reviewer
 line numbers. Use PDF pages and section/theorem/table/figure labels for feedback.
 
@@ -158,9 +169,11 @@ line numbers. Use PDF pages and section/theorem/table/figure labels for feedback
    clean_arxiv_build/pdf and clean_arxiv_build/log retain that build's evidence.
 5. Read project/application_protocol.json and the new results only after the
    paper-first review. Historical reports in project/reviews/ are optional context.
-6. The fixed constant-metric baseline is an analytical certificate added after
-   the neural comparison. Its checks and outcomes for all three domains are in
-   project/results/application_constant_baseline.json. It is not a seeded learner.
+6. The fixed constant-metric baselines are analytical certificates added after
+   the learning comparisons. The swing checks and outcomes for all three domains
+   are in project/results/application_constant_baseline.json; the polynomial
+   certificate is in project/results/polynomial_constant_baseline.json.
+   Neither is a seeded learner, optimized search, or matched runtime comparison.
 
 The readable text export is provided for search; mathematical layout and page
 citations should be checked against PAPER_CURRENT.pdf. ARXIV_ABSTRACT.txt is the
@@ -175,6 +188,8 @@ identical plain manuscript abstract, within the 1,920-character metadata limit.
                 "reproduction": {"path": "reproduction/" + reproduction.name, "sha256": reproduction_sha},
                 "constant_metric_baseline": {"path": "project/results/application_constant_baseline.json",
                     "sha256": digest(snapshot_files["results/application_constant_baseline.json"])},
+                "polynomial_constant_metric_baseline": {"path": "project/results/polynomial_constant_baseline.json",
+                    "sha256": digest(snapshot_files["results/polynomial_constant_baseline.json"])},
                 "arxiv_source": "arxiv/" + Path(bundle["archive"]).name,
                 "current_paper": {"title": title, "pages": bundle["clean_build"]["pages"],
                                   "reviewer_line_numbers": False, "abstract_characters": len(abstract),

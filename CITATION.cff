@@ -5,7 +5,7 @@ type: software
 authors:
   - family-names: Preciado
     given-names: Victor M.
-version: 1.2.0
+version: 1.2.1
 date-released: 2026-11-14
-url: "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.2.0"
+url: "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.2.1"
 repository-code: "https://github.com/vmpreciado/NeuroSymbolic"

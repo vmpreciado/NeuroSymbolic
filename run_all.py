@@ -80,12 +80,13 @@ def artifact_hashes():
         "timing_pendulum.json", "timing_neural.json", "rounding_checks.json",
         "revision_experiments.json", "revision_extensions.json", "revision_report.json",
         "timing_revision.json", "arxiv_bundle.json", "application_comparison.json",
-        "application_constant_baseline.json")]
+        "application_constant_baseline.json", "polynomial_constant_baseline.json")]
     paths += [PAPER / "numbers.tex", PAPER / "revision_numbers.tex",
               PAPER / "revision_tables.tex", PAPER / "application_numbers.tex",
-              PAPER / "application_tables.tex", PAPER / (TEX + ".pdf")]
-    paths += [HERE / "dist/neurosymbolic-arxiv-v1.2.0.tar.gz",
-              HERE / "dist/neurosymbolic-arxiv-v1.2.0.tar.gz.sha256"]
+              PAPER / "application_tables.tex", PAPER / "polynomial_constant_numbers.tex",
+              PAPER / (TEX + ".pdf")]
+    paths += [HERE / "dist/neurosymbolic-arxiv-v1.2.1.tar.gz",
+              HERE / "dist/neurosymbolic-arxiv-v1.2.1.tar.gz.sha256"]
     paths += list(PAPER.glob("fig_*.pdf")) + list(PAPER.glob("fig_*.png"))
     return {str(p.relative_to(HERE)): sha256(p) for p in sorted(paths) if p.is_file()}
 
@@ -535,6 +536,17 @@ def validate_application_constant_baseline():
     return "fixed constant metric checked on every application box; exact and directed proofs replayed"
 
 
+def validate_polynomial_constant_baseline():
+    import polynomial_constant_baseline
+    from fractions import Fraction
+    import cegis_c
+    data = read_json("polynomial_constant_baseline.json")
+    polynomial_constant_baseline.validate_report(data)
+    require(cegis_c.BOX == 2.0 and Fraction.from_float(cegis_c.RATE) == Fraction.from_float(0.4),
+            "polynomial baseline domain or rate disagrees with the learner")
+    return "fixed polynomial constant metric; both rate conventions and exact endpoint proofs replayed"
+
+
 def stages():
     return [
         ("bounds self-tests", bounds_tests),
@@ -566,14 +578,18 @@ def stages():
         ("verified constant-metric baseline", lambda: run_script("application_constant_baseline.py", outputs=(
             "results/application_constant_baseline.json",),
             validator=validate_application_constant_baseline)),
+        ("verified polynomial constant-metric baseline", lambda: run_script("polynomial_constant_baseline.py", outputs=(
+            "results/polynomial_constant_baseline.json",),
+            validator=validate_polynomial_constant_baseline)),
         ("complete certified reporting", lambda: run_script("revision_report.py", outputs=(
             "results/revision_report.json",))),
         ("fill_tex", lambda: run_script("fill_tex.py", outputs=("paper/numbers.tex",
             "paper/revision_numbers.tex", "paper/revision_tables.tex",
-            "paper/application_numbers.tex", "paper/application_tables.tex"))),
+            "paper/application_numbers.tex", "paper/application_tables.tex",
+            "paper/polynomial_constant_numbers.tex"))),
         ("pdflatex stable references + log check", latex),
         ("clean arXiv source bundle", lambda: run_script("release/build_arxiv.py", ("--check",), outputs=(
-            "results/arxiv_bundle.json", "dist/neurosymbolic-arxiv-v1.2.0.tar.gz"),
+            "results/arxiv_bundle.json", "dist/neurosymbolic-arxiv-v1.2.1.tar.gz"),
             validator=validate_arxiv_bundle)),
     ]
 

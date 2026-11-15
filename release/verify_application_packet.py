@@ -1,4 +1,4 @@
-"""Verify an extracted v1.2.0 review packet using only stdlib.
+"""Verify an extracted v1.2.1 review packet using only stdlib.
 
 Integrity and provenance checks are not mathematical verification or a rerun.
 No code from the nested scientific reproduction is executed.
@@ -12,7 +12,7 @@ import stat
 import tarfile
 import zipfile
 
-VERSION = "v1.2.0"
+VERSION = "v1.2.1"
 RELEASE_URL = "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/" + VERSION
 PUBLICATION_STATUS = "release artifact; publication and immutability are established by the GitHub release record"
 
@@ -26,7 +26,7 @@ def release_metadata(record):
 def check_release_sources(project):
     """Check release/citation and baseline identity without executing project code."""
     citation = project["CITATION.cff"].decode()
-    version = re.search(r"^version:\s*['\"]?(v?1\.2\.0)['\"]?\s*$", citation, re.M)
+    version = re.search(r"^version:\s*['\"]?(v?1\.2\.1)['\"]?\s*$", citation, re.M)
     url = re.search(r"^url:\s*['\"]?([^'\"\s]+)['\"]?\s*$", citation, re.M)
     tex = project["paper/nsp_contraction_paper_ieee.tex"].decode()
     if not version or not url or url.group(1) != RELEASE_URL or RELEASE_URL not in tex:
@@ -53,6 +53,26 @@ def check_release_sources(project):
     if [(row.get("box_half_width"), row.get("certified"), row.get("status"))
             for row in baseline.get("domains", [])] != expected:
         raise ValueError("Constant-metric baseline domain outcomes mismatch")
+    polynomial = json.loads(project["results/polynomial_constant_baseline.json"])
+    if (polynomial.get("status") != "pass" or polynomial.get("certified") is not True
+            or polynomial.get("method") != "fixed_constant_metric_analytical_baseline"
+            or polynomial.get("model_id") != "triangular_polynomial_exact_v1"
+            or polynomial.get("post_hoc") is not True
+            or polynomial.get("training_performed") is not False
+            or polynomial.get("seeds") is not None
+            or polynomial.get("domain", {}).get("box_rational") != [["-2/1", "2/1"], ["-2/1", "2/1"]]
+            or polynomial.get("metric_rational") != [["12/1", "0/1"], ["0/1", "1/1"]]):
+        raise ValueError("Polynomial constant-metric baseline identity or scope mismatch")
+    if polynomial.get("verification_backend", {}).get("exact_rational_matrix_checks") is not True:
+        raise ValueError("Polynomial constant-metric baseline verification metadata missing")
+    for key, rate in [("decimal_target_check", "2/5"),
+                      ("shared_binary64_target_check", "3602879701896397/9007199254740992")]:
+        check = polynomial.get(key, {})
+        if (check.get("certified") is not True or check.get("rate_rational") != rate
+                or check.get("raw_margin_rational") != "1/20"
+                or check.get("normalized_margin_rational") != "1/260"
+                or len(check.get("endpoint_checks", [])) != 2):
+            raise ValueError("Polynomial constant-metric baseline target metadata mismatch")
 
 
 def digest(data):
@@ -104,7 +124,7 @@ def snapshot_from_zip(content):
         raise ValueError("Run manifest hash mismatch")
     run = json.loads(run_bytes)
     stages = run["stages"]
-    if (run["status"] != "pass" or run["expected_stage_count"] < 14
+    if (run["status"] != "pass" or run["expected_stage_count"] < 15
             or len(stages) != run["expected_stage_count"]
             or any(stage["status"] != "pass" for stage in stages)
             or run["sources_at_start"] != run["sources_at_finish"]):
@@ -113,13 +133,15 @@ def snapshot_from_zip(content):
     required_sources = {"application_comparison.py", "application_protocol.json",
                         "application_baseline.py", "application_verifier.py", "application_report.py",
                         "application_constant_baseline.py", "tests/test_application_constant_baseline.py",
+                        "polynomial_constant_baseline.py", "tests/test_polynomial_constant_baseline.py",
                         "CITATION.cff",
                         "comparison_sources/fitzsimmons_liu_2024.json",
                         "comparison_sources/preliminary_application_summary.json",
                         "release/build_application_packet.py", "release/verify_application_packet.py"}
     required_artifacts = {"results/application_comparison.json", "paper/application_numbers.tex",
                           "paper/application_tables.tex", "paper/fig_application.pdf",
-                          "results/application_constant_baseline.json"}
+                          "results/application_constant_baseline.json",
+                          "results/polynomial_constant_baseline.json", "paper/polynomial_constant_numbers.tex"}
     if (not required_sources.issubset(run["sources_at_finish"])
             or not required_artifacts.issubset(run["artifact_sha256"])):
         raise ValueError("Application provenance is missing from the full run")
@@ -175,6 +197,10 @@ def verify(root):
     if (constant.get("path") != "project/results/application_constant_baseline.json"
             or constant.get("sha256") != digest(project["results/application_constant_baseline.json"])):
         raise ValueError("Constant-metric baseline release inventory mismatch")
+    polynomial = manifest["polynomial_constant_metric_baseline"]
+    if (polynomial.get("path") != "project/results/polynomial_constant_baseline.json"
+            or polynomial.get("sha256") != digest(project["results/polynomial_constant_baseline.json"])):
+        raise ValueError("Polynomial constant-metric baseline release inventory mismatch")
     tex = project["paper/nsp_contraction_paper_ieee.tex"].decode()
     title = re.search(r"\\title\{([^}]+)\}", tex).group(1)
     abstract = re.search(r"\\begin\{abstract\}\s*(.*?)\s*\\end\{abstract\}", tex, re.S).group(1)

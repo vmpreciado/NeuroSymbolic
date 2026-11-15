@@ -92,7 +92,7 @@ def render():
     tables += [r"\begin{table}[t]", r"\centering\small",
         r"\caption{Post hoc analytical constant-metric baseline. A single fixed matrix is checked on each whole box at the shared rate and strict margin. There are no training seeds or timing comparisons. A positive diagonal witness rules out this matrix on that box, not other metrics or contraction on its interior energy subset.}",
         r"\label{tab:applicationconstant}", r"\begin{tabular}{clc}", r"\hline",
-        r"$B$ & Fixed-$P$ outcome & Proved lower bound on $[C_P(B,0)]_{11}$ \\", r"\hline"]
+        r"$B$ & Fixed-$P$ outcome & Proved lower bound on $[C_P(k(B))]_{11}$ \\", r"\hline"]
     for row in baseline["domains"]:
         outcome = "Certified on whole box" if row["certified"] else "Violates requested rate"
         witness = "---" if row["certified"] else "$"+fmt_down(row["violation"]["rayleigh_quotient_lower"],sig=4)+"$"

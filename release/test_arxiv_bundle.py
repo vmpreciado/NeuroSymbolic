@@ -121,12 +121,26 @@ class ArxivBundleTests(unittest.TestCase):
             (paper / "application_tables.tex").write_text(r"\includegraphics{fig_application.pdf}")
             (paper / "fig_application.pdf").write_bytes(b"%PDF-1.4\nfixture\n")
             report = bundle.build(root)
-            self.assertEqual(report["manuscript_revision"], "v1.2.0")
-            self.assertEqual(report["release_tag"], "v1.2.0")
+            self.assertEqual(report["manuscript_revision"], "v1.2.1")
+            self.assertEqual(report["release_tag"], "v1.2.1")
             self.assertEqual(report["release_url"], bundle.RELEASE_URL)
             self.assertEqual(report["publication_status"], bundle.PUBLICATION_STATUS)
             self.assertTrue({"application_numbers.tex", "application_tables.tex", "fig_application.pdf"}
                             .issubset(report["member_sha256"]))
+
+    def test_polynomial_baseline_input_is_required_when_referenced(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            paper = self.fixture(root)
+            with (paper / bundle.MAIN).open("a") as stream:
+                stream.write(r"\input{polynomial_constant_numbers.tex}")
+            with self.assertRaisesRegex(ValueError, "missing"):
+                bundle.build(root)
+            constants = b"polynomial baseline constants\n"
+            (paper / "polynomial_constant_numbers.tex").write_bytes(constants)
+            report = bundle.build(root)
+            self.assertEqual(report["member_sha256"]["polynomial_constant_numbers.tex"],
+                             bundle.sha(constants))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,292 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "method": "fixed_constant_metric_analytical_baseline",
+  "model_id": "triangular_polynomial_exact_v1",
+  "certified": true,
+  "post_hoc": true,
+  "training_performed": false,
+  "seeds": null,
+  "comparison_scope": "fixed analytical candidate identified after the polynomial learning experiments; no optimized constant-metric search, matched training, or timing comparison",
+  "domain": {
+    "box_half_width": 2.0,
+    "box_rational": [
+      [
+        "-2/1",
+        "2/1"
+      ],
+      [
+        "-2/1",
+        "2/1"
+      ]
+    ],
+    "state_dimension": 2
+  },
+  "dynamics": [
+    "-x1",
+    "-x2+x1^2"
+  ],
+  "jacobian": [
+    [
+      "-1",
+      "0"
+    ],
+    [
+      "2*x1",
+      "-1"
+    ]
+  ],
+  "requested_rate": 0.4,
+  "decimal_rate_rational": "2/5",
+  "shared_binary64_rate_rational": "3602879701896397/9007199254740992",
+  "raw_margin_lower_rational": "1/20",
+  "normalized_margin_lower_rational": "1/260",
+  "margin_scope": "independently selected safe analytical margins; not the learned candidates' training margins",
+  "metric": [
+    [
+      12.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0
+    ]
+  ],
+  "metric_rational": [
+    [
+      "12/1",
+      "0/1"
+    ],
+    [
+      "0/1",
+      "1/1"
+    ]
+  ],
+  "metric_trace_rational": "13/1",
+  "metric_positive_principal_minors_rational": [
+    "12/1",
+    "12/1"
+  ],
+  "metric_bounds": {
+    "a_rational": "1/1",
+    "b_rational": "12/1",
+    "a_lower": 1.0,
+    "b_upper": 12.0,
+    "lower_shift_diagonal_rational": [
+      "11/1",
+      "0/1"
+    ],
+    "upper_shift_diagonal_rational": [
+      "0/1",
+      "11/1"
+    ],
+    "overshoot_exact_upper": "sqrt(12)",
+    "overshoot_upper": 3.464101615137755,
+    "overshoot_upper_rational": "7800463371553963/2251799813685248",
+    "overshoot_square_at_least_b_over_a": true
+  },
+  "contraction_matrix_at_decimal_rate": {
+    "constant_rational": [
+      [
+        "-72/5",
+        "0/1"
+      ],
+      [
+        "0/1",
+        "-6/5"
+      ]
+    ],
+    "x1_coefficient_rational": [
+      [
+        "0/1",
+        "2/1"
+      ],
+      [
+        "2/1",
+        "0/1"
+      ]
+    ],
+    "independent_of_x2": true
+  },
+  "decimal_target_check": {
+    "rate_rational": "2/5",
+    "raw_margin_rational": "1/20",
+    "normalized_margin_rational": "1/260",
+    "endpoint_checks": [
+      {
+        "x1_rational": "-2/1",
+        "contraction_matrix_rational": [
+          [
+            "-72/5",
+            "-4/1"
+          ],
+          [
+            "-4/1",
+            "-6/5"
+          ]
+        ],
+        "negative_matrix_rational": [
+          [
+            "72/5",
+            "4/1"
+          ],
+          [
+            "4/1",
+            "6/5"
+          ]
+        ],
+        "leading_principal_minor_rational": "72/5",
+        "determinant_rational": "32/25",
+        "negative_shifted_matrix_rational": [
+          [
+            "287/20",
+            "4/1"
+          ],
+          [
+            "4/1",
+            "23/20"
+          ]
+        ],
+        "shifted_leading_principal_minor_rational": "287/20",
+        "shifted_determinant_rational": "201/400",
+        "positive_definite": true,
+        "shifted_positive_definite": true
+      },
+      {
+        "x1_rational": "2/1",
+        "contraction_matrix_rational": [
+          [
+            "-72/5",
+            "4/1"
+          ],
+          [
+            "4/1",
+            "-6/5"
+          ]
+        ],
+        "negative_matrix_rational": [
+          [
+            "72/5",
+            "-4/1"
+          ],
+          [
+            "-4/1",
+            "6/5"
+          ]
+        ],
+        "leading_principal_minor_rational": "72/5",
+        "determinant_rational": "32/25",
+        "negative_shifted_matrix_rational": [
+          [
+            "287/20",
+            "-4/1"
+          ],
+          [
+            "-4/1",
+            "23/20"
+          ]
+        ],
+        "shifted_leading_principal_minor_rational": "287/20",
+        "shifted_determinant_rational": "201/400",
+        "positive_definite": true,
+        "shifted_positive_definite": true
+      }
+    ],
+    "certified": true
+  },
+  "shared_binary64_target_check": {
+    "rate_rational": "3602879701896397/9007199254740992",
+    "raw_margin_rational": "1/20",
+    "normalized_margin_rational": "1/260",
+    "endpoint_checks": [
+      {
+        "x1_rational": "-2/1",
+        "contraction_matrix_rational": [
+          [
+            "-16212958658533785/1125899906842624",
+            "-4/1"
+          ],
+          [
+            "-4/1",
+            "-5404319552844595/4503599627370496"
+          ]
+        ],
+        "negative_matrix_rational": [
+          [
+            "16212958658533785/1125899906842624",
+            "4/1"
+          ],
+          [
+            "4/1",
+            "5404319552844595/4503599627370496"
+          ]
+        ],
+        "leading_principal_minor_rational": "16212958658533785/1125899906842624",
+        "determinant_rational": "6490371073168528050479656998011/5070602400912917605986812821504",
+        "negative_shifted_matrix_rational": [
+          [
+            "80783318315958269/5629499534213120",
+            "4/1"
+          ],
+          [
+            "4/1",
+            "25895697857380351/22517998136852480"
+          ]
+        ],
+        "shifted_leading_principal_minor_rational": "80783318315958269/5629499534213120",
+        "shifted_determinant_rational": "63699442661468368954797447970819/126765060022822940149670320537600",
+        "positive_definite": true,
+        "shifted_positive_definite": true
+      },
+      {
+        "x1_rational": "2/1",
+        "contraction_matrix_rational": [
+          [
+            "-16212958658533785/1125899906842624",
+            "4/1"
+          ],
+          [
+            "4/1",
+            "-5404319552844595/4503599627370496"
+          ]
+        ],
+        "negative_matrix_rational": [
+          [
+            "16212958658533785/1125899906842624",
+            "-4/1"
+          ],
+          [
+            "-4/1",
+            "5404319552844595/4503599627370496"
+          ]
+        ],
+        "leading_principal_minor_rational": "16212958658533785/1125899906842624",
+        "determinant_rational": "6490371073168528050479656998011/5070602400912917605986812821504",
+        "negative_shifted_matrix_rational": [
+          [
+            "80783318315958269/5629499534213120",
+            "-4/1"
+          ],
+          [
+            "-4/1",
+            "25895697857380351/22517998136852480"
+          ]
+        ],
+        "shifted_leading_principal_minor_rational": "80783318315958269/5629499534213120",
+        "shifted_determinant_rational": "63699442661468368954797447970819/126765060022822940149670320537600",
+        "positive_definite": true,
+        "shifted_positive_definite": true
+      }
+    ],
+    "certified": true
+  },
+  "proof_rule": "C is affine in x1 and independent of x2; the positive-definite cone is convex, so exact Sylvester checks at x1=-2 and x1=2 prove C(x) strictly below -(1/20)I throughout the box",
+  "normalization_rule": "trace(P)=13, so lambda_max(C)/trace(P) is strictly below -1/260",
+  "verification_backend": {
+    "exact_rational_matrix_checks": true,
+    "matrix_arithmetic": "Python fractions.Fraction; no floating-point matrix or eigenvalue tests",
+    "prefactor_bound": "binary64 square-root starting value, corrected upward and checked by exact rational squaring"
+  },
+  "qualification": "a learned or state-dependent metric is unnecessary to certify this polynomial benchmark at the target rate; the learning experiments diagnose synthesis and verification behavior, not a need for neural expressiveness",
+  "trajectory_scope": "the verification box is not forward invariant; finite-distance guarantees require the manuscript's connecting-flow and domain hypotheses"
+}

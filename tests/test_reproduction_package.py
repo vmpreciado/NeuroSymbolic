@@ -15,11 +15,11 @@ class ReproductionPackageTests(unittest.TestCase):
         artifacts = {name: self.write(root, name, b"artifact\n")
                      for name in packaging.REQUIRED_ARTIFACTS}
         stages = []
-        for index in range(14):
+        for index in range(15):
             name = f"results/stage_logs/{index}.log"
             stages.append({"status": "pass", "log": name,
                            "log_sha256": self.write(root, name, b"pass\n")})
-        manifest = {"status": "pass", "stages": stages, "expected_stage_count": 14,
+        manifest = {"status": "pass", "stages": stages, "expected_stage_count": 15,
                     "sources_at_start": sources, "sources_at_finish": dict(sources),
                     "artifact_sha256": artifacts, "finished_at": "2026-11-04",
                     "run_log": "results/run_all.log",
@@ -47,8 +47,8 @@ class ReproductionPackageTests(unittest.TestCase):
             self.assertEqual(packaging.package(root)[1], first_hash)
             summary, contents = packaging.verify_archive(path)
             self.assertEqual(summary["status"], "pass")
-            self.assertEqual(summary["stages"], 14)
-            self.assertEqual(snapshot["release_tag"], "v1.2.0")
+            self.assertEqual(summary["stages"], 15)
+            self.assertEqual(snapshot["release_tag"], "v1.2.1")
             self.assertEqual(set(contents), set(snapshot["files"]))
 
     def test_changed_source_artifact_or_log_is_rejected(self):
@@ -62,10 +62,12 @@ class ReproductionPackageTests(unittest.TestCase):
 
     def test_incomplete_failed_or_mutating_run_is_rejected(self):
         for mutation in (lambda m: m.update(status="fail"),
-                         lambda m: m.update(expected_stage_count=13, stages=m["stages"][:13]),
+                         lambda m: m.update(expected_stage_count=14, stages=m["stages"][:14]),
                          lambda m: m["stages"].pop(),
                          lambda m: m["artifact_sha256"].pop("results/neural.json"),
                          lambda m: m["artifact_sha256"].pop("results/application_constant_baseline.json"),
+                         lambda m: m["artifact_sha256"].pop("results/polynomial_constant_baseline.json"),
+                         lambda m: m["artifact_sha256"].pop("paper/polynomial_constant_numbers.tex"),
                          lambda m: m["sources_at_finish"].update({"rounding.py": "changed"})):
             with tempfile.TemporaryDirectory() as folder:
                 root = Path(folder)
