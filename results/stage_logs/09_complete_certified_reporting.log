@@ -1,5 +1,0 @@
-
-[9/12] complete certified reporting
-$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/claude-revision/revision_report.py
-Generated complete certificate reporting: 51 certified candidates
-  -> PASS: fresh outputs validated (6.0s)

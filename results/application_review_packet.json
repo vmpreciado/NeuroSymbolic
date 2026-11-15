@@ -1,0 +1,27 @@
+{
+  "status": "pass",
+  "payload_files": 131,
+  "scientific_stages": 14,
+  "arxiv_source_files": 16,
+  "pages": 30,
+  "release_tag": "v1.2.0",
+  "release_url": "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.2.0",
+  "publication_status": "release artifact; publication and immutability are established by the GitHub release record",
+  "note": "Integrity/provenance only; no experiment rerun or proof of mathematical correctness.",
+  "archive": "dist/neurosymbolic-claude-deep-review-v1.2.0.zip",
+  "sha256": "7cc3f2e2d9a535ef74c92e02b5111b9e8c6521a47518eac74d30f74c380ca414",
+  "bytes": 7441519,
+  "reproduction": {
+    "path": "reproduction/neurosymbolic-reproduction-v1.2.0.zip",
+    "sha256": "3775951929f2e48b569618ac5fb1e7a4644ec9238bff48dd18c7fa9a3f710c38"
+  },
+  "run_manifest_sha256": "4cc174f0f11da9c3176365e4ae091c205184ea91b202b0f1f5e616e0fda2e2b4",
+  "current_paper": {
+    "title": "Neurosymbolic Synthesis of Contraction Metrics with Certified Verification",
+    "pages": 30,
+    "reviewer_line_numbers": false,
+    "abstract_characters": 1883,
+    "abstract_words": 232,
+    "reference_count": 31
+  }
+}

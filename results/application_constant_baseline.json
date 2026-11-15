@@ -1,0 +1,584 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "method": "fixed_constant_metric_analytical_baseline",
+  "model_id": "two_machine_swing_exact_pi_over_3_v1",
+  "post_hoc": true,
+  "training_performed": false,
+  "seeds": null,
+  "comparison_scope": "analytical fixed-candidate baseline identified after the neural comparison; no matched optimization or timing claim",
+  "requested_rate": 0.05,
+  "requested_raw_margin": 0.0001,
+  "decimal_rate_rational": "1/20",
+  "decimal_raw_margin_rational": "1/10000",
+  "shared_binary64_rate_rational": "3602879701896397/72057594037927936",
+  "shared_binary64_raw_margin_rational": "7378697629483821/73786976294838206464",
+  "metric": [
+    [
+      1.0,
+      0.5
+    ],
+    [
+      0.5,
+      2.0
+    ]
+  ],
+  "metric_rational": [
+    [
+      "1/1",
+      "1/2"
+    ],
+    [
+      "1/2",
+      "2/1"
+    ]
+  ],
+  "metric_positive_principal_minors_rational": [
+    "1/1",
+    "7/4"
+  ],
+  "metric_bounds": {
+    "a_rational": "3/4",
+    "b_rational": "9/4",
+    "lower_shift_principal_minors_rational": [
+      "1/4",
+      "1/16"
+    ],
+    "upper_shift_principal_minors_rational": [
+      "5/4",
+      "1/16"
+    ],
+    "a_lower": 0.75,
+    "b_upper": 2.25,
+    "overshoot_upper": 1.7320508075688774,
+    "overshoot_exact_upper": "sqrt(3)"
+  },
+  "contraction_matrix_at_decimal_rate": {
+    "constant_rational": [
+      [
+        "1/10",
+        "4/5"
+      ],
+      [
+        "4/5",
+        "-4/5"
+      ]
+    ],
+    "k_coefficient_rational": [
+      [
+        "-1/1",
+        "-2/1"
+      ],
+      [
+        "-2/1",
+        "0/1"
+      ]
+    ],
+    "k": "cos(delta+pi/3)"
+  },
+  "verification_backend": {
+    "outward_rounded": true,
+    "exact_rational_matrix_checks": true,
+    "transcendental_backend": "MPFR",
+    "precision_bits": 200
+  },
+  "domains": [
+    {
+      "box_half_width": 0.25,
+      "box_rational": [
+        [
+          "-1/4",
+          "1/4"
+        ],
+        [
+          "-1/4",
+          "1/4"
+        ]
+      ],
+      "certified": true,
+      "cosine_bounds": {
+        "angle_interval_rational": [
+          "320261768451979263776411547665547073693582598012630695421611/401734511064747568885490523085290650630550748445698208825344",
+          "130282255996088262054789202302048099752214493058869949958571/100433627766186892221372630771322662657637687111424552206336"
+        ],
+        "monotonicity_interval": "strictly inside (0,pi); cosine is decreasing",
+        "mpfr_interval_rational": [
+          "868383203574337989447873531240876211623070994895881364695557/3213876088517980551083924184682325205044405987565585670602752",
+          "1122790630214776563763051325599623440806680966454073394924859/1606938044258990275541962092341162602522202993782792835301376"
+        ],
+        "coarse_interval_rational": [
+          "27/100",
+          "7/10"
+        ],
+        "right_endpoint_interval_rational": [
+          "868383203574337989447873531240876211623070994895881364695557/3213876088517980551083924184682325205044405987565585670602752",
+          "434191601787168994723936765620438105811535497447940682347783/1606938044258990275541962092341162602522202993782792835301376"
+        ]
+      },
+      "decimal_target_check": {
+        "rate_rational": "1/20",
+        "raw_margin_rational": "1/10000",
+        "endpoint_checks": [
+          {
+            "k_rational": "27/100",
+            "negative_shifted_matrix_rational": [
+              [
+                "1699/10000",
+                "-13/50"
+              ],
+              [
+                "-13/50",
+                "7999/10000"
+              ]
+            ],
+            "leading_principal_minor_rational": "1699/10000",
+            "determinant_rational": "6830301/100000000",
+            "positive_definite": true
+          },
+          {
+            "k_rational": "7/10",
+            "negative_shifted_matrix_rational": [
+              [
+                "5999/10000",
+                "3/5"
+              ],
+              [
+                "3/5",
+                "7999/10000"
+              ]
+            ],
+            "leading_principal_minor_rational": "5999/10000",
+            "determinant_rational": "11986001/100000000",
+            "positive_definite": true
+          }
+        ],
+        "certified": true
+      },
+      "shared_binary64_target_check": {
+        "rate_rational": "3602879701896397/72057594037927936",
+        "raw_margin_rational": "7378697629483821/73786976294838206464",
+        "endpoint_checks": [
+          {
+            "k_rational": "27/100",
+            "negative_shifted_matrix_rational": [
+              [
+                "313410181812325271707/1844674407370955161600",
+                "-468374361246531589/1801439850948198400"
+              ],
+              [
+                "-468374361246531589/1801439850948198400",
+                "59022202338241080531/73786976294838206464"
+              ]
+            ],
+            "leading_principal_minor_rational": "313410181812325271707/1844674407370955161600",
+            "determinant_rational": "232423099106245264337835187437039711507929/3402823669209384634633746074317682114560000",
+            "positive_definite": true
+          },
+          {
+            "k_rational": "7/10",
+            "negative_shifted_matrix_rational": [
+              [
+                "221324035396367198239/368934881474191032320",
+                "216172782113783807/360287970189639680"
+              ],
+              [
+                "216172782113783807/360287970189639680",
+                "59022202338241080531/73786976294838206464"
+              ]
+            ],
+            "leading_principal_minor_rational": "221324035396367198239/368934881474191032320",
+            "determinant_rational": "16314499160786940317545410297333518941121/136112946768375385385349842972707284582400",
+            "positive_definite": true
+          }
+        ],
+        "certified": true
+      },
+      "stronger_decimal_margin_check": {
+        "rate_rational": "1/20",
+        "raw_margin_rational": "1/100",
+        "endpoint_checks": [
+          {
+            "k_rational": "27/100",
+            "negative_shifted_matrix_rational": [
+              [
+                "4/25",
+                "-13/50"
+              ],
+              [
+                "-13/50",
+                "79/100"
+              ]
+            ],
+            "leading_principal_minor_rational": "4/25",
+            "determinant_rational": "147/2500",
+            "positive_definite": true
+          },
+          {
+            "k_rational": "7/10",
+            "negative_shifted_matrix_rational": [
+              [
+                "59/100",
+                "3/5"
+              ],
+              [
+                "3/5",
+                "79/100"
+              ]
+            ],
+            "leading_principal_minor_rational": "59/100",
+            "determinant_rational": "1061/10000",
+            "positive_definite": true
+          }
+        ],
+        "certified": true
+      },
+      "proof_rule": "C is affine in k; endpoint negative definiteness extends to their convex hull",
+      "status": "certified",
+      "raw_margin_lower_rational_at_decimal_rate": "1/100",
+      "target_rate_lower": 0.05,
+      "matched_raw_margin_lower": 0.0001,
+      "trajectory_scope": "finite-distance guarantees require the stated invariant energy subset and connecting-flow hypotheses"
+    },
+    {
+      "box_half_width": 0.5,
+      "box_rational": [
+        [
+          "-1/2",
+          "1/2"
+        ],
+        [
+          "-1/2",
+          "1/2"
+        ]
+      ],
+      "certified": false,
+      "cosine_bounds": {
+        "angle_interval_rational": [
+          "219828140685792371555038916894224411035944910901206143215275/401734511064747568885490523085290650630550748445698208825344",
+          "155390662937634985110132359994878765416623914836726088010155/100433627766186892221372630771322662657637687111424552206336"
+        ],
+        "monotonicity_interval": "strictly inside (0,pi); cosine is decreasing",
+        "mpfr_interval_rational": [
+          "1213384019794065002115464268609567197812207205716391073529285/51422017416287688817342786954917203280710495801049370729644032",
+          "171537819382668161633195646944031299329218567161145728110525/200867255532373784442745261542645325315275374222849104412672"
+        ],
+        "coarse_interval_rational": [
+          "1/50",
+          "43/50"
+        ],
+        "right_endpoint_interval_rational": [
+          "1213384019794065002115464268609567197812207205716391073529285/51422017416287688817342786954917203280710495801049370729644032",
+          "606692009897032501057732134304783598906103602858195536764707/25711008708143844408671393477458601640355247900524685364822016"
+        ]
+      },
+      "decimal_target_check": {
+        "rate_rational": "1/20",
+        "raw_margin_rational": "1/10000",
+        "endpoint_checks": [
+          {
+            "k_rational": "1/50",
+            "negative_shifted_matrix_rational": [
+              [
+                "-801/10000",
+                "-19/25"
+              ],
+              [
+                "-19/25",
+                "7999/10000"
+              ]
+            ],
+            "leading_principal_minor_rational": "-801/10000",
+            "determinant_rational": "-64167199/100000000",
+            "positive_definite": false
+          },
+          {
+            "k_rational": "43/50",
+            "negative_shifted_matrix_rational": [
+              [
+                "7599/10000",
+                "23/25"
+              ],
+              [
+                "23/25",
+                "7999/10000"
+              ]
+            ],
+            "leading_principal_minor_rational": "7599/10000",
+            "determinant_rational": "-23855599/100000000",
+            "positive_definite": false
+          }
+        ],
+        "certified": false
+      },
+      "shared_binary64_target_check": {
+        "rate_rational": "3602879701896397/72057594037927936",
+        "raw_margin_rational": "7378697629483821/73786976294838206464",
+        "endpoint_checks": [
+          {
+            "k_rational": "1/50",
+            "negative_shifted_matrix_rational": [
+              [
+                "-147758420030413518693/1844674407370955161600",
+                "-1369094286720630789/1801439850948198400"
+              ],
+              [
+                "-1369094286720630789/1801439850948198400",
+                "59022202338241080531/73786976294838206464"
+              ]
+            ],
+            "leading_principal_minor_rational": "-147758420030413518693/1844674407370955161600",
+            "determinant_rational": "-2183496635440687591632181951236366836869671/3402823669209384634633746074317682114560000",
+            "positive_definite": false
+          },
+          {
+            "k_rational": "43/50",
+            "negative_shifted_matrix_rational": [
+              [
+                "1401768082161188817051/1844674407370955161600",
+                "1657324662872342523/1801439850948198400"
+              ],
+              [
+                "1657324662872342523/1801439850948198400",
+                "59022202338241080531/73786976294838206464"
+              ]
+            ],
+            "leading_principal_minor_rational": "1401768082161188817051/1844674407370955161600",
+            "determinant_rational": "-811763969203677295270862583021093858224679/3402823669209384634633746074317682114560000",
+            "positive_definite": false
+          }
+        ],
+        "certified": false
+      },
+      "stronger_decimal_margin_check": {
+        "rate_rational": "1/20",
+        "raw_margin_rational": "1/100",
+        "endpoint_checks": [
+          {
+            "k_rational": "1/50",
+            "negative_shifted_matrix_rational": [
+              [
+                "-9/100",
+                "-19/25"
+              ],
+              [
+                "-19/25",
+                "79/100"
+              ]
+            ],
+            "leading_principal_minor_rational": "-9/100",
+            "determinant_rational": "-6487/10000",
+            "positive_definite": false
+          },
+          {
+            "k_rational": "43/50",
+            "negative_shifted_matrix_rational": [
+              [
+                "3/4",
+                "23/25"
+              ],
+              [
+                "23/25",
+                "79/100"
+              ]
+            ],
+            "leading_principal_minor_rational": "3/4",
+            "determinant_rational": "-2539/10000",
+            "positive_definite": false
+          }
+        ],
+        "certified": false
+      },
+      "proof_rule": "C is affine in k; endpoint negative definiteness extends to their convex hull",
+      "status": "fixed_candidate_violates_requested_rate",
+      "violation": {
+        "point_rational": [
+          "1/2",
+          "0/1"
+        ],
+        "direction_rational": [
+          "1/1",
+          "0/1"
+        ],
+        "rate_conventions_checked": [
+          "exact decimal",
+          "shared binary64"
+        ],
+        "rayleigh_quotient_lower_rational": "9822044304586759699047036067205382825647105935971364998587473/128555043540719222043356967387293008201776239502623426824110080",
+        "rayleigh_quotient_lower": 0.07640341470909051,
+        "interpretation": "this fixed P fails the requested rate; other constant or state-dependent metrics are not excluded",
+        "region_scope": "the witness is on the verification-box boundary, outside the strictly interior invariant energy subset; it does not disprove a certificate restricted to that subset"
+      }
+    },
+    {
+      "box_half_width": 0.75,
+      "box_rational": [
+        [
+          "-3/4",
+          "3/4"
+        ],
+        [
+          "-3/4",
+          "3/4"
+        ]
+      ],
+      "certified": false,
+      "cosine_bounds": {
+        "angle_interval_rational": [
+          "119394512919605479333666286122901748378307223789781591008939/401734511064747568885490523085290650630550748445698208825344",
+          "180499069879181708165475517687709431081033336614582226061739/100433627766186892221372630771322662657637687111424552206336"
+        ],
+        "monotonicity_interval": "strictly inside (0,pi); cosine is decreasing",
+        "mpfr_interval_rational": [
+          "-1442850694877759862030217197057006748262792075030685402143817/6427752177035961102167848369364650410088811975131171341205504",
+          "1536491353673610485124464281017848060494976591870619867835893/1606938044258990275541962092341162602522202993782792835301376"
+        ],
+        "coarse_interval_rational": [
+          "-23/100",
+          "24/25"
+        ],
+        "right_endpoint_interval_rational": [
+          "-1442850694877759862030217197057006748262792075030685402143817/6427752177035961102167848369364650410088811975131171341205504",
+          "-180356336859719982753777149632125843532849009378835675267975/803469022129495137770981046170581301261101496891396417650688"
+        ]
+      },
+      "decimal_target_check": {
+        "rate_rational": "1/20",
+        "raw_margin_rational": "1/10000",
+        "endpoint_checks": [
+          {
+            "k_rational": "-23/100",
+            "negative_shifted_matrix_rational": [
+              [
+                "-3301/10000",
+                "-63/50"
+              ],
+              [
+                "-63/50",
+                "7999/10000"
+              ]
+            ],
+            "leading_principal_minor_rational": "-3301/10000",
+            "determinant_rational": "-185164699/100000000",
+            "positive_definite": false
+          },
+          {
+            "k_rational": "24/25",
+            "negative_shifted_matrix_rational": [
+              [
+                "8599/10000",
+                "28/25"
+              ],
+              [
+                "28/25",
+                "7999/10000"
+              ]
+            ],
+            "leading_principal_minor_rational": "8599/10000",
+            "determinant_rational": "-56656599/100000000",
+            "positive_definite": false
+          }
+        ],
+        "certified": false
+      },
+      "shared_binary64_target_check": {
+        "rate_rational": "3602879701896397/72057594037927936",
+        "raw_margin_rational": "7378697629483821/73786976294838206464",
+        "endpoint_checks": [
+          {
+            "k_rational": "-23/100",
+            "negative_shifted_matrix_rational": [
+              [
+                "-608927021873152309093/1844674407370955161600",
+                "-2269814212194729989/1801439850948198400"
+              ],
+              [
+                "-2269814212194729989/1801439850948198400",
+                "59022202338241080531/73786976294838206464"
+              ]
+            ],
+            "leading_principal_minor_rational": "-608927021873152309093/1844674407370955161600",
+            "determinant_rational": "-6300828204592312764919072127068614442527271/3402823669209384634633746074317682114560000",
+            "positive_definite": false
+          },
+          {
+            "k_rational": "24/25",
+            "negative_shifted_matrix_rational": [
+              [
+                "1586235522898284333211/1844674407370955161600",
+                "2017612633061982203/1801439850948198400"
+              ],
+              [
+                "2017612633061982203/1801439850948198400",
+                "59022202338241080531/73786976294838206464"
+              ]
+            ],
+            "leading_principal_minor_rational": "1586235522898284333211/1844674407370955161600",
+            "determinant_rational": "-1927924160941047549278708325034152692984359/3402823669209384634633746074317682114560000",
+            "positive_definite": false
+          }
+        ],
+        "certified": false
+      },
+      "stronger_decimal_margin_check": {
+        "rate_rational": "1/20",
+        "raw_margin_rational": "1/100",
+        "endpoint_checks": [
+          {
+            "k_rational": "-23/100",
+            "negative_shifted_matrix_rational": [
+              [
+                "-17/50",
+                "-63/50"
+              ],
+              [
+                "-63/50",
+                "79/100"
+              ]
+            ],
+            "leading_principal_minor_rational": "-17/50",
+            "determinant_rational": "-9281/5000",
+            "positive_definite": false
+          },
+          {
+            "k_rational": "24/25",
+            "negative_shifted_matrix_rational": [
+              [
+                "17/20",
+                "28/25"
+              ],
+              [
+                "28/25",
+                "79/100"
+              ]
+            ],
+            "leading_principal_minor_rational": "17/20",
+            "determinant_rational": "-5829/10000",
+            "positive_definite": false
+          }
+        ],
+        "certified": false
+      },
+      "proof_rule": "C is affine in k; endpoint negative definiteness extends to their convex hull",
+      "status": "fixed_candidate_violates_requested_rate",
+      "violation": {
+        "point_rational": [
+          "3/4",
+          "0/1"
+        ],
+        "direction_rational": [
+          "1/1",
+          "0/1"
+        ],
+        "rate_conventions_checked": [
+          "exact decimal",
+          "shared binary64"
+        ],
+        "rayleigh_quotient_lower_rational": "1303516195363347482654376271245919868294795795339876585165219/4017345110647475688854905230852906506305507484456982088253440",
+        "rayleigh_quotient_lower": 0.32447204794742157,
+        "interpretation": "this fixed P fails the requested rate; other constant or state-dependent metrics are not excluded",
+        "region_scope": "the witness is on the verification-box boundary, outside the strictly interior invariant energy subset; it does not disprove a certificate restricted to that subset"
+      }
+    }
+  ],
+  "qualification": "the smallest swing box does not require a learned or state-dependent metric; the two larger fixed-P failures do not establish necessity either"
+}

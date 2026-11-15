@@ -1,5 +1,5 @@
 % Generated tables. All numerical entries originate in result JSON.
-% SHA256 results/revision_report.json: 112b5e6ba6c7def8873f25be4ebb67106394a09dd5f18c33a0a6a3479633bd3f
+% SHA256 results/revision_report.json: f8579800a6c9f660c1cf6bf7abbbb5c58645aba1c9631975f0fd6c64503fe0e3
 \begin{table}[t]\centering\caption{Complete representative certificates. The smallest certified seed is used per study. Upper bounds are rounded upward and lower guarantees downward.}\label{tab:certconstants}
 \small\begin{tabular}{lrrr}\hline Quantity & Polynomial & Pendulum & Neural\\\hline
 Seed & $0$ & $0$ & $0$\\
@@ -27,11 +27,11 @@ $\sqrt{b/a}$ & & $6.52\ [4.96, 9.27]$ & $4.8\ [4.57, 5.04]$ & $7.2\ [5.56, 8.22]
 \hline\end{tabular}\end{table}
 \begin{table}[t]\centering\caption{Median cost per retraining round (excluding initial verification), with ranges in the reproduction. Oracle time includes bound computation; evaluation counts include screens and enclosure operations.}\label{tab:timings}
 \small\begin{tabular}{lrrr}\hline Study & Learner (s) & Oracle (s) & Evaluations\\\hline
-Polynomial / fixed coarse & $0.00195$ & $0.0874$ & $1.46 \times 10^{4}$\\
-Polynomial / coupled coarse & $0.707$ & $0.0851$ & $1.46 \times 10^{4}$\\
-Polynomial / operating & $0.5$ & $0.409$ & $4 \times 10^{6}$\\
-Pendulum & $0.46$ & $0.208$ & $3.22 \times 10^{5}$\\
-Neural & $1.32$ & $10.6$ & $6.4 \times 10^{7}$\\
+Polynomial / fixed coarse & $0.00265$ & $0.122$ & $1.46 \times 10^{4}$\\
+Polynomial / coupled coarse & $0.788$ & $0.0897$ & $1.46 \times 10^{4}$\\
+Polynomial / operating & $0.557$ & $0.48$ & $4 \times 10^{6}$\\
+Pendulum & $0.535$ & $0.221$ & $3.22 \times 10^{5}$\\
+Neural & $1.49$ & $11.7$ & $6.4 \times 10^{7}$\\
 \hline\multicolumn{4}{l}{\footnotesize Apple M3 Max; Python 3.12.7; one BLAS thread.}\\
 \multicolumn{4}{l}{\footnotesize Independent producers may overlap; timings include contention.}\\
 \hline\end{tabular}\end{table}
@@ -73,11 +73,11 @@ Pendulum / fixed & 20 & 20 & 0 & 0\\
 3D rate $\lambda'$ & $0.40000758$\\
 3D overshoot & $8.119$\\
 Frozen seed 0 adaptive boxes & $121$\\
-Frozen seed 0 grid / adaptive time (s) & $3.1 / 0.115$\\
+Frozen seed 0 grid / adaptive time (s) & $3.67 / 0.124$\\
 Frozen seed 1 adaptive boxes & $47$\\
-Frozen seed 1 grid / adaptive time (s) & $3.09 / 0.0402$\\
+Frozen seed 1 grid / adaptive time (s) & $3.73 / 0.0427$\\
 Frozen seed 2 adaptive boxes & $83$\\
-Frozen seed 2 grid / adaptive time (s) & $3.14 / 0.0773$\\
+Frozen seed 2 grid / adaptive time (s) & $3.73 / 0.0848$\\
 Surrogate trajectory samples & $300$\\
 Surrogate derivative-fit RMSE & $3.36 \times 10^{-15}$\\
 Surrogate $\eta$ & $0.005$\\

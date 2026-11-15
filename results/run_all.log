@@ -1,7 +1,41 @@
-Reproduction started 2026-11-05T05:49:41.859078+00:00
+Reproduction started 2026-11-15T01:02:00.106333+00:00
 
-[1/12] bounds self-tests
+[1/14] bounds self-tests
 $ /opt/anaconda3/bin/python3 -m unittest discover -s tests -v
+test_counts_both_positive_eigenvalues (test_application_baseline.ApplicationBaselineTests.test_counts_both_positive_eigenvalues) ... ok
+test_gradient_agrees_with_independent_finite_difference (test_application_baseline.ApplicationBaselineTests.test_gradient_agrees_with_independent_finite_difference) ... ok
+test_matches_independent_symmetric_eigensolver (test_application_baseline.ApplicationBaselineTests.test_matches_independent_symmetric_eigensolver) ... ok
+test_provenance_does_not_claim_full_method_reproduction (test_application_baseline.ApplicationBaselineTests.test_provenance_does_not_claim_full_method_reproduction) ... ok
+test_repeated_eigenvalue_gradient_finite (test_application_baseline.ApplicationBaselineTests.test_repeated_eigenvalue_gradient_finite) ... ok
+test_zero_set_matches_raw_matrix_margin (test_application_baseline.ApplicationBaselineTests.test_zero_set_matches_raw_matrix_margin) ... ok
+test_driver_uses_identical_initial_candidates_and_samples (test_application_comparison.ApplicationComparisonTests.test_driver_uses_identical_initial_candidates_and_samples) ... ok
+test_every_primary_and_refined_positive_proof_is_replayed (test_application_comparison.ApplicationComparisonTests.test_every_primary_and_refined_positive_proof_is_replayed) ... ok
+test_failed_replay_or_false_guarantee_is_rejected (test_application_comparison.ApplicationComparisonTests.test_failed_replay_or_false_guarantee_is_rejected) ... ok
+test_missing_duplicate_unplanned_runs_are_rejected (test_application_comparison.ApplicationComparisonTests.test_missing_duplicate_unplanned_runs_are_rejected) ... ok
+test_pilot_changed_protocol_or_baseline_cannot_enter_paper (test_application_comparison.ApplicationComparisonTests.test_pilot_changed_protocol_or_baseline_cannot_enter_paper) ... ok
+test_primary_success_cannot_be_lost_in_refinement (test_application_comparison.ApplicationComparisonTests.test_primary_success_cannot_be_lost_in_refinement) ... ok
+test_real_certificate_fixture_replays_and_starts_are_matched (test_application_comparison.ApplicationComparisonTests.test_real_certificate_fixture_replays_and_starts_are_matched) ... ok
+test_refinement_freezes_every_candidate_and_changes_only_box_cap (test_application_comparison.ApplicationComparisonTests.test_refinement_freezes_every_candidate_and_changes_only_box_cap) ... ok
+test_refinement_missing_changed_or_relabelled_is_rejected (test_application_comparison.ApplicationComparisonTests.test_refinement_missing_changed_or_relabelled_is_rejected) ... ok
+test_timing_accounting_and_early_failure_are_rejected (test_application_comparison.ApplicationComparisonTests.test_timing_accounting_and_early_failure_are_rejected) ... ok
+test_unequal_or_exceeded_budgets_are_rejected (test_application_comparison.ApplicationComparisonTests.test_unequal_or_exceeded_budgets_are_rejected) ... ok
+test_unmatched_initialization_or_collocations_are_rejected (test_application_comparison.ApplicationComparisonTests.test_unmatched_initialization_or_collocations_are_rejected) ... ok
+test_wrong_candidate_floor_region_or_margin_is_rejected (test_application_comparison.ApplicationComparisonTests.test_wrong_candidate_floor_region_or_margin_is_rejected) ... ok
+test_direct_high_precision_original_phase_and_matrix (test_application_constant_baseline.ConstantMetricBaselineTests.test_direct_high_precision_original_phase_and_matrix) ... ok
+test_exact_matrix_identity_from_jacobian (test_application_constant_baseline.ConstantMetricBaselineTests.test_exact_matrix_identity_from_jacobian) ... ok
+test_exact_small_box_minors_and_stronger_margin (test_application_constant_baseline.ConstantMetricBaselineTests.test_exact_small_box_minors_and_stronger_margin) ... ok
+test_full_json_roundtrip_and_every_domain (test_application_constant_baseline.ConstantMetricBaselineTests.test_full_json_roundtrip_and_every_domain) ... ok
+test_larger_boxes_have_actual_fixed_candidate_violations (test_application_constant_baseline.ConstantMetricBaselineTests.test_larger_boxes_have_actual_fixed_candidate_violations) ... ok
+test_metric_bounds_and_prefactor (test_application_constant_baseline.ConstantMetricBaselineTests.test_metric_bounds_and_prefactor) ... ok
+test_replay_rejects_tampered_targets_domain_proof_and_metadata (test_application_constant_baseline.ConstantMetricBaselineTests.test_replay_rejects_tampered_targets_domain_proof_and_metadata) ... ok
+test_unprescribed_or_nonfinite_domain_is_rejected (test_application_constant_baseline.ConstantMetricBaselineTests.test_unprescribed_or_nonfinite_domain_is_rejected) ... ok
+test_batch_interval_matches_scalar_and_hull_corners (test_application_verifier.SwingVerifierTests.test_batch_interval_matches_scalar_and_hull_corners) ... ok
+test_complete_partition_and_tamper_rejection (test_application_verifier.SwingVerifierTests.test_complete_partition_and_tamper_rejection) ... ok
+test_energy_level_below_exact_boundary (test_application_verifier.SwingVerifierTests.test_energy_level_below_exact_boundary) ... ok
+test_failure_and_budget_are_inconclusive (test_application_verifier.SwingVerifierTests.test_failure_and_budget_are_inconclusive) ... ok
+test_interval_covers_high_precision_original_shifted_sine (test_application_verifier.SwingVerifierTests.test_interval_covers_high_precision_original_shifted_sine) ... ok
+test_metric_rate_bounds_are_outward (test_application_verifier.SwingVerifierTests.test_metric_rate_bounds_are_outward) ... ok
+test_nominal_entries_match_independent_high_precision (test_application_verifier.SwingVerifierTests.test_nominal_entries_match_independent_high_precision) ... ok
 test_large_batch_neural_grid_encloses_high_precision_reference (test_benchmark_rounding.BenchmarkRoundoffTests.test_large_batch_neural_grid_encloses_high_precision_reference) ... ok
 test_neural_C_and_spatial_derivatives_enclose_high_precision (test_benchmark_rounding.BenchmarkRoundoffTests.test_neural_C_and_spatial_derivatives_enclose_high_precision) ... ok
 test_neural_subbox_bounds_enclose_point_C_and_derivatives (test_benchmark_rounding.BenchmarkRoundoffTests.test_neural_subbox_bounds_enclose_point_C_and_derivatives) ... ok
@@ -45,6 +79,7 @@ test_disagreeing_round_cap_is_rejected (test_protocol_metadata.ProtocolPublicati
 test_growth_threshold_is_strict_and_certification_takes_precedence (test_protocol_metadata.ProtocolPublicationTests.test_growth_threshold_is_strict_and_certification_takes_precedence) ... ok
 test_incomplete_or_invalid_metric_bounds_cannot_enter_paper (test_protocol_metadata.ProtocolPublicationTests.test_incomplete_or_invalid_metric_bounds_cannot_enter_paper) ... ok
 test_old_result_without_budget_metadata_cannot_fill_protocol_table (test_protocol_metadata.ProtocolPublicationTests.test_old_result_without_budget_metadata_cannot_fill_protocol_table) ... ok
+test_archive_verification_rejects_tampering_and_extra_members (test_reproduction_package.ReproductionPackageTests.test_archive_verification_rejects_tampering_and_extra_members) ... ok
 test_changed_source_artifact_or_log_is_rejected (test_reproduction_package.ReproductionPackageTests.test_changed_source_artifact_or_log_is_rejected) ... ok
 test_complete_archive_contains_verifiable_snapshot_and_is_repeatable (test_reproduction_package.ReproductionPackageTests.test_complete_archive_contains_verifiable_snapshot_and_is_repeatable) ... ok
 test_incomplete_failed_or_mutating_run_is_rejected (test_reproduction_package.ReproductionPackageTests.test_incomplete_failed_or_mutating_run_is_rejected) ... ok
@@ -108,18 +143,27 @@ test_smoke_must_actually_certify_and_have_consistent_slack (test_run_all.RunnerV
 test_successful_process_cannot_reuse_stale_result (test_run_all.RunnerValidationTests.test_successful_process_cannot_reuse_stale_result) ... ok
 
 ----------------------------------------------------------------------
-Ran 104 tests in 9.416s
+Ran 139 tests in 13.261s
 
 OK
 $ /opt/anaconda3/bin/python3 -m unittest discover -s release -p test_*.py -v
+test_citation_and_baseline_scope_must_match_release (test_application_packet.ApplicationPacketTests.test_citation_and_baseline_scope_must_match_release) ... ok
+test_old_or_changed_run_cannot_be_packaged (test_application_packet.ApplicationPacketTests.test_old_or_changed_run_cannot_be_packaged) ... ok
+test_release_metadata_cannot_claim_a_different_tag (test_application_packet.ApplicationPacketTests.test_release_metadata_cannot_claim_a_different_tag) ... ok
+test_roundtrip_and_standalone_verifier_with_no_nested_code_execution (test_application_packet.ApplicationPacketTests.test_roundtrip_and_standalone_verifier_with_no_nested_code_execution) ... ok
+test_application_dependencies_and_release_metadata (test_arxiv_bundle.ArxivBundleTests.test_application_dependencies_and_release_metadata) ... ok
 test_archive_is_complete_minimal_and_repeatable_after_timestamp_changes (test_arxiv_bundle.ArxivBundleTests.test_archive_is_complete_minimal_and_repeatable_after_timestamp_changes) ... ok
 test_extraction_rejects_unsafe_members_and_content_tampering (test_arxiv_bundle.ArxivBundleTests.test_extraction_rejects_unsafe_members_and_content_tampering) ... ok
 test_failed_clean_build_cannot_leave_a_passing_manifest (test_arxiv_bundle.ArxivBundleTests.test_failed_clean_build_cannot_leave_a_passing_manifest) ... ok
 test_missing_input_or_figure_and_external_dependencies_are_rejected (test_arxiv_bundle.ArxivBundleTests.test_missing_input_or_figure_and_external_dependencies_are_rejected) ... ok
 test_revision_dependencies_are_transitive_and_unused_files_are_excluded (test_arxiv_bundle.ArxivBundleTests.test_revision_dependencies_are_transitive_and_unused_files_are_excluded) ... ok
+test_changed_parent_or_failed_clean_build_is_rejected (test_current_package.CurrentReproductionTests.test_changed_parent_or_failed_clean_build_is_rejected) ... ok
+test_current_archive_is_repeatable_and_standalone_verifier_passes (test_current_package.CurrentReproductionTests.test_current_archive_is_repeatable_and_standalone_verifier_passes) ... ok
+test_editorial_report_cannot_relabel_changed_science_as_an_overlay (test_current_package.CurrentReproductionTests.test_editorial_report_cannot_relabel_changed_science_as_an_overlay) ... ok
+test_extraction_rejects_parent_paths_symlinks_and_uninventoried_files (test_current_package.CurrentReproductionTests.test_extraction_rejects_parent_paths_symlinks_and_uninventoried_files) ... ok
 
 ----------------------------------------------------------------------
-Ran 5 tests in 0.663s
+Ran 14 tests in 12.418s
 
 OK
 [1b] 200 pairs, fails=0, max relative error=4.88e-15
@@ -129,79 +173,79 @@ OK
 [1c monotone] theta 2: L(depth=2)=15167.7955  L(depth=4)=1148.8954  delta=-14018.9001
 [1c monotone] theta 3: L(depth=2)=12611.4911  L(depth=4)=396.0967  delta=-12215.3944
 [1c monotone] theta 4: L(depth=2)=2946.0287  L(depth=4)=201.0666  delta=-2744.9621
-  -> PASS: directed arithmetic, regression tests, and polynomial acceptance checks passed (16.6s)
+  -> PASS: directed arithmetic, regression tests, and polynomial acceptance checks passed (34.1s)
 Started independent scientific producer: bench_neural.py
 Started independent scientific producer: revision_experiments.py
 
-[2/12] multi-seed regimes
-$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/claude-revision/experiments.py
+[2/14] multi-seed regimes
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/experiments.py
 === multi-seed regimes (20 seeds, depth=3) ===
-  stall    seed  0: cert=False iters=12 L0=1.41 Lmax=2.36e+01 gap=+0.2630  (1.7s)
-  stall    seed  1: cert=False iters=12 L0=1.41 Lmax=4.92e+01 gap=+0.6417  (2.4s)
-  stall    seed  2: cert=False iters=12 L0=1.41 Lmax=3.89e+01 gap=+0.3356  (1.8s)
-  stall    seed  3: cert=False iters=12 L0=1.41 Lmax=2.06e+01 gap=+0.1867  (1.7s)
-  stall    seed  4: cert=False iters=12 L0=1.41 Lmax=3.00e+01 gap=+0.0658  (2.4s)
-  stall    seed  5: cert=False iters=12 L0=1.41 Lmax=2.72e+01 gap=+0.0564  (1.8s)
-  stall    seed  6: cert=False iters=12 L0=1.41 Lmax=2.22e+01 gap=+0.0423  (1.7s)
-  stall    seed  7: cert=False iters=12 L0=1.41 Lmax=2.14e+01 gap=+0.1919  (1.6s)
-  stall    seed  8: cert=True iters= 2 L0=1.41 Lmax=2.09e+01 gap=-0.0116  (0.7s)
-  stall    seed  9: cert=False iters=12 L0=1.41 Lmax=2.29e+01 gap=+0.0593  (2.1s)
-  stall    seed 10: cert=False iters=12 L0=1.41 Lmax=5.62e+01 gap=+0.9997  (2.7s)
-  stall    seed 11: cert=False iters=12 L0=1.41 Lmax=2.91e+01 gap=+0.0112  (2.2s)
-  stall    seed 12: cert=False iters=12 L0=1.41 Lmax=1.73e+01 gap=+0.0235  (1.6s)
-  stall    seed 13: cert=False iters=12 L0=1.41 Lmax=2.71e+01 gap=+0.2079  (1.7s)
-  stall    seed 14: cert=False iters=12 L0=1.41 Lmax=2.11e+01 gap=+0.0854  (1.8s)
-  stall    seed 15: cert=False iters=12 L0=1.41 Lmax=1.94e+01 gap=+0.2946  (1.9s)
-  stall    seed 16: cert=False iters=12 L0=1.41 Lmax=1.86e+01 gap=+0.1573  (1.8s)
-  stall    seed 17: cert=False iters=12 L0=1.41 Lmax=2.10e+01 gap=+0.1245  (1.7s)
-  stall    seed 18: cert=False iters=12 L0=1.41 Lmax=2.16e+01 gap=+0.0898  (1.9s)
-  stall    seed 19: cert=False iters=12 L0=1.41 Lmax=2.69e+01 gap=+0.2313  (2.8s)
-  diverge  seed  0: cert=False iters=12 L0=1.41 Lmax=3.60e+06 gap=+44361.5471  (9.5s)
-  diverge  seed  1: cert=False iters=12 L0=1.41 Lmax=7.10e+06 gap=+167290.4674  (9.5s)
-  diverge  seed  2: cert=False iters=12 L0=1.41 Lmax=7.09e+06 gap=+150052.7619  (9.6s)
-  diverge  seed  3: cert=False iters=12 L0=1.41 Lmax=7.93e+06 gap=+165438.0557  (9.9s)
-  diverge  seed  4: cert=False iters=12 L0=1.41 Lmax=3.87e+06 gap=+63124.2951  (9.7s)
-  diverge  seed  5: cert=False iters=12 L0=1.41 Lmax=4.69e+06 gap=+31082.5810  (9.6s)
-  diverge  seed  6: cert=False iters=12 L0=1.41 Lmax=5.73e+06 gap=+118248.7011  (9.6s)
-  diverge  seed  7: cert=False iters=12 L0=1.41 Lmax=5.31e+06 gap=+93426.5566  (9.6s)
-  diverge  seed  8: cert=False iters=12 L0=1.41 Lmax=3.68e+06 gap=+52925.4025  (9.6s)
-  diverge  seed  9: cert=False iters=12 L0=1.41 Lmax=3.28e+06 gap=+40577.7325  (9.6s)
-  diverge  seed 10: cert=False iters=12 L0=1.41 Lmax=4.56e+06 gap=+78651.3147  (9.7s)
-  diverge  seed 11: cert=False iters=12 L0=1.41 Lmax=7.26e+06 gap=+163226.9093  (9.7s)
-  diverge  seed 12: cert=False iters=12 L0=1.41 Lmax=2.27e+06 gap=+53433.6480  (9.7s)
-  diverge  seed 13: cert=False iters=12 L0=1.41 Lmax=6.86e+06 gap=+60039.2493  (9.6s)
-  diverge  seed 14: cert=False iters=12 L0=1.41 Lmax=2.81e+06 gap=+35399.2419  (9.5s)
-  diverge  seed 15: cert=False iters=12 L0=1.41 Lmax=4.84e+06 gap=+53205.5532  (9.5s)
-  diverge  seed 16: cert=False iters=12 L0=1.41 Lmax=1.40e+07 gap=+319783.1935  (9.6s)
-  diverge  seed 17: cert=False iters=12 L0=1.41 Lmax=5.41e+06 gap=+127549.9007  (9.5s)
-  diverge  seed 18: cert=False iters=12 L0=1.41 Lmax=4.52e+06 gap=+74400.8761  (9.5s)
-  diverge  seed 19: cert=False iters=12 L0=1.41 Lmax=5.09e+06 gap=+58670.8424  (9.5s)
-  certify  seed  0: cert=True iters= 3 L0=1.41 Lmax=3.07e+01 gap=-0.0216  (6.4s)
-  certify  seed  1: cert=True iters= 2 L0=1.41 Lmax=2.70e+01 gap=-0.0285  (4.9s)
-  certify  seed  2: cert=True iters= 2 L0=1.41 Lmax=2.72e+01 gap=-0.0381  (4.9s)
-  certify  seed  3: cert=True iters= 2 L0=1.41 Lmax=2.11e+01 gap=-0.0355  (4.7s)
-  certify  seed  4: cert=True iters= 3 L0=1.41 Lmax=2.85e+01 gap=-0.0305  (6.1s)
-  certify  seed  5: cert=True iters= 3 L0=1.41 Lmax=2.86e+01 gap=-0.0377  (6.0s)
-  certify  seed  6: cert=True iters= 2 L0=1.41 Lmax=2.35e+01 gap=-0.0063  (5.0s)
-  certify  seed  7: cert=True iters= 2 L0=1.41 Lmax=2.24e+01 gap=-0.0310  (4.8s)
-  certify  seed  8: cert=True iters= 3 L0=1.41 Lmax=3.46e+01 gap=-0.0509  (6.3s)
-  certify  seed  9: cert=True iters= 2 L0=1.41 Lmax=3.12e+01 gap=-0.0291  (4.7s)
-  certify  seed 10: cert=True iters= 3 L0=1.41 Lmax=3.47e+01 gap=-0.0557  (6.1s)
-  certify  seed 11: cert=True iters= 2 L0=1.41 Lmax=3.05e+01 gap=-0.0490  (4.6s)
-  certify  seed 12: cert=True iters= 1 L0=1.41 Lmax=1.95e+01 gap=-0.0054  (3.9s)
-  certify  seed 13: cert=True iters= 3 L0=1.41 Lmax=3.13e+01 gap=-0.0457  (5.4s)
-  certify  seed 14: cert=True iters= 2 L0=1.41 Lmax=2.12e+01 gap=-0.0086  (5.2s)
-  certify  seed 15: cert=False iters=12 L0=1.41 Lmax=8.37e+06 gap=+11853.1922  (16.4s)
-  certify  seed 16: cert=True iters= 3 L0=1.41 Lmax=3.33e+01 gap=-0.0538  (6.0s)
-  certify  seed 17: cert=True iters= 4 L0=1.41 Lmax=3.24e+01 gap=-0.0450  (7.4s)
-  certify  seed 18: cert=True iters= 2 L0=1.41 Lmax=2.68e+01 gap=-0.0061  (5.2s)
-  certify  seed 19: cert=True iters= 2 L0=1.41 Lmax=2.33e+01 gap=-0.0423  (4.8s)
-total runtime: 348.9s
+  stall    seed  0: cert=False iters=12 L0=1.41 Lmax=2.36e+01 gap=+0.2630  (3.4s)
+  stall    seed  1: cert=False iters=12 L0=1.41 Lmax=4.92e+01 gap=+0.6417  (4.7s)
+  stall    seed  2: cert=False iters=12 L0=1.41 Lmax=3.89e+01 gap=+0.3356  (3.9s)
+  stall    seed  3: cert=False iters=12 L0=1.41 Lmax=2.06e+01 gap=+0.1867  (3.2s)
+  stall    seed  4: cert=False iters=12 L0=1.41 Lmax=3.00e+01 gap=+0.0658  (4.8s)
+  stall    seed  5: cert=False iters=12 L0=1.41 Lmax=2.72e+01 gap=+0.0564  (3.5s)
+  stall    seed  6: cert=False iters=12 L0=1.41 Lmax=2.22e+01 gap=+0.0423  (3.2s)
+  stall    seed  7: cert=False iters=12 L0=1.41 Lmax=2.14e+01 gap=+0.1919  (3.3s)
+  stall    seed  8: cert=True iters= 2 L0=1.41 Lmax=2.09e+01 gap=-0.0116  (1.2s)
+  stall    seed  9: cert=False iters=12 L0=1.41 Lmax=2.29e+01 gap=+0.0593  (3.6s)
+  stall    seed 10: cert=False iters=12 L0=1.41 Lmax=5.62e+01 gap=+0.9997  (4.0s)
+  stall    seed 11: cert=False iters=12 L0=1.41 Lmax=2.91e+01 gap=+0.0112  (3.5s)
+  stall    seed 12: cert=False iters=12 L0=1.41 Lmax=1.73e+01 gap=+0.0235  (2.1s)
+  stall    seed 13: cert=False iters=12 L0=1.41 Lmax=2.71e+01 gap=+0.2079  (2.1s)
+  stall    seed 14: cert=False iters=12 L0=1.41 Lmax=2.11e+01 gap=+0.0854  (2.4s)
+  stall    seed 15: cert=False iters=12 L0=1.41 Lmax=1.94e+01 gap=+0.2946  (2.2s)
+  stall    seed 16: cert=False iters=12 L0=1.41 Lmax=1.86e+01 gap=+0.1573  (2.1s)
+  stall    seed 17: cert=False iters=12 L0=1.41 Lmax=2.10e+01 gap=+0.1245  (2.0s)
+  stall    seed 18: cert=False iters=12 L0=1.41 Lmax=2.16e+01 gap=+0.0898  (2.3s)
+  stall    seed 19: cert=False iters=12 L0=1.41 Lmax=2.69e+01 gap=+0.2313  (3.6s)
+  diverge  seed  0: cert=False iters=12 L0=1.41 Lmax=3.60e+06 gap=+44361.5471  (11.5s)
+  diverge  seed  1: cert=False iters=12 L0=1.41 Lmax=7.10e+06 gap=+167290.4674  (11.0s)
+  diverge  seed  2: cert=False iters=12 L0=1.41 Lmax=7.09e+06 gap=+150052.7619  (11.2s)
+  diverge  seed  3: cert=False iters=12 L0=1.41 Lmax=7.93e+06 gap=+165438.0557  (10.8s)
+  diverge  seed  4: cert=False iters=12 L0=1.41 Lmax=3.87e+06 gap=+63124.2951  (13.1s)
+  diverge  seed  5: cert=False iters=12 L0=1.41 Lmax=4.69e+06 gap=+31082.5810  (11.4s)
+  diverge  seed  6: cert=False iters=12 L0=1.41 Lmax=5.73e+06 gap=+118248.7011  (10.2s)
+  diverge  seed  7: cert=False iters=12 L0=1.41 Lmax=5.31e+06 gap=+93426.5566  (10.2s)
+  diverge  seed  8: cert=False iters=12 L0=1.41 Lmax=3.68e+06 gap=+52925.4025  (10.8s)
+  diverge  seed  9: cert=False iters=12 L0=1.41 Lmax=3.28e+06 gap=+40577.7325  (10.8s)
+  diverge  seed 10: cert=False iters=12 L0=1.41 Lmax=4.56e+06 gap=+78651.3147  (10.7s)
+  diverge  seed 11: cert=False iters=12 L0=1.41 Lmax=7.26e+06 gap=+163226.9093  (10.7s)
+  diverge  seed 12: cert=False iters=12 L0=1.41 Lmax=2.27e+06 gap=+53433.6480  (10.4s)
+  diverge  seed 13: cert=False iters=12 L0=1.41 Lmax=6.86e+06 gap=+60039.2493  (10.4s)
+  diverge  seed 14: cert=False iters=12 L0=1.41 Lmax=2.81e+06 gap=+35399.2419  (10.6s)
+  diverge  seed 15: cert=False iters=12 L0=1.41 Lmax=4.84e+06 gap=+53205.5532  (10.5s)
+  diverge  seed 16: cert=False iters=12 L0=1.41 Lmax=1.40e+07 gap=+319783.1935  (10.4s)
+  diverge  seed 17: cert=False iters=12 L0=1.41 Lmax=5.41e+06 gap=+127549.9007  (10.5s)
+  diverge  seed 18: cert=False iters=12 L0=1.41 Lmax=4.52e+06 gap=+74400.8761  (10.9s)
+  diverge  seed 19: cert=False iters=12 L0=1.41 Lmax=5.09e+06 gap=+58670.8424  (10.7s)
+  certify  seed  0: cert=True iters= 3 L0=1.41 Lmax=3.07e+01 gap=-0.0216  (7.7s)
+  certify  seed  1: cert=True iters= 2 L0=1.41 Lmax=2.70e+01 gap=-0.0285  (6.2s)
+  certify  seed  2: cert=True iters= 2 L0=1.41 Lmax=2.72e+01 gap=-0.0381  (5.8s)
+  certify  seed  3: cert=True iters= 2 L0=1.41 Lmax=2.11e+01 gap=-0.0355  (5.6s)
+  certify  seed  4: cert=True iters= 3 L0=1.41 Lmax=2.85e+01 gap=-0.0305  (6.8s)
+  certify  seed  5: cert=True iters= 3 L0=1.41 Lmax=2.86e+01 gap=-0.0377  (7.0s)
+  certify  seed  6: cert=True iters= 2 L0=1.41 Lmax=2.35e+01 gap=-0.0063  (5.8s)
+  certify  seed  7: cert=True iters= 2 L0=1.41 Lmax=2.24e+01 gap=-0.0310  (5.7s)
+  certify  seed  8: cert=True iters= 3 L0=1.41 Lmax=3.46e+01 gap=-0.0509  (7.6s)
+  certify  seed  9: cert=True iters= 2 L0=1.41 Lmax=3.12e+01 gap=-0.0291  (6.1s)
+  certify  seed 10: cert=True iters= 3 L0=1.41 Lmax=3.47e+01 gap=-0.0557  (6.8s)
+  certify  seed 11: cert=True iters= 2 L0=1.41 Lmax=3.05e+01 gap=-0.0490  (5.4s)
+  certify  seed 12: cert=True iters= 1 L0=1.41 Lmax=1.95e+01 gap=-0.0054  (4.5s)
+  certify  seed 13: cert=True iters= 3 L0=1.41 Lmax=3.13e+01 gap=-0.0457  (6.0s)
+  certify  seed 14: cert=True iters= 2 L0=1.41 Lmax=2.12e+01 gap=-0.0086  (5.8s)
+  certify  seed 15: cert=False iters=12 L0=1.41 Lmax=8.37e+06 gap=+11853.1922  (19.1s)
+  certify  seed 16: cert=True iters= 3 L0=1.41 Lmax=3.33e+01 gap=-0.0538  (7.2s)
+  certify  seed 17: cert=True iters= 4 L0=1.41 Lmax=3.24e+01 gap=-0.0450  (8.7s)
+  certify  seed 18: cert=True iters= 2 L0=1.41 Lmax=2.68e+01 gap=-0.0061  (6.6s)
+  certify  seed 19: cert=True iters= 2 L0=1.41 Lmax=2.33e+01 gap=-0.0423  (6.1s)
+total runtime: 418.3s
 
   stall   : certified 1/20, diverged 0, stalled 19, median iters 2.0, max L growth 3.98e+01
   diverge : certified 0/20, diverged 20, stalled 0, median iters None, max L growth 9.88e+06
   certify : certified 19/20, diverged 1, stalled 0, median iters 2.0, max L growth 5.92e+06
-  wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/claude-revision/results/traces.json
+  wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/results/traces.json
 
 === gridcost: slack/L ratio across certified seeds ===
   seed  0: slack=0.0494  L_cert=19.70  b=5.933  slack/L=0.00251
@@ -224,15 +268,15 @@ total runtime: 348.9s
   seed 18: slack=0.0441  L_cert=26.85  b=5.066  slack/L=0.00164
   seed 19: slack=0.0486  L_cert=4.47  b=3.632  slack/L=0.01087
   ratio: median=0.0056954534289796275 min=0.0016432236571661276 max=0.014455753225468387
-  wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/claude-revision/results/gridcost.json
+  wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/results/gridcost.json
 
 === regenerate fig_heatmaps, fig_traces, fig_gridcost ===
   figures written
-  -> PASS: main outcomes validated (352.6s)
+  -> PASS: main outcomes validated (428.7s)
 Started independent scientific producer: revision_extensions.py
 
-[3/12] residual experiment
-$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/claude-revision/residual.py
+[3/14] residual experiment
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/residual.py
 === Task 3: residual robustness experiment ===
 selecting a certified candidate ...
   eta      = 0.03862
@@ -268,12 +312,12 @@ selecting a certified candidate ...
     delta=0.0090  meas=-0.05094  bound=+0.11585
   all measured values below the bound: sampled consistency check PASS
   largest tested delta with measured grid maximum <= 0: 0.008994716095157463
-  wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/claude-revision/paper/fig_residual.pdf
-  wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/claude-revision/results/residual.json
-  -> PASS: residual bounds validated (28.1s)
+  wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/paper/fig_residual.pdf
+  wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/results/residual.json
+  -> PASS: residual bounds validated (34.4s)
 
-[4/12] non-polynomial benchmark
-$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/claude-revision/bench_pendulum.py --experiment
+[4/14] non-polynomial benchmark
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/bench_pendulum.py --experiment
 [pendulum assembly] 200 pairs, max rel err = 7.77e-16
 [pendulum enclosure] fails=0, cert/emp L ratio min=179.81 median=373.51 max=874.83
 
@@ -299,13 +343,13 @@ ACCEPTANCE: assembly PASS, enclosure PASS
   seed 17: cert=True iters=1 L=1.94 worst=-0.0553
   seed 18: cert=True iters=1 L=1.49 worst=-0.0291
   seed 19: cert=True iters=1 L=0.94 worst=-0.0999
-  runtime 23.3s
+  runtime 27.5s
   certified 19/20, diverged 1, median iters 1.0
   example seed 0: L=1.56 sampled slack=0.0487 b=2.243
   wrote results/pendulum.json and paper/fig_pendulum.pdf
-  -> PASS: certified 19/20; diverged 1; example uniform slack 0.0432158 (26.2s)
+  -> PASS: certified 19/20; diverged 1; example uniform slack 0.0432158 (33.3s)
 
-[5/12] neural-metric benchmark
+[5/14] neural-metric benchmark
 $ bench_neural.py (independent producer started earlier; full output follows)
 [neural dC firewall] max |analytic - FD| = 4.22e-09
 [neural enclosure] fails=0, cert/emp L ratio min=42.4 median=324.7 max=381.9
@@ -332,13 +376,13 @@ ACCEPTANCE: dC firewall PASS, enclosure PASS
   seed 17: op(grid 8001)=False iters=8 L=441608449.1 worst=+16.918
   seed 18: op(grid 8001)=False iters=8 L=116701089.5 worst=+98.807
   seed 19: op(grid 8001)=True iters=1 L=88.5 worst=-0.034
-  runtime 1162s
+  runtime 1329s
   certified 13/20 at grid 8001, 1/20 of those also at grid 2001; diverged 7; median iters 1.0
   wrote results/neural.json and paper/fig_neural.pdf
-  -> PASS: certified 13/20; diverged 7; example uniform slack 0.0090816 (757.7s)
+  -> PASS: certified 13/20; diverged 7; example uniform slack 0.0090816 (837.0s)
 
-[6/12] P1 smoke diagnostic
-$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/claude-revision/smoke_p1.py
+[6/14] P1 smoke diagnostic
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/smoke_p1.py
 candidate: seed=0 n_grid=2001 depth=3 certified=True iters=3
 L_cert            = 19.7013
 L_emp_raw         = 0.1035
@@ -350,301 +394,671 @@ s (certified slack) = +0.021558
 a                 = 0.1000
 b                 = 5.9334
 mu1               = 1.8663
-wall_verify_s     = 3.175
-wall_bounds_s     = 0.022
-wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/claude-revision/results/smoke_p1.json
-  -> PASS: certified smoke candidate; uniform slack 0.0215583 (11.6s)
+wall_verify_s     = 2.974
+wall_bounds_s     = 0.023
+wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/results/smoke_p1.json
+  -> PASS: certified smoke candidate; uniform slack 0.0215583 (10.2s)
 
-[7/12] controlled revision experiments
+[7/14] controlled revision experiments
 $ revision_experiments.py (independent producer started earlier; full output follows)
-raw_fixed seed=0: certified=True rounds=2 elapsed=4.2s
-raw_fixed seed=1: certified=True rounds=2 elapsed=4.1s
-raw_fixed seed=2: certified=True rounds=2 elapsed=4.3s
-raw_fixed seed=3: certified=True rounds=3 elapsed=4.6s
-raw_fixed seed=4: certified=True rounds=2 elapsed=3.9s
-raw_fixed seed=5: certified=True rounds=2 elapsed=4.2s
-raw_fixed seed=6: certified=True rounds=2 elapsed=4.3s
-raw_fixed seed=7: certified=True rounds=2 elapsed=4.1s
-raw_fixed seed=8: certified=True rounds=2 elapsed=3.8s
-raw_fixed seed=9: certified=True rounds=2 elapsed=3.9s
-raw_fixed seed=10: certified=True rounds=2 elapsed=3.8s
-raw_fixed seed=11: certified=True rounds=2 elapsed=3.9s
-raw_fixed seed=12: certified=True rounds=2 elapsed=3.8s
-raw_fixed seed=13: certified=True rounds=2 elapsed=3.8s
-raw_fixed seed=14: certified=True rounds=2 elapsed=3.8s
-raw_fixed seed=15: certified=True rounds=2 elapsed=3.8s
-raw_fixed seed=16: certified=True rounds=2 elapsed=4.1s
-raw_fixed seed=17: certified=True rounds=1 elapsed=3.6s
-raw_fixed seed=18: certified=True rounds=2 elapsed=3.9s
-raw_fixed seed=19: certified=True rounds=2 elapsed=3.8s
-raw_coupled seed=0: certified=True rounds=2 elapsed=3.9s
-raw_coupled seed=1: certified=True rounds=2 elapsed=3.9s
-raw_coupled seed=2: certified=True rounds=2 elapsed=4.0s
-raw_coupled seed=3: certified=True rounds=3 elapsed=4.4s
-raw_coupled seed=4: certified=True rounds=2 elapsed=3.8s
-raw_coupled seed=5: certified=True rounds=2 elapsed=3.8s
-raw_coupled seed=6: certified=True rounds=2 elapsed=3.9s
-raw_coupled seed=7: certified=True rounds=2 elapsed=3.8s
-raw_coupled seed=8: certified=True rounds=2 elapsed=3.9s
-raw_coupled seed=9: certified=True rounds=2 elapsed=3.8s
-raw_coupled seed=10: certified=True rounds=2 elapsed=3.9s
-raw_coupled seed=11: certified=True rounds=2 elapsed=3.9s
-raw_coupled seed=12: certified=True rounds=2 elapsed=3.9s
-raw_coupled seed=13: certified=True rounds=2 elapsed=3.8s
-raw_coupled seed=14: certified=True rounds=2 elapsed=3.9s
-raw_coupled seed=15: certified=True rounds=2 elapsed=4.0s
-raw_coupled seed=16: certified=True rounds=2 elapsed=3.9s
-raw_coupled seed=17: certified=True rounds=1 elapsed=3.4s
-raw_coupled seed=18: certified=True rounds=2 elapsed=3.8s
-raw_coupled seed=19: certified=True rounds=2 elapsed=3.8s
-normalized_fixed seed=0: certified=True rounds=3 elapsed=5.8s
-normalized_fixed seed=1: certified=True rounds=2 elapsed=4.7s
-normalized_fixed seed=2: certified=True rounds=2 elapsed=4.6s
-normalized_fixed seed=3: certified=True rounds=2 elapsed=4.6s
-normalized_fixed seed=4: certified=True rounds=3 elapsed=5.9s
-normalized_fixed seed=5: certified=True rounds=5 elapsed=8.5s
-normalized_fixed seed=6: certified=True rounds=2 elapsed=4.7s
-normalized_fixed seed=7: certified=True rounds=2 elapsed=4.5s
-normalized_fixed seed=8: certified=True rounds=3 elapsed=6.2s
-normalized_fixed seed=9: certified=True rounds=2 elapsed=4.6s
-normalized_fixed seed=10: certified=True rounds=4 elapsed=7.2s
-normalized_fixed seed=11: certified=True rounds=2 elapsed=4.5s
-normalized_fixed seed=12: certified=True rounds=1 elapsed=3.8s
-normalized_fixed seed=13: certified=True rounds=2 elapsed=4.6s
-normalized_fixed seed=14: certified=True rounds=2 elapsed=5.0s
-normalized_fixed seed=15: certified=True rounds=5 elapsed=8.4s
-normalized_fixed seed=16: certified=True rounds=3 elapsed=6.3s
-normalized_fixed seed=17: certified=True rounds=4 elapsed=7.5s
-normalized_fixed seed=18: certified=True rounds=2 elapsed=5.1s
-normalized_fixed seed=19: certified=True rounds=2 elapsed=4.7s
-normalized_coupled seed=0: certified=True rounds=3 elapsed=6.3s
-normalized_coupled seed=1: certified=True rounds=2 elapsed=4.9s
-normalized_coupled seed=2: certified=True rounds=2 elapsed=4.8s
-normalized_coupled seed=3: certified=True rounds=2 elapsed=4.8s
-normalized_coupled seed=4: certified=True rounds=3 elapsed=6.0s
-normalized_coupled seed=5: certified=True rounds=3 elapsed=5.9s
-normalized_coupled seed=6: certified=True rounds=2 elapsed=4.8s
-normalized_coupled seed=7: certified=True rounds=2 elapsed=4.7s
-normalized_coupled seed=8: certified=True rounds=3 elapsed=6.2s
-normalized_coupled seed=9: certified=True rounds=2 elapsed=4.8s
-normalized_coupled seed=10: certified=True rounds=3 elapsed=6.0s
-normalized_coupled seed=11: certified=True rounds=2 elapsed=4.6s
-normalized_coupled seed=12: certified=True rounds=1 elapsed=3.9s
-normalized_coupled seed=13: certified=True rounds=3 elapsed=5.2s
-normalized_coupled seed=14: certified=True rounds=2 elapsed=5.0s
-normalized_coupled seed=15: certified=False rounds=12 elapsed=16.9s
-normalized_coupled seed=16: certified=True rounds=3 elapsed=6.6s
-normalized_coupled seed=17: certified=True rounds=4 elapsed=7.9s
-normalized_coupled seed=18: certified=True rounds=2 elapsed=5.6s
-normalized_coupled seed=19: certified=True rounds=2 elapsed=4.8s
-raw_coupled_bounded seed=0: certified=True rounds=2 elapsed=4.2s
-raw_coupled_bounded seed=1: certified=True rounds=2 elapsed=4.2s
-raw_coupled_bounded seed=2: certified=True rounds=2 elapsed=4.5s
-raw_coupled_bounded seed=3: certified=True rounds=3 elapsed=4.7s
-raw_coupled_bounded seed=4: certified=True rounds=2 elapsed=4.1s
-raw_coupled_bounded seed=5: certified=True rounds=2 elapsed=4.0s
-raw_coupled_bounded seed=6: certified=True rounds=2 elapsed=4.2s
-raw_coupled_bounded seed=7: certified=True rounds=2 elapsed=4.0s
-raw_coupled_bounded seed=8: certified=True rounds=2 elapsed=4.0s
-raw_coupled_bounded seed=9: certified=True rounds=2 elapsed=4.1s
-raw_coupled_bounded seed=10: certified=True rounds=2 elapsed=4.0s
-raw_coupled_bounded seed=11: certified=True rounds=2 elapsed=4.1s
-raw_coupled_bounded seed=12: certified=True rounds=2 elapsed=4.1s
-raw_coupled_bounded seed=13: certified=True rounds=2 elapsed=4.0s
-raw_coupled_bounded seed=14: certified=True rounds=2 elapsed=4.0s
-raw_coupled_bounded seed=15: certified=True rounds=2 elapsed=4.0s
-raw_coupled_bounded seed=16: certified=True rounds=2 elapsed=4.1s
-raw_coupled_bounded seed=17: certified=True rounds=1 elapsed=3.5s
-raw_coupled_bounded seed=18: certified=True rounds=2 elapsed=4.0s
-raw_coupled_bounded seed=19: certified=True rounds=2 elapsed=4.3s
-normalized_coupled_bounded seed=0: certified=True rounds=3 elapsed=6.5s
-normalized_coupled_bounded seed=1: certified=True rounds=2 elapsed=5.0s
-normalized_coupled_bounded seed=2: certified=True rounds=2 elapsed=4.9s
-normalized_coupled_bounded seed=3: certified=True rounds=2 elapsed=4.9s
-normalized_coupled_bounded seed=4: certified=True rounds=3 elapsed=6.2s
-normalized_coupled_bounded seed=5: certified=True rounds=3 elapsed=5.9s
-normalized_coupled_bounded seed=6: certified=True rounds=2 elapsed=5.0s
-normalized_coupled_bounded seed=7: certified=True rounds=2 elapsed=4.7s
-normalized_coupled_bounded seed=8: certified=True rounds=3 elapsed=6.4s
-normalized_coupled_bounded seed=9: certified=True rounds=2 elapsed=5.0s
-normalized_coupled_bounded seed=10: certified=True rounds=3 elapsed=6.0s
-normalized_coupled_bounded seed=11: certified=True rounds=2 elapsed=4.5s
-normalized_coupled_bounded seed=12: certified=True rounds=1 elapsed=3.8s
-normalized_coupled_bounded seed=13: certified=True rounds=3 elapsed=5.2s
-normalized_coupled_bounded seed=14: certified=True rounds=2 elapsed=5.2s
-normalized_coupled_bounded seed=15: certified=False rounds=12 elapsed=17.0s
-normalized_coupled_bounded seed=16: certified=True rounds=3 elapsed=6.3s
-normalized_coupled_bounded seed=17: certified=True rounds=4 elapsed=7.5s
-normalized_coupled_bounded seed=18: certified=True rounds=2 elapsed=5.3s
-normalized_coupled_bounded seed=19: certified=True rounds=2 elapsed=4.6s
-normalized_coupled_bounded_coarse seed=0: certified=False rounds=12 elapsed=10.6s
-normalized_coupled_bounded_coarse seed=1: certified=False rounds=12 elapsed=10.6s
-normalized_coupled_bounded_coarse seed=2: certified=False rounds=12 elapsed=10.0s
-normalized_coupled_bounded_coarse seed=3: certified=False rounds=12 elapsed=10.5s
-normalized_coupled_bounded_coarse seed=4: certified=False rounds=12 elapsed=10.4s
-normalized_coupled_bounded_coarse seed=5: certified=False rounds=12 elapsed=10.4s
-normalized_coupled_bounded_coarse seed=6: certified=False rounds=12 elapsed=10.7s
-normalized_coupled_bounded_coarse seed=7: certified=False rounds=12 elapsed=10.6s
-normalized_coupled_bounded_coarse seed=8: certified=False rounds=12 elapsed=10.5s
-normalized_coupled_bounded_coarse seed=9: certified=False rounds=12 elapsed=10.6s
-normalized_coupled_bounded_coarse seed=10: certified=False rounds=12 elapsed=10.7s
-normalized_coupled_bounded_coarse seed=11: certified=False rounds=12 elapsed=10.9s
-normalized_coupled_bounded_coarse seed=12: certified=False rounds=12 elapsed=10.5s
-normalized_coupled_bounded_coarse seed=13: certified=False rounds=12 elapsed=10.6s
-normalized_coupled_bounded_coarse seed=14: certified=False rounds=12 elapsed=10.9s
-normalized_coupled_bounded_coarse seed=15: certified=False rounds=12 elapsed=10.8s
-normalized_coupled_bounded_coarse seed=16: certified=False rounds=12 elapsed=10.7s
-normalized_coupled_bounded_coarse seed=17: certified=False rounds=12 elapsed=10.6s
-normalized_coupled_bounded_coarse seed=18: certified=False rounds=12 elapsed=10.6s
-normalized_coupled_bounded_coarse seed=19: certified=False rounds=12 elapsed=10.7s
+raw_fixed seed=0: certified=True rounds=2 elapsed=6.9s
+raw_fixed seed=1: certified=True rounds=2 elapsed=6.1s
+raw_fixed seed=2: certified=True rounds=2 elapsed=6.3s
+raw_fixed seed=3: certified=True rounds=3 elapsed=6.9s
+raw_fixed seed=4: certified=True rounds=2 elapsed=5.9s
+raw_fixed seed=5: certified=True rounds=2 elapsed=5.1s
+raw_fixed seed=6: certified=True rounds=2 elapsed=5.3s
+raw_fixed seed=7: certified=True rounds=2 elapsed=5.3s
+raw_fixed seed=8: certified=True rounds=2 elapsed=5.9s
+raw_fixed seed=9: certified=True rounds=2 elapsed=5.8s
+raw_fixed seed=10: certified=True rounds=2 elapsed=5.4s
+raw_fixed seed=11: certified=True rounds=2 elapsed=5.2s
+raw_fixed seed=12: certified=True rounds=2 elapsed=4.9s
+raw_fixed seed=13: certified=True rounds=2 elapsed=5.0s
+raw_fixed seed=14: certified=True rounds=2 elapsed=4.9s
+raw_fixed seed=15: certified=True rounds=2 elapsed=5.0s
+raw_fixed seed=16: certified=True rounds=2 elapsed=5.0s
+raw_fixed seed=17: certified=True rounds=1 elapsed=4.0s
+raw_fixed seed=18: certified=True rounds=2 elapsed=4.5s
+raw_fixed seed=19: certified=True rounds=2 elapsed=4.6s
+raw_coupled seed=0: certified=True rounds=2 elapsed=4.7s
+raw_coupled seed=1: certified=True rounds=2 elapsed=4.9s
+raw_coupled seed=2: certified=True rounds=2 elapsed=5.2s
+raw_coupled seed=3: certified=True rounds=3 elapsed=5.2s
+raw_coupled seed=4: certified=True rounds=2 elapsed=4.4s
+raw_coupled seed=5: certified=True rounds=2 elapsed=4.2s
+raw_coupled seed=6: certified=True rounds=2 elapsed=4.2s
+raw_coupled seed=7: certified=True rounds=2 elapsed=4.2s
+raw_coupled seed=8: certified=True rounds=2 elapsed=4.3s
+raw_coupled seed=9: certified=True rounds=2 elapsed=4.6s
+raw_coupled seed=10: certified=True rounds=2 elapsed=4.7s
+raw_coupled seed=11: certified=True rounds=2 elapsed=4.6s
+raw_coupled seed=12: certified=True rounds=2 elapsed=4.6s
+raw_coupled seed=13: certified=True rounds=2 elapsed=4.4s
+raw_coupled seed=14: certified=True rounds=2 elapsed=4.5s
+raw_coupled seed=15: certified=True rounds=2 elapsed=4.6s
+raw_coupled seed=16: certified=True rounds=2 elapsed=4.7s
+raw_coupled seed=17: certified=True rounds=1 elapsed=3.5s
+raw_coupled seed=18: certified=True rounds=2 elapsed=4.1s
+raw_coupled seed=19: certified=True rounds=2 elapsed=4.5s
+normalized_fixed seed=0: certified=True rounds=3 elapsed=6.6s
+normalized_fixed seed=1: certified=True rounds=2 elapsed=5.6s
+normalized_fixed seed=2: certified=True rounds=2 elapsed=5.7s
+normalized_fixed seed=3: certified=True rounds=2 elapsed=5.2s
+normalized_fixed seed=4: certified=True rounds=3 elapsed=7.1s
+normalized_fixed seed=5: certified=True rounds=5 elapsed=9.5s
+normalized_fixed seed=6: certified=True rounds=2 elapsed=5.3s
+normalized_fixed seed=7: certified=True rounds=2 elapsed=5.2s
+normalized_fixed seed=8: certified=True rounds=3 elapsed=7.2s
+normalized_fixed seed=9: certified=True rounds=2 elapsed=5.7s
+normalized_fixed seed=10: certified=True rounds=4 elapsed=8.6s
+normalized_fixed seed=11: certified=True rounds=2 elapsed=5.8s
+normalized_fixed seed=12: certified=True rounds=1 elapsed=5.2s
+normalized_fixed seed=13: certified=True rounds=2 elapsed=6.2s
+normalized_fixed seed=14: certified=True rounds=2 elapsed=6.3s
+normalized_fixed seed=15: certified=True rounds=5 elapsed=9.6s
+normalized_fixed seed=16: certified=True rounds=3 elapsed=7.5s
+normalized_fixed seed=17: certified=True rounds=4 elapsed=9.1s
+normalized_fixed seed=18: certified=True rounds=2 elapsed=6.3s
+normalized_fixed seed=19: certified=True rounds=2 elapsed=6.0s
+normalized_coupled seed=0: certified=True rounds=3 elapsed=7.6s
+normalized_coupled seed=1: certified=True rounds=2 elapsed=5.2s
+normalized_coupled seed=2: certified=True rounds=2 elapsed=5.8s
+normalized_coupled seed=3: certified=True rounds=2 elapsed=4.9s
+normalized_coupled seed=4: certified=True rounds=3 elapsed=7.1s
+normalized_coupled seed=5: certified=True rounds=3 elapsed=7.3s
+normalized_coupled seed=6: certified=True rounds=2 elapsed=5.8s
+normalized_coupled seed=7: certified=True rounds=2 elapsed=5.7s
+normalized_coupled seed=8: certified=True rounds=3 elapsed=7.8s
+normalized_coupled seed=9: certified=True rounds=2 elapsed=6.0s
+normalized_coupled seed=10: certified=True rounds=3 elapsed=7.7s
+normalized_coupled seed=11: certified=True rounds=2 elapsed=6.2s
+normalized_coupled seed=12: certified=True rounds=1 elapsed=5.0s
+normalized_coupled seed=13: certified=True rounds=3 elapsed=7.0s
+normalized_coupled seed=14: certified=True rounds=2 elapsed=6.6s
+normalized_coupled seed=15: certified=False rounds=12 elapsed=20.1s
+normalized_coupled seed=16: certified=True rounds=3 elapsed=7.6s
+normalized_coupled seed=17: certified=True rounds=4 elapsed=8.5s
+normalized_coupled seed=18: certified=True rounds=2 elapsed=6.3s
+normalized_coupled seed=19: certified=True rounds=2 elapsed=6.1s
+raw_coupled_bounded seed=0: certified=True rounds=2 elapsed=4.7s
+raw_coupled_bounded seed=1: certified=True rounds=2 elapsed=4.8s
+raw_coupled_bounded seed=2: certified=True rounds=2 elapsed=5.1s
+raw_coupled_bounded seed=3: certified=True rounds=3 elapsed=5.4s
+raw_coupled_bounded seed=4: certified=True rounds=2 elapsed=4.4s
+raw_coupled_bounded seed=5: certified=True rounds=2 elapsed=4.5s
+raw_coupled_bounded seed=6: certified=True rounds=2 elapsed=4.7s
+raw_coupled_bounded seed=7: certified=True rounds=2 elapsed=4.5s
+raw_coupled_bounded seed=8: certified=True rounds=2 elapsed=4.3s
+raw_coupled_bounded seed=9: certified=True rounds=2 elapsed=4.7s
+raw_coupled_bounded seed=10: certified=True rounds=2 elapsed=4.8s
+raw_coupled_bounded seed=11: certified=True rounds=2 elapsed=5.3s
+raw_coupled_bounded seed=12: certified=True rounds=2 elapsed=4.9s
+raw_coupled_bounded seed=13: certified=True rounds=2 elapsed=4.8s
+raw_coupled_bounded seed=14: certified=True rounds=2 elapsed=4.7s
+raw_coupled_bounded seed=15: certified=True rounds=2 elapsed=4.6s
+raw_coupled_bounded seed=16: certified=True rounds=2 elapsed=4.9s
+raw_coupled_bounded seed=17: certified=True rounds=1 elapsed=3.9s
+raw_coupled_bounded seed=18: certified=True rounds=2 elapsed=4.7s
+raw_coupled_bounded seed=19: certified=True rounds=2 elapsed=5.0s
+normalized_coupled_bounded seed=0: certified=True rounds=3 elapsed=7.4s
+normalized_coupled_bounded seed=1: certified=True rounds=2 elapsed=5.6s
+normalized_coupled_bounded seed=2: certified=True rounds=2 elapsed=5.6s
+normalized_coupled_bounded seed=3: certified=True rounds=2 elapsed=5.5s
+normalized_coupled_bounded seed=4: certified=True rounds=3 elapsed=6.7s
+normalized_coupled_bounded seed=5: certified=True rounds=3 elapsed=6.5s
+normalized_coupled_bounded seed=6: certified=True rounds=2 elapsed=5.7s
+normalized_coupled_bounded seed=7: certified=True rounds=2 elapsed=5.3s
+normalized_coupled_bounded seed=8: certified=True rounds=3 elapsed=7.2s
+normalized_coupled_bounded seed=9: certified=True rounds=2 elapsed=5.7s
+normalized_coupled_bounded seed=10: certified=True rounds=3 elapsed=7.1s
+normalized_coupled_bounded seed=11: certified=True rounds=2 elapsed=5.1s
+normalized_coupled_bounded seed=12: certified=True rounds=1 elapsed=4.2s
+normalized_coupled_bounded seed=13: certified=True rounds=3 elapsed=5.9s
+normalized_coupled_bounded seed=14: certified=True rounds=2 elapsed=6.0s
+normalized_coupled_bounded seed=15: certified=False rounds=12 elapsed=18.2s
+normalized_coupled_bounded seed=16: certified=True rounds=3 elapsed=7.1s
+normalized_coupled_bounded seed=17: certified=True rounds=4 elapsed=7.9s
+normalized_coupled_bounded seed=18: certified=True rounds=2 elapsed=5.5s
+normalized_coupled_bounded seed=19: certified=True rounds=2 elapsed=4.9s
+normalized_coupled_bounded_coarse seed=0: certified=False rounds=12 elapsed=11.0s
+normalized_coupled_bounded_coarse seed=1: certified=False rounds=12 elapsed=11.7s
+normalized_coupled_bounded_coarse seed=2: certified=False rounds=12 elapsed=11.3s
+normalized_coupled_bounded_coarse seed=3: certified=False rounds=12 elapsed=11.2s
+normalized_coupled_bounded_coarse seed=4: certified=False rounds=12 elapsed=11.0s
+normalized_coupled_bounded_coarse seed=5: certified=False rounds=12 elapsed=10.6s
+normalized_coupled_bounded_coarse seed=6: certified=False rounds=12 elapsed=11.2s
+normalized_coupled_bounded_coarse seed=7: certified=False rounds=12 elapsed=11.6s
+normalized_coupled_bounded_coarse seed=8: certified=False rounds=12 elapsed=12.1s
+normalized_coupled_bounded_coarse seed=9: certified=False rounds=12 elapsed=11.3s
+normalized_coupled_bounded_coarse seed=10: certified=False rounds=12 elapsed=11.1s
+normalized_coupled_bounded_coarse seed=11: certified=False rounds=12 elapsed=10.8s
+normalized_coupled_bounded_coarse seed=12: certified=False rounds=12 elapsed=12.3s
+normalized_coupled_bounded_coarse seed=13: certified=False rounds=12 elapsed=13.2s
+normalized_coupled_bounded_coarse seed=14: certified=False rounds=12 elapsed=15.3s
+normalized_coupled_bounded_coarse seed=15: certified=False rounds=12 elapsed=13.4s
+normalized_coupled_bounded_coarse seed=16: certified=False rounds=12 elapsed=15.6s
+normalized_coupled_bounded_coarse seed=17: certified=False rounds=12 elapsed=17.2s
+normalized_coupled_bounded_coarse seed=18: certified=False rounds=12 elapsed=17.4s
+normalized_coupled_bounded_coarse seed=19: certified=False rounds=12 elapsed=17.2s
 Constructing rigorously checked scale-chase illustration
-sensitivity_gamma_1.1_k_60 seed=0: certified=False elapsed=2.4s
-sensitivity_gamma_1.1_k_60 seed=1: certified=False elapsed=2.4s
-sensitivity_gamma_1.1_k_60 seed=2: certified=False elapsed=2.5s
-sensitivity_gamma_1.1_k_60 seed=3: certified=False elapsed=2.4s
-sensitivity_gamma_1.1_k_60 seed=4: certified=False elapsed=2.4s
-sensitivity_gamma_1.3_k_60 seed=0: certified=False elapsed=2.4s
-sensitivity_gamma_1.3_k_60 seed=1: certified=False elapsed=2.4s
-sensitivity_gamma_1.3_k_60 seed=2: certified=False elapsed=2.4s
-sensitivity_gamma_1.3_k_60 seed=3: certified=False elapsed=2.4s
-sensitivity_gamma_1.3_k_60 seed=4: certified=False elapsed=2.4s
-sensitivity_gamma_2.0_k_60 seed=0: certified=False elapsed=2.7s
-sensitivity_gamma_2.0_k_60 seed=1: certified=False elapsed=2.7s
-sensitivity_gamma_2.0_k_60 seed=2: certified=False elapsed=2.7s
-sensitivity_gamma_2.0_k_60 seed=3: certified=False elapsed=2.6s
-sensitivity_gamma_2.0_k_60 seed=4: certified=False elapsed=2.6s
-sensitivity_gamma_1.3_k_10 seed=0: certified=False elapsed=2.2s
-sensitivity_gamma_1.3_k_10 seed=1: certified=False elapsed=2.1s
-sensitivity_gamma_1.3_k_10 seed=2: certified=False elapsed=2.1s
-sensitivity_gamma_1.3_k_10 seed=3: certified=False elapsed=2.1s
-sensitivity_gamma_1.3_k_10 seed=4: certified=False elapsed=2.1s
-sensitivity_gamma_1.3_k_all seed=0: certified=False elapsed=8.2s
-sensitivity_gamma_1.3_k_all seed=1: certified=False elapsed=8.1s
-sensitivity_gamma_1.3_k_all seed=2: certified=False elapsed=8.1s
-sensitivity_gamma_1.3_k_all seed=3: certified=False elapsed=8.1s
-sensitivity_gamma_1.3_k_all seed=4: certified=False elapsed=7.7s
-pendulum_fixed seed=0: certified=True elapsed=1.0s
-pendulum_fixed seed=1: certified=True elapsed=0.7s
-pendulum_fixed seed=2: certified=True elapsed=0.7s
-pendulum_fixed seed=3: certified=True elapsed=0.7s
-pendulum_fixed seed=4: certified=True elapsed=1.2s
-pendulum_fixed seed=5: certified=True elapsed=0.7s
-pendulum_fixed seed=6: certified=True elapsed=0.7s
-pendulum_fixed seed=7: certified=True elapsed=0.7s
-pendulum_fixed seed=8: certified=True elapsed=0.7s
-pendulum_fixed seed=9: certified=True elapsed=0.7s
-pendulum_fixed seed=10: certified=True elapsed=0.7s
-pendulum_fixed seed=11: certified=True elapsed=0.7s
-pendulum_fixed seed=12: certified=True elapsed=1.2s
-pendulum_fixed seed=13: certified=True elapsed=0.7s
-pendulum_fixed seed=14: certified=True elapsed=0.7s
-pendulum_fixed seed=15: certified=True elapsed=0.7s
-pendulum_fixed seed=16: certified=True elapsed=0.7s
-pendulum_fixed seed=17: certified=True elapsed=0.7s
-pendulum_fixed seed=18: certified=True elapsed=0.7s
-pendulum_fixed seed=19: certified=True elapsed=0.7s
-Wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/claude-revision/results/revision_experiments.json; elapsed=912.9s
-  -> PASS: controlled ablation, constrained variants, scale illustration and controls validated (0.6s)
+sensitivity_gamma_1.1_k_60 seed=0: certified=False elapsed=3.4s
+sensitivity_gamma_1.1_k_60 seed=1: certified=False elapsed=3.4s
+sensitivity_gamma_1.1_k_60 seed=2: certified=False elapsed=3.6s
+sensitivity_gamma_1.1_k_60 seed=3: certified=False elapsed=3.2s
+sensitivity_gamma_1.1_k_60 seed=4: certified=False elapsed=2.9s
+sensitivity_gamma_1.3_k_60 seed=0: certified=False elapsed=2.7s
+sensitivity_gamma_1.3_k_60 seed=1: certified=False elapsed=3.0s
+sensitivity_gamma_1.3_k_60 seed=2: certified=False elapsed=3.1s
+sensitivity_gamma_1.3_k_60 seed=3: certified=False elapsed=3.0s
+sensitivity_gamma_1.3_k_60 seed=4: certified=False elapsed=2.8s
+sensitivity_gamma_2.0_k_60 seed=0: certified=False elapsed=3.0s
+sensitivity_gamma_2.0_k_60 seed=1: certified=False elapsed=3.0s
+sensitivity_gamma_2.0_k_60 seed=2: certified=False elapsed=3.2s
+sensitivity_gamma_2.0_k_60 seed=3: certified=False elapsed=3.5s
+sensitivity_gamma_2.0_k_60 seed=4: certified=False elapsed=3.3s
+sensitivity_gamma_1.3_k_10 seed=0: certified=False elapsed=2.6s
+sensitivity_gamma_1.3_k_10 seed=1: certified=False elapsed=2.4s
+sensitivity_gamma_1.3_k_10 seed=2: certified=False elapsed=2.4s
+sensitivity_gamma_1.3_k_10 seed=3: certified=False elapsed=2.3s
+sensitivity_gamma_1.3_k_10 seed=4: certified=False elapsed=2.5s
+sensitivity_gamma_1.3_k_all seed=0: certified=False elapsed=8.9s
+sensitivity_gamma_1.3_k_all seed=1: certified=False elapsed=8.7s
+sensitivity_gamma_1.3_k_all seed=2: certified=False elapsed=8.9s
+sensitivity_gamma_1.3_k_all seed=3: certified=False elapsed=8.9s
+sensitivity_gamma_1.3_k_all seed=4: certified=False elapsed=8.5s
+pendulum_fixed seed=0: certified=True elapsed=1.1s
+pendulum_fixed seed=1: certified=True elapsed=0.8s
+pendulum_fixed seed=2: certified=True elapsed=0.8s
+pendulum_fixed seed=3: certified=True elapsed=0.8s
+pendulum_fixed seed=4: certified=True elapsed=1.4s
+pendulum_fixed seed=5: certified=True elapsed=0.8s
+pendulum_fixed seed=6: certified=True elapsed=0.9s
+pendulum_fixed seed=7: certified=True elapsed=0.8s
+pendulum_fixed seed=8: certified=True elapsed=0.8s
+pendulum_fixed seed=9: certified=True elapsed=0.8s
+pendulum_fixed seed=10: certified=True elapsed=0.8s
+pendulum_fixed seed=11: certified=True elapsed=0.8s
+pendulum_fixed seed=12: certified=True elapsed=1.4s
+pendulum_fixed seed=13: certified=True elapsed=0.8s
+pendulum_fixed seed=14: certified=True elapsed=0.8s
+pendulum_fixed seed=15: certified=True elapsed=0.8s
+pendulum_fixed seed=16: certified=True elapsed=0.8s
+pendulum_fixed seed=17: certified=True elapsed=0.8s
+pendulum_fixed seed=18: certified=True elapsed=0.8s
+pendulum_fixed seed=19: certified=True elapsed=0.8s
+Wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/results/revision_experiments.json; elapsed=1102.8s
+  -> PASS: controlled ablation, constrained variants, scale illustration and controls validated (0.4s)
 
-[8/12] adaptive higher-dimensional and surrogate extensions
+[8/14] adaptive higher-dimensional and surrogate extensions
 $ revision_extensions.py (independent producer started earlier; full output follows)
 EXTENSION_CONFIG {"adaptive_budget": {"max_boxes": 12000, "max_depth": 24, "target_margin": 0.0001}, "alpha": 0.1, "diagnostic_worst_point_cap": 60, "domain_3d": [-1.0, 1.0], "initial_samples_3d": 256, "initialization": "identity lower factor plus seeded N(0,0.01^2) coefficient perturbations", "initialization_std": 0.01, "learner_early_stop": "stop after an inconclusive oracle if a zero-loss retraining leaves parameters unchanged", "learning_rate": 0.02, "max_retraining_rounds_3d": 8, "metric_parameters_3d": 24, "n_seeds": 20, "perturbation_std": 0.04, "perturbations_per_nominated_point": 2, "pilot": false, "rate": 0.4, "returned_point_cap": 60, "screen_axis_points": 9, "seeds": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], "steps_per_round_3d": 300, "surrogate_derivative_dt": 0.01, "surrogate_seed": 0, "three_dimensional_worker_processes": 4, "training_margin_3d": 0.005}
 ADAPTIVE n=3 seed=0 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=1 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=2 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
+ADAPTIVE n=3 seed=1 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.003
+ADAPTIVE n=3 seed=2 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.003
 ADAPTIVE n=3 seed=3 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=2 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=0 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=3 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=1 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=2 round=2 status=certified reason=all_leaves_certified boxes=8379 wall=26.717
+ADAPTIVE n=3 seed=3 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
+ADAPTIVE n=3 seed=2 round=2 status=certified reason=all_leaves_certified boxes=8379 wall=31.119
 3D seed=2 certified=True rounds=2 boxes=8379
 ADAPTIVE n=3 seed=4 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=4 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=1 round=2 status=certified reason=all_leaves_certified boxes=9771 wall=30.782
+ADAPTIVE n=3 seed=1 round=2 status=certified reason=all_leaves_certified boxes=9771 wall=37.862
 3D seed=1 certified=True rounds=2 boxes=9771
 ADAPTIVE n=3 seed=5 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=5 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=0 round=2 status=certified reason=all_leaves_certified boxes=11935 wall=37.740
+ADAPTIVE n=3 seed=0 round=2 status=certified reason=all_leaves_certified boxes=11935 wall=45.885
 3D seed=0 certified=True rounds=2 boxes=11935
 ADAPTIVE n=3 seed=6 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=6 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=3 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=38.862
+ADAPTIVE n=3 seed=3 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=46.029
 3D seed=3 certified=False rounds=2 boxes=12000
 ADAPTIVE n=3 seed=7 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=7 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
+ADAPTIVE n=3 seed=6 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=7 round=2 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=4 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=38.830
+ADAPTIVE n=3 seed=4 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=46.075
 3D seed=4 certified=False rounds=2 boxes=12000
 ADAPTIVE n=3 seed=8 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=8 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=7 round=3 status=certified reason=all_leaves_certified boxes=8513 wall=27.239
+ADAPTIVE n=3 seed=7 round=3 status=certified reason=all_leaves_certified boxes=8513 wall=31.175
 3D seed=7 certified=True rounds=3 boxes=8513
 ADAPTIVE n=3 seed=9 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=9 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=5 round=2 status=certified reason=all_leaves_certified boxes=11943 wall=37.752
+ADAPTIVE n=3 seed=5 round=2 status=certified reason=all_leaves_certified boxes=11943 wall=42.658
 3D seed=5 certified=True rounds=2 boxes=11943
 ADAPTIVE n=3 seed=10 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=10 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=6 round=2 status=certified reason=all_leaves_certified boxes=11993 wall=38.665
+ADAPTIVE n=3 seed=6 round=2 status=certified reason=all_leaves_certified boxes=11993 wall=43.676
 3D seed=6 certified=True rounds=2 boxes=11993
 ADAPTIVE n=3 seed=11 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=11 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=8 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=38.599
+ADAPTIVE n=3 seed=8 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=39.806
 3D seed=8 certified=False rounds=2 boxes=12000
 ADAPTIVE n=3 seed=12 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=10 round=2 status=certified reason=all_leaves_certified boxes=10719 wall=33.021
+ADAPTIVE n=3 seed=10 round=2 status=certified reason=all_leaves_certified boxes=10719 wall=34.311
 3D seed=10 certified=True rounds=2 boxes=10719
 ADAPTIVE n=3 seed=13 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=13 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=12 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=9 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=38.857
+ADAPTIVE n=3 seed=9 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=39.534
 3D seed=9 certified=False rounds=2 boxes=12000
 ADAPTIVE n=3 seed=14 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
+ADAPTIVE n=3 seed=12 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
+ADAPTIVE n=3 seed=13 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=14 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=11 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=37.977
+ADAPTIVE n=3 seed=11 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=39.253
 3D seed=11 certified=False rounds=2 boxes=12000
 ADAPTIVE n=3 seed=15 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=15 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=12 round=2 status=certified reason=all_leaves_certified boxes=6591 wall=20.845
+ADAPTIVE n=3 seed=12 round=2 status=certified reason=all_leaves_certified boxes=6591 wall=21.373
 3D seed=12 certified=True rounds=2 boxes=6591
 ADAPTIVE n=3 seed=16 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=16 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=13 round=2 status=certified reason=all_leaves_certified boxes=8735 wall=27.217
+ADAPTIVE n=3 seed=13 round=2 status=certified reason=all_leaves_certified boxes=8735 wall=28.069
 3D seed=13 certified=True rounds=2 boxes=8735
 ADAPTIVE n=3 seed=17 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=17 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=14 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=38.419
+ADAPTIVE n=3 seed=14 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=39.225
 3D seed=14 certified=False rounds=2 boxes=12000
 ADAPTIVE n=3 seed=18 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=18 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=15 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=37.228
+ADAPTIVE n=3 seed=15 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=38.414
 3D seed=15 certified=False rounds=2 boxes=12000
 ADAPTIVE n=3 seed=19 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=19 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=16 round=2 status=certified reason=all_leaves_certified boxes=10699 wall=34.014
+ADAPTIVE n=3 seed=16 round=2 status=certified reason=all_leaves_certified boxes=10699 wall=34.903
 3D seed=16 certified=True rounds=2 boxes=10699
-ADAPTIVE n=3 seed=17 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=37.474
+ADAPTIVE n=3 seed=17 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=38.641
 3D seed=17 certified=False rounds=2 boxes=12000
-ADAPTIVE n=3 seed=18 round=2 status=certified reason=all_leaves_certified boxes=10227 wall=31.931
+ADAPTIVE n=3 seed=18 round=2 status=certified reason=all_leaves_certified boxes=10227 wall=32.297
 3D seed=18 certified=True rounds=2 boxes=10227
-ADAPTIVE n=3 seed=19 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=36.875
+ADAPTIVE n=3 seed=19 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=38.902
 3D seed=19 certified=False rounds=2 boxes=12000
 FROZEN_COMPARISON complete
 ADAPTIVE n=2 seed=0 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.000
-ADAPTIVE n=2 seed=0 round=1 status=certified reason=all_leaves_certified boxes=177 wall=0.165
+ADAPTIVE n=2 seed=0 round=1 status=certified reason=all_leaves_certified boxes=177 wall=0.178
 SURROGATE certified=True transfer=True
-WROTE /Users/preciado/Desktop/NeuroSymbolic/tmp/claude-revision/results/revision_extensions.json
-  -> PASS: adaptive proof coverage, 3D synthesis and fitted-model transfer validated (57.4s)
+WROTE /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/results/revision_extensions.json
+  -> PASS: adaptive proof coverage, 3D synthesis and fitted-model transfer validated (58.0s)
 
-[9/12] complete certified reporting
-$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/claude-revision/revision_report.py
+[9/14] matched power-system application
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/application_comparison.py
+B=0.25 seed=00 cegis_hinge: certified=True steps=400 reason=None seconds=0.40
+B=0.25 seed=00 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.47
+B=0.25 seed=00 hinge_fixed: certified=True steps=400 reason=None seconds=0.40
+B=0.25 seed=01 hinge_fixed: certified=True steps=400 reason=None seconds=0.41
+B=0.25 seed=01 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.25 seed=01 cegis_hinge: certified=True steps=400 reason=None seconds=0.42
+B=0.25 seed=02 cegis_hinge: certified=True steps=400 reason=None seconds=0.46
+B=0.25 seed=02 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.51
+B=0.25 seed=02 hinge_fixed: certified=True steps=400 reason=None seconds=0.43
+B=0.25 seed=03 hinge_fixed: certified=True steps=400 reason=None seconds=0.41
+B=0.25 seed=03 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.46
+B=0.25 seed=03 cegis_hinge: certified=True steps=400 reason=None seconds=0.42
+B=0.25 seed=04 cegis_hinge: certified=True steps=400 reason=None seconds=0.43
+B=0.25 seed=04 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.45
+B=0.25 seed=04 hinge_fixed: certified=True steps=400 reason=None seconds=0.41
+B=0.25 seed=05 hinge_fixed: certified=True steps=400 reason=None seconds=0.38
+B=0.25 seed=05 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.51
+B=0.25 seed=05 cegis_hinge: certified=True steps=400 reason=None seconds=0.41
+B=0.25 seed=06 cegis_hinge: certified=True steps=400 reason=None seconds=0.41
+B=0.25 seed=06 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.61
+B=0.25 seed=06 hinge_fixed: certified=True steps=400 reason=None seconds=0.39
+B=0.25 seed=07 hinge_fixed: certified=True steps=400 reason=None seconds=0.39
+B=0.25 seed=07 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.44
+B=0.25 seed=07 cegis_hinge: certified=True steps=400 reason=None seconds=0.42
+B=0.25 seed=08 cegis_hinge: certified=True steps=400 reason=None seconds=0.42
+B=0.25 seed=08 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.55
+B=0.25 seed=08 hinge_fixed: certified=True steps=400 reason=None seconds=0.39
+B=0.25 seed=09 hinge_fixed: certified=True steps=400 reason=None seconds=0.41
+B=0.25 seed=09 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.49
+B=0.25 seed=09 cegis_hinge: certified=True steps=400 reason=None seconds=0.42
+B=0.25 seed=10 cegis_hinge: certified=True steps=400 reason=None seconds=0.47
+B=0.25 seed=10 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.49
+B=0.25 seed=10 hinge_fixed: certified=True steps=400 reason=None seconds=0.42
+B=0.25 seed=11 hinge_fixed: certified=True steps=400 reason=None seconds=0.41
+B=0.25 seed=11 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.45
+B=0.25 seed=11 cegis_hinge: certified=True steps=400 reason=None seconds=0.45
+B=0.25 seed=12 cegis_hinge: certified=True steps=400 reason=None seconds=0.40
+B=0.25 seed=12 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.61
+B=0.25 seed=12 hinge_fixed: certified=True steps=400 reason=None seconds=0.39
+B=0.25 seed=13 hinge_fixed: certified=True steps=400 reason=None seconds=0.39
+B=0.25 seed=13 fitzsimmons_liu_pdi: certified=False steps=2000 reason=depth_budget_exhausted seconds=3.12
+B=0.25 seed=13 cegis_hinge: certified=True steps=400 reason=None seconds=0.41
+B=0.25 seed=14 cegis_hinge: certified=True steps=400 reason=None seconds=0.43
+B=0.25 seed=14 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.55
+B=0.25 seed=14 hinge_fixed: certified=True steps=400 reason=None seconds=0.43
+B=0.25 seed=15 hinge_fixed: certified=True steps=400 reason=None seconds=0.39
+B=0.25 seed=15 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.48
+B=0.25 seed=15 cegis_hinge: certified=True steps=400 reason=None seconds=0.40
+B=0.25 seed=16 cegis_hinge: certified=True steps=400 reason=None seconds=0.46
+B=0.25 seed=16 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.58
+B=0.25 seed=16 hinge_fixed: certified=True steps=400 reason=None seconds=0.41
+B=0.25 seed=17 hinge_fixed: certified=True steps=400 reason=None seconds=0.42
+B=0.25 seed=17 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.47
+B=0.25 seed=17 cegis_hinge: certified=True steps=400 reason=None seconds=0.44
+B=0.25 seed=18 cegis_hinge: certified=True steps=400 reason=None seconds=0.42
+B=0.25 seed=18 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.58
+B=0.25 seed=18 hinge_fixed: certified=True steps=400 reason=None seconds=0.40
+B=0.25 seed=19 hinge_fixed: certified=True steps=400 reason=None seconds=0.40
+B=0.25 seed=19 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.55
+B=0.25 seed=19 cegis_hinge: certified=True steps=400 reason=None seconds=0.41
+B=0.5 seed=00 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=3.64
+B=0.5 seed=00 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.5 seed=00 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.5 seed=01 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.71
+B=0.5 seed=01 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.5 seed=01 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
+B=0.5 seed=02 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.50
+B=0.5 seed=02 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
+B=0.5 seed=02 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.73
+B=0.5 seed=03 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.71
+B=0.5 seed=03 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.5 seed=03 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.56
+B=0.5 seed=04 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.55
+B=0.5 seed=04 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
+B=0.5 seed=04 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.71
+B=0.5 seed=05 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.5 seed=05 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
+B=0.5 seed=05 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=3.59
+B=0.5 seed=06 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=3.59
+B=0.5 seed=06 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.5 seed=06 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.5 seed=07 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.75
+B=0.5 seed=07 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.78
+B=0.5 seed=07 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.55
+B=0.5 seed=08 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=5.45
+B=0.5 seed=08 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
+B=0.5 seed=08 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.73
+B=0.5 seed=09 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.71
+B=0.5 seed=09 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.5 seed=09 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.62
+B=0.5 seed=10 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.60
+B=0.5 seed=10 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.84
+B=0.5 seed=10 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.86
+B=0.5 seed=11 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.76
+B=0.5 seed=11 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.89
+B=0.5 seed=11 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.56
+B=0.5 seed=12 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=5.44
+B=0.5 seed=12 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.5 seed=12 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.75
+B=0.5 seed=13 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.73
+B=0.5 seed=13 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.5 seed=13 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=3.63
+B=0.5 seed=14 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.56
+B=0.5 seed=14 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.5 seed=14 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.73
+B=0.5 seed=15 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.73
+B=0.5 seed=15 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.87
+B=0.5 seed=15 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=3.53
+B=0.5 seed=16 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=3.52
+B=0.5 seed=16 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.77
+B=0.5 seed=16 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.5 seed=17 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.71
+B=0.5 seed=17 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.78
+B=0.5 seed=17 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=5.45
+B=0.5 seed=18 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=5.33
+B=0.5 seed=18 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.76
+B=0.5 seed=18 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.73
+B=0.5 seed=19 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.73
+B=0.5 seed=19 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.83
+B=0.5 seed=19 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.58
+B=0.75 seed=00 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.76
+B=0.75 seed=00 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.75 seed=00 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.73
+B=0.75 seed=01 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
+B=0.75 seed=01 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.75 seed=01 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.77
+B=0.75 seed=02 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.75
+B=0.75 seed=02 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.82
+B=0.75 seed=02 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.78
+B=0.75 seed=03 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.75 seed=03 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.85
+B=0.75 seed=03 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.75 seed=04 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.82
+B=0.75 seed=04 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.86
+B=0.75 seed=04 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.74
+B=0.75 seed=05 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.75 seed=05 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.82
+B=0.75 seed=05 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.76
+B=0.75 seed=06 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.78
+B=0.75 seed=06 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
+B=0.75 seed=06 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.74
+B=0.75 seed=07 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.76
+B=0.75 seed=07 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
+B=0.75 seed=07 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.76
+B=0.75 seed=08 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.78
+B=0.75 seed=08 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.83
+B=0.75 seed=08 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.75 seed=09 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.75
+B=0.75 seed=09 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.75 seed=09 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.76
+B=0.75 seed=10 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
+B=0.75 seed=10 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.75 seed=10 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.75
+B=0.75 seed=11 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.73
+B=0.75 seed=11 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
+B=0.75 seed=11 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.76
+B=0.75 seed=12 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.78
+B=0.75 seed=12 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.83
+B=0.75 seed=12 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.71
+B=0.75 seed=13 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.75 seed=13 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.82
+B=0.75 seed=13 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.76
+B=0.75 seed=14 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.76
+B=0.75 seed=14 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.75 seed=14 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.73
+B=0.75 seed=15 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.73
+B=0.75 seed=15 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.75 seed=15 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.78
+B=0.75 seed=16 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.77
+B=0.75 seed=16 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.75 seed=16 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.92
+B=0.75 seed=17 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.83
+B=0.75 seed=17 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.84
+B=0.75 seed=17 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.75 seed=18 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.75 seed=18 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.82
+B=0.75 seed=18 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.75 seed=19 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.74
+B=0.75 seed=19 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.84
+B=0.75 seed=19 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.77
+Exploratory frozen refinement B=0.25 seed=00 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.05
+Exploratory frozen refinement B=0.25 seed=00 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.11
+Exploratory frozen refinement B=0.25 seed=00 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.05
+Exploratory frozen refinement B=0.25 seed=01 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.06
+Exploratory frozen refinement B=0.25 seed=01 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.25 seed=01 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.07
+Exploratory frozen refinement B=0.25 seed=02 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.11
+Exploratory frozen refinement B=0.25 seed=02 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.16
+Exploratory frozen refinement B=0.25 seed=02 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.09
+Exploratory frozen refinement B=0.25 seed=03 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.07
+Exploratory frozen refinement B=0.25 seed=03 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.11
+Exploratory frozen refinement B=0.25 seed=03 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.07
+Exploratory frozen refinement B=0.25 seed=04 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.08
+Exploratory frozen refinement B=0.25 seed=04 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.10
+Exploratory frozen refinement B=0.25 seed=04 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.07
+Exploratory frozen refinement B=0.25 seed=05 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.05
+Exploratory frozen refinement B=0.25 seed=05 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.15
+Exploratory frozen refinement B=0.25 seed=05 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.06
+Exploratory frozen refinement B=0.25 seed=06 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.06
+Exploratory frozen refinement B=0.25 seed=06 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.25
+Exploratory frozen refinement B=0.25 seed=06 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.06
+Exploratory frozen refinement B=0.25 seed=07 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.06
+Exploratory frozen refinement B=0.25 seed=07 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.09
+Exploratory frozen refinement B=0.25 seed=07 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.07
+Exploratory frozen refinement B=0.25 seed=08 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.07
+Exploratory frozen refinement B=0.25 seed=08 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.20
+Exploratory frozen refinement B=0.25 seed=08 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.05
+Exploratory frozen refinement B=0.25 seed=09 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.06
+Exploratory frozen refinement B=0.25 seed=09 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.13
+Exploratory frozen refinement B=0.25 seed=09 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.08
+Exploratory frozen refinement B=0.25 seed=10 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.14
+Exploratory frozen refinement B=0.25 seed=10 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.13
+Exploratory frozen refinement B=0.25 seed=10 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.08
+Exploratory frozen refinement B=0.25 seed=11 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.07
+Exploratory frozen refinement B=0.25 seed=11 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.09
+Exploratory frozen refinement B=0.25 seed=11 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.10
+Exploratory frozen refinement B=0.25 seed=12 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.05
+Exploratory frozen refinement B=0.25 seed=12 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.25
+Exploratory frozen refinement B=0.25 seed=12 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.05
+Exploratory frozen refinement B=0.25 seed=13 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.05
+Exploratory frozen refinement B=0.25 seed=13 fitzsimmons_liu_pdi: certified=False reason=depth_budget_exhausted seconds=0.26
+Exploratory frozen refinement B=0.25 seed=13 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.06
+Exploratory frozen refinement B=0.25 seed=14 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.08
+Exploratory frozen refinement B=0.25 seed=14 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.20
+Exploratory frozen refinement B=0.25 seed=14 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.09
+Exploratory frozen refinement B=0.25 seed=15 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.05
+Exploratory frozen refinement B=0.25 seed=15 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.13
+Exploratory frozen refinement B=0.25 seed=15 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.05
+Exploratory frozen refinement B=0.25 seed=16 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.11
+Exploratory frozen refinement B=0.25 seed=16 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.22
+Exploratory frozen refinement B=0.25 seed=16 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.07
+Exploratory frozen refinement B=0.25 seed=17 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.08
+Exploratory frozen refinement B=0.25 seed=17 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.11
+Exploratory frozen refinement B=0.25 seed=17 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.08
+Exploratory frozen refinement B=0.25 seed=18 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.07
+Exploratory frozen refinement B=0.25 seed=18 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.23
+Exploratory frozen refinement B=0.25 seed=18 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.06
+Exploratory frozen refinement B=0.25 seed=19 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.06
+Exploratory frozen refinement B=0.25 seed=19 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.18
+Exploratory frozen refinement B=0.25 seed=19 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.06
+Exploratory frozen refinement B=0.5 seed=00 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.07
+Exploratory frozen refinement B=0.5 seed=00 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=00 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=01 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=01 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=01 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=02 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.16
+Exploratory frozen refinement B=0.5 seed=02 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=02 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=03 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=03 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=03 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.06
+Exploratory frozen refinement B=0.5 seed=04 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.06
+Exploratory frozen refinement B=0.5 seed=04 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=04 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=05 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=05 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=05 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.13
+Exploratory frozen refinement B=0.5 seed=06 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.13
+Exploratory frozen refinement B=0.5 seed=06 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=06 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=07 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=07 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=07 cegis_hinge: certified=True reason=all_leaves_certified seconds=6.81
+Exploratory frozen refinement B=0.5 seed=08 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.10
+Exploratory frozen refinement B=0.5 seed=08 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=08 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=09 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=09 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=09 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.14
+Exploratory frozen refinement B=0.5 seed=10 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.11
+Exploratory frozen refinement B=0.5 seed=10 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=10 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=11 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=11 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=11 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.09
+Exploratory frozen refinement B=0.5 seed=12 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.51
+Exploratory frozen refinement B=0.5 seed=12 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=12 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=13 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=13 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=13 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.09
+Exploratory frozen refinement B=0.5 seed=14 cegis_hinge: certified=False reason=depth_budget_exhausted seconds=6.46
+Exploratory frozen refinement B=0.5 seed=14 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=14 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=15 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=15 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=15 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.13
+Exploratory frozen refinement B=0.5 seed=16 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.06
+Exploratory frozen refinement B=0.5 seed=16 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=16 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=17 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=17 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=17 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.21
+Exploratory frozen refinement B=0.5 seed=18 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.09
+Exploratory frozen refinement B=0.5 seed=18 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=18 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=19 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=19 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.5 seed=19 cegis_hinge: certified=True reason=all_leaves_certified seconds=6.71
+Exploratory frozen refinement B=0.75 seed=00 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=00 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=00 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=01 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=01 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=01 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=02 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=02 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=02 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=03 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=03 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=03 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=04 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=04 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=04 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=05 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=05 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=05 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=06 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=06 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=06 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=07 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=07 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=07 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=08 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=08 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=08 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=09 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=09 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=09 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=10 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=10 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=10 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=11 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=11 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=11 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=12 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=12 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=12 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=13 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=13 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=13 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=14 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=14 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=14 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=15 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=15 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=15 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=16 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=16 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=16 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=17 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=17 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=17 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=18 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=18 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=18 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=19 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=19 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Exploratory frozen refinement B=0.75 seed=19 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
+Wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/results/application_comparison.json
+  -> PASS: 180 matched application runs; all positive certificates replayed (458.1s)
+
+[10/14] verified constant-metric baseline
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/application_constant_baseline.py
+{"certified_domains": 1, "domains": 3, "fixed_candidate_violations": 2, "status": "pass"}
+  -> PASS: fixed constant metric checked on every application box; exact and directed proofs replayed (0.2s)
+
+[11/14] complete certified reporting
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/revision_report.py
 Generated complete certificate reporting: 51 certified candidates
-  -> PASS: fresh outputs validated (6.0s)
+  -> PASS: fresh outputs validated (5.7s)
 
-[10/12] fill_tex
-$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/claude-revision/fill_tex.py
-wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/claude-revision/paper/numbers.tex: 64 macros from 6 source(s); git 13471f5
+[12/14] fill_tex
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/fill_tex.py
+wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/paper/numbers.tex: 64 macros from 6 source(s); git 5b67589
   \PolyRoundCap = 12
   \PolyTrainSteps = 500
   \PolyLearningRate = 0.02
@@ -709,9 +1123,10 @@ wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/claude-revision/paper/numbers.te
   \numNeuralB = 5.24
   \numCertConservatism = 190
   \numCertA = 0.1
+Generated application numbers and paired comparison tables from /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/results/application_comparison.json
   -> PASS: fresh outputs validated (0.8s)
 
-[11/12] pdflatex stable references + log check
+[13/14] pdflatex stable references + log check
 $ pdflatex -interaction=nonstopmode -halt-on-error nsp_contraction_paper_ieee
 This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex)
  restricted \write18 enabled.
@@ -737,12 +1152,6 @@ For additional information on amsmath, use the `?' option.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amssymb.sty
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
-(/usr/local/texlive/2024/texmf-dist/tex/latex/lineno/lineno.sty
-(/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty)
-(/usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/algorithms/algorithm.sty
 (/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/ifthen.sty))
@@ -752,14 +1161,17 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/trig.sty)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def)))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
 (/usr/local/texlive/2024/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
 (/usr/local/texlive/2024/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
 (/usr/local/texlive/2024/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 (/usr/local/texlive/2024/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/hycolor/hycolor.sty)
@@ -767,7 +1179,9 @@ Document Style - pseudocode environments for use with the `algorithmicx' style
 (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/nameref.sty
 (/usr/local/texlive/2024/texmf-dist/tex/latex/refcount/refcount.sty)
 (/usr/local/texlive/2024/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
-ty)) (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def)
+ty (/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def)
 (/usr/local/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty)
@@ -783,7 +1197,7 @@ ty)) (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/color.cfg)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/mathcolor.ltx))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/placeins/placeins.sty)
-(./numbers.tex) (./revision_numbers.tex)
+(./numbers.tex) (./revision_numbers.tex) (./application_numbers.tex)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
 (./nsp_contraction_paper_ieee.aux)
 -- Lines per column: 50 (exact).
@@ -791,18 +1205,19 @@ ty)) (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def)
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 (/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
-(./nsp_contraction_paper_ieee.out) (./nsp_contraction_paper_ieee.out)
-(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1phv.fd)
+(./nsp_contraction_paper_ieee.out) (./nsp_contraction_paper_ieee.out) [1{/usr/l
+ocal/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texl
+ive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}]
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd)
-(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/usr/local/t
-exlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/20
-24/texmf-dist/fonts/enc/dvips/base/8r.enc}] [2] [3] [4] [5] [6] [7] [8]
-[9] [10] [11] [12] [13 <./fig_traces.pdf> <./fig_heatmaps.pdf>] [14 <./fig_abla
-tion.pdf>] [15 <./fig_scale_chase.pdf>] [16 <./fig_residual.pdf>] [17 <./fig_pe
-ndulum.pdf>] [18 <./fig_neural.pdf>] [19 <./fig_extension3d.pdf>]
-(./revision_tables.tex) [20 <./fig_surrogate.pdf>] [21] [22]
-(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1pcr.fd) [23] [24]
-[25] (./nsp_contraction_paper_ieee.aux) )</usr/local/texlive/2024/texmf-dist/fo
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd) [2] [3]
+[4] [5] (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1phv.fd)
+[6] [7] [8] [9] [10] [11] [12] [13 <./fig_traces.pdf>] [14 <./fig_heatmaps.pdf>
+] [15 <./fig_ablation.pdf> <./fig_scale_chase.pdf>] [16] [17 <./fig_residual.pd
+f> <./fig_pendulum.pdf>] [18 <./fig_neural.pdf>] [19] [20 <./fig_extension3d.pd
+f>] [21 <./fig_surrogate.pdf>] [22] [23 <./fig_application.pdf>]
+(./revision_tables.tex [24]) (./application_tables.tex [25] [26]) [27]
+(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1pcr.fd) [28] [29]
+[30] (./nsp_contraction_paper_ieee.aux) )</usr/local/texlive/2024/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fon
 ts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2024/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/f
@@ -829,7 +1244,7 @@ r/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/loca
 l/texlive/2024/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/
 2024/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf
 -dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on nsp_contraction_paper_ieee.pdf (25 pages, 610310 bytes).
+Output written on nsp_contraction_paper_ieee.pdf (30 pages, 670747 bytes).
 Transcript written on nsp_contraction_paper_ieee.log.
 $ pdflatex -interaction=nonstopmode -halt-on-error nsp_contraction_paper_ieee
 This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex)
@@ -856,12 +1271,6 @@ For additional information on amsmath, use the `?' option.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amssymb.sty
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
-(/usr/local/texlive/2024/texmf-dist/tex/latex/lineno/lineno.sty
-(/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty)
-(/usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/algorithms/algorithm.sty
 (/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/ifthen.sty))
@@ -871,14 +1280,17 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/trig.sty)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def)))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
 (/usr/local/texlive/2024/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
 (/usr/local/texlive/2024/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
 (/usr/local/texlive/2024/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 (/usr/local/texlive/2024/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/hycolor/hycolor.sty)
@@ -886,7 +1298,9 @@ Document Style - pseudocode environments for use with the `algorithmicx' style
 (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/nameref.sty
 (/usr/local/texlive/2024/texmf-dist/tex/latex/refcount/refcount.sty)
 (/usr/local/texlive/2024/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
-ty)) (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def)
+ty (/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def)
 (/usr/local/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty)
@@ -902,7 +1316,7 @@ ty)) (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/color.cfg)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/mathcolor.ltx))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/placeins/placeins.sty)
-(./numbers.tex) (./revision_numbers.tex)
+(./numbers.tex) (./revision_numbers.tex) (./application_numbers.tex)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
 (./nsp_contraction_paper_ieee.aux)
 -- Lines per column: 50 (exact).
@@ -910,18 +1324,19 @@ ty)) (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def)
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 (/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
-(./nsp_contraction_paper_ieee.out) (./nsp_contraction_paper_ieee.out)
-(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1phv.fd)
+(./nsp_contraction_paper_ieee.out) (./nsp_contraction_paper_ieee.out) [1{/usr/l
+ocal/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texl
+ive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}]
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd)
-(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/usr/local/t
-exlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/20
-24/texmf-dist/fonts/enc/dvips/base/8r.enc}] [2] [3] [4] [5] [6] [7] [8]
-[9] [10] [11] [12] [13 <./fig_traces.pdf> <./fig_heatmaps.pdf>] [14 <./fig_abla
-tion.pdf>] [15 <./fig_scale_chase.pdf>] [16 <./fig_residual.pdf>] [17 <./fig_pe
-ndulum.pdf>] [18 <./fig_neural.pdf>] [19 <./fig_extension3d.pdf>]
-(./revision_tables.tex) [20 <./fig_surrogate.pdf>] [21] [22]
-(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1pcr.fd) [23] [24]
-[25] (./nsp_contraction_paper_ieee.aux) )</usr/local/texlive/2024/texmf-dist/fo
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd) [2] [3]
+[4] [5] (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1phv.fd)
+[6] [7] [8] [9] [10] [11] [12] [13 <./fig_traces.pdf>] [14 <./fig_heatmaps.pdf>
+] [15 <./fig_ablation.pdf> <./fig_scale_chase.pdf>] [16] [17 <./fig_residual.pd
+f> <./fig_pendulum.pdf>] [18 <./fig_neural.pdf>] [19] [20 <./fig_extension3d.pd
+f>] [21 <./fig_surrogate.pdf>] [22] [23 <./fig_application.pdf>]
+(./revision_tables.tex [24]) (./application_tables.tex [25] [26]) [27]
+(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1pcr.fd) [28] [29]
+[30] (./nsp_contraction_paper_ieee.aux) )</usr/local/texlive/2024/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fon
 ts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2024/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/f
@@ -948,15 +1363,15 @@ r/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/loca
 l/texlive/2024/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/
 2024/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf
 -dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on nsp_contraction_paper_ieee.pdf (25 pages, 610310 bytes).
+Output written on nsp_contraction_paper_ieee.pdf (30 pages, 670747 bytes).
 Transcript written on nsp_contraction_paper_ieee.log.
-  -> PASS: 25 pages, zero errors/undefined references/citations; 0 warning(s) (2.2s)
+  -> PASS: 30 pages, zero errors/undefined references/citations; 0 warning(s) (2.1s)
 
-[12/12] clean arXiv source bundle
-$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/claude-revision/release/build_arxiv.py --check
-Wrote dist/neurosymbolic-arxiv-claude-revision.tar.gz: 13 files, SHA256 80e31b8566968a6f6b80d3b02e3fe794586b58086ba550842ee0f433fa7e6a5a
-Clean build PASS: 25 pages, 0 warning(s); tmp/arxiv-bundle-check-claude-revision-o3ovro0q
-  -> PASS: 13 source files; clean 3-pass build, zero warnings (4.5s)
+[14/14] clean arXiv source bundle
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/release/build_arxiv.py --check
+Wrote dist/neurosymbolic-arxiv-v1.2.0.tar.gz: 16 files, SHA256 8dd339d7ec10707369b84f5ead32115b2586218f60452385c179cd8d731a4102
+Clean build PASS: 30 pages, 0 warning(s); tmp/arxiv-bundle-check-v1.2.0-y0_3zdrt
+  -> PASS: 16 source files; clean 3-pass build, zero warnings (3.2s)
 
 SUMMARY
   PASS        1. bounds self-tests: directed arithmetic, regression tests, and polynomial acceptance checks passed
@@ -967,9 +1382,11 @@ SUMMARY
   PASS        6. P1 smoke diagnostic: certified smoke candidate; uniform slack 0.0215583
   PASS        7. controlled revision experiments: controlled ablation, constrained variants, scale illustration and controls validated
   PASS        8. adaptive higher-dimensional and surrogate extensions: adaptive proof coverage, 3D synthesis and fitted-model transfer validated
-  PASS        9. complete certified reporting: fresh outputs validated
-  PASS        10. fill_tex: fresh outputs validated
-  PASS        11. pdflatex stable references + log check: 25 pages, zero errors/undefined references/citations; 0 warning(s)
-  PASS        12. clean arXiv source bundle: 13 source files; clean 3-pass build, zero warnings
+  PASS        9. matched power-system application: 180 matched application runs; all positive certificates replayed
+  PASS        10. verified constant-metric baseline: fixed constant metric checked on every application box; exact and directed proofs replayed
+  PASS        11. complete certified reporting: fresh outputs validated
+  PASS        12. fill_tex: fresh outputs validated
+  PASS        13. pdflatex stable references + log check: 30 pages, zero errors/undefined references/citations; 0 warning(s)
+  PASS        14. clean arXiv source bundle: 16 source files; clean 3-pass build, zero warnings
 
 ALL STAGES PASS

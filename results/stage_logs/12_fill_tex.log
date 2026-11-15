@@ -1,7 +1,7 @@
 
-[7/8] fill_tex
-$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/fill_tex.py
-wrote /Users/preciado/Desktop/NeuroSymbolic/paper/numbers.tex: 64 macros from 6 source(s); git 7cd50d2
+[12/14] fill_tex
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/fill_tex.py
+wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/paper/numbers.tex: 64 macros from 6 source(s); git 5b67589
   \PolyRoundCap = 12
   \PolyTrainSteps = 500
   \PolyLearningRate = 0.02
@@ -66,4 +66,5 @@ wrote /Users/preciado/Desktop/NeuroSymbolic/paper/numbers.tex: 64 macros from 6 
   \numNeuralB = 5.24
   \numCertConservatism = 190
   \numCertA = 0.1
-  -> PASS: fresh outputs validated (0.6s)
+Generated application numbers and paired comparison tables from /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/results/application_comparison.json
+  -> PASS: fresh outputs validated (0.8s)

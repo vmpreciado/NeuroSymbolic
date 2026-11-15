@@ -1,6 +1,40 @@
 
-[1/12] bounds self-tests
+[1/14] bounds self-tests
 $ /opt/anaconda3/bin/python3 -m unittest discover -s tests -v
+test_counts_both_positive_eigenvalues (test_application_baseline.ApplicationBaselineTests.test_counts_both_positive_eigenvalues) ... ok
+test_gradient_agrees_with_independent_finite_difference (test_application_baseline.ApplicationBaselineTests.test_gradient_agrees_with_independent_finite_difference) ... ok
+test_matches_independent_symmetric_eigensolver (test_application_baseline.ApplicationBaselineTests.test_matches_independent_symmetric_eigensolver) ... ok
+test_provenance_does_not_claim_full_method_reproduction (test_application_baseline.ApplicationBaselineTests.test_provenance_does_not_claim_full_method_reproduction) ... ok
+test_repeated_eigenvalue_gradient_finite (test_application_baseline.ApplicationBaselineTests.test_repeated_eigenvalue_gradient_finite) ... ok
+test_zero_set_matches_raw_matrix_margin (test_application_baseline.ApplicationBaselineTests.test_zero_set_matches_raw_matrix_margin) ... ok
+test_driver_uses_identical_initial_candidates_and_samples (test_application_comparison.ApplicationComparisonTests.test_driver_uses_identical_initial_candidates_and_samples) ... ok
+test_every_primary_and_refined_positive_proof_is_replayed (test_application_comparison.ApplicationComparisonTests.test_every_primary_and_refined_positive_proof_is_replayed) ... ok
+test_failed_replay_or_false_guarantee_is_rejected (test_application_comparison.ApplicationComparisonTests.test_failed_replay_or_false_guarantee_is_rejected) ... ok
+test_missing_duplicate_unplanned_runs_are_rejected (test_application_comparison.ApplicationComparisonTests.test_missing_duplicate_unplanned_runs_are_rejected) ... ok
+test_pilot_changed_protocol_or_baseline_cannot_enter_paper (test_application_comparison.ApplicationComparisonTests.test_pilot_changed_protocol_or_baseline_cannot_enter_paper) ... ok
+test_primary_success_cannot_be_lost_in_refinement (test_application_comparison.ApplicationComparisonTests.test_primary_success_cannot_be_lost_in_refinement) ... ok
+test_real_certificate_fixture_replays_and_starts_are_matched (test_application_comparison.ApplicationComparisonTests.test_real_certificate_fixture_replays_and_starts_are_matched) ... ok
+test_refinement_freezes_every_candidate_and_changes_only_box_cap (test_application_comparison.ApplicationComparisonTests.test_refinement_freezes_every_candidate_and_changes_only_box_cap) ... ok
+test_refinement_missing_changed_or_relabelled_is_rejected (test_application_comparison.ApplicationComparisonTests.test_refinement_missing_changed_or_relabelled_is_rejected) ... ok
+test_timing_accounting_and_early_failure_are_rejected (test_application_comparison.ApplicationComparisonTests.test_timing_accounting_and_early_failure_are_rejected) ... ok
+test_unequal_or_exceeded_budgets_are_rejected (test_application_comparison.ApplicationComparisonTests.test_unequal_or_exceeded_budgets_are_rejected) ... ok
+test_unmatched_initialization_or_collocations_are_rejected (test_application_comparison.ApplicationComparisonTests.test_unmatched_initialization_or_collocations_are_rejected) ... ok
+test_wrong_candidate_floor_region_or_margin_is_rejected (test_application_comparison.ApplicationComparisonTests.test_wrong_candidate_floor_region_or_margin_is_rejected) ... ok
+test_direct_high_precision_original_phase_and_matrix (test_application_constant_baseline.ConstantMetricBaselineTests.test_direct_high_precision_original_phase_and_matrix) ... ok
+test_exact_matrix_identity_from_jacobian (test_application_constant_baseline.ConstantMetricBaselineTests.test_exact_matrix_identity_from_jacobian) ... ok
+test_exact_small_box_minors_and_stronger_margin (test_application_constant_baseline.ConstantMetricBaselineTests.test_exact_small_box_minors_and_stronger_margin) ... ok
+test_full_json_roundtrip_and_every_domain (test_application_constant_baseline.ConstantMetricBaselineTests.test_full_json_roundtrip_and_every_domain) ... ok
+test_larger_boxes_have_actual_fixed_candidate_violations (test_application_constant_baseline.ConstantMetricBaselineTests.test_larger_boxes_have_actual_fixed_candidate_violations) ... ok
+test_metric_bounds_and_prefactor (test_application_constant_baseline.ConstantMetricBaselineTests.test_metric_bounds_and_prefactor) ... ok
+test_replay_rejects_tampered_targets_domain_proof_and_metadata (test_application_constant_baseline.ConstantMetricBaselineTests.test_replay_rejects_tampered_targets_domain_proof_and_metadata) ... ok
+test_unprescribed_or_nonfinite_domain_is_rejected (test_application_constant_baseline.ConstantMetricBaselineTests.test_unprescribed_or_nonfinite_domain_is_rejected) ... ok
+test_batch_interval_matches_scalar_and_hull_corners (test_application_verifier.SwingVerifierTests.test_batch_interval_matches_scalar_and_hull_corners) ... ok
+test_complete_partition_and_tamper_rejection (test_application_verifier.SwingVerifierTests.test_complete_partition_and_tamper_rejection) ... ok
+test_energy_level_below_exact_boundary (test_application_verifier.SwingVerifierTests.test_energy_level_below_exact_boundary) ... ok
+test_failure_and_budget_are_inconclusive (test_application_verifier.SwingVerifierTests.test_failure_and_budget_are_inconclusive) ... ok
+test_interval_covers_high_precision_original_shifted_sine (test_application_verifier.SwingVerifierTests.test_interval_covers_high_precision_original_shifted_sine) ... ok
+test_metric_rate_bounds_are_outward (test_application_verifier.SwingVerifierTests.test_metric_rate_bounds_are_outward) ... ok
+test_nominal_entries_match_independent_high_precision (test_application_verifier.SwingVerifierTests.test_nominal_entries_match_independent_high_precision) ... ok
 test_large_batch_neural_grid_encloses_high_precision_reference (test_benchmark_rounding.BenchmarkRoundoffTests.test_large_batch_neural_grid_encloses_high_precision_reference) ... ok
 test_neural_C_and_spatial_derivatives_enclose_high_precision (test_benchmark_rounding.BenchmarkRoundoffTests.test_neural_C_and_spatial_derivatives_enclose_high_precision) ... ok
 test_neural_subbox_bounds_enclose_point_C_and_derivatives (test_benchmark_rounding.BenchmarkRoundoffTests.test_neural_subbox_bounds_enclose_point_C_and_derivatives) ... ok
@@ -44,6 +78,7 @@ test_disagreeing_round_cap_is_rejected (test_protocol_metadata.ProtocolPublicati
 test_growth_threshold_is_strict_and_certification_takes_precedence (test_protocol_metadata.ProtocolPublicationTests.test_growth_threshold_is_strict_and_certification_takes_precedence) ... ok
 test_incomplete_or_invalid_metric_bounds_cannot_enter_paper (test_protocol_metadata.ProtocolPublicationTests.test_incomplete_or_invalid_metric_bounds_cannot_enter_paper) ... ok
 test_old_result_without_budget_metadata_cannot_fill_protocol_table (test_protocol_metadata.ProtocolPublicationTests.test_old_result_without_budget_metadata_cannot_fill_protocol_table) ... ok
+test_archive_verification_rejects_tampering_and_extra_members (test_reproduction_package.ReproductionPackageTests.test_archive_verification_rejects_tampering_and_extra_members) ... ok
 test_changed_source_artifact_or_log_is_rejected (test_reproduction_package.ReproductionPackageTests.test_changed_source_artifact_or_log_is_rejected) ... ok
 test_complete_archive_contains_verifiable_snapshot_and_is_repeatable (test_reproduction_package.ReproductionPackageTests.test_complete_archive_contains_verifiable_snapshot_and_is_repeatable) ... ok
 test_incomplete_failed_or_mutating_run_is_rejected (test_reproduction_package.ReproductionPackageTests.test_incomplete_failed_or_mutating_run_is_rejected) ... ok
@@ -107,18 +142,27 @@ test_smoke_must_actually_certify_and_have_consistent_slack (test_run_all.RunnerV
 test_successful_process_cannot_reuse_stale_result (test_run_all.RunnerValidationTests.test_successful_process_cannot_reuse_stale_result) ... ok
 
 ----------------------------------------------------------------------
-Ran 104 tests in 9.416s
+Ran 139 tests in 13.261s
 
 OK
 $ /opt/anaconda3/bin/python3 -m unittest discover -s release -p test_*.py -v
+test_citation_and_baseline_scope_must_match_release (test_application_packet.ApplicationPacketTests.test_citation_and_baseline_scope_must_match_release) ... ok
+test_old_or_changed_run_cannot_be_packaged (test_application_packet.ApplicationPacketTests.test_old_or_changed_run_cannot_be_packaged) ... ok
+test_release_metadata_cannot_claim_a_different_tag (test_application_packet.ApplicationPacketTests.test_release_metadata_cannot_claim_a_different_tag) ... ok
+test_roundtrip_and_standalone_verifier_with_no_nested_code_execution (test_application_packet.ApplicationPacketTests.test_roundtrip_and_standalone_verifier_with_no_nested_code_execution) ... ok
+test_application_dependencies_and_release_metadata (test_arxiv_bundle.ArxivBundleTests.test_application_dependencies_and_release_metadata) ... ok
 test_archive_is_complete_minimal_and_repeatable_after_timestamp_changes (test_arxiv_bundle.ArxivBundleTests.test_archive_is_complete_minimal_and_repeatable_after_timestamp_changes) ... ok
 test_extraction_rejects_unsafe_members_and_content_tampering (test_arxiv_bundle.ArxivBundleTests.test_extraction_rejects_unsafe_members_and_content_tampering) ... ok
 test_failed_clean_build_cannot_leave_a_passing_manifest (test_arxiv_bundle.ArxivBundleTests.test_failed_clean_build_cannot_leave_a_passing_manifest) ... ok
 test_missing_input_or_figure_and_external_dependencies_are_rejected (test_arxiv_bundle.ArxivBundleTests.test_missing_input_or_figure_and_external_dependencies_are_rejected) ... ok
 test_revision_dependencies_are_transitive_and_unused_files_are_excluded (test_arxiv_bundle.ArxivBundleTests.test_revision_dependencies_are_transitive_and_unused_files_are_excluded) ... ok
+test_changed_parent_or_failed_clean_build_is_rejected (test_current_package.CurrentReproductionTests.test_changed_parent_or_failed_clean_build_is_rejected) ... ok
+test_current_archive_is_repeatable_and_standalone_verifier_passes (test_current_package.CurrentReproductionTests.test_current_archive_is_repeatable_and_standalone_verifier_passes) ... ok
+test_editorial_report_cannot_relabel_changed_science_as_an_overlay (test_current_package.CurrentReproductionTests.test_editorial_report_cannot_relabel_changed_science_as_an_overlay) ... ok
+test_extraction_rejects_parent_paths_symlinks_and_uninventoried_files (test_current_package.CurrentReproductionTests.test_extraction_rejects_parent_paths_symlinks_and_uninventoried_files) ... ok
 
 ----------------------------------------------------------------------
-Ran 5 tests in 0.663s
+Ran 14 tests in 12.418s
 
 OK
 [1b] 200 pairs, fails=0, max relative error=4.88e-15
@@ -128,4 +172,4 @@ OK
 [1c monotone] theta 2: L(depth=2)=15167.7955  L(depth=4)=1148.8954  delta=-14018.9001
 [1c monotone] theta 3: L(depth=2)=12611.4911  L(depth=4)=396.0967  delta=-12215.3944
 [1c monotone] theta 4: L(depth=2)=2946.0287  L(depth=4)=201.0666  delta=-2744.9621
-  -> PASS: directed arithmetic, regression tests, and polynomial acceptance checks passed (16.6s)
+  -> PASS: directed arithmetic, regression tests, and polynomial acceptance checks passed (34.1s)
