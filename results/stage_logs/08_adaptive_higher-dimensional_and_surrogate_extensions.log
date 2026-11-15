@@ -1,91 +1,91 @@
 
-[8/14] adaptive higher-dimensional and surrogate extensions
+[8/15] adaptive higher-dimensional and surrogate extensions
 $ revision_extensions.py (independent producer started earlier; full output follows)
 EXTENSION_CONFIG {"adaptive_budget": {"max_boxes": 12000, "max_depth": 24, "target_margin": 0.0001}, "alpha": 0.1, "diagnostic_worst_point_cap": 60, "domain_3d": [-1.0, 1.0], "initial_samples_3d": 256, "initialization": "identity lower factor plus seeded N(0,0.01^2) coefficient perturbations", "initialization_std": 0.01, "learner_early_stop": "stop after an inconclusive oracle if a zero-loss retraining leaves parameters unchanged", "learning_rate": 0.02, "max_retraining_rounds_3d": 8, "metric_parameters_3d": 24, "n_seeds": 20, "perturbation_std": 0.04, "perturbations_per_nominated_point": 2, "pilot": false, "rate": 0.4, "returned_point_cap": 60, "screen_axis_points": 9, "seeds": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], "steps_per_round_3d": 300, "surrogate_derivative_dt": 0.01, "surrogate_seed": 0, "three_dimensional_worker_processes": 4, "training_margin_3d": 0.005}
 ADAPTIVE n=3 seed=0 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=1 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.003
-ADAPTIVE n=3 seed=2 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.003
+ADAPTIVE n=3 seed=1 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
+ADAPTIVE n=3 seed=2 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.005
 ADAPTIVE n=3 seed=3 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=2 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=0 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=1 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=3 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=2 round=2 status=certified reason=all_leaves_certified boxes=8379 wall=31.119
+ADAPTIVE n=3 seed=1 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
+ADAPTIVE n=3 seed=2 round=2 status=certified reason=all_leaves_certified boxes=8379 wall=38.826
 3D seed=2 certified=True rounds=2 boxes=8379
 ADAPTIVE n=3 seed=4 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=4 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=1 round=2 status=certified reason=all_leaves_certified boxes=9771 wall=37.862
+ADAPTIVE n=3 seed=1 round=2 status=certified reason=all_leaves_certified boxes=9771 wall=44.529
 3D seed=1 certified=True rounds=2 boxes=9771
 ADAPTIVE n=3 seed=5 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=5 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=0 round=2 status=certified reason=all_leaves_certified boxes=11935 wall=45.885
+ADAPTIVE n=3 seed=5 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.006
+ADAPTIVE n=3 seed=0 round=2 status=certified reason=all_leaves_certified boxes=11935 wall=53.445
 3D seed=0 certified=True rounds=2 boxes=11935
 ADAPTIVE n=3 seed=6 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=3 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=46.029
+ADAPTIVE n=3 seed=3 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=54.532
 3D seed=3 certified=False rounds=2 boxes=12000
-ADAPTIVE n=3 seed=7 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=7 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=6 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
+ADAPTIVE n=3 seed=7 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.004
+ADAPTIVE n=3 seed=6 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.005
+ADAPTIVE n=3 seed=7 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.003
 ADAPTIVE n=3 seed=7 round=2 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=4 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=46.075
+ADAPTIVE n=3 seed=4 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=52.497
 3D seed=4 certified=False rounds=2 boxes=12000
 ADAPTIVE n=3 seed=8 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=8 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=7 round=3 status=certified reason=all_leaves_certified boxes=8513 wall=31.175
+ADAPTIVE n=3 seed=7 round=3 status=certified reason=all_leaves_certified boxes=8513 wall=35.750
 3D seed=7 certified=True rounds=3 boxes=8513
-ADAPTIVE n=3 seed=9 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
+ADAPTIVE n=3 seed=8 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
+ADAPTIVE n=3 seed=9 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.005
 ADAPTIVE n=3 seed=9 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=5 round=2 status=certified reason=all_leaves_certified boxes=11943 wall=42.658
+ADAPTIVE n=3 seed=5 round=2 status=certified reason=all_leaves_certified boxes=11943 wall=50.393
 3D seed=5 certified=True rounds=2 boxes=11943
 ADAPTIVE n=3 seed=10 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=10 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=6 round=2 status=certified reason=all_leaves_certified boxes=11993 wall=43.676
+ADAPTIVE n=3 seed=6 round=2 status=certified reason=all_leaves_certified boxes=11993 wall=51.364
 3D seed=6 certified=True rounds=2 boxes=11993
 ADAPTIVE n=3 seed=11 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=11 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=8 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=39.806
-3D seed=8 certified=False rounds=2 boxes=12000
-ADAPTIVE n=3 seed=12 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=10 round=2 status=certified reason=all_leaves_certified boxes=10719 wall=34.311
+ADAPTIVE n=3 seed=10 round=2 status=certified reason=all_leaves_certified boxes=10719 wall=41.415
 3D seed=10 certified=True rounds=2 boxes=10719
-ADAPTIVE n=3 seed=13 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=9 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=39.534
+ADAPTIVE n=3 seed=12 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.003
+ADAPTIVE n=3 seed=9 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=48.390
 3D seed=9 certified=False rounds=2 boxes=12000
+ADAPTIVE n=3 seed=13 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
+ADAPTIVE n=3 seed=8 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=49.570
+3D seed=8 certified=False rounds=2 boxes=12000
 ADAPTIVE n=3 seed=14 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=12 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=13 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
+ADAPTIVE n=3 seed=12 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=14 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=11 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=39.253
+ADAPTIVE n=3 seed=11 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=48.302
 3D seed=11 certified=False rounds=2 boxes=12000
 ADAPTIVE n=3 seed=15 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=15 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=12 round=2 status=certified reason=all_leaves_certified boxes=6591 wall=21.373
+ADAPTIVE n=3 seed=12 round=2 status=certified reason=all_leaves_certified boxes=6591 wall=26.360
 3D seed=12 certified=True rounds=2 boxes=6591
 ADAPTIVE n=3 seed=16 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=16 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=13 round=2 status=certified reason=all_leaves_certified boxes=8735 wall=28.069
+ADAPTIVE n=3 seed=13 round=2 status=certified reason=all_leaves_certified boxes=8735 wall=34.893
 3D seed=13 certified=True rounds=2 boxes=8735
 ADAPTIVE n=3 seed=17 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=17 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=14 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=39.225
+ADAPTIVE n=3 seed=14 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=48.727
 3D seed=14 certified=False rounds=2 boxes=12000
 ADAPTIVE n=3 seed=18 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
 ADAPTIVE n=3 seed=18 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=15 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=38.414
+ADAPTIVE n=3 seed=15 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=48.008
 3D seed=15 certified=False rounds=2 boxes=12000
 ADAPTIVE n=3 seed=19 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=19 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.002
-ADAPTIVE n=3 seed=16 round=2 status=certified reason=all_leaves_certified boxes=10699 wall=34.903
+ADAPTIVE n=3 seed=19 round=1 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.004
+ADAPTIVE n=3 seed=16 round=2 status=certified reason=all_leaves_certified boxes=10699 wall=43.632
 3D seed=16 certified=True rounds=2 boxes=10699
-ADAPTIVE n=3 seed=17 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=38.641
+ADAPTIVE n=3 seed=17 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=47.352
 3D seed=17 certified=False rounds=2 boxes=12000
-ADAPTIVE n=3 seed=18 round=2 status=certified reason=all_leaves_certified boxes=10227 wall=32.297
+ADAPTIVE n=3 seed=18 round=2 status=certified reason=all_leaves_certified boxes=10227 wall=39.196
 3D seed=18 certified=True rounds=2 boxes=10227
-ADAPTIVE n=3 seed=19 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=38.902
+ADAPTIVE n=3 seed=19 round=2 status=inconclusive reason=box_budget_exhausted boxes=12000 wall=43.415
 3D seed=19 certified=False rounds=2 boxes=12000
 FROZEN_COMPARISON complete
 ADAPTIVE n=2 seed=0 round=0 status=inconclusive reason=nominal_screen_inconclusive boxes=0 wall=0.000
-ADAPTIVE n=2 seed=0 round=1 status=certified reason=all_leaves_certified boxes=177 wall=0.178
+ADAPTIVE n=2 seed=0 round=1 status=certified reason=all_leaves_certified boxes=177 wall=0.175
 SURROGATE certified=True transfer=True
-WROTE /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/results/revision_extensions.json
-  -> PASS: adaptive proof coverage, 3D synthesis and fitted-model transfer validated (58.0s)
+WROTE /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.1/results/revision_extensions.json
+  -> PASS: adaptive proof coverage, 3D synthesis and fitted-model transfer validated (73.1s)

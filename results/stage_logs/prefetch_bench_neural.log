@@ -23,6 +23,6 @@ ACCEPTANCE: dC firewall PASS, enclosure PASS
   seed 17: op(grid 8001)=False iters=8 L=441608449.1 worst=+16.918
   seed 18: op(grid 8001)=False iters=8 L=116701089.5 worst=+98.807
   seed 19: op(grid 8001)=True iters=1 L=88.5 worst=-0.034
-  runtime 1329s
+  runtime 1510s
   certified 13/20 at grid 8001, 1/20 of those also at grid 2001; diverged 7; median iters 1.0
   wrote results/neural.json and paper/fig_neural.pdf

@@ -1256,14 +1256,14 @@
   "timings": {
     "Polynomial / fixed coarse": {
       "train_s": {
-        "median": 0.0026466879644431174,
-        "minimum": 0.0014618749264627695,
-        "maximum": 1.220717291929759
+        "median": 0.002685541519895196,
+        "minimum": 0.001498208031989634,
+        "maximum": 1.0090937500353903
       },
       "verify_including_bounds_s": {
-        "median": 0.12180104199796915,
-        "minimum": 0.09109291702043265,
-        "maximum": 0.4478269589599222
+        "median": 0.1244796040118672,
+        "minimum": 0.09394179098308086,
+        "maximum": 0.3408261670265347
       },
       "oracle_evaluations": {
         "median": 14641.0,
@@ -1274,14 +1274,14 @@
     },
     "Polynomial / coupled coarse": {
       "train_s": {
-        "median": 0.7879546040203422,
-        "minimum": 0.515561499982141,
-        "maximum": 1.317379790940322
+        "median": 1.253860604541842,
+        "minimum": 0.6307746670208871,
+        "maximum": 2.922561874962412
       },
       "verify_including_bounds_s": {
-        "median": 0.08967366651631892,
-        "minimum": 0.0847017919877544,
-        "maximum": 0.1684791250154376
+        "median": 0.13513583404710516,
+        "minimum": 0.08888445806223899,
+        "maximum": 0.3007760839536786
       },
       "oracle_evaluations": {
         "median": 14641.0,
@@ -1292,14 +1292,14 @@
     },
     "Polynomial / operating": {
       "train_s": {
-        "median": 0.5567053750273772,
-        "minimum": 0.06872512493282557,
-        "maximum": 1.2132991249673069
+        "median": 0.6460147085599601,
+        "minimum": 0.09193695802241564,
+        "maximum": 1.387006749981083
       },
       "verify_including_bounds_s": {
-        "median": 0.47983070800546557,
-        "minimum": 0.39924395794514567,
-        "maximum": 4.094907874939963
+        "median": 0.695803957991302,
+        "minimum": 0.5113072500098497,
+        "maximum": 6.505381750059314
       },
       "oracle_evaluations": {
         "median": 4004001.0,
@@ -1310,14 +1310,14 @@
     },
     "Pendulum": {
       "train_s": {
-        "median": 0.5353987709968351,
-        "minimum": 0.458981457981281,
-        "maximum": 1.024022875004448
+        "median": 0.5338082709931768,
+        "minimum": 0.50351458392106,
+        "maximum": 1.002147875027731
       },
       "verify_including_bounds_s": {
-        "median": 0.22107987548224628,
-        "minimum": 0.08911016606725752,
-        "maximum": 0.5923887500539422
+        "median": 0.23335581296123564,
+        "minimum": 0.1001907909521833,
+        "maximum": 0.7204172500642017
       },
       "oracle_evaluations": {
         "median": 321602.0,
@@ -1328,14 +1328,14 @@
     },
     "Neural": {
       "train_s": {
-        "median": 1.4906148749869317,
-        "minimum": 0.7771686249179766,
-        "maximum": 2.6951487079495564
+        "median": 1.5031917090527713,
+        "minimum": 0.8372652500402182,
+        "maximum": 2.3893469580216333
       },
       "verify_including_bounds_s": {
-        "median": 11.736432999954559,
-        "minimum": 10.569417416932993,
-        "maximum": 17.041616291040555
+        "median": 13.307269166922197,
+        "minimum": 11.20482333295513,
+        "maximum": 18.53961833298672
       },
       "oracle_evaluations": {
         "median": 64016001.0,
@@ -1608,10 +1608,10 @@
     "pendulum.json": "2202f426598d5bf2166a3b6da965e77167316ec28c0805fecb871db7ac5eef76",
     "neural.json": "ebd58d2bad8d1389e9ca5289d29c9e307d786d5620b39a0b248a17aa20b22a86",
     "residual.json": "085bc906b2016c6187bb5facb0944f007a35f4c210ca8f2e3c9e5adfc3273d45",
-    "timing_polynomial.json": "5c61331e63ee5445d72d6a9feee56f27f427c266516999c4b8e13354af46b244",
-    "timing_pendulum.json": "39534ab92e4a31a455418da14d50a370a34d573b53c36e30afbd0620f03ebc81",
-    "timing_neural.json": "ff3699dd986afdf48e03db520902710e1c6f1d0eaaae21b33b861d68ed1cbd71",
-    "revision_experiments.json": "a03a495906e4dea92656fdb8111a593e9a08bec51ebefef5f3bca67954ef9aaf",
-    "revision_extensions.json": "aeba85fd56795c220729b0ecf9238ac10f8c977f9cea470a9b17f40c5ca9cb06"
+    "timing_polynomial.json": "2c89e60f578cbbbc6e8ccf0d60f3894cb44d207511298f49937bbd5836951e03",
+    "timing_pendulum.json": "e8cb73f0592d8344828b30d41cf0eb581d7106dcf995eb0b9c36c987935d7282",
+    "timing_neural.json": "81c11df256a666687c5714b7c9ce4f30fdd60c5fb83da9ee66ea9d500653298a",
+    "revision_experiments.json": "502c81eb5a340a28d8119a6239165c5db37d165638a68698070548764da90344",
+    "revision_extensions.json": "03cd1558a5ab62b76f93af94d05448550cac877829561b222d7e82e238f2f8d7"
   }
 }

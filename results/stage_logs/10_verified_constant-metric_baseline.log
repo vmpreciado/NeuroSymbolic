@@ -1,5 +1,5 @@
 
-[10/14] verified constant-metric baseline
-$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/application_constant_baseline.py
+[10/15] verified constant-metric baseline
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.1/application_constant_baseline.py
 {"certified_domains": 1, "domains": 3, "fixed_candidate_violations": 2, "status": "pass"}
   -> PASS: fixed constant metric checked on every application box; exact and directed proofs replayed (0.2s)

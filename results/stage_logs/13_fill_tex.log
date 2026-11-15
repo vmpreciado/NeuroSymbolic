@@ -1,7 +1,7 @@
 
-[12/14] fill_tex
-$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/fill_tex.py
-wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/paper/numbers.tex: 64 macros from 6 source(s); git 5b67589
+[13/15] fill_tex
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.1/fill_tex.py
+wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.1/paper/numbers.tex: 64 macros from 6 source(s); git 2fd469c
   \PolyRoundCap = 12
   \PolyTrainSteps = 500
   \PolyLearningRate = 0.02
@@ -66,5 +66,6 @@ wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/paper/numbers.tex
   \numNeuralB = 5.24
   \numCertConservatism = 190
   \numCertA = 0.1
-Generated application numbers and paired comparison tables from /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.0/results/application_comparison.json
-  -> PASS: fresh outputs validated (0.8s)
+Generated application numbers and paired comparison tables from /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.1/results/application_comparison.json
+wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.1/paper/polynomial_constant_numbers.tex: 12 exact quantities after proof replay
+  -> PASS: fresh outputs validated (0.9s)

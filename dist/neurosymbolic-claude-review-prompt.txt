@@ -45,6 +45,15 @@ domain does not establish infeasibility for all constant metrics. Check that
 the original 180 learned outcomes and exploratory refinement retain their
 original meaning and are not relabeled by the added analytical certificate.
 
+Also reconstruct the fixed polynomial constant-metric certificate in
+polynomial_constant_baseline.py and results/polynomial_constant_baseline.json.
+Check the exact endpoint matrix tests for both the decimal and stored binary64
+rates, the whole-box affine interpolation argument, metric bounds and margins.
+This post-hoc analytical candidate also performs no training. Its success means
+that the constructed polynomial benchmark does not establish a need for neural
+or state-dependent metrics. Preserve the original matched experiment counts;
+do not interpret the certificate as a matched learning or runtime comparison.
+
 Assess novelty and scientific interest against the closest original papers,
 including Fitzsimmons-Liu, Davydov, and Harapanahalli-Coogan-Davydov where relevant.
 Check that the earlier matched polynomial ablation still reports its lack of a
@@ -54,9 +63,9 @@ the three-dimensional extension, and the known-truth surrogate experiment.
 
 Audit the fresh full-run provenance, manuscript/data consistency, source bundle,
 AI acknowledgment, citation accuracy, and scientific reproducibility. These are
-the v1.2.0 release assets; confirm publication and immutable status against the
-GitHub release record linked in CITATION.cff. The older v1.1.1 release has not
-been modified. The complete current runnable project is in
+the v1.2.1 release assets; confirm publication and immutable status against the
+GitHub release record linked in CITATION.cff. Earlier immutable releases have
+not been modified. The complete current runnable project is in
 project/ and as a separate reproduction ZIP; VERIFY_PACKAGE.py checks integrity
 without executing nested scientific code. Running experiments is optional;
 state exactly which commands you ran and which checks remain unexecuted.

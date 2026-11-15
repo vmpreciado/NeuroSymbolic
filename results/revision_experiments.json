@@ -259,7 +259,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 6.905336707946844,
+        "elapsed_s": 5.12087900005281,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -442,7 +442,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 6.117401667055674,
+        "elapsed_s": 5.664947708020918,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -625,7 +625,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 6.337777999928221,
+        "elapsed_s": 6.013505125069059,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -849,7 +849,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 6.941923709004186,
+        "elapsed_s": 6.114214707980864,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -1032,7 +1032,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.857313000014983,
+        "elapsed_s": 5.38930729101412,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -1215,7 +1215,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.1419408749789,
+        "elapsed_s": 6.263572291936725,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -1398,7 +1398,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.315619290922768,
+        "elapsed_s": 5.515785249997862,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -1581,7 +1581,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.296046333038248,
+        "elapsed_s": 5.890632582944818,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -1764,7 +1764,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.929791749920696,
+        "elapsed_s": 5.823868708102964,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -1947,7 +1947,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.816913416958414,
+        "elapsed_s": 5.935283459024504,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -2130,7 +2130,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.429916791967116,
+        "elapsed_s": 5.628479667007923,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -2313,7 +2313,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.196369417011738,
+        "elapsed_s": 5.40036395797506,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -2496,7 +2496,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.943681207951158,
+        "elapsed_s": 5.791832542046905,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -2679,7 +2679,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.9658842500066385,
+        "elapsed_s": 6.385589833022095,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -2862,7 +2862,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.911043917061761,
+        "elapsed_s": 6.895207583904266,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -3045,7 +3045,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.017695332993753,
+        "elapsed_s": 5.464087416999973,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -3228,7 +3228,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.011446250020526,
+        "elapsed_s": 5.955712417024188,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -3370,7 +3370,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.0333584159379825,
+        "elapsed_s": 6.056993375066668,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -3553,7 +3553,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.521450790925883,
+        "elapsed_s": 6.877070000045933,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -3736,7 +3736,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.60392587503884,
+        "elapsed_s": 6.820400999975391,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -3921,7 +3921,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.670183459063992,
+        "elapsed_s": 6.526892416994087,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -4104,7 +4104,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.897632749984041,
+        "elapsed_s": 6.308847957989201,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -4287,7 +4287,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.17791908304207,
+        "elapsed_s": 5.785243915976025,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -4511,7 +4511,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.166115042055026,
+        "elapsed_s": 5.638244458008558,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -4694,7 +4694,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.393539167009294,
+        "elapsed_s": 6.018024874967523,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -4877,7 +4877,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.195661540958099,
+        "elapsed_s": 6.262989292037673,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -5060,7 +5060,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.244429666898213,
+        "elapsed_s": 6.17692724999506,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -5243,7 +5243,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.249199334066361,
+        "elapsed_s": 5.953203957993537,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -5426,7 +5426,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.31872691703029,
+        "elapsed_s": 5.919529040926136,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -5609,7 +5609,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.615736333071254,
+        "elapsed_s": 5.983680207980797,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -5792,7 +5792,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.744435708038509,
+        "elapsed_s": 5.795324542094022,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -5975,7 +5975,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.6093925420427695,
+        "elapsed_s": 6.045121332979761,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -6158,7 +6158,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.587711166939698,
+        "elapsed_s": 5.78651708306279,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -6341,7 +6341,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.420913959038444,
+        "elapsed_s": 5.87253191601485,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -6524,7 +6524,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.48973870894406,
+        "elapsed_s": 6.086452541989274,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -6707,7 +6707,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.5834751250222325,
+        "elapsed_s": 5.607071292004548,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -6890,7 +6890,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.670599375036545,
+        "elapsed_s": 5.470880042063072,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -7032,7 +7032,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 3.452987791970372,
+        "elapsed_s": 4.7311924590030685,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -7215,7 +7215,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.139541249955073,
+        "elapsed_s": 6.400653625023551,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -7398,7 +7398,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.513635291019455,
+        "elapsed_s": 6.30260391603224,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -7624,7 +7624,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 6.627413333044387,
+        "elapsed_s": 9.050124916015193,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -7807,7 +7807,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.610586208058521,
+        "elapsed_s": 8.278110957937315,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -7990,7 +7990,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.726396957994439,
+        "elapsed_s": 8.160232666996308,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -8173,7 +8173,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.193158165900968,
+        "elapsed_s": 7.93123170803301,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -8397,7 +8397,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 7.052542750025168,
+        "elapsed_s": 9.81998599995859,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -8703,7 +8703,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 9.489707458997145,
+        "elapsed_s": 13.199344541993923,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -8886,7 +8886,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.262392583070323,
+        "elapsed_s": 7.996313499985263,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -9069,7 +9069,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.201471125008538,
+        "elapsed_s": 7.16859904199373,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -9293,7 +9293,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 7.1580936659593135,
+        "elapsed_s": 8.51671274995897,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -9476,7 +9476,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.713722332962789,
+        "elapsed_s": 6.361035790992901,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -9741,7 +9741,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 8.557610916090198,
+        "elapsed_s": 9.261552874930203,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -9924,7 +9924,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.769713041023351,
+        "elapsed_s": 6.341865958063863,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -10066,7 +10066,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.155119041912258,
+        "elapsed_s": 5.863274875096977,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -10249,7 +10249,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 6.226532917004079,
+        "elapsed_s": 6.910306334029883,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -10432,7 +10432,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 6.251965374918655,
+        "elapsed_s": 7.338855957961641,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -10738,7 +10738,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 9.593728584004566,
+        "elapsed_s": 12.089075249969028,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -10962,7 +10962,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 7.535281207994558,
+        "elapsed_s": 10.379831041907892,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -11227,7 +11227,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 9.14558529201895,
+        "elapsed_s": 11.630675458000042,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -11410,7 +11410,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 6.320692999986932,
+        "elapsed_s": 8.917763042030856,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -11593,7 +11593,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 6.049465709016658,
+        "elapsed_s": 7.0008755419403315,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -11819,7 +11819,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 7.618598375003785,
+        "elapsed_s": 9.357951916055754,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -12002,7 +12002,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.205703500076197,
+        "elapsed_s": 8.222501541953534,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -12185,7 +12185,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.84334229095839,
+        "elapsed_s": 7.1854694170178846,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -12368,7 +12368,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.916191207943484,
+        "elapsed_s": 8.275035458966158,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -12592,7 +12592,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 7.128813541959971,
+        "elapsed_s": 10.889865332981572,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -12816,7 +12816,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 7.3165915419813246,
+        "elapsed_s": 8.499581916024908,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -12999,7 +12999,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.7830650840187445,
+        "elapsed_s": 8.201281249988824,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -13182,7 +13182,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.724387541995384,
+        "elapsed_s": 7.313201833982021,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -13406,7 +13406,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 7.793972000014037,
+        "elapsed_s": 9.596949291066267,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -13589,7 +13589,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.95591112494003,
+        "elapsed_s": 7.7797605419764295,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -13813,7 +13813,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 7.706841374980286,
+        "elapsed_s": 9.281231750035658,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -13996,7 +13996,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 6.248703666962683,
+        "elapsed_s": 6.821072291932069,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -14138,7 +14138,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.9865706249838695,
+        "elapsed_s": 5.764284249977209,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -14362,7 +14362,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 7.011168375029229,
+        "elapsed_s": 6.682392959017307,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -14545,7 +14545,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 6.605772790964693,
+        "elapsed_s": 6.480896917055361,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -15138,7 +15138,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 20.142853165976703,
+        "elapsed_s": 22.24825275002513,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -15355,7 +15355,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 7.578707334003411,
+        "elapsed_s": 8.918805999914184,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -15620,7 +15620,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 8.466738082934171,
+        "elapsed_s": 9.726649792050011,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -15803,7 +15803,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 6.3151193329831585,
+        "elapsed_s": 6.592133000027388,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -15986,7 +15986,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 6.092079791938886,
+        "elapsed_s": 6.777620167005807,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -16171,7 +16171,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.654346458031796,
+        "elapsed_s": 4.997654250008054,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -16354,7 +16354,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.757877916912548,
+        "elapsed_s": 5.3118738749763,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -16537,7 +16537,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.052871249965392,
+        "elapsed_s": 5.277111000032164,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -16761,7 +16761,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.4082911249715835,
+        "elapsed_s": 5.7132789170136675,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -16944,7 +16944,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.403831708012149,
+        "elapsed_s": 4.891930500045419,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -17127,7 +17127,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.454187499941327,
+        "elapsed_s": 4.942966500064358,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -17310,7 +17310,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.687057540984824,
+        "elapsed_s": 5.023396790958941,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -17493,7 +17493,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.490340459044091,
+        "elapsed_s": 4.986971042002551,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -17676,7 +17676,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.26347624999471,
+        "elapsed_s": 4.904064333066344,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -17859,7 +17859,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.717250625020824,
+        "elapsed_s": 4.837138167000376,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -18042,7 +18042,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.8204773750621825,
+        "elapsed_s": 4.864321333006956,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -18225,7 +18225,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.348792457953095,
+        "elapsed_s": 5.483362541999668,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -18408,7 +18408,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.917548332945444,
+        "elapsed_s": 4.929684165981598,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -18591,7 +18591,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.7878064579563215,
+        "elapsed_s": 4.903351458022371,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -18774,7 +18774,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.726434833020903,
+        "elapsed_s": 4.943779374938458,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -18957,7 +18957,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.558005291968584,
+        "elapsed_s": 4.936499457922764,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -19140,7 +19140,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.930769458063878,
+        "elapsed_s": 4.925616915919818,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -19282,7 +19282,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 3.9024175830418244,
+        "elapsed_s": 4.0594999169697985,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -19465,7 +19465,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.6729544589761645,
+        "elapsed_s": 4.837144167046063,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -19648,7 +19648,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.968918583006598,
+        "elapsed_s": 5.046769333072007,
         "margin_units": "lambda_max(C)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -19874,7 +19874,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 7.3518571249442175,
+        "elapsed_s": 7.974999874946661,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -20057,7 +20057,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.569732124917209,
+        "elapsed_s": 6.104381583980285,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -20240,7 +20240,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.624593749991618,
+        "elapsed_s": 5.827291624969803,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -20423,7 +20423,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.505548832938075,
+        "elapsed_s": 5.958435124950483,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -20647,7 +20647,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 6.744741667062044,
+        "elapsed_s": 7.27569566690363,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -20871,7 +20871,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 6.453820666996762,
+        "elapsed_s": 7.426992833032273,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -21054,7 +21054,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.659065583022311,
+        "elapsed_s": 6.039922749972902,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -21237,7 +21237,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.315723542007618,
+        "elapsed_s": 5.803391583031043,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -21461,7 +21461,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 7.164167957962491,
+        "elapsed_s": 8.165252833045088,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -21644,7 +21644,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.655421625007875,
+        "elapsed_s": 6.125663542072289,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -21868,7 +21868,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 7.084074124926701,
+        "elapsed_s": 7.466500458074734,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -22051,7 +22051,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.08624641597271,
+        "elapsed_s": 6.061935999896377,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -22193,7 +22193,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.228898375062272,
+        "elapsed_s": 4.762946416973136,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -22417,7 +22417,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.932886208058335,
+        "elapsed_s": 6.315756791969761,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -22600,7 +22600,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.960082707926631,
+        "elapsed_s": 6.348390166065656,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -23193,7 +23193,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 18.187366666970775,
+        "elapsed_s": 19.454070583102293,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -23410,7 +23410,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 7.070786457974464,
+        "elapsed_s": 7.146615374949761,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -23675,7 +23675,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 7.942857583984733,
+        "elapsed_s": 8.53279399999883,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -23858,7 +23858,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 5.539085249998607,
+        "elapsed_s": 6.05424333398696,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -24041,7 +24041,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 4.88136925001163,
+        "elapsed_s": 5.374546540901065,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition",
         "a": 0.1,
@@ -24636,7 +24636,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 10.985192666994408,
+        "elapsed_s": 11.343088084016927,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -25222,7 +25222,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 11.73865658394061,
+        "elapsed_s": 11.459443291998468,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -25808,7 +25808,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 11.258229041937739,
+        "elapsed_s": 11.917064832989126,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -26394,7 +26394,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 11.203342624939978,
+        "elapsed_s": 12.198291625012644,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -26980,7 +26980,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 10.966732208966278,
+        "elapsed_s": 11.938451583031565,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -27566,7 +27566,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 10.60612387501169,
+        "elapsed_s": 11.58392545802053,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -28152,7 +28152,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 11.230455208919011,
+        "elapsed_s": 12.060675957938656,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -28738,7 +28738,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 11.621620542020537,
+        "elapsed_s": 11.973430417012423,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -29324,7 +29324,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 12.141954082995653,
+        "elapsed_s": 12.19327550008893,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -29910,7 +29910,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 11.336568582919426,
+        "elapsed_s": 12.45079870801419,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -30496,7 +30496,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 11.139624000061303,
+        "elapsed_s": 12.862810041056946,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -31082,7 +31082,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 10.826788582955487,
+        "elapsed_s": 13.991852957988158,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -31668,7 +31668,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 12.262568708974868,
+        "elapsed_s": 13.376005708938465,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -32254,7 +32254,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 13.167632375028916,
+        "elapsed_s": 13.905535375000909,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -32840,7 +32840,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 15.32151000003796,
+        "elapsed_s": 14.030351666966453,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -33426,7 +33426,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 13.428071375004947,
+        "elapsed_s": 13.994147624936886,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -34012,7 +34012,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 15.601754083996639,
+        "elapsed_s": 12.920805083937012,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -34598,7 +34598,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 17.17171554104425,
+        "elapsed_s": 14.484121415996924,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -35184,7 +35184,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 17.432160292053595,
+        "elapsed_s": 13.187630499945953,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       },
@@ -35770,7 +35770,7 @@
         "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
         "numerical_failure": false,
         "failure_reason": null,
-        "elapsed_s": 17.193354499991983,
+        "elapsed_s": 13.57597970799543,
         "margin_units": "lambda_max(C)/trace(M)",
         "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
       }
@@ -35785,7 +35785,7 @@
       "numerical_failure": 0,
       "median_iters_to_cert": 2.0,
       "max_parameter_norm": 2.155806319120355,
-      "median_total_seconds": 5.246207875024993
+      "median_total_seconds": 5.912958020984661
     },
     "raw_coupled": {
       "n": 20,
@@ -35795,7 +35795,7 @@
       "numerical_failure": 0,
       "median_iters_to_cert": 2.0,
       "max_parameter_norm": 2.155806319120355,
-      "median_total_seconds": 4.548555208020844
+      "median_total_seconds": 5.968442082987167
     },
     "normalized_fixed": {
       "n": 20,
@@ -35805,7 +35805,7 @@
       "numerical_failure": 0,
       "median_iters_to_cert": 2.0,
       "max_parameter_norm": 1.7600764251005425,
-      "median_total_seconds": 6.239249145961367
+      "median_total_seconds": 8.219171812466811
     },
     "normalized_coupled": {
       "n": 20,
@@ -35815,7 +35815,7 @@
       "numerical_failure": 0,
       "median_iters_to_cert": 2.0,
       "max_parameter_norm": 11.047164056407993,
-      "median_total_seconds": 6.460446061973926
+      "median_total_seconds": 8.211891395971179
     },
     "raw_coupled_bounded": {
       "n": 20,
@@ -35825,7 +35825,7 @@
       "numerical_failure": 0,
       "median_iters_to_cert": 2.0,
       "max_parameter_norm": 2.155806319120355,
-      "median_total_seconds": 4.721842729020864
+      "median_total_seconds": 4.939732978993561
     },
     "normalized_coupled_bounded": {
       "n": 20,
@@ -35835,7 +35835,7 @@
       "numerical_failure": 0,
       "median_iters_to_cert": 2.0,
       "max_parameter_norm": 5.656854249492381,
-      "median_total_seconds": 5.795975895540323
+      "median_total_seconds": 6.220710167021025
     },
     "normalized_coupled_bounded_coarse": {
       "n": 20,
@@ -35845,7 +35845,7 @@
       "numerical_failure": 0,
       "median_iters_to_cert": null,
       "max_parameter_norm": 5.656854249492381,
-      "median_total_seconds": 11.680138562980574
+      "median_total_seconds": 12.656804374535568
     }
   },
   "sensitivity": {
@@ -36127,7 +36127,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 3.369447625009343,
+          "elapsed_s": 2.9736775410128757,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -36385,7 +36385,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 3.392628625035286,
+          "elapsed_s": 3.0205877090338618,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -36643,7 +36643,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 3.603639208013192,
+          "elapsed_s": 3.1714674580143765,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -36901,7 +36901,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 3.1574592500692233,
+          "elapsed_s": 2.9933230420574546,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -37159,7 +37159,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 2.9307189169339836,
+          "elapsed_s": 2.988742999965325,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         }
@@ -37419,7 +37419,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 2.7128643749747425,
+          "elapsed_s": 2.9452964160591364,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -37677,7 +37677,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 2.9829121250659227,
+          "elapsed_s": 2.9141081670532003,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -37935,7 +37935,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 3.103406707989052,
+          "elapsed_s": 3.0759259160840884,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -38193,7 +38193,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 2.9728591250022873,
+          "elapsed_s": 2.9395997499814257,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -38451,7 +38451,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 2.7913880000123754,
+          "elapsed_s": 3.025729584041983,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         }
@@ -38711,7 +38711,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 3.034411375061609,
+          "elapsed_s": 3.2278148750774562,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -38969,7 +38969,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 3.0346564589999616,
+          "elapsed_s": 3.2501628750469536,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -39227,7 +39227,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 3.180433625006117,
+          "elapsed_s": 3.600473291007802,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -39485,7 +39485,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 3.461098042083904,
+          "elapsed_s": 3.510452999966219,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -39743,7 +39743,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 3.274541583028622,
+          "elapsed_s": 3.3709224170306697,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         }
@@ -40003,7 +40003,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 2.595497415983118,
+          "elapsed_s": 2.6757384591037408,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -40261,7 +40261,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 2.435540832928382,
+          "elapsed_s": 2.670142750022933,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -40519,7 +40519,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 2.4136164999799803,
+          "elapsed_s": 2.648070583003573,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -40777,7 +40777,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 2.3026147090131417,
+          "elapsed_s": 2.553183167008683,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -41035,7 +41035,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 2.4540315420599654,
+          "elapsed_s": 2.564777125022374,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         }
@@ -41295,7 +41295,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 8.871059624943882,
+          "elapsed_s": 10.4497048339108,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -41553,7 +41553,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 8.678800333058462,
+          "elapsed_s": 10.484484332962893,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -41811,7 +41811,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 8.85093874996528,
+          "elapsed_s": 10.533716375008225,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -42069,7 +42069,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 8.942102166940458,
+          "elapsed_s": 10.621336666983552,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         },
@@ -42327,7 +42327,7 @@
           "initial_theta_sha256": "e144be52e5fb9cce4d673eb2bb553298eb6347d5300cc4cbcc4991ae3b11be8d",
           "numerical_failure": false,
           "failure_reason": null,
-          "elapsed_s": 8.466106417006813,
+          "elapsed_s": 10.5851617079461,
           "margin_units": "lambda_max(C)/trace(M)",
           "metric_scale_diagnostic": "trace(M(0)); not a scale/shape decomposition"
         }
@@ -42342,7 +42342,7 @@
         "numerical_failure": 0,
         "median_iters_to_cert": null,
         "max_parameter_norm": 7.1496849672188905,
-        "median_total_seconds": 3.369447625009343
+        "median_total_seconds": 2.9933230420574546
       },
       "sensitivity_gamma_1.3_k_60": {
         "n": 5,
@@ -42352,7 +42352,7 @@
         "numerical_failure": 0,
         "median_iters_to_cert": null,
         "max_parameter_norm": 6.837913749588711,
-        "median_total_seconds": 2.9728591250022873
+        "median_total_seconds": 2.9452964160591364
       },
       "sensitivity_gamma_2.0_k_60": {
         "n": 5,
@@ -42362,7 +42362,7 @@
         "numerical_failure": 0,
         "median_iters_to_cert": null,
         "max_parameter_norm": 6.446810536161845,
-        "median_total_seconds": 3.180433625006117
+        "median_total_seconds": 3.3709224170306697
       },
       "sensitivity_gamma_1.3_k_10": {
         "n": 5,
@@ -42372,7 +42372,7 @@
         "numerical_failure": 0,
         "median_iters_to_cert": null,
         "max_parameter_norm": 13.76050215710266,
-        "median_total_seconds": 2.435540832928382
+        "median_total_seconds": 2.648070583003573
       },
       "sensitivity_gamma_1.3_k_all": {
         "n": 5,
@@ -42382,7 +42382,7 @@
         "numerical_failure": 0,
         "median_iters_to_cert": null,
         "max_parameter_norm": 5.242332290528688,
-        "median_total_seconds": 8.85093874996528
+        "median_total_seconds": 10.533716375008225
       }
     }
   },
@@ -42475,7 +42475,7 @@
             -0.012824490759673117
           ]
         ],
-        "elapsed_s": 1.1115077080903575,
+        "elapsed_s": 1.3007264169864357,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -42590,7 +42590,7 @@
             0.09336923123497794
           ]
         ],
-        "elapsed_s": 0.7749761249870062,
+        "elapsed_s": 0.8861249579349533,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -42705,7 +42705,7 @@
             0.06712714495090567
           ]
         ],
-        "elapsed_s": 0.7844417080050334,
+        "elapsed_s": 0.8352682079421356,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -42820,7 +42820,7 @@
             -0.03933737996431487
           ]
         ],
-        "elapsed_s": 0.780078542069532,
+        "elapsed_s": 0.8602360000368208,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -42964,7 +42964,7 @@
             0.02278546267034094
           ]
         ],
-        "elapsed_s": 1.3799304160056636,
+        "elapsed_s": 1.512489000102505,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -43079,7 +43079,7 @@
             -0.06964476664129597
           ]
         ],
-        "elapsed_s": 0.7749117920175195,
+        "elapsed_s": 0.8715954999206588,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -43194,7 +43194,7 @@
             0.013407301717550823
           ]
         ],
-        "elapsed_s": 0.867846000008285,
+        "elapsed_s": 0.8643568749539554,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -43309,7 +43309,7 @@
             -0.06578683523220064
           ]
         ],
-        "elapsed_s": 0.7508873329497874,
+        "elapsed_s": 0.8449642920168117,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -43424,7 +43424,7 @@
             -0.050448429646985996
           ]
         ],
-        "elapsed_s": 0.7805647500790656,
+        "elapsed_s": 0.8667878749547526,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -43539,7 +43539,7 @@
             0.09567260760776947
           ]
         ],
-        "elapsed_s": 0.7595675840275362,
+        "elapsed_s": 0.8409808330470696,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -43654,7 +43654,7 @@
             -0.08620955374560992
           ]
         ],
-        "elapsed_s": 0.7648447919636965,
+        "elapsed_s": 0.8451510421000421,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -43769,7 +43769,7 @@
             -0.055370916220603625
           ]
         ],
-        "elapsed_s": 0.8496703749988228,
+        "elapsed_s": 0.9162159999832511,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -43913,7 +43913,7 @@
             0.029666835672063196
           ]
         ],
-        "elapsed_s": 1.3925200420198962,
+        "elapsed_s": 1.5254532500403002,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -44028,7 +44028,7 @@
             -0.009281570329179714
           ]
         ],
-        "elapsed_s": 0.8302270829444751,
+        "elapsed_s": 0.8757467499235645,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -44143,7 +44143,7 @@
             0.006522173314682776
           ]
         ],
-        "elapsed_s": 0.8104248329764232,
+        "elapsed_s": 0.8567702500149608,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -44258,7 +44258,7 @@
             -0.0039140831624541175
           ]
         ],
-        "elapsed_s": 0.7590889170533046,
+        "elapsed_s": 0.8192021669819951,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -44373,7 +44373,7 @@
             0.03391228556939242
           ]
         ],
-        "elapsed_s": 0.7652972080977634,
+        "elapsed_s": 0.8816278340527788,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -44488,7 +44488,7 @@
             0.025497707836932827
           ]
         ],
-        "elapsed_s": 0.759499958017841,
+        "elapsed_s": 0.8886900000507012,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -44603,7 +44603,7 @@
             -0.01682819886925345
           ]
         ],
-        "elapsed_s": 0.7590289590880275,
+        "elapsed_s": 0.9064302499173209,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -44718,7 +44718,7 @@
             0.04257799310176393
           ]
         ],
-        "elapsed_s": 0.8154712079558522,
+        "elapsed_s": 0.8772055839654058,
         "protocol": {
           "max_rounds": 10,
           "growth_factor": 100.0,
@@ -44755,7 +44755,7 @@
       "numerical_failure": 0,
       "median_iters_to_cert": 1.0,
       "max_parameter_norm": 1.5643504797160424,
-      "median_total_seconds": 0.7803216460742988
+      "median_total_seconds": 0.8736711249221116
     }
   },
   "scale_chase": {
@@ -44961,5 +44961,5 @@
       }
     ]
   },
-  "elapsed_s": 1102.7863247909117
+  "elapsed_s": 1284.8255170830525
 }

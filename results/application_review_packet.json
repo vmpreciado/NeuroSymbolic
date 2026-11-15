@@ -1,27 +1,27 @@
 {
   "status": "pass",
-  "payload_files": 131,
-  "scientific_stages": 14,
-  "arxiv_source_files": 16,
+  "payload_files": 136,
+  "scientific_stages": 15,
+  "arxiv_source_files": 17,
   "pages": 30,
-  "release_tag": "v1.2.0",
-  "release_url": "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.2.0",
+  "release_tag": "v1.2.1",
+  "release_url": "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.2.1",
   "publication_status": "release artifact; publication and immutability are established by the GitHub release record",
   "note": "Integrity/provenance only; no experiment rerun or proof of mathematical correctness.",
-  "archive": "dist/neurosymbolic-claude-deep-review-v1.2.0.zip",
-  "sha256": "7cc3f2e2d9a535ef74c92e02b5111b9e8c6521a47518eac74d30f74c380ca414",
-  "bytes": 7441519,
+  "archive": "dist/neurosymbolic-claude-deep-review-v1.2.1.zip",
+  "sha256": "5a09a41b3c735c25c89b423e1dd1f353fd433975e14ed98a0d3624c7c7a770e5",
+  "bytes": 7483634,
   "reproduction": {
-    "path": "reproduction/neurosymbolic-reproduction-v1.2.0.zip",
-    "sha256": "3775951929f2e48b569618ac5fb1e7a4644ec9238bff48dd18c7fa9a3f710c38"
+    "path": "reproduction/neurosymbolic-reproduction-v1.2.1.zip",
+    "sha256": "0c1b9c096a7a7c643492aeba876dfc07931651b056d494d0a35d2dc97b84232b"
   },
-  "run_manifest_sha256": "4cc174f0f11da9c3176365e4ae091c205184ea91b202b0f1f5e616e0fda2e2b4",
+  "run_manifest_sha256": "8ca6e8f7a88f4ffac6d0ca4797a5f884c64f7a749cc78cfacbbb89ea048041d5",
   "current_paper": {
     "title": "Neurosymbolic Synthesis of Contraction Metrics with Certified Verification",
     "pages": 30,
     "reviewer_line_numbers": false,
-    "abstract_characters": 1883,
-    "abstract_words": 232,
+    "abstract_characters": 1900,
+    "abstract_words": 229,
     "reference_count": 31
   }
 }
