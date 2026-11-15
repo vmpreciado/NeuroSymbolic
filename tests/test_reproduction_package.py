@@ -48,7 +48,7 @@ class ReproductionPackageTests(unittest.TestCase):
             summary, contents = packaging.verify_archive(path)
             self.assertEqual(summary["status"], "pass")
             self.assertEqual(summary["stages"], 15)
-            self.assertEqual(snapshot["release_tag"], "v1.2.1")
+            self.assertEqual(snapshot["release_tag"], "v1.2.2")
             self.assertEqual(set(contents), set(snapshot["files"]))
 
     def test_changed_source_artifact_or_log_is_rejected(self):

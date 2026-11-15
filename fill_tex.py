@@ -63,6 +63,7 @@ def render_polynomial_constant_baseline():
         "polyConstRate": data["decimal_rate_rational"],
         "polyConstPFirst": data["metric_rational"][0][0],
         "polyConstPSecond": data["metric_rational"][1][1],
+        "polyConstDiagonalThreshold": data["diagonal_choice"]["threshold_rational"],
         "polyConstCFirst": -Fraction(matrix["constant_rational"][0][0]),
         "polyConstCSecond": -Fraction(matrix["constant_rational"][1][1]),
         "polyConstCross": matrix["x1_coefficient_rational"][0][1],
@@ -219,7 +220,9 @@ def main():
             ("numGridMedianRatio", fmt(gc.get("median_ratio"), sig=3)),
             ("numGridMinRatio", fmt(gc.get("min_ratio"), sig=3)),
             ("numGridMaxRatio", fmt(gc.get("max_ratio"), sig=3)),
-            ("numGridB", fmt_up(gc.get("median_b"), sig=3)),
+            # This is a descriptive median, using the same nearest rounding
+            # as Table III, rather than a bound for an individual certificate.
+            ("numGridB", fmt(gc.get("median_b"), sig=3)),
             ("numGridPtsTwo", fmt(at(2), sig=2)),
             ("numGridPtsFour", fmt(at(4), sig=2)),
             ("numGridPtsSix", fmt(at(6), sig=2)),

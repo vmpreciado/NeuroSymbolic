@@ -14,7 +14,7 @@ import zipfile
 
 HERE = Path(__file__).resolve().parent
 PREFIX = "neurosymbolic-reproduction"
-VERSION = "v1.2.1"
+VERSION = "v1.2.2"
 RELEASE_URL = "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/" + VERSION
 PUBLICATION_STATUS = "release artifact; publication and immutability are established by the GitHub release record"
 MINIMUM_STAGES = 15

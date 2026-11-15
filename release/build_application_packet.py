@@ -1,4 +1,4 @@
-"""Package the v1.2.1 full scientific reproduction for independent review.
+"""Package the v1.2.2 full scientific reproduction for independent review.
 
 Requires a fresh passing run_all.py snapshot. This creates release assets;
 publication and immutable status are established separately by GitHub.
@@ -73,6 +73,10 @@ Also reconstruct the fixed polynomial constant-metric certificate in
 polynomial_constant_baseline.py and results/polynomial_constant_baseline.json.
 Check the exact endpoint matrix tests for both the decimal and stored binary64
 rates, the whole-box affine interpolation argument, metric bounds and margins.
+Check the analytical diagonal-metric feasibility threshold that explains the
+choice P = diag(12,1). Distinguish the independently selected raw proof margin
+from the normalized learner margin; equal decimal values do not make these
+quantities equivalent or establish matched training targets.
 This post-hoc analytical candidate also performs no training. Its success means
 that the constructed polynomial benchmark does not establish a need for neural
 or state-dependent metrics. Preserve the original matched experiment counts;
@@ -86,8 +90,11 @@ the constructed scale sequence, the uncontrolled neural expressiveness study,
 the three-dimensional extension, and the known-truth surrogate experiment.
 
 Audit the fresh full-run provenance, manuscript/data consistency, source bundle,
-AI acknowledgment, citation accuracy, and scientific reproducibility. These are
-the v1.2.1 release assets; confirm publication and immutable status against the
+AI acknowledgment, citation accuracy, and scientific reproducibility. Check that
+repeated summary statistics use a consistent displayed rounding convention and
+that descriptive summaries are distinguished from directed certificate bounds.
+These are
+the v1.2.2 release assets; confirm publication and immutable status against the
 GitHub release record linked in CITATION.cff. Earlier immutable releases have
 not been modified. The complete current runnable project is in
 project/ and as a separate reproduction ZIP; VERIFY_PACKAGE.py checks integrity

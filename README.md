@@ -1,13 +1,13 @@
 # Neurosymbolic Synthesis of Contraction Metrics with Certified Verification
 
-This is the **v1.2.1** reproduction and manuscript, available from the
-[immutable release](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.2.1).
-It adds an exact constant-metric certificate for the polynomial benchmark and
-corrects the swing-baseline notation. It retains the published two-machine
+This is the **v1.2.2** reproduction and manuscript, available from the
+[immutable release](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.2.2).
+It harmonizes descriptive rounding and explains the polynomial constant-metric
+choice and its independently selected proof margin. It retains the published two-machine
 power-system model, matched Fitzsimmons–Liu PDI-loss adaptation, fixed-data hinge
 control, and verified swing-model constant metric. The paper has no reviewer line
 numbers. The previous immutable
-[v1.2.0 release](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.2.0)
+[v1.2.1 release](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.2.1)
 remains unchanged. See the release
 record for publication status and asset checksums. This workflow does not
 submit the paper to arXiv.
@@ -105,6 +105,10 @@ original polynomial benchmark on `[-2,2]^2` at rate `0.4`, with exact raw margin
 `1/20` and normalized margin `1/260`. Exact endpoint matrix checks cover both
 the decimal rate `2/5` and the actual stored binary64 rate. The proof is saved
 in `results/polynomial_constant_baseline.json` and replayed by the pipeline.
+For `P = diag(p,1)`, strict contraction requires `p > B^2/(1-lambda)^2`;
+the threshold is `100/9` here, so `12` is a simple integer choice. The raw
+proof margin is selected independently of the normalized learner margin;
+separate shifted endpoint checks establish its value.
 
 This is another fixed post hoc analytical certificate, without training seeds,
 optimized search, or a matched runtime comparison. The endpoint proof differs
@@ -135,10 +139,10 @@ python release/build_application_packet.py
 
 The outputs are:
 
-- `dist/neurosymbolic-paper-v1.2.1.pdf`
-- `dist/neurosymbolic-arxiv-v1.2.1.tar.gz`
-- `dist/neurosymbolic-reproduction-v1.2.1.zip`
-- `dist/neurosymbolic-claude-deep-review-v1.2.1.zip`
+- `dist/neurosymbolic-paper-v1.2.2.pdf`
+- `dist/neurosymbolic-arxiv-v1.2.2.tar.gz`
+- `dist/neurosymbolic-reproduction-v1.2.2.zip`
+- `dist/neurosymbolic-claude-deep-review-v1.2.2.zip`
 - `dist/arxiv_abstract.txt`
 - `dist/neurosymbolic-claude-review-prompt.txt`
 

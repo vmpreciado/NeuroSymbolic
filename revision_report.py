@@ -272,7 +272,7 @@ def render(report=None):
                                  (r"$\lambda'$", "rate_lower", fd), (r"$\sqrt{b/a}$", "overshoot_upper", fu)]:
         tex.append(name + " & " + " & ".join("$"+formatter(q[key], sig=8 if key=="rate_lower" else 4)+"$" for q in representatives)+r"\\")
     tex += [r"\hline\end{tabular}\end{table}",
-            r"\begin{table}[t]\centering\caption{Certified-seed distributions: median [minimum, maximum]. Each component is summarized separately; these medians do not form a joint certificate. Full per-seed constants are in the reproduction.}\label{tab:certsummaries}",
+            r"\begin{table}[t]\centering\caption{Certified-seed distributions: median [minimum, maximum], rounded to nearest. Each component is summarized separately; these summaries do not form a joint certificate. Full per-seed constants are in the reproduction.}\label{tab:certsummaries}",
             r"\scriptsize\begin{tabular}{llrrr}\hline Quantity & & Polynomial & Pendulum & Neural\\\hline"]
     for label, key in [(r"$L_h$", "L"), (r"$L_h\tau$", "Ltau"), (r"$\underline s$", "uniform_slack"),
                        (r"$\eta$", "eta"), (r"$b$", "b"), (r"$\lambda'$", "rate_lower"), (r"$\sqrt{b/a}$", "overshoot_upper")]:

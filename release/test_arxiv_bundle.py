@@ -121,8 +121,8 @@ class ArxivBundleTests(unittest.TestCase):
             (paper / "application_tables.tex").write_text(r"\includegraphics{fig_application.pdf}")
             (paper / "fig_application.pdf").write_bytes(b"%PDF-1.4\nfixture\n")
             report = bundle.build(root)
-            self.assertEqual(report["manuscript_revision"], "v1.2.1")
-            self.assertEqual(report["release_tag"], "v1.2.1")
+            self.assertEqual(report["manuscript_revision"], "v1.2.2")
+            self.assertEqual(report["release_tag"], "v1.2.2")
             self.assertEqual(report["release_url"], bundle.RELEASE_URL)
             self.assertEqual(report["publication_status"], bundle.PUBLICATION_STATUS)
             self.assertTrue({"application_numbers.tex", "application_tables.tex", "fig_application.pdf"}

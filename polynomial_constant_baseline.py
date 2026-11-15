@@ -47,6 +47,38 @@ def contraction_matrix(x1, rate=RATE):
     return ((24 * (rate - 1), 2 * x1), (2 * x1, 2 * (rate - 1)))
 
 
+def diagonal_choice():
+    """Explain the fixed diagonal choice using exact unshifted determinants.
+
+    For diag(p,1), -C has diagonal entries 2*p*(1-rate) and
+    2*(1-rate), and determinant 4*(p*(1-rate)**2-x1**2).
+    Thus p > B**2/(1-rate)**2 gives strict positivity on |x1| <= B
+    when rate < 1. This explains the candidate, not its separate raw margin.
+    """
+    if BOX < 0 or RATE >= 1:
+        raise ArithmeticError("diagonal-choice condition needs B >= 0 and rate < 1")
+    threshold = BOX**2 / (1 - RATE)**2
+    selected = P[0][0]
+    boundary_det = 4 * (threshold * (1 - RATE)**2 - BOX**2)
+    selected_det = 4 * (selected * (1 - RATE)**2 - BOX**2)
+    if (P[0][1] != 0 or P[1][0] != 0 or P[1][1] != 1
+            or selected <= threshold or boundary_det != 0 or selected_det <= 0):
+        raise ArithmeticError("fixed diagonal choice does not satisfy the strict criterion")
+    return {
+        "family": "diag(p,1)",
+        "hypotheses": "B >= 0, lambda < 1",
+        "strict_contraction_condition": "p > B^2/(1-lambda)^2",
+        "negative_matrix_determinant": "4*(p*(1-lambda)^2-x1^2)",
+        "threshold_rational": _q(threshold),
+        "selected_p_rational": _q(selected),
+        "selection_gap_rational": _q(selected - threshold),
+        "endpoint_determinant_at_threshold_rational": _q(boundary_det),
+        "endpoint_determinant_at_selected_p_rational": _q(selected_det),
+        "selection_scope": "a simple integer above the exact decimal-rate threshold; no optimized search",
+        "margin_scope": "the criterion proves unshifted strict contraction; the independently chosen raw margin is established separately by the shifted endpoint checks",
+    }
+
+
 def _endpoint_checks(rate):
     rows = []
     for x1 in (-BOX, BOX):
@@ -131,6 +163,7 @@ def build_report():
         "margin_scope": "independently selected safe analytical margins; not the learned candidates' training margins",
         "metric": [[float(value) for value in row] for row in P],
         "metric_rational": _matrix_json(P),
+        "diagonal_choice": diagonal_choice(),
         "metric_trace_rational": _q(TRACE),
         "metric_positive_principal_minors_rational": [_q(value) for value in _principal_minors(P)],
         "metric_bounds": metric_bounds(),

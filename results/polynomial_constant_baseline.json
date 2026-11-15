@@ -62,6 +62,19 @@
       "1/1"
     ]
   ],
+  "diagonal_choice": {
+    "family": "diag(p,1)",
+    "hypotheses": "B >= 0, lambda < 1",
+    "strict_contraction_condition": "p > B^2/(1-lambda)^2",
+    "negative_matrix_determinant": "4*(p*(1-lambda)^2-x1^2)",
+    "threshold_rational": "100/9",
+    "selected_p_rational": "12/1",
+    "selection_gap_rational": "8/9",
+    "endpoint_determinant_at_threshold_rational": "0/1",
+    "endpoint_determinant_at_selected_p_rational": "32/25",
+    "selection_scope": "a simple integer above the exact decimal-rate threshold; no optimized search",
+    "margin_scope": "the criterion proves unshifted strict contraction; the independently chosen raw margin is established separately by the shifted endpoint checks"
+  },
   "metric_trace_rational": "13/1",
   "metric_positive_principal_minors_rational": [
     "12/1",

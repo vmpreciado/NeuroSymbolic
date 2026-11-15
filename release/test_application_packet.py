@@ -36,7 +36,7 @@ class ApplicationPacketTests(unittest.TestCase):
                + r"\input{polynomial_constant_numbers.tex}" + "\n"
                + packet.RELEASE_URL + "\n" + r"\end{document}" + "\n").encode()
         sources["paper/nsp_contraction_paper_ieee.tex"] = self.write(root, "paper/nsp_contraction_paper_ieee.tex", tex)
-        citation = ('version: 1.2.1\nurl: "' + packet.RELEASE_URL + '"\n').encode()
+        citation = ('version: 1.2.2\nurl: "' + packet.RELEASE_URL + '"\n').encode()
         sources["CITATION.cff"] = self.write(root, "CITATION.cff", citation)
         baseline = {"schema_version": 1, "status": "pass",
                     "method": "fixed_constant_metric_analytical_baseline",
@@ -97,7 +97,7 @@ class ApplicationPacketTests(unittest.TestCase):
             report = self.build_fixture(root)
             self.assertEqual(report["scientific_stages"], 15)
             self.assertEqual(report["publication_status"], packet.PUBLICATION_STATUS)
-            self.assertEqual(report["release_tag"], "v1.2.1")
+            self.assertEqual(report["release_tag"], "v1.2.2")
             with zipfile.ZipFile(root / report["archive"]) as archive:
                 archive.extractall(root / "extracted")
             destination = root / "extracted" / packet.NAME
@@ -132,7 +132,7 @@ class ApplicationPacketTests(unittest.TestCase):
             project = {name: (root / name).read_bytes() for name in names}
             verify_application_packet.check_release_sources(project)
             changed = dict(project)
-            changed["CITATION.cff"] = project["CITATION.cff"].replace(b"v1.2.1", b"v1.1.1")
+            changed["CITATION.cff"] = project["CITATION.cff"].replace(b"v1.2.2", b"v1.1.1")
             with self.assertRaisesRegex(ValueError, "citation disagree"):
                 verify_application_packet.check_release_sources(changed)
             for key, value in [("post_hoc", False), ("seeds", 20), ("requested_raw_margin", 0.0)]:

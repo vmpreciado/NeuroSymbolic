@@ -18,7 +18,7 @@ import tarfile
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v1.2.1"
+VERSION = "v1.2.2"
 RELEASE_URL = "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/" + VERSION
 PUBLICATION_STATUS = "release artifact; publication and immutability are established by the GitHub release record"
 MAIN = "nsp_contraction_paper_ieee.tex"

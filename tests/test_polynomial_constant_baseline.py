@@ -43,6 +43,30 @@ class PolynomialConstantMetricTests(unittest.TestCase):
             self.assertEqual(F(row["shifted_determinant_rational"]), F(201, 400))
             self.assertTrue(row["shifted_positive_definite"])
 
+    def test_diagonal_choice_threshold_from_independent_matrix_products(self):
+        choice = baseline.build_report()["diagonal_choice"]
+        threshold = F(choice["threshold_rational"])
+        selected = F(choice["selected_p_rational"])
+        self.assertEqual(threshold, F(100, 9))
+        self.assertEqual(selected - threshold, F(choice["selection_gap_rational"]))
+        # At the derived boundary the unshifted matrix is singular, so the
+        # strict inequality matters. The selected integer has positive minors.
+        # Reconstruct A'P+PA+2*rate*P without using the production formula.
+        for p, expected_det in ((threshold - 1, F(-36, 25)),
+                                (threshold, F(0)), (selected, F(32, 25))):
+            metric = ((p, F(0)), (F(0), F(1)))
+            for x1 in (F(-2), F(2)):
+                A = ((F(-1), F(0)), (2*x1, F(-1)))
+                negative = tuple(tuple(-sum(A[m][i]*metric[m][j] + metric[i][m]*A[m][j]
+                                             for m in range(2)) - F(4, 5)*metric[i][j]
+                                         for j in range(2)) for i in range(2))
+                determinant = negative[0][0]*negative[1][1] - negative[0][1]*negative[1][0]
+                self.assertGreater(negative[0][0], 0)
+                self.assertEqual(determinant, expected_det)
+        self.assertEqual(F(choice["endpoint_determinant_at_threshold_rational"]), 0)
+        self.assertEqual(F(choice["endpoint_determinant_at_selected_p_rational"]), F(32, 25))
+        self.assertIn("unshifted strict contraction", choice["margin_scope"])
+
     def test_shared_binary64_rate_is_distinct_and_also_certified(self):
         report = baseline.build_report()
         check = report["shared_binary64_target_check"]
@@ -95,6 +119,9 @@ class PolynomialConstantMetricTests(unittest.TestCase):
             lambda x: x.update(requested_rate=.3),
             lambda x: x["domain"].update(box_half_width=1.),
             lambda x: x["metric_rational"][0].__setitem__(0, "11/1"),
+            lambda x: x["diagonal_choice"].update(threshold_rational="11/1"),
+            lambda x: x["diagonal_choice"].update(strict_contraction_condition="p >= B^2/(1-lambda)^2"),
+            lambda x: x["diagonal_choice"].update(margin_scope="criterion alone proves the requested raw margin"),
             lambda x: x["decimal_target_check"]["endpoint_checks"][0].update(determinant_rational="1/1"),
             lambda x: x["shared_binary64_target_check"]["endpoint_checks"][1].update(shifted_determinant_rational="1/1"),
             lambda x: x["decimal_target_check"]["endpoint_checks"].pop(),

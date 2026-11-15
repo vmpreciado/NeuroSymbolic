@@ -85,8 +85,8 @@ def artifact_hashes():
               PAPER / "revision_tables.tex", PAPER / "application_numbers.tex",
               PAPER / "application_tables.tex", PAPER / "polynomial_constant_numbers.tex",
               PAPER / (TEX + ".pdf")]
-    paths += [HERE / "dist/neurosymbolic-arxiv-v1.2.1.tar.gz",
-              HERE / "dist/neurosymbolic-arxiv-v1.2.1.tar.gz.sha256"]
+    paths += [HERE / "dist/neurosymbolic-arxiv-v1.2.2.tar.gz",
+              HERE / "dist/neurosymbolic-arxiv-v1.2.2.tar.gz.sha256"]
     paths += list(PAPER.glob("fig_*.pdf")) + list(PAPER.glob("fig_*.png"))
     return {str(p.relative_to(HERE)): sha256(p) for p in sorted(paths) if p.is_file()}
 
@@ -589,7 +589,7 @@ def stages():
             "paper/polynomial_constant_numbers.tex"))),
         ("pdflatex stable references + log check", latex),
         ("clean arXiv source bundle", lambda: run_script("release/build_arxiv.py", ("--check",), outputs=(
-            "results/arxiv_bundle.json", "dist/neurosymbolic-arxiv-v1.2.1.tar.gz"),
+            "results/arxiv_bundle.json", "dist/neurosymbolic-arxiv-v1.2.2.tar.gz"),
             validator=validate_arxiv_bundle)),
     ]
 

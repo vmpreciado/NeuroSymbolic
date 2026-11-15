@@ -1,4 +1,4 @@
-"""Verify an extracted v1.2.1 review packet using only stdlib.
+"""Verify an extracted v1.2.2 review packet using only stdlib.
 
 Integrity and provenance checks are not mathematical verification or a rerun.
 No code from the nested scientific reproduction is executed.
@@ -12,7 +12,7 @@ import stat
 import tarfile
 import zipfile
 
-VERSION = "v1.2.1"
+VERSION = "v1.2.2"
 RELEASE_URL = "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/" + VERSION
 PUBLICATION_STATUS = "release artifact; publication and immutability are established by the GitHub release record"
 
@@ -26,7 +26,7 @@ def release_metadata(record):
 def check_release_sources(project):
     """Check release/citation and baseline identity without executing project code."""
     citation = project["CITATION.cff"].decode()
-    version = re.search(r"^version:\s*['\"]?(v?1\.2\.1)['\"]?\s*$", citation, re.M)
+    version = re.search(r"^version:\s*['\"]?(v?1\.2\.2)['\"]?\s*$", citation, re.M)
     url = re.search(r"^url:\s*['\"]?([^'\"\s]+)['\"]?\s*$", citation, re.M)
     tex = project["paper/nsp_contraction_paper_ieee.tex"].decode()
     if not version or not url or url.group(1) != RELEASE_URL or RELEASE_URL not in tex:
