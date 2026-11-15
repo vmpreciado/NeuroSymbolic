@@ -1,10 +1,11 @@
 cff-version: 1.2.0
-message: "Local application-comparison revision; cite the associated paper and the exact reproduction snapshot supplied with it. This version is not a published immutable release."
+message: "Please cite the associated paper and this exact verified reproduction release."
 title: "Neurosymbolic Synthesis of Contraction Metrics with Certified Verification: Verified Reproduction and Submission Artifacts"
 type: software
 authors:
   - family-names: Preciado
     given-names: Victor M.
-version: application-comparison
-url: "https://github.com/vmpreciado/NeuroSymbolic"
+version: 1.2.0
+date-released: 2026-11-14
+url: "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.2.0"
 repository-code: "https://github.com/vmpreciado/NeuroSymbolic"

@@ -1,7 +1,7 @@
-"""Package the new full scientific application revision for independent review.
+"""Package the v1.2.0 full scientific reproduction for independent review.
 
-Requires a fresh passing run_all.py snapshot. This is a local artifact builder,
-not a publication command or an editorial overlay on the v1.1.1 release.
+Requires a fresh passing run_all.py snapshot. This creates release assets;
+publication and immutable status are established separately by GitHub.
 """
 from datetime import datetime, timezone
 import hashlib
@@ -17,9 +17,8 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import package_reproduction
-from verify_application_packet import verify
+from verify_application_packet import verify, VERSION, RELEASE_URL, PUBLICATION_STATUS
 
-VERSION = "application-comparison"
 NAME = "neurosymbolic-claude-deep-review-" + VERSION
 
 PROMPT = """Please independently review the attached paper, {title}, before its first
@@ -57,6 +56,18 @@ Do not treat a timeout or inconclusive result as mathematical infeasibility.
 Assess whether the added evidence supports a useful contribution beyond the
 closest prior method, even if it does not establish superiority.
 
+Independently reconstruct the fixed constant-metric analytical baseline in
+application_constant_baseline.py and results/application_constant_baseline.json.
+Check its exact rational matrix inequalities, outward-rounded trigonometric
+range, shared requested rate and raw margin, and all three stated domains.
+It was discovered after the neural comparison, performs no training, and is
+not a seeded learner or a runtime comparison. Its small-domain certificate
+shows that the successful neural results there do not establish a need for a
+neural or state-dependent metric. Failure of this one fixed metric on a larger
+domain does not establish infeasibility for all constant metrics. Check that
+the original 180 learned outcomes and exploratory refinement retain their
+original meaning and are not relabeled by the added analytical certificate.
+
 Assess novelty and scientific interest against the closest original papers,
 including Fitzsimmons-Liu, Davydov, and Harapanahalli-Coogan-Davydov where relevant.
 Check that the earlier matched polynomial ablation still reports its lack of a
@@ -65,9 +76,10 @@ the constructed scale sequence, the uncontrolled neural expressiveness study,
 the three-dimensional extension, and the known-truth surrogate experiment.
 
 Audit the fresh full-run provenance, manuscript/data consistency, source bundle,
-AI acknowledgment, citation accuracy, and scientific reproducibility. The current
-application revision is local and is not an immutable public release. The older
-v1.1.1 release has not been modified. The complete current runnable project is in
+AI acknowledgment, citation accuracy, and scientific reproducibility. These are
+the v1.2.0 release assets; confirm publication and immutable status against the
+GitHub release record linked in CITATION.cff. The older v1.1.1 release has not
+been modified. The complete current runnable project is in
 project/ and as a separate reproduction ZIP; VERIFY_PACKAGE.py checks integrity
 without executing nested scientific code. Running experiments is optional;
 state exactly which commands you ran and which checks remain unexecuted.
@@ -93,8 +105,8 @@ def build(root=ROOT):
     root = Path(root).resolve()
     snapshot_files = package_reproduction.snapshot_files(root)
     run = json.loads(snapshot_files["results/run_manifest.json"])
-    if run["expected_stage_count"] < 13:
-        raise ValueError("The added application needs a new complete scientific run")
+    if run["expected_stage_count"] < 14:
+        raise ValueError("The application and constant baseline need a new complete scientific run")
     reproduction = root / "dist" / ("neurosymbolic-reproduction-" + VERSION + ".zip")
     _, reproduction_sha, _ = package_reproduction.package(root, reproduction)
     _, checked_project = package_reproduction.verify_archive(reproduction)
@@ -129,9 +141,11 @@ def build(root=ROOT):
         payload["clean_arxiv_build/" + kind] = content
     payload["START_HERE.txt"] = f"""Independent review package: {title}
 
-This is the local application-comparison revision after a fresh full scientific
-pipeline run. It is not a published release and does not replace immutable
-v1.1.1. The current PDF has {bundle['clean_build']['pages']} pages and no reviewer
+These are the {VERSION} release assets after a fresh full scientific pipeline
+run. Publication and immutable status are confirmed by the GitHub release record:
+{RELEASE_URL}
+The earlier immutable v1.1.1 release remains unchanged.
+The current PDF has {bundle['clean_build']['pages']} pages and no reviewer
 line numbers. Use PDF pages and section/theorem/table/figure labels for feedback.
 
 1. Read PAPER_CURRENT.pdf and use REVIEW_PROMPT.txt for an independent review.
@@ -144,18 +158,23 @@ line numbers. Use PDF pages and section/theorem/table/figure labels for feedback
    clean_arxiv_build/pdf and clean_arxiv_build/log retain that build's evidence.
 5. Read project/application_protocol.json and the new results only after the
    paper-first review. Historical reports in project/reviews/ are optional context.
+6. The fixed constant-metric baseline is an analytical certificate added after
+   the neural comparison. Its checks and outcomes for all three domains are in
+   project/results/application_constant_baseline.json. It is not a seeded learner.
 
 The readable text export is provided for search; mathematical layout and page
 citations should be checked against PAPER_CURRENT.pdf. ARXIV_ABSTRACT.txt is the
 identical plain manuscript abstract, within the 1,920-character metadata limit.
 """.encode()
     manifest = {"schema_version": 1, "kind": "Independent deep pre-arXiv scientific review packet",
-                "manuscript_revision": VERSION, "release_tag": None,
-                "publication_status": "local revision; not a published release",
+                "manuscript_revision": VERSION, "release_tag": VERSION,
+                "release_url": RELEASE_URL, "publication_status": PUBLICATION_STATUS,
                 "prepared_at": datetime.now(timezone.utc).isoformat(),
                 "full_scientific_pipeline_rerun": True, "experiments_rerun_for_packaging": False,
                 "run_manifest_sha256": digest(snapshot_files["results/run_manifest.json"]),
                 "reproduction": {"path": "reproduction/" + reproduction.name, "sha256": reproduction_sha},
+                "constant_metric_baseline": {"path": "project/results/application_constant_baseline.json",
+                    "sha256": digest(snapshot_files["results/application_constant_baseline.json"])},
                 "arxiv_source": "arxiv/" + Path(bundle["archive"]).name,
                 "current_paper": {"title": title, "pages": bundle["clean_build"]["pages"],
                                   "reviewer_line_numbers": False, "abstract_characters": len(abstract),
@@ -187,7 +206,7 @@ identical plain manuscript abstract, within the 1,920-character metadata limit.
     destination.with_suffix(".zip.sha256").write_text(checksum + "  " + destination.name + "\n")
     (root / "dist/arxiv_abstract.txt").write_bytes(payload["ARXIV_ABSTRACT.txt"])
     (root / "dist/neurosymbolic-claude-review-prompt.txt").write_bytes(payload["REVIEW_PROMPT.txt"])
-    (root / "dist/neurosymbolic-paper-application-comparison.pdf").write_bytes(pdf)
+    (root / "dist" / ("neurosymbolic-paper-" + VERSION + ".pdf")).write_bytes(pdf)
     report = {**receipt, "archive": str(destination.relative_to(root)), "sha256": checksum,
               "bytes": destination.stat().st_size, "reproduction": manifest["reproduction"],
               "run_manifest_sha256": manifest["run_manifest_sha256"],

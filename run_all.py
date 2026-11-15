@@ -79,12 +79,13 @@ def artifact_hashes():
         "neural.json", "smoke_p1.json", "timing_polynomial.json",
         "timing_pendulum.json", "timing_neural.json", "rounding_checks.json",
         "revision_experiments.json", "revision_extensions.json", "revision_report.json",
-        "timing_revision.json", "arxiv_bundle.json", "application_comparison.json")]
+        "timing_revision.json", "arxiv_bundle.json", "application_comparison.json",
+        "application_constant_baseline.json")]
     paths += [PAPER / "numbers.tex", PAPER / "revision_numbers.tex",
               PAPER / "revision_tables.tex", PAPER / "application_numbers.tex",
               PAPER / "application_tables.tex", PAPER / (TEX + ".pdf")]
-    paths += [HERE / "dist/neurosymbolic-arxiv-application-comparison.tar.gz",
-              HERE / "dist/neurosymbolic-arxiv-application-comparison.tar.gz.sha256"]
+    paths += [HERE / "dist/neurosymbolic-arxiv-v1.2.0.tar.gz",
+              HERE / "dist/neurosymbolic-arxiv-v1.2.0.tar.gz.sha256"]
     paths += list(PAPER.glob("fig_*.pdf")) + list(PAPER.glob("fig_*.png"))
     return {str(p.relative_to(HERE)): sha256(p) for p in sorted(paths) if p.is_file()}
 
@@ -527,6 +528,13 @@ def validate_application():
     return f"{len(data['runs'])} matched application runs; all positive certificates replayed"
 
 
+def validate_application_constant_baseline():
+    import application_constant_baseline
+    data = read_json("application_constant_baseline.json")
+    application_constant_baseline.validate_report(data)
+    return "fixed constant metric checked on every application box; exact and directed proofs replayed"
+
+
 def stages():
     return [
         ("bounds self-tests", bounds_tests),
@@ -555,6 +563,9 @@ def stages():
         ("matched power-system application", lambda: run_script("application_comparison.py", outputs=(
             "results/application_comparison.json", "paper/fig_application.pdf"),
             validator=validate_application)),
+        ("verified constant-metric baseline", lambda: run_script("application_constant_baseline.py", outputs=(
+            "results/application_constant_baseline.json",),
+            validator=validate_application_constant_baseline)),
         ("complete certified reporting", lambda: run_script("revision_report.py", outputs=(
             "results/revision_report.json",))),
         ("fill_tex", lambda: run_script("fill_tex.py", outputs=("paper/numbers.tex",
@@ -562,7 +573,7 @@ def stages():
             "paper/application_numbers.tex", "paper/application_tables.tex"))),
         ("pdflatex stable references + log check", latex),
         ("clean arXiv source bundle", lambda: run_script("release/build_arxiv.py", ("--check",), outputs=(
-            "results/arxiv_bundle.json", "dist/neurosymbolic-arxiv-application-comparison.tar.gz"),
+            "results/arxiv_bundle.json", "dist/neurosymbolic-arxiv-v1.2.0.tar.gz"),
             validator=validate_arxiv_bundle)),
     ]
 

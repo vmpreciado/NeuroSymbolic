@@ -114,16 +114,17 @@ do not describe sampling tests as a proof of enclosure.
   undefined references/citations; inspect the rendered pages.
 - `python3 run_all.py` succeeds end to end, with current logs and a manifest
   recording source/artifact hashes, environment, and stage outcomes.
-- All thirteen declared stages pass, including the new studies, complete
+- All fourteen declared stages pass, including the new studies, the analytical
+  constant-metric baseline, complete
   reporting, and a clean arXiv bundle compilation. The fixed-budget Adam
   implementation is not covered by the idealized termination proposition.
 - `python3 package_reproduction.py` produces the complete checked local reviewer
-  archive after a fresh full run. The current application-comparison revision uses
+  archive after a fresh full run. The v1.2.0 revision uses
   `release/build_application_packet.py` after a fresh full passing run. The
   older v1.1.1 editorial-overlay scripts are historical and cannot package
   newly generated scientific evidence.
 
-## Current application revision
+## Current application and constant-metric revision
 
 `application_protocol.json` fixes the swing-model comparison. The new module
 `application_verifier.py` verifies the shared neural metric;
@@ -133,3 +134,13 @@ Fitzsimmons–Liu Eq. (5), not the original full SMT workflow.
 `application_report.py` renders validated results through `fill_tex.py`.
 The invariant energy region is the sublevel restricted to the verification
 box. Do not claim the unrestricted global tilted-potential sublevel is compact.
+
+`application_constant_baseline.py` verifies a fixed analytical constant metric
+on all three application boxes using directed transcendental bounds and exact
+rational matrix checks. This candidate was added after the neural comparison;
+it has no training seeds and does not constitute an optimized constant-metric
+search or a runtime comparison. Its success on the smallest box means neural
+state dependence is unnecessary for that result. Its pointwise violations on
+the larger box boundaries rule out this matrix for the whole-box condition;
+they do not rule out other constant metrics or contraction on the invariant
+interior energy sublevels. Preserve every original neural outcome and budget.

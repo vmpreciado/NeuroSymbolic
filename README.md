@@ -1,12 +1,15 @@
 # Neurosymbolic Synthesis of Contraction Metrics with Certified Verification
 
-This is the local **application-comparison** scientific revision. It adds a
-published two-machine power-system swing model, a matched adaptation of the
-Fitzsimmons–Liu PDI learning objective, and a fixed-data hinge control. The
-paper has no reviewer line numbers. The previous immutable
+This is the **v1.2.0** reproduction and manuscript, available from the
+[immutable release](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.2.0).
+It adds a published two-machine power-system swing model, a matched adaptation
+of the Fitzsimmons–Liu PDI learning objective, a fixed-data hinge control, and
+a verified analytical constant-metric baseline. The paper has no reviewer line
+numbers. The previous immutable
 [v1.1.1 release](https://github.com/vmpreciado/NeuroSymbolic/releases/tag/v1.1.1)
-remains unchanged and does not contain this new experiment. This revision has
-not been published as a new immutable release or submitted to arXiv.
+remains unchanged and does not contain the new application. See the release
+record for publication status and asset checksums. This workflow does not
+submit the paper to arXiv.
 
 ## Reproduce all scientific results and the paper
 
@@ -21,10 +24,11 @@ python -m pip install -r requirements-lock.txt
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 python run_all.py --parallel-science
 ```
 
-All thirteen stages must pass. The runner executes arithmetic/regression tests,
+All fourteen stages must pass. The runner executes arithmetic/regression tests,
 the original polynomial, residual, pendulum and neural studies, smoke checks,
 the controlled revision experiments, adaptive three-dimensional and surrogate
-extensions, the new matched power-system application, complete reporting,
+extensions, the matched power-system application, the analytical constant-metric
+baseline, complete reporting,
 generated manuscript numbers/tables, LaTeX compilation, and a fresh extracted
 arXiv-source compilation. Independent legacy producers can overlap; the new
 application runs after they have completed, with serial method timings.
@@ -71,6 +75,28 @@ python application_comparison.py
 python application_comparison.py --validate
 ```
 
+### Analytical constant-metric baseline
+
+`application_constant_baseline.py` checks the fixed matrix
+`P = [[1, 1/2], [1/2, 2]]` on every prespecified application box. Directed MPFR
+trigonometric enclosures and exact rational principal-minor checks establish
+the small-box contraction inequality at the same requested rate and raw margin
+as the neural comparison. The complete deterministic proof and its replay are
+stored in `results/application_constant_baseline.json`.
+
+This analytical candidate was introduced after inspecting the neural study.
+It uses no training or seeds and is not an optimized search over all constant
+metrics or a matched runtime experiment. Its small-box success shows that this
+application result does not require a neural or state-dependent metric.
+On each larger box, a certified pointwise violation rules out this fixed matrix
+for the whole-box condition. It does not rule out other constant metrics or
+contraction on the interior invariant energy subset.
+
+```sh
+python application_constant_baseline.py
+python application_constant_baseline.py --validate
+```
+
 The standalone development pilot uses excluded seed 1000 and writes only under
 `tmp/`. It cannot enter the paper or pass the production validator.
 `fill_tex.py` validates the scientific results and calls `application_report.py`
@@ -87,10 +113,10 @@ python release/build_application_packet.py
 
 The outputs are:
 
-- `dist/neurosymbolic-paper-application-comparison.pdf`
-- `dist/neurosymbolic-arxiv-application-comparison.tar.gz`
-- `dist/neurosymbolic-reproduction-application-comparison.zip`
-- `dist/neurosymbolic-claude-deep-review-application-comparison.zip`
+- `dist/neurosymbolic-paper-v1.2.0.pdf`
+- `dist/neurosymbolic-arxiv-v1.2.0.tar.gz`
+- `dist/neurosymbolic-reproduction-v1.2.0.zip`
+- `dist/neurosymbolic-claude-deep-review-v1.2.0.zip`
 - `dist/arxiv_abstract.txt`
 - `dist/neurosymbolic-claude-review-prompt.txt`
 

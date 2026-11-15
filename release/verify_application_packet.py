@@ -1,4 +1,4 @@
-"""Verify an extracted application-comparison review packet using only stdlib.
+"""Verify an extracted v1.2.0 review packet using only stdlib.
 
 Integrity and provenance checks are not mathematical verification or a rerun.
 No code from the nested scientific reproduction is executed.
@@ -11,6 +11,48 @@ import re
 import stat
 import tarfile
 import zipfile
+
+VERSION = "v1.2.0"
+RELEASE_URL = "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/" + VERSION
+PUBLICATION_STATUS = "release artifact; publication and immutability are established by the GitHub release record"
+
+
+def release_metadata(record):
+    if (record.get("release_tag") != VERSION or record.get("release_url") != RELEASE_URL
+            or record.get("publication_status") != PUBLICATION_STATUS):
+        raise ValueError("Release metadata mismatch")
+
+
+def check_release_sources(project):
+    """Check release/citation and baseline identity without executing project code."""
+    citation = project["CITATION.cff"].decode()
+    version = re.search(r"^version:\s*['\"]?(v?1\.2\.0)['\"]?\s*$", citation, re.M)
+    url = re.search(r"^url:\s*['\"]?([^'\"\s]+)['\"]?\s*$", citation, re.M)
+    tex = project["paper/nsp_contraction_paper_ieee.tex"].decode()
+    if not version or not url or url.group(1) != RELEASE_URL or RELEASE_URL not in tex:
+        raise ValueError("Current release and manuscript citation disagree")
+    baseline = json.loads(project["results/application_constant_baseline.json"])
+    if (baseline.get("status") != "pass"
+            or baseline.get("method") != "fixed_constant_metric_analytical_baseline"
+            or baseline.get("model_id") != "two_machine_swing_exact_pi_over_3_v1"
+            or baseline.get("post_hoc") is not True
+            or baseline.get("training_performed") is not False
+            or baseline.get("seeds") is not None
+            or baseline.get("requested_rate") != 0.05
+            or baseline.get("requested_raw_margin") != 0.0001
+            or baseline.get("metric") != [[1.0, 0.5], [0.5, 2.0]]):
+        raise ValueError("Constant-metric baseline identity or scope mismatch")
+    backend = baseline.get("verification_backend", {})
+    if (backend.get("outward_rounded") is not True
+            or backend.get("exact_rational_matrix_checks") is not True
+            or backend.get("transcendental_backend") != "MPFR"):
+        raise ValueError("Constant-metric baseline verification metadata missing")
+    expected = [(0.25, True, "certified"),
+                (0.5, False, "fixed_candidate_violates_requested_rate"),
+                (0.75, False, "fixed_candidate_violates_requested_rate")]
+    if [(row.get("box_half_width"), row.get("certified"), row.get("status"))
+            for row in baseline.get("domains", [])] != expected:
+        raise ValueError("Constant-metric baseline domain outcomes mismatch")
 
 
 def digest(data):
@@ -62,18 +104,22 @@ def snapshot_from_zip(content):
         raise ValueError("Run manifest hash mismatch")
     run = json.loads(run_bytes)
     stages = run["stages"]
-    if (run["status"] != "pass" or run["expected_stage_count"] < 13
+    if (run["status"] != "pass" or run["expected_stage_count"] < 14
             or len(stages) != run["expected_stage_count"]
             or any(stage["status"] != "pass" for stage in stages)
             or run["sources_at_start"] != run["sources_at_finish"]):
-        raise ValueError("A complete stable passing application run is required")
+        raise ValueError("A complete stable passing application and baseline run is required")
+    release_metadata(snapshot)
     required_sources = {"application_comparison.py", "application_protocol.json",
                         "application_baseline.py", "application_verifier.py", "application_report.py",
+                        "application_constant_baseline.py", "tests/test_application_constant_baseline.py",
+                        "CITATION.cff",
                         "comparison_sources/fitzsimmons_liu_2024.json",
                         "comparison_sources/preliminary_application_summary.json",
                         "release/build_application_packet.py", "release/verify_application_packet.py"}
     required_artifacts = {"results/application_comparison.json", "paper/application_numbers.tex",
-                          "paper/application_tables.tex", "paper/fig_application.pdf"}
+                          "paper/application_tables.tex", "paper/fig_application.pdf",
+                          "results/application_constant_baseline.json"}
     if (not required_sources.issubset(run["sources_at_finish"])
             or not required_artifacts.issubset(run["artifact_sha256"])):
         raise ValueError("Application provenance is missing from the full run")
@@ -110,8 +156,8 @@ def verify(root):
     actual = {str(path.relative_to(root)) for path in root.rglob("*") if path.is_file()}
     if actual != set(checksums) | {"SHA256SUMS.txt"}:
         raise ValueError("Packet contains missing or uninventoried files")
-    if (manifest["release_tag"] is not None
-            or manifest["publication_status"] != "local revision; not a published release"
+    release_metadata(manifest)
+    if (manifest.get("manuscript_revision") != VERSION
             or not manifest["full_scientific_pipeline_rerun"]):
         raise ValueError("Unexpected publication or run metadata")
     snapshot, project, run = snapshot_from_zip(read(root, manifest["reproduction"]["path"]))
@@ -124,6 +170,11 @@ def verify(root):
         raise ValueError("Visible snapshot metadata differs from reproduction")
     if read(root, "PAPER_CURRENT.pdf") != project["paper/nsp_contraction_paper_ieee.pdf"]:
         raise ValueError("Current PDF differs from the fresh full-run PDF")
+    check_release_sources(project)
+    constant = manifest["constant_metric_baseline"]
+    if (constant.get("path") != "project/results/application_constant_baseline.json"
+            or constant.get("sha256") != digest(project["results/application_constant_baseline.json"])):
+        raise ValueError("Constant-metric baseline release inventory mismatch")
     tex = project["paper/nsp_contraction_paper_ieee.tex"].decode()
     title = re.search(r"\\title\{([^}]+)\}", tex).group(1)
     abstract = re.search(r"\\begin\{abstract\}\s*(.*?)\s*\\end\{abstract\}", tex, re.S).group(1)
@@ -138,6 +189,9 @@ def verify(root):
     if metadata["reference_count"] != len(re.findall(r"\\bibitem\{", tex)):
         raise ValueError("Reference count mismatch")
     bundle = json.loads(project["results/arxiv_bundle.json"])
+    release_metadata(bundle)
+    if bundle.get("manuscript_revision") != VERSION:
+        raise ValueError("arXiv revision does not match the release")
     if (bundle["status"] != "pass" or bundle["clean_build"]["status"] != "pass"
             or bundle["clean_build"]["warnings"]
             or metadata["pages"] != bundle["clean_build"]["pages"]):
@@ -163,6 +217,7 @@ def verify(root):
             raise ValueError("Clean arXiv build evidence differs from its receipt")
     return {"status": "pass", "payload_files": len(files), "scientific_stages": len(run["stages"]),
             "arxiv_source_files": len(bundle["member_sha256"]), "pages": metadata["pages"],
+            "release_tag": VERSION, "release_url": RELEASE_URL,
             "publication_status": manifest["publication_status"],
             "note": "Integrity/provenance only; no experiment rerun or proof of mathematical correctness."}
 

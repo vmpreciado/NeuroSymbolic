@@ -14,16 +14,21 @@ import zipfile
 
 HERE = Path(__file__).resolve().parent
 PREFIX = "neurosymbolic-reproduction"
+VERSION = "v1.2.0"
+RELEASE_URL = "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/" + VERSION
+PUBLICATION_STATUS = "release artifact; publication and immutability are established by the GitHub release record"
+MINIMUM_STAGES = 14
 REQUIRED_SOURCES = {
     "run_all.py", "package_reproduction.py", "rounding.py", "bounds.py",
     "cegis_c.py", "experiments.py", "residual.py", "bench_pendulum.py",
-    "bench_neural.py", "smoke_p1.py", "fill_tex.py", "README.md",
+    "bench_neural.py", "smoke_p1.py", "fill_tex.py", "README.md", "CITATION.cff",
     "requirements.txt", "requirements-lock.txt",
     "paper/nsp_contraction_paper_ieee.tex",
     "revision_experiments.py", "revision_extensions.py", "revision_report.py",
     "RESPONSE_TO_CLAUDE.md", "release/build_arxiv.py",
     "application_comparison.py", "application_protocol.json",
     "application_baseline.py", "application_verifier.py", "application_report.py",
+    "application_constant_baseline.py", "tests/test_application_constant_baseline.py",
     "comparison_sources/fitzsimmons_liu_2024.json",
     "comparison_sources/preliminary_application_summary.json",
     "release/build_application_packet.py", "release/verify_application_packet.py",
@@ -37,6 +42,7 @@ REQUIRED_ARTIFACTS = {
     "results/revision_report.json", "results/timing_revision.json",
     "results/arxiv_bundle.json", "paper/revision_numbers.tex", "paper/revision_tables.tex",
     "results/application_comparison.json", "paper/application_numbers.tex",
+    "results/application_constant_baseline.json",
     "paper/application_tables.tex", "paper/fig_application.pdf",
     *("paper/fig_" + name + ".pdf" for name in
       ("ablation", "scale_chase", "extension3d", "surrogate")),
@@ -68,8 +74,8 @@ def snapshot_files(root):
     manifest_bytes = checked_bytes(root, manifest_path)
     manifest = json.loads(manifest_bytes)
     stages = manifest.get("stages", [])
-    expected = manifest.get("expected_stage_count", 8)
-    if (manifest.get("status") != "pass" or not isinstance(expected, int) or expected < 8
+    expected = manifest.get("expected_stage_count", 0)
+    if (manifest.get("status") != "pass" or not isinstance(expected, int) or expected < MINIMUM_STAGES
             or len(stages) != expected
             or any(stage.get("status") != "pass" for stage in stages)):
         raise ValueError("a complete passing reproduction with every declared stage is required")
@@ -89,7 +95,10 @@ def snapshot_files(root):
     files[manifest_path] = manifest_bytes
     snapshot = {
         "schema_version": 1,
-        "description": "Complete local reviewer archive; not a public release",
+        "description": "Complete verified scientific reproduction for " + VERSION,
+        "release_tag": VERSION,
+        "release_url": RELEASE_URL,
+        "publication_status": PUBLICATION_STATUS,
         "pipeline_finished_at": manifest["finished_at"],
         "run_manifest_sha256": digest(manifest_bytes),
         "files": {name: digest(content) for name, content in sorted(files.items())},
@@ -149,11 +158,14 @@ def verify_archive(path):
         raise ValueError("reproduction run manifest hash mismatch")
     run = json.loads(run_bytes)
     stages = run.get("stages", [])
-    expected = run.get("expected_stage_count", 8)
-    if (run.get("status") != "pass" or not isinstance(expected, int) or expected < 8
+    expected = run.get("expected_stage_count", 0)
+    if (run.get("status") != "pass" or not isinstance(expected, int) or expected < MINIMUM_STAGES
             or len(stages) != expected or any(s.get("status") != "pass" for s in stages)
             or run.get("sources_at_start") != run.get("sources_at_finish")):
         raise ValueError("reproduction is not a complete stable passing run")
+    if (snapshot.get("release_tag") != VERSION or snapshot.get("release_url") != RELEASE_URL
+            or snapshot.get("publication_status") != PUBLICATION_STATUS):
+        raise ValueError("reproduction release metadata mismatch")
     sources, artifacts = run["sources_at_finish"], run["artifact_sha256"]
     if not REQUIRED_SOURCES.issubset(sources) or not REQUIRED_ARTIFACTS.issubset(artifacts):
         raise ValueError("reproduction omits required scientific sources or artifacts")

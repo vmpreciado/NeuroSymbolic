@@ -18,7 +18,9 @@ import tarfile
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "application-comparison"
+VERSION = "v1.2.0"
+RELEASE_URL = "https://github.com/vmpreciado/NeuroSymbolic/releases/tag/" + VERSION
+PUBLICATION_STATUS = "release artifact; publication and immutability are established by the GitHub release record"
 MAIN = "nsp_contraction_paper_ieee.tex"
 FIGURES = {"fig_" + name + ".pdf" for name in
            ("traces", "heatmaps", "gridcost", "residual", "pendulum", "neural")}
@@ -179,8 +181,9 @@ def build(root=ROOT, check=False, output=None):
     temporary.write_bytes(content)
     temporary.replace(output)
     output.with_name(output.name + ".sha256").write_text(sha(content) + "  " + output.name + "\n")
-    report = {"schema_version": 2, "status": "prepared", "release_tag": None,
-              "manuscript_revision": VERSION, "publication_status": "local revision; not a published release",
+    report = {"schema_version": 2, "status": "prepared", "release_tag": VERSION,
+              "release_url": RELEASE_URL,
+              "manuscript_revision": VERSION, "publication_status": PUBLICATION_STATUS,
               "kind": "minimal arXiv TeX source bundle",
               "created_at": datetime.now(timezone.utc).isoformat(),
               "archive": str(output.relative_to(root)) if output.is_relative_to(root) else str(output),
