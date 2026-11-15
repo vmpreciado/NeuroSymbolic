@@ -1,6 +1,6 @@
 
 [3/15] residual experiment
-$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.1/residual.py
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.2/residual.py
 === Task 3: residual robustness experiment ===
 selecting a certified candidate ...
   eta      = 0.03862
@@ -36,6 +36,6 @@ selecting a certified candidate ...
     delta=0.0090  meas=-0.05094  bound=+0.11585
   all measured values below the bound: sampled consistency check PASS
   largest tested delta with measured grid maximum <= 0: 0.008994716095157463
-  wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.1/paper/fig_residual.pdf
-  wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.1/results/residual.json
-  -> PASS: residual bounds validated (39.7s)
+  wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.2/paper/fig_residual.pdf
+  wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.2/results/residual.json
+  -> PASS: residual bounds validated (31.9s)

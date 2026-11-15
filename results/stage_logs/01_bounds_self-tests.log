@@ -66,6 +66,7 @@ test_fresh_success_is_collected_once (test_parallel_runner.ParallelRunnerTests.t
 test_prefetch_cannot_reuse_stale_output (test_parallel_runner.ParallelRunnerTests.test_prefetch_cannot_reuse_stale_output) ... ok
 test_printed_success_cannot_hide_failure (test_parallel_runner.ParallelRunnerTests.test_printed_success_cannot_hide_failure) ... ok
 test_affine_extension_identity (test_polynomial_constant_baseline.PolynomialConstantMetricTests.test_affine_extension_identity) ... ok
+test_diagonal_choice_threshold_from_independent_matrix_products (test_polynomial_constant_baseline.PolynomialConstantMetricTests.test_diagonal_choice_threshold_from_independent_matrix_products) ... ok
 test_exact_decimal_endpoint_minors_and_independent_margin (test_polynomial_constant_baseline.PolynomialConstantMetricTests.test_exact_decimal_endpoint_minors_and_independent_margin) ... ok
 test_exact_matrix_identity_from_independent_products (test_polynomial_constant_baseline.PolynomialConstantMetricTests.test_exact_matrix_identity_from_independent_products) ... ok
 test_exact_metric_bounds_and_outward_prefactor (test_polynomial_constant_baseline.PolynomialConstantMetricTests.test_exact_metric_bounds_and_outward_prefactor) ... ok
@@ -150,7 +151,7 @@ test_smoke_must_actually_certify_and_have_consistent_slack (test_run_all.RunnerV
 test_successful_process_cannot_reuse_stale_result (test_run_all.RunnerValidationTests.test_successful_process_cannot_reuse_stale_result) ... ok
 
 ----------------------------------------------------------------------
-Ran 147 tests in 31.499s
+Ran 148 tests in 22.151s
 
 OK
 $ /opt/anaconda3/bin/python3 -m unittest discover -s release -p test_*.py -v
@@ -172,7 +173,7 @@ test_editorial_report_cannot_relabel_changed_science_as_an_overlay (test_current
 test_extraction_rejects_parent_paths_symlinks_and_uninventoried_files (test_current_package.CurrentReproductionTests.test_extraction_rejects_parent_paths_symlinks_and_uninventoried_files) ... ok
 
 ----------------------------------------------------------------------
-Ran 16 tests in 13.030s
+Ran 16 tests in 9.967s
 
 OK
 [1b] 200 pairs, fails=0, max relative error=4.88e-15
@@ -182,4 +183,4 @@ OK
 [1c monotone] theta 2: L(depth=2)=15167.7955  L(depth=4)=1148.8954  delta=-14018.9001
 [1c monotone] theta 3: L(depth=2)=12611.4911  L(depth=4)=396.0967  delta=-12215.3944
 [1c monotone] theta 4: L(depth=2)=2946.0287  L(depth=4)=201.0666  delta=-2744.9621
-  -> PASS: directed arithmetic, regression tests, and polynomial acceptance checks passed (52.8s)
+  -> PASS: directed arithmetic, regression tests, and polynomial acceptance checks passed (43.8s)

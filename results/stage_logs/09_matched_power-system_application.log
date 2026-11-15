@@ -1,201 +1,201 @@
 
 [9/15] matched power-system application
-$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.1/application_comparison.py
-B=0.25 seed=00 cegis_hinge: certified=True steps=400 reason=None seconds=0.46
-B=0.25 seed=00 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.71
-B=0.25 seed=00 hinge_fixed: certified=True steps=400 reason=None seconds=0.55
-B=0.25 seed=01 hinge_fixed: certified=True steps=400 reason=None seconds=0.53
-B=0.25 seed=01 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.27
-B=0.25 seed=01 cegis_hinge: certified=True steps=400 reason=None seconds=0.47
-B=0.25 seed=02 cegis_hinge: certified=True steps=400 reason=None seconds=0.66
-B=0.25 seed=02 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.76
-B=0.25 seed=02 hinge_fixed: certified=True steps=400 reason=None seconds=0.64
-B=0.25 seed=03 hinge_fixed: certified=True steps=400 reason=None seconds=0.61
-B=0.25 seed=03 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.60
-B=0.25 seed=03 cegis_hinge: certified=True steps=400 reason=None seconds=0.49
-B=0.25 seed=04 cegis_hinge: certified=True steps=400 reason=None seconds=0.51
-B=0.25 seed=04 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.50
-B=0.25 seed=04 hinge_fixed: certified=True steps=400 reason=None seconds=0.65
-B=0.25 seed=05 hinge_fixed: certified=True steps=400 reason=None seconds=0.53
-B=0.25 seed=05 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.72
-B=0.25 seed=05 cegis_hinge: certified=True steps=400 reason=None seconds=0.61
-B=0.25 seed=06 cegis_hinge: certified=True steps=400 reason=None seconds=0.52
-B=0.25 seed=06 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.71
-B=0.25 seed=06 hinge_fixed: certified=True steps=400 reason=None seconds=0.45
-B=0.25 seed=07 hinge_fixed: certified=True steps=400 reason=None seconds=0.57
-B=0.25 seed=07 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.59
-B=0.25 seed=07 cegis_hinge: certified=True steps=400 reason=None seconds=0.54
-B=0.25 seed=08 cegis_hinge: certified=True steps=400 reason=None seconds=0.60
-B=0.25 seed=08 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.78
-B=0.25 seed=08 hinge_fixed: certified=True steps=400 reason=None seconds=0.44
-B=0.25 seed=09 hinge_fixed: certified=True steps=400 reason=None seconds=0.47
-B=0.25 seed=09 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.56
-B=0.25 seed=09 cegis_hinge: certified=True steps=400 reason=None seconds=0.60
-B=0.25 seed=10 cegis_hinge: certified=True steps=400 reason=None seconds=0.65
-B=0.25 seed=10 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.65
-B=0.25 seed=10 hinge_fixed: certified=True steps=400 reason=None seconds=0.68
-B=0.25 seed=11 hinge_fixed: certified=True steps=400 reason=None seconds=0.54
-B=0.25 seed=11 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.51
-B=0.25 seed=11 cegis_hinge: certified=True steps=400 reason=None seconds=0.52
-B=0.25 seed=12 cegis_hinge: certified=True steps=400 reason=None seconds=0.47
-B=0.25 seed=12 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.91
-B=0.25 seed=12 hinge_fixed: certified=True steps=400 reason=None seconds=0.49
-B=0.25 seed=13 hinge_fixed: certified=True steps=400 reason=None seconds=0.58
-B=0.25 seed=13 fitzsimmons_liu_pdi: certified=False steps=2000 reason=depth_budget_exhausted seconds=3.95
-B=0.25 seed=13 cegis_hinge: certified=True steps=400 reason=None seconds=0.55
-B=0.25 seed=14 cegis_hinge: certified=True steps=400 reason=None seconds=0.61
-B=0.25 seed=14 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.69
-B=0.25 seed=14 hinge_fixed: certified=True steps=400 reason=None seconds=0.49
-B=0.25 seed=15 hinge_fixed: certified=True steps=400 reason=None seconds=0.45
-B=0.25 seed=15 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.67
-B=0.25 seed=15 cegis_hinge: certified=True steps=400 reason=None seconds=0.54
-B=0.25 seed=16 cegis_hinge: certified=True steps=400 reason=None seconds=0.60
-B=0.25 seed=16 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.80
-B=0.25 seed=16 hinge_fixed: certified=True steps=400 reason=None seconds=0.60
-B=0.25 seed=17 hinge_fixed: certified=True steps=400 reason=None seconds=0.49
-B=0.25 seed=17 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.55
-B=0.25 seed=17 cegis_hinge: certified=True steps=400 reason=None seconds=0.51
-B=0.25 seed=18 cegis_hinge: certified=True steps=400 reason=None seconds=0.63
-B=0.25 seed=18 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.79
-B=0.25 seed=18 hinge_fixed: certified=True steps=400 reason=None seconds=0.59
-B=0.25 seed=19 hinge_fixed: certified=True steps=400 reason=None seconds=0.61
-B=0.25 seed=19 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.63
-B=0.25 seed=19 cegis_hinge: certified=True steps=400 reason=None seconds=0.47
-B=0.5 seed=00 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.81
-B=0.5 seed=00 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.52
-B=0.5 seed=00 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.15
-B=0.5 seed=01 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.24
-B=0.5 seed=01 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.19
-B=0.5 seed=01 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.29
-B=0.5 seed=02 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=5.78
-B=0.5 seed=02 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.35
-B=0.5 seed=02 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.31
-B=0.5 seed=03 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.33
-B=0.5 seed=03 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.44
-B=0.5 seed=03 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=5.94
-B=0.5 seed=04 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=6.15
-B=0.5 seed=04 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.32
-B=0.5 seed=04 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.39
-B=0.5 seed=05 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.21
-B=0.5 seed=05 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.44
-B=0.5 seed=05 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.68
-B=0.5 seed=06 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.64
-B=0.5 seed=06 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.31
-B=0.5 seed=06 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.20
-B=0.5 seed=07 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.30
-B=0.5 seed=07 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.25
-B=0.5 seed=07 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=5.70
-B=0.5 seed=08 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=6.76
-B=0.5 seed=08 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.54
-B=0.5 seed=08 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.02
-B=0.5 seed=09 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.30
-B=0.5 seed=09 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.38
-B=0.5 seed=09 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=5.65
-B=0.5 seed=10 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=5.62
-B=0.5 seed=10 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.50
-B=0.5 seed=10 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.14
-B=0.5 seed=11 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.41
-B=0.5 seed=11 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.17
-B=0.5 seed=11 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=5.94
-B=0.5 seed=12 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=7.12
-B=0.5 seed=12 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.32
-B=0.5 seed=12 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.32
-B=0.5 seed=13 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.05
-B=0.5 seed=13 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.60
-B=0.5 seed=13 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.61
-B=0.5 seed=14 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=5.09
-B=0.5 seed=14 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.08
-B=0.5 seed=14 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.95
-B=0.5 seed=15 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.97
-B=0.5 seed=15 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.14
-B=0.5 seed=15 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.10
-B=0.5 seed=16 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.11
-B=0.5 seed=16 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.15
-B=0.5 seed=16 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.93
-B=0.5 seed=17 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.98
-B=0.5 seed=17 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.05
-B=0.5 seed=17 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=6.24
-B=0.5 seed=18 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=6.08
-B=0.5 seed=18 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.99
-B=0.5 seed=18 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.93
-B=0.5 seed=19 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.91
-B=0.5 seed=19 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.02
-B=0.5 seed=19 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=5.07
-B=0.75 seed=00 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.96
-B=0.75 seed=00 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.09
-B=0.75 seed=00 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.03
-B=0.75 seed=01 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.91
-B=0.75 seed=01 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.01
-B=0.75 seed=01 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.95
-B=0.75 seed=02 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.03
-B=0.75 seed=02 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.99
-B=0.75 seed=02 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.94
-B=0.75 seed=03 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.90
-B=0.75 seed=03 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.02
-B=0.75 seed=03 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.01
-B=0.75 seed=04 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.94
-B=0.75 seed=04 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.01
-B=0.75 seed=04 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.82
-B=0.75 seed=05 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.78
-B=0.75 seed=05 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.87
-B=0.75 seed=05 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.82
-B=0.75 seed=06 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.84
-B=0.75 seed=06 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.87
-B=0.75 seed=06 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
-B=0.75 seed=07 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.88
-B=0.75 seed=07 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.97
-B=0.75 seed=07 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.85
-B=0.75 seed=08 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.82
-B=0.75 seed=08 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.92
-B=0.75 seed=08 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.87
-B=0.75 seed=09 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
-B=0.75 seed=09 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.87
-B=0.75 seed=09 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.85
-B=0.75 seed=10 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.97
-B=0.75 seed=10 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.86
-B=0.75 seed=10 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
-B=0.75 seed=11 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
-B=0.75 seed=11 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.86
-B=0.75 seed=11 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.84
-B=0.75 seed=12 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.84
-B=0.75 seed=12 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.94
-B=0.75 seed=12 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.89
-B=0.75 seed=13 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
-B=0.75 seed=13 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.88
-B=0.75 seed=13 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.86
-B=0.75 seed=14 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.89
-B=0.75 seed=14 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.87
-B=0.75 seed=14 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
-B=0.75 seed=15 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.78
-B=0.75 seed=15 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=2.01
-B=0.75 seed=15 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.85
-B=0.75 seed=16 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.84
-B=0.75 seed=16 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.87
-B=0.75 seed=16 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
-B=0.75 seed=17 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
-B=0.75 seed=17 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.86
-B=0.75 seed=17 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.87
-B=0.75 seed=18 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.97
-B=0.75 seed=18 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.88
-B=0.75 seed=18 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
-B=0.75 seed=19 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.78
-B=0.75 seed=19 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.87
-B=0.75 seed=19 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.85
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.2/application_comparison.py
+B=0.25 seed=00 cegis_hinge: certified=True steps=400 reason=None seconds=0.40
+B=0.25 seed=00 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.48
+B=0.25 seed=00 hinge_fixed: certified=True steps=400 reason=None seconds=0.39
+B=0.25 seed=01 hinge_fixed: certified=True steps=400 reason=None seconds=0.40
+B=0.25 seed=01 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
+B=0.25 seed=01 cegis_hinge: certified=True steps=400 reason=None seconds=0.42
+B=0.25 seed=02 cegis_hinge: certified=True steps=400 reason=None seconds=0.46
+B=0.25 seed=02 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.52
+B=0.25 seed=02 hinge_fixed: certified=True steps=400 reason=None seconds=0.44
+B=0.25 seed=03 hinge_fixed: certified=True steps=400 reason=None seconds=0.42
+B=0.25 seed=03 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.46
+B=0.25 seed=03 cegis_hinge: certified=True steps=400 reason=None seconds=0.42
+B=0.25 seed=04 cegis_hinge: certified=True steps=400 reason=None seconds=0.43
+B=0.25 seed=04 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.46
+B=0.25 seed=04 hinge_fixed: certified=True steps=400 reason=None seconds=0.42
+B=0.25 seed=05 hinge_fixed: certified=True steps=400 reason=None seconds=0.39
+B=0.25 seed=05 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.51
+B=0.25 seed=05 cegis_hinge: certified=True steps=400 reason=None seconds=0.41
+B=0.25 seed=06 cegis_hinge: certified=True steps=400 reason=None seconds=0.41
+B=0.25 seed=06 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.62
+B=0.25 seed=06 hinge_fixed: certified=True steps=400 reason=None seconds=0.40
+B=0.25 seed=07 hinge_fixed: certified=True steps=400 reason=None seconds=0.43
+B=0.25 seed=07 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.45
+B=0.25 seed=07 cegis_hinge: certified=True steps=400 reason=None seconds=0.42
+B=0.25 seed=08 cegis_hinge: certified=True steps=400 reason=None seconds=0.41
+B=0.25 seed=08 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.56
+B=0.25 seed=08 hinge_fixed: certified=True steps=400 reason=None seconds=0.39
+B=0.25 seed=09 hinge_fixed: certified=True steps=400 reason=None seconds=0.40
+B=0.25 seed=09 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.48
+B=0.25 seed=09 cegis_hinge: certified=True steps=400 reason=None seconds=0.42
+B=0.25 seed=10 cegis_hinge: certified=True steps=400 reason=None seconds=0.47
+B=0.25 seed=10 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.49
+B=0.25 seed=10 hinge_fixed: certified=True steps=400 reason=None seconds=0.42
+B=0.25 seed=11 hinge_fixed: certified=True steps=400 reason=None seconds=0.41
+B=0.25 seed=11 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.44
+B=0.25 seed=11 cegis_hinge: certified=True steps=400 reason=None seconds=0.45
+B=0.25 seed=12 cegis_hinge: certified=True steps=400 reason=None seconds=0.40
+B=0.25 seed=12 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.61
+B=0.25 seed=12 hinge_fixed: certified=True steps=400 reason=None seconds=0.39
+B=0.25 seed=13 hinge_fixed: certified=True steps=400 reason=None seconds=0.39
+B=0.25 seed=13 fitzsimmons_liu_pdi: certified=False steps=2000 reason=depth_budget_exhausted seconds=3.13
+B=0.25 seed=13 cegis_hinge: certified=True steps=400 reason=None seconds=0.40
+B=0.25 seed=14 cegis_hinge: certified=True steps=400 reason=None seconds=0.43
+B=0.25 seed=14 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.57
+B=0.25 seed=14 hinge_fixed: certified=True steps=400 reason=None seconds=0.44
+B=0.25 seed=15 hinge_fixed: certified=True steps=400 reason=None seconds=0.41
+B=0.25 seed=15 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.50
+B=0.25 seed=15 cegis_hinge: certified=True steps=400 reason=None seconds=0.41
+B=0.25 seed=16 cegis_hinge: certified=True steps=400 reason=None seconds=0.46
+B=0.25 seed=16 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.58
+B=0.25 seed=16 hinge_fixed: certified=True steps=400 reason=None seconds=0.42
+B=0.25 seed=17 hinge_fixed: certified=True steps=400 reason=None seconds=0.43
+B=0.25 seed=17 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.47
+B=0.25 seed=17 cegis_hinge: certified=True steps=400 reason=None seconds=0.43
+B=0.25 seed=18 cegis_hinge: certified=True steps=400 reason=None seconds=0.42
+B=0.25 seed=18 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.58
+B=0.25 seed=18 hinge_fixed: certified=True steps=400 reason=None seconds=0.41
+B=0.25 seed=19 hinge_fixed: certified=True steps=400 reason=None seconds=0.40
+B=0.25 seed=19 fitzsimmons_liu_pdi: certified=True steps=400 reason=None seconds=0.54
+B=0.25 seed=19 cegis_hinge: certified=True steps=400 reason=None seconds=0.40
+B=0.5 seed=00 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=3.60
+B=0.5 seed=00 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.74
+B=0.5 seed=00 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.69
+B=0.5 seed=01 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.73
+B=0.5 seed=01 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.84
+B=0.5 seed=01 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.5 seed=02 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.46
+B=0.5 seed=02 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.74
+B=0.5 seed=02 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.67
+B=0.5 seed=03 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.69
+B=0.5 seed=03 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.77
+B=0.5 seed=03 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.46
+B=0.5 seed=04 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.44
+B=0.5 seed=04 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.74
+B=0.5 seed=04 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.69
+B=0.5 seed=05 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.69
+B=0.5 seed=05 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.76
+B=0.5 seed=05 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=3.53
+B=0.5 seed=06 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=3.54
+B=0.5 seed=06 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.74
+B=0.5 seed=06 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.68
+B=0.5 seed=07 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.70
+B=0.5 seed=07 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.76
+B=0.5 seed=07 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.45
+B=0.5 seed=08 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=5.37
+B=0.5 seed=08 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.84
+B=0.5 seed=08 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.78
+B=0.5 seed=09 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.5 seed=09 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.5 seed=09 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.57
+B=0.5 seed=10 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.53
+B=0.5 seed=10 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.93
+B=0.5 seed=10 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.73
+B=0.5 seed=11 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.5 seed=11 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.5 seed=11 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.55
+B=0.5 seed=12 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=5.47
+B=0.5 seed=12 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.5 seed=12 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.5 seed=13 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.73
+B=0.5 seed=13 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.5 seed=13 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=3.62
+B=0.5 seed=14 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.53
+B=0.5 seed=14 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.83
+B=0.5 seed=14 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.75
+B=0.5 seed=15 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.74
+B=0.5 seed=15 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.5 seed=15 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=3.60
+B=0.5 seed=16 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=3.61
+B=0.5 seed=16 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.5 seed=16 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.74
+B=0.5 seed=17 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.78
+B=0.5 seed=17 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.5 seed=17 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=5.61
+B=0.5 seed=18 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=5.46
+B=0.5 seed=18 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
+B=0.5 seed=18 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.5 seed=19 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.5 seed=19 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.5 seed=19 cegis_hinge: certified=False steps=2000 reason=box_budget_exhausted seconds=4.53
+B=0.75 seed=00 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.78
+B=0.75 seed=00 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.82
+B=0.75 seed=00 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.75 seed=01 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.75 seed=01 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.75 seed=01 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.76
+B=0.75 seed=02 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.77
+B=0.75 seed=02 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.83
+B=0.75 seed=02 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.73
+B=0.75 seed=03 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.75 seed=03 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.75 seed=03 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.76
+B=0.75 seed=04 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.77
+B=0.75 seed=04 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.82
+B=0.75 seed=04 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.75 seed=05 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.75 seed=05 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.84
+B=0.75 seed=05 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.77
+B=0.75 seed=06 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.83
+B=0.75 seed=06 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.75 seed=06 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.71
+B=0.75 seed=07 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.75 seed=07 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.75 seed=07 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.77
+B=0.75 seed=08 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.76
+B=0.75 seed=08 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.75 seed=08 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.71
+B=0.75 seed=09 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.75 seed=09 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.75 seed=09 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.76
+B=0.75 seed=10 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.78
+B=0.75 seed=10 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.75 seed=10 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.75 seed=11 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.75 seed=11 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.78
+B=0.75 seed=11 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.77
+B=0.75 seed=12 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.77
+B=0.75 seed=12 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.81
+B=0.75 seed=12 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.75 seed=13 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.75 seed=13 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.75 seed=13 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.76
+B=0.75 seed=14 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.78
+B=0.75 seed=14 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.75 seed=14 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.75 seed=15 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.75 seed=15 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.75 seed=15 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.77
+B=0.75 seed=16 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.76
+B=0.75 seed=16 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.75 seed=16 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.75 seed=17 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.73
+B=0.75 seed=17 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.75 seed=17 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.78
+B=0.75 seed=18 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.76
+B=0.75 seed=18 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.79
+B=0.75 seed=18 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.72
+B=0.75 seed=19 hinge_fixed: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.74
+B=0.75 seed=19 fitzsimmons_liu_pdi: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.80
+B=0.75 seed=19 cegis_hinge: certified=False steps=2000 reason=nominal_screen_inconclusive seconds=1.77
 Exploratory frozen refinement B=0.25 seed=00 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.05
 Exploratory frozen refinement B=0.25 seed=00 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.11
 Exploratory frozen refinement B=0.25 seed=00 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.05
 Exploratory frozen refinement B=0.25 seed=01 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.06
 Exploratory frozen refinement B=0.25 seed=01 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
-Exploratory frozen refinement B=0.25 seed=01 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.08
+Exploratory frozen refinement B=0.25 seed=01 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.07
 Exploratory frozen refinement B=0.25 seed=02 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.11
 Exploratory frozen refinement B=0.25 seed=02 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.16
-Exploratory frozen refinement B=0.25 seed=02 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.10
+Exploratory frozen refinement B=0.25 seed=02 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.09
 Exploratory frozen refinement B=0.25 seed=03 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.07
 Exploratory frozen refinement B=0.25 seed=03 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.11
 Exploratory frozen refinement B=0.25 seed=03 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.07
 Exploratory frozen refinement B=0.25 seed=04 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.08
 Exploratory frozen refinement B=0.25 seed=04 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.10
-Exploratory frozen refinement B=0.25 seed=04 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.08
+Exploratory frozen refinement B=0.25 seed=04 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.07
 Exploratory frozen refinement B=0.25 seed=05 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.05
 Exploratory frozen refinement B=0.25 seed=05 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.15
 Exploratory frozen refinement B=0.25 seed=05 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.06
@@ -203,104 +203,104 @@ Exploratory frozen refinement B=0.25 seed=06 cegis_hinge: certified=True reason=
 Exploratory frozen refinement B=0.25 seed=06 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.26
 Exploratory frozen refinement B=0.25 seed=06 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.06
 Exploratory frozen refinement B=0.25 seed=07 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.06
-Exploratory frozen refinement B=0.25 seed=07 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.10
-Exploratory frozen refinement B=0.25 seed=07 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.08
+Exploratory frozen refinement B=0.25 seed=07 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.09
+Exploratory frozen refinement B=0.25 seed=07 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.07
 Exploratory frozen refinement B=0.25 seed=08 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.07
-Exploratory frozen refinement B=0.25 seed=08 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.21
+Exploratory frozen refinement B=0.25 seed=08 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.20
 Exploratory frozen refinement B=0.25 seed=08 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.05
-Exploratory frozen refinement B=0.25 seed=09 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.07
-Exploratory frozen refinement B=0.25 seed=09 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.14
+Exploratory frozen refinement B=0.25 seed=09 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.06
+Exploratory frozen refinement B=0.25 seed=09 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.13
 Exploratory frozen refinement B=0.25 seed=09 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.07
-Exploratory frozen refinement B=0.25 seed=10 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.13
-Exploratory frozen refinement B=0.25 seed=10 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.14
-Exploratory frozen refinement B=0.25 seed=10 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.09
+Exploratory frozen refinement B=0.25 seed=10 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.12
+Exploratory frozen refinement B=0.25 seed=10 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.13
+Exploratory frozen refinement B=0.25 seed=10 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.08
 Exploratory frozen refinement B=0.25 seed=11 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.07
 Exploratory frozen refinement B=0.25 seed=11 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.09
-Exploratory frozen refinement B=0.25 seed=11 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.11
+Exploratory frozen refinement B=0.25 seed=11 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.10
 Exploratory frozen refinement B=0.25 seed=12 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.05
-Exploratory frozen refinement B=0.25 seed=12 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.26
+Exploratory frozen refinement B=0.25 seed=12 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.25
 Exploratory frozen refinement B=0.25 seed=12 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.05
 Exploratory frozen refinement B=0.25 seed=13 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.05
-Exploratory frozen refinement B=0.25 seed=13 fitzsimmons_liu_pdi: certified=False reason=depth_budget_exhausted seconds=0.28
+Exploratory frozen refinement B=0.25 seed=13 fitzsimmons_liu_pdi: certified=False reason=depth_budget_exhausted seconds=0.26
 Exploratory frozen refinement B=0.25 seed=13 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.06
 Exploratory frozen refinement B=0.25 seed=14 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.08
-Exploratory frozen refinement B=0.25 seed=14 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.20
+Exploratory frozen refinement B=0.25 seed=14 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.19
 Exploratory frozen refinement B=0.25 seed=14 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.09
 Exploratory frozen refinement B=0.25 seed=15 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.05
 Exploratory frozen refinement B=0.25 seed=15 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.13
 Exploratory frozen refinement B=0.25 seed=15 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.05
 Exploratory frozen refinement B=0.25 seed=16 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.11
-Exploratory frozen refinement B=0.25 seed=16 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.23
-Exploratory frozen refinement B=0.25 seed=16 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.08
+Exploratory frozen refinement B=0.25 seed=16 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.22
+Exploratory frozen refinement B=0.25 seed=16 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.07
 Exploratory frozen refinement B=0.25 seed=17 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.09
 Exploratory frozen refinement B=0.25 seed=17 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.11
 Exploratory frozen refinement B=0.25 seed=17 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.08
 Exploratory frozen refinement B=0.25 seed=18 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.07
-Exploratory frozen refinement B=0.25 seed=18 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.23
+Exploratory frozen refinement B=0.25 seed=18 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.22
 Exploratory frozen refinement B=0.25 seed=18 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.06
 Exploratory frozen refinement B=0.25 seed=19 hinge_fixed: certified=True reason=all_leaves_certified seconds=0.06
-Exploratory frozen refinement B=0.25 seed=19 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.19
+Exploratory frozen refinement B=0.25 seed=19 fitzsimmons_liu_pdi: certified=True reason=all_leaves_certified seconds=0.18
 Exploratory frozen refinement B=0.25 seed=19 cegis_hinge: certified=True reason=all_leaves_certified seconds=0.06
-Exploratory frozen refinement B=0.5 seed=00 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.32
+Exploratory frozen refinement B=0.5 seed=00 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.02
 Exploratory frozen refinement B=0.5 seed=00 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=00 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=01 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=01 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=01 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
-Exploratory frozen refinement B=0.5 seed=02 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.43
+Exploratory frozen refinement B=0.5 seed=02 cegis_hinge: certified=False reason=box_budget_exhausted seconds=6.97
 Exploratory frozen refinement B=0.5 seed=02 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=02 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=03 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=03 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
-Exploratory frozen refinement B=0.5 seed=03 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.31
-Exploratory frozen refinement B=0.5 seed=04 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.47
+Exploratory frozen refinement B=0.5 seed=03 cegis_hinge: certified=False reason=box_budget_exhausted seconds=6.96
+Exploratory frozen refinement B=0.5 seed=04 cegis_hinge: certified=False reason=box_budget_exhausted seconds=6.95
 Exploratory frozen refinement B=0.5 seed=04 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=04 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=05 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=05 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
-Exploratory frozen refinement B=0.5 seed=05 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.44
-Exploratory frozen refinement B=0.5 seed=06 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.46
+Exploratory frozen refinement B=0.5 seed=05 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.02
+Exploratory frozen refinement B=0.5 seed=06 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.02
 Exploratory frozen refinement B=0.5 seed=06 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=06 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=07 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=07 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
-Exploratory frozen refinement B=0.5 seed=07 cegis_hinge: certified=True reason=all_leaves_certified seconds=7.04
-Exploratory frozen refinement B=0.5 seed=08 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.35
+Exploratory frozen refinement B=0.5 seed=07 cegis_hinge: certified=True reason=all_leaves_certified seconds=6.72
+Exploratory frozen refinement B=0.5 seed=08 cegis_hinge: certified=False reason=box_budget_exhausted seconds=6.92
 Exploratory frozen refinement B=0.5 seed=08 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=08 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=09 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=09 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
-Exploratory frozen refinement B=0.5 seed=09 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.43
-Exploratory frozen refinement B=0.5 seed=10 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.40
+Exploratory frozen refinement B=0.5 seed=09 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.00
+Exploratory frozen refinement B=0.5 seed=10 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.00
 Exploratory frozen refinement B=0.5 seed=10 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=10 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=11 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=11 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
-Exploratory frozen refinement B=0.5 seed=11 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.44
-Exploratory frozen refinement B=0.5 seed=12 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.43
+Exploratory frozen refinement B=0.5 seed=11 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.08
+Exploratory frozen refinement B=0.5 seed=12 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.10
 Exploratory frozen refinement B=0.5 seed=12 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=12 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=13 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=13 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
-Exploratory frozen refinement B=0.5 seed=13 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.34
-Exploratory frozen refinement B=0.5 seed=14 cegis_hinge: certified=False reason=depth_budget_exhausted seconds=6.76
+Exploratory frozen refinement B=0.5 seed=13 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.09
+Exploratory frozen refinement B=0.5 seed=14 cegis_hinge: certified=False reason=depth_budget_exhausted seconds=6.49
 Exploratory frozen refinement B=0.5 seed=14 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=14 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=15 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=15 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
-Exploratory frozen refinement B=0.5 seed=15 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.41
-Exploratory frozen refinement B=0.5 seed=16 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.37
+Exploratory frozen refinement B=0.5 seed=15 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.12
+Exploratory frozen refinement B=0.5 seed=16 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.07
 Exploratory frozen refinement B=0.5 seed=16 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=16 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=17 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=17 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
-Exploratory frozen refinement B=0.5 seed=17 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.36
-Exploratory frozen refinement B=0.5 seed=18 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.40
+Exploratory frozen refinement B=0.5 seed=17 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.14
+Exploratory frozen refinement B=0.5 seed=18 cegis_hinge: certified=False reason=box_budget_exhausted seconds=7.14
 Exploratory frozen refinement B=0.5 seed=18 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=18 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=19 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.5 seed=19 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
-Exploratory frozen refinement B=0.5 seed=19 cegis_hinge: certified=True reason=all_leaves_certified seconds=6.91
+Exploratory frozen refinement B=0.5 seed=19 cegis_hinge: certified=True reason=all_leaves_certified seconds=6.92
 Exploratory frozen refinement B=0.75 seed=00 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.75 seed=00 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.75 seed=00 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
@@ -361,5 +361,5 @@ Exploratory frozen refinement B=0.75 seed=18 hinge_fixed: certified=False reason
 Exploratory frozen refinement B=0.75 seed=19 hinge_fixed: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.75 seed=19 fitzsimmons_liu_pdi: certified=False reason=nominal_screen_inconclusive seconds=0.00
 Exploratory frozen refinement B=0.75 seed=19 cegis_hinge: certified=False reason=nominal_screen_inconclusive seconds=0.00
-Wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.1/results/application_comparison.json
-  -> PASS: 180 matched application runs; all positive certificates replayed (518.6s)
+Wrote /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.2/results/application_comparison.json
+  -> PASS: 180 matched application runs; all positive certificates replayed (455.2s)

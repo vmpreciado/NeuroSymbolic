@@ -1,5 +1,5 @@
 
 [11/15] verified polynomial constant-metric baseline
-$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.1/polynomial_constant_baseline.py
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.2/polynomial_constant_baseline.py
 {"certified": true, "endpoint_checks_per_convention": 2, "status": "pass", "target_conventions": 2}
   -> PASS: fixed polynomial constant metric; both rate conventions and exact endpoint proofs replayed (0.1s)

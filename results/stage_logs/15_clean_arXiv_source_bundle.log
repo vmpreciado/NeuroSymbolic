@@ -1,6 +1,6 @@
 
 [15/15] clean arXiv source bundle
-$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.1/release/build_arxiv.py --check
-Wrote dist/neurosymbolic-arxiv-v1.2.1.tar.gz: 17 files, SHA256 4e48bf02ecef5f025f60894a70fc8783d1e837566ee6f5d61c8dbb6102604609
-Clean build PASS: 30 pages, 0 warning(s); tmp/arxiv-bundle-check-v1.2.1-_63zjyf5
-  -> PASS: 17 source files; clean 3-pass build, zero warnings (3.9s)
+$ /opt/anaconda3/bin/python3 -u /Users/preciado/Desktop/NeuroSymbolic/tmp/release-v1.2.2/release/build_arxiv.py --check
+Wrote dist/neurosymbolic-arxiv-v1.2.2.tar.gz: 17 files, SHA256 d6d3065915e3d85e318e8d1c98687c546ee7add236ad96868e89f431efb98642
+Clean build PASS: 30 pages, 0 warning(s); tmp/arxiv-bundle-check-v1.2.2-c5vvna9q
+  -> PASS: 17 source files; clean 3-pass build, zero warnings (3.4s)

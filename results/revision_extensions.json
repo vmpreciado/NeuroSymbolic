@@ -588,13 +588,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.0023005000548437238
+              "wall_s": 0.002241083071567118
             },
             "sample_count": 256,
             "training": {
               "steps": 172,
               "final_empirical_loss": 0.0,
-              "wall_s": 1.3468930000672117,
+              "wall_s": 1.0139521659584716,
               "optimizer_state": "reset each round"
             }
           },
@@ -943,13 +943,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.002374666975811124
+              "wall_s": 0.002009583986364305
             },
             "sample_count": 616,
             "training": {
               "steps": 4,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.033110624994151294,
+              "wall_s": 0.028357125003822148,
               "optimizer_state": "reset each round"
             }
           },
@@ -6966,7 +6966,7 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 53.444863124983385
+              "wall_s": 37.93462133395951
             },
             "sample_count": 976
           }
@@ -12982,7 +12982,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 53.444863124983385
+          "wall_s": 37.93462133395951
         },
         "domain": [
           -1.0,
@@ -13409,13 +13409,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.002267290954478085
+              "wall_s": 0.0021609580144286156
             },
             "sample_count": 256,
             "training": {
               "steps": 300,
               "final_empirical_loss": 1.3113363991576096e-06,
-              "wall_s": 2.3763149169972166,
+              "wall_s": 1.7675104170339182,
               "optimizer_state": "reset each round"
             }
           },
@@ -13764,13 +13764,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.0023401250364258885
+              "wall_s": 0.0020137920510023832
             },
             "sample_count": 616,
             "training": {
               "steps": 3,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.026940207928419113,
+              "wall_s": 0.018684374983422458,
               "optimizer_state": "reset each round"
             }
           },
@@ -18705,7 +18705,7 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 44.52947575005237
+              "wall_s": 30.529468999942765
             },
             "sample_count": 976
           }
@@ -23639,7 +23639,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 44.52947575005237
+          "wall_s": 30.529468999942765
         },
         "domain": [
           -1.0,
@@ -24066,13 +24066,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.005032332963310182
+              "wall_s": 0.0021784580312669277
             },
             "sample_count": 256,
             "training": {
               "steps": 66,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.5148159160744399,
+              "wall_s": 0.39571624994277954,
               "optimizer_state": "reset each round"
             }
           },
@@ -24421,13 +24421,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.002256416017189622
+              "wall_s": 0.0020342919742688537
             },
             "sample_count": 616,
             "training": {
               "steps": 4,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.034986708080396056,
+              "wall_s": 0.027269624988548458,
               "optimizer_state": "reset each round"
             }
           },
@@ -28666,7 +28666,7 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 38.82591845805291
+              "wall_s": 26.830483082914725
             },
             "sample_count": 976
           }
@@ -32904,7 +32904,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 38.82591845805291
+          "wall_s": 26.830483082914725
         },
         "domain": [
           -1.0,
@@ -33331,13 +33331,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.002373875002376735
+              "wall_s": 0.002221125061623752
             },
             "sample_count": 256,
             "training": {
               "steps": 300,
               "final_empirical_loss": 5.120435341362213e-06,
-              "wall_s": 2.3259494170779362,
+              "wall_s": 1.775762291974388,
               "optimizer_state": "reset each round"
             }
           },
@@ -33686,13 +33686,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.002303707995451987
+              "wall_s": 0.001998416963033378
             },
             "sample_count": 616,
             "training": {
               "steps": 7,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.07254187506623566,
+              "wall_s": 0.0496583329513669,
               "optimizer_state": "reset each round"
             }
           },
@@ -33786,13 +33786,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 54.531591541017406
+              "wall_s": 38.714642250095494
             },
             "sample_count": 976,
             "training": {
               "steps": 1,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.003473208984360099,
+              "wall_s": 0.0029333330458030105,
               "optimizer_state": "reset each round"
             }
           }
@@ -33885,7 +33885,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 54.531591541017406
+          "wall_s": 38.714642250095494
         },
         "domain": [
           -1.0,
@@ -34305,13 +34305,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.0022839580196887255
+              "wall_s": 0.0020135000813752413
             },
             "sample_count": 256,
             "training": {
               "steps": 87,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.7000913330120966,
+              "wall_s": 0.5236755419755355,
               "optimizer_state": "reset each round"
             }
           },
@@ -34660,13 +34660,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.0022487080423161387
+              "wall_s": 0.0021079169819131494
             },
             "sample_count": 616,
             "training": {
               "steps": 4,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.041768333059735596,
+              "wall_s": 0.028582375030964613,
               "optimizer_state": "reset each round"
             }
           },
@@ -34750,13 +34750,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 52.49749758304097
+              "wall_s": 38.686189167085104
             },
             "sample_count": 976,
             "training": {
               "steps": 1,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.003349584061652422,
+              "wall_s": 0.0029546249425038695,
               "optimizer_state": "reset each round"
             }
           }
@@ -34839,7 +34839,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 52.49749758304097
+          "wall_s": 38.686189167085104
         },
         "domain": [
           -1.0,
@@ -35259,13 +35259,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.0022273330250754952
+              "wall_s": 0.001977000036276877
             },
             "sample_count": 256,
             "training": {
               "steps": 271,
               "final_empirical_loss": 0.0,
-              "wall_s": 2.035482541890815,
+              "wall_s": 1.5805670829722658,
               "optimizer_state": "reset each round"
             }
           },
@@ -35614,13 +35614,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.005703083006665111
+              "wall_s": 0.0021316660568118095
             },
             "sample_count": 616,
             "training": {
               "steps": 10,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.10770320799201727,
+              "wall_s": 0.07787112495861948,
               "optimizer_state": "reset each round"
             }
           },
@@ -41641,7 +41641,7 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 50.393279875046574
+              "wall_s": 37.48995329195168
             },
             "sample_count": 976
           }
@@ -47661,7 +47661,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 50.393279875046574
+          "wall_s": 37.48995329195168
         },
         "domain": [
           -1.0,
@@ -48088,13 +48088,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.0022557079792022705
+              "wall_s": 0.0020151250064373016
             },
             "sample_count": 256,
             "training": {
               "steps": 292,
               "final_empirical_loss": 0.0,
-              "wall_s": 2.5661729580024257,
+              "wall_s": 1.697051625000313,
               "optimizer_state": "reset each round"
             }
           },
@@ -48443,13 +48443,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.005277040996588767
+              "wall_s": 0.001961292000487447
             },
             "sample_count": 616,
             "training": {
               "steps": 4,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.03638983296696097,
+              "wall_s": 0.02727266598958522,
               "optimizer_state": "reset each round"
             }
           },
@@ -54495,7 +54495,7 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 51.36429470800795
+              "wall_s": 38.76613691705279
             },
             "sample_count": 976
           }
@@ -60540,7 +60540,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 51.36429470800795
+          "wall_s": 38.76613691705279
         },
         "domain": [
           -1.0,
@@ -60967,13 +60967,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.004481874988414347
+              "wall_s": 0.0019067919347435236
             },
             "sample_count": 256,
             "training": {
               "steps": 83,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.728430415969342,
+              "wall_s": 0.4750754579436034,
               "optimizer_state": "reset each round"
             }
           },
@@ -61322,13 +61322,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.0025479160249233246
+              "wall_s": 0.0019637090153992176
             },
             "sample_count": 616,
             "training": {
               "steps": 8,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.10171041602734476,
+              "wall_s": 0.060165375005453825,
               "optimizer_state": "reset each round"
             }
           },
@@ -61677,13 +61677,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.002282792003825307
+              "wall_s": 0.0019790000515058637
             },
             "sample_count": 976,
             "training": {
               "steps": 2,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.022212332929484546,
+              "wall_s": 0.014195000054314733,
               "optimizer_state": "reset each round"
             }
           },
@@ -65989,7 +65989,7 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 35.74969162500929
+              "wall_s": 27.2376004580874
             },
             "sample_count": 1336
           }
@@ -70294,7 +70294,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 35.74969162500929
+          "wall_s": 27.2376004580874
         },
         "domain": [
           -1.0,
@@ -70721,13 +70721,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.002226291922852397
+              "wall_s": 0.0020314999856054783
             },
             "sample_count": 256,
             "training": {
               "steps": 130,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.9174837078899145,
+              "wall_s": 0.7621559579856694,
               "optimizer_state": "reset each round"
             }
           },
@@ -71076,13 +71076,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.002270916011184454
+              "wall_s": 0.002077208016999066
             },
             "sample_count": 616,
             "training": {
               "steps": 2,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.013186124968342483,
+              "wall_s": 0.010609415941871703,
               "optimizer_state": "reset each round"
             }
           },
@@ -71176,13 +71176,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 49.56955512508284
+              "wall_s": 38.27786020806525
             },
             "sample_count": 976,
             "training": {
               "steps": 1,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.003560749930329621,
+              "wall_s": 0.0029549170285463333,
               "optimizer_state": "reset each round"
             }
           }
@@ -71275,7 +71275,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 49.56955512508284
+          "wall_s": 38.27786020806525
         },
         "domain": [
           -1.0,
@@ -71695,13 +71695,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.0046196249313652515
+              "wall_s": 0.0019977909978479147
             },
             "sample_count": 256,
             "training": {
               "steps": 126,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.9521709580440074,
+              "wall_s": 0.7397682500304654,
               "optimizer_state": "reset each round"
             }
           },
@@ -72050,13 +72050,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.0022367920028045774
+              "wall_s": 0.00193108303938061
             },
             "sample_count": 616,
             "training": {
               "steps": 3,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.028456499916501343,
+              "wall_s": 0.018434957950375974,
               "optimizer_state": "reset each round"
             }
           },
@@ -72170,13 +72170,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 48.390305583016016
+              "wall_s": 38.567450333037414
             },
             "sample_count": 976,
             "training": {
               "steps": 1,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.0034016669960692525,
+              "wall_s": 0.0030224169604480267,
               "optimizer_state": "reset each round"
             }
           }
@@ -72289,7 +72289,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 48.390305583016016
+          "wall_s": 38.567450333037414
         },
         "domain": [
           -1.0,
@@ -72709,13 +72709,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.0022365000331774354
+              "wall_s": 0.0019912089919671416
             },
             "sample_count": 256,
             "training": {
               "steps": 184,
               "final_empirical_loss": 0.0,
-              "wall_s": 1.3417799579910934,
+              "wall_s": 1.050973708042875,
               "optimizer_state": "reset each round"
             }
           },
@@ -73064,13 +73064,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.0022797499550506473
+              "wall_s": 0.0020009169820696115
             },
             "sample_count": 616,
             "training": {
               "steps": 6,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.050111290998756886,
+              "wall_s": 0.0424570000031963,
               "optimizer_state": "reset each round"
             }
           },
@@ -78479,7 +78479,7 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 41.4151520000305
+              "wall_s": 32.52364100003615
             },
             "sample_count": 976
           }
@@ -83887,7 +83887,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 41.4151520000305
+          "wall_s": 32.52364100003615
         },
         "domain": [
           -1.0,
@@ -84314,13 +84314,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.0024788329610601068
+              "wall_s": 0.0019451669650152326
             },
             "sample_count": 256,
             "training": {
               "steps": 253,
               "final_empirical_loss": 0.0,
-              "wall_s": 1.784303916967474,
+              "wall_s": 1.457435040967539,
               "optimizer_state": "reset each round"
             }
           },
@@ -84669,13 +84669,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.0024283749517053366
+              "wall_s": 0.0019541250076144934
             },
             "sample_count": 616,
             "training": {
               "steps": 5,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.040047041955403984,
+              "wall_s": 0.03425662498921156,
               "optimizer_state": "reset each round"
             }
           },
@@ -84779,13 +84779,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 48.301675750059076
+              "wall_s": 38.28113554196898
             },
             "sample_count": 976,
             "training": {
               "steps": 1,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.003349917009472847,
+              "wall_s": 0.002856957959011197,
               "optimizer_state": "reset each round"
             }
           }
@@ -84888,7 +84888,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 48.301675750059076
+          "wall_s": 38.28113554196898
         },
         "domain": [
           -1.0,
@@ -85308,13 +85308,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.0032902080565690994
+              "wall_s": 0.0019784170435741544
             },
             "sample_count": 256,
             "training": {
               "steps": 204,
               "final_empirical_loss": 0.0,
-              "wall_s": 1.5332724589388818,
+              "wall_s": 1.1893059590365738,
               "optimizer_state": "reset each round"
             }
           },
@@ -85663,13 +85663,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.002297166036441922
+              "wall_s": 0.0021063750609755516
             },
             "sample_count": 616,
             "training": {
               "steps": 4,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.031043458031490445,
+              "wall_s": 0.026626165956258774,
               "optimizer_state": "reset each round"
             }
           },
@@ -89014,7 +89014,7 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 26.36008574999869
+              "wall_s": 20.81716595799662
             },
             "sample_count": 976
           }
@@ -92358,7 +92358,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 26.36008574999869
+          "wall_s": 20.81716595799662
         },
         "domain": [
           -1.0,
@@ -92785,13 +92785,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.002251999918371439
+              "wall_s": 0.0019515410531312227
             },
             "sample_count": 256,
             "training": {
               "steps": 67,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.5178334999363869,
+              "wall_s": 0.3898349580122158,
               "optimizer_state": "reset each round"
             }
           },
@@ -93140,13 +93140,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.002494208049029112
+              "wall_s": 0.0019710840424522758
             },
             "sample_count": 616,
             "training": {
               "steps": 5,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.047975749941542745,
+              "wall_s": 0.03719108295626938,
               "optimizer_state": "reset each round"
             }
           },
@@ -97563,7 +97563,7 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 34.89259420800954
+              "wall_s": 27.560850125038996
             },
             "sample_count": 976
           }
@@ -101979,7 +101979,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 34.89259420800954
+          "wall_s": 27.560850125038996
         },
         "domain": [
           -1.0,
@@ -102406,13 +102406,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.0022733750520274043
+              "wall_s": 0.001932124956510961
             },
             "sample_count": 256,
             "training": {
               "steps": 136,
               "final_empirical_loss": 0.0,
-              "wall_s": 1.0650705000152811,
+              "wall_s": 0.7977156250271946,
               "optimizer_state": "reset each round"
             }
           },
@@ -102761,13 +102761,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.002347207977436483
+              "wall_s": 0.001993624959141016
             },
             "sample_count": 616,
             "training": {
               "steps": 2,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.012499792035669088,
+              "wall_s": 0.01096604100894183,
               "optimizer_state": "reset each round"
             }
           },
@@ -102851,13 +102851,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 48.72719558305107
+              "wall_s": 38.736387042095885
             },
             "sample_count": 976,
             "training": {
               "steps": 1,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.0033283750526607037,
+              "wall_s": 0.0027759158983826637,
               "optimizer_state": "reset each round"
             }
           }
@@ -102940,7 +102940,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 48.72719558305107
+          "wall_s": 38.736387042095885
         },
         "domain": [
           -1.0,
@@ -103360,13 +103360,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.00220512505620718
+              "wall_s": 0.0020008330466225743
             },
             "sample_count": 256,
             "training": {
               "steps": 246,
               "final_empirical_loss": 0.0,
-              "wall_s": 1.828662500018254,
+              "wall_s": 1.4116728339577094,
               "optimizer_state": "reset each round"
             }
           },
@@ -103715,13 +103715,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.002444916986860335
+              "wall_s": 0.0019493750296533108
             },
             "sample_count": 616,
             "training": {
               "steps": 6,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.056745707988739014,
+              "wall_s": 0.042326125083491206,
               "optimizer_state": "reset each round"
             }
           },
@@ -103795,13 +103795,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 48.00849629205186
+              "wall_s": 37.53549841698259
             },
             "sample_count": 976,
             "training": {
               "steps": 1,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.0033035000087693334,
+              "wall_s": 0.0027710830327123404,
               "optimizer_state": "reset each round"
             }
           }
@@ -103874,7 +103874,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 48.00849629205186
+          "wall_s": 37.53549841698259
         },
         "domain": [
           -1.0,
@@ -104294,13 +104294,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.002436458016745746
+              "wall_s": 0.001983167021535337
             },
             "sample_count": 256,
             "training": {
               "steps": 157,
               "final_empirical_loss": 0.0,
-              "wall_s": 1.2550941249355674,
+              "wall_s": 0.913276374922134,
               "optimizer_state": "reset each round"
             }
           },
@@ -104649,13 +104649,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.002366500091738999
+              "wall_s": 0.002240000059828162
             },
             "sample_count": 616,
             "training": {
               "steps": 3,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.02781933289952576,
+              "wall_s": 0.02026858297176659,
               "optimizer_state": "reset each round"
             }
           },
@@ -110054,7 +110054,7 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 43.631987040978856
+              "wall_s": 34.21284837508574
             },
             "sample_count": 976
           }
@@ -115452,7 +115452,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 43.631987040978856
+          "wall_s": 34.21284837508574
         },
         "domain": [
           -1.0,
@@ -115879,13 +115879,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.0022645839489996433
+              "wall_s": 0.002052374999038875
             },
             "sample_count": 256,
             "training": {
               "steps": 156,
               "final_empirical_loss": 0.0,
-              "wall_s": 1.1859391670441255,
+              "wall_s": 0.9648803749587387,
               "optimizer_state": "reset each round"
             }
           },
@@ -116234,13 +116234,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.0021505829645320773
+              "wall_s": 0.0019848330412060022
             },
             "sample_count": 616,
             "training": {
               "steps": 4,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.03406691597774625,
+              "wall_s": 0.028286708053201437,
               "optimizer_state": "reset each round"
             }
           },
@@ -116334,13 +116334,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 47.352052584057674
+              "wall_s": 37.47111275000498
             },
             "sample_count": 976,
             "training": {
               "steps": 1,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.0033431670162826777,
+              "wall_s": 0.0030197500018402934,
               "optimizer_state": "reset each round"
             }
           }
@@ -116433,7 +116433,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 47.352052584057674
+          "wall_s": 37.47111275000498
         },
         "domain": [
           -1.0,
@@ -116853,13 +116853,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.002212291001342237
+              "wall_s": 0.0019764170283451676
             },
             "sample_count": 256,
             "training": {
               "steps": 177,
               "final_empirical_loss": 0.0,
-              "wall_s": 1.3139209999935701,
+              "wall_s": 1.0336003330303356,
               "optimizer_state": "reset each round"
             }
           },
@@ -117208,13 +117208,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.0022295000962913036
+              "wall_s": 0.002052875002846122
             },
             "sample_count": 616,
             "training": {
               "steps": 5,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.04540354199707508,
+              "wall_s": 0.03463991708122194,
               "optimizer_state": "reset each round"
             }
           },
@@ -122377,7 +122377,7 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 39.195631042006426
+              "wall_s": 31.94458274997305
             },
             "sample_count": 976
           }
@@ -127539,7 +127539,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 39.195631042006426
+          "wall_s": 31.94458274997305
         },
         "domain": [
           -1.0,
@@ -127966,13 +127966,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.002193792024627328
+              "wall_s": 0.0019497500034049153
             },
             "sample_count": 256,
             "training": {
               "steps": 300,
               "final_empirical_loss": 6.951698800054715e-06,
-              "wall_s": 2.2378475409932435,
+              "wall_s": 1.7269718749448657,
               "optimizer_state": "reset each round"
             }
           },
@@ -128321,13 +128321,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 0.003972916980274022
+              "wall_s": 0.0019480829359963536
             },
             "sample_count": 616,
             "training": {
               "steps": 6,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.05565966700669378,
+              "wall_s": 0.04565958306193352,
               "optimizer_state": "reset each round"
             }
           },
@@ -128421,13 +128421,13 @@
                 ]
               },
               "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-              "wall_s": 43.41468104207888
+              "wall_s": 37.27592004206963
             },
             "sample_count": 976,
             "training": {
               "steps": 1,
               "final_empirical_loss": 0.0,
-              "wall_s": 0.003352415980771184,
+              "wall_s": 0.0027481659781187773,
               "optimizer_state": "reset each round"
             }
           }
@@ -128520,7 +128520,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 43.41468104207888
+          "wall_s": 37.27592004206963
         },
         "domain": [
           -1.0,
@@ -128599,7 +128599,7 @@
           "axis_points": 2001,
           "nominal_grid_evaluations": 4004001,
           "outward_grid_evaluations": 4004001,
-          "wall_s": 3.458124874974601,
+          "wall_s": 3.1900145830586553,
           "Lh_upper": 19.70126046490654,
           "tau_upper": 0.0014142135623732542,
           "normalized_slack_lower": 0.021558277120928858
@@ -128705,7 +128705,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 0.12416654196567833
+          "wall_s": 0.11626762500964105
         }
       },
       {
@@ -128732,7 +128732,7 @@
           "axis_points": 2001,
           "nominal_grid_evaluations": 4004001,
           "outward_grid_evaluations": 4004001,
-          "wall_s": 3.4885676249396056,
+          "wall_s": 3.017163041047752,
           "Lh_upper": 13.337640290242756,
           "tau_upper": 0.0014142135623732542,
           "normalized_slack_lower": 0.028474263524679716
@@ -128801,7 +128801,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 0.04422362509649247
+          "wall_s": 0.041259582969360054
         }
       },
       {
@@ -128828,7 +128828,7 @@
           "axis_points": 2001,
           "nominal_grid_evaluations": 4004001,
           "outward_grid_evaluations": 4004001,
-          "wall_s": 3.4653005830477923,
+          "wall_s": 3.168364250101149,
           "Lh_upper": 4.231575012185612,
           "tau_upper": 0.0014142135623732542,
           "normalized_slack_lower": 0.03810068429953316
@@ -128915,7 +128915,7 @@
             ]
           },
           "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-          "wall_s": 0.08060666697565466
+          "wall_s": 0.07657333300448954
         }
       }
     ],
@@ -129463,13 +129463,13 @@
               ]
             },
             "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-            "wall_s": 0.00032766698859632015
+            "wall_s": 0.00031525001395493746
           },
           "sample_count": 400,
           "training": {
             "steps": 400,
             "final_empirical_loss": 6.913263253176243e-05,
-            "wall_s": 1.4705107079353184,
+            "wall_s": 1.2813145000254735,
             "optimizer_state": "reset each round"
           }
         },
@@ -129604,7 +129604,7 @@
               ]
             },
             "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-            "wall_s": 0.17499004199635237
+            "wall_s": 0.16119924990925938
           },
           "sample_count": 760
         }
@@ -129738,7 +129738,7 @@
           ]
         },
         "positive_decision": "exact initial Bernstein coefficients, outward de Casteljau, and outward interval LDLT, optionally after a verified invertible triangular congruence, on every partition leaf",
-        "wall_s": 0.17499004199635237
+        "wall_s": 0.16119924990925938
       },
       "domain": [
         -2.0,
@@ -129904,5 +129904,5 @@
     },
     "interpretation": "Known-truth benchmark: fitted surrogate is learned from trajectory observations; global residual/Jacobian certification uses the independently known polynomial truth."
   },
-  "wall_s": 267.71378174994607
+  "wall_s": 208.91568954195827
 }
